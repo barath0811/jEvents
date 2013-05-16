@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="assets/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="assets/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="assets/main.css" />
+        <link rel="stylesheet" href="assets/flexslider.css" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css' />
+
+        <script src="assets/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+		<%= render "layouts/header" %>
+                
+        <div class="container">
+            <div class="hero-unit" id="awesomeText">
+<!--                <h1><span style="color:#f88534;">Jolly</span>Events</h1>-->
+                <p>Spending too much time searching for a venue? Relax, we'll find the right place for any event!</p>
+            </div>
+
+            <div id="searchArea">
+                <!--<img src="img/logo.jpg" alt="Alternate Text" />-->
+                <!--<h3>Finding a venue- 10% of the job that takes 50% of your time.</h3>
+                    <h4> Event planning just got easier !! Select an event and area, and click Search!</h4>-->
+                <div id="searchButtons" class="pull-right">
+                    <div class="btn-group">
+				      <a class="btn btn-inverse btn-large dropdown-toggle" data-toggle="dropdown" href="#">		
+						    I'm looking for
+				        <span class="caret"></span>
+				      </a>
+				      <ul class="dropdown-menu" id="eventTypeDiv">
+					    <li><a href="#">Wedding</a></li>
+					    <li><a href="#">Birthday Party</a></li>
+					    <li><a href="#">Corporate Meeting2342etsdgdghdfhydfgyd</a></li>
+				      </ul>
+				    </div>
+				    <div class="btn-group" id="inAndAroundDiv">
+				      <a class="btn btn-inverse btn-large dropdown-toggle" data-toggle="dropdown" href="#">
+				        In & Around
+				        <span class="caret"></span>
+				      </a>
+				      <ul class="dropdown-menu">
+						    <li><a href="#">Guindy</a></li>
+						    <li><a href="#">Adayar</a></li>
+						    <li><a href="#">OMR</a></li>
+						    <li><a href="#">Ashok Nagar</a></li>
+						    <li><a href="#">K K Nagar</a></li>
+						    <li><a href="#">OMR</a></li>
+						    <li><a href="#">Guindy</a></li>
+						    <li><a href="#">Adayar</a></li>
+						    <li><a href="#">OMR</a></li>
+				      </ul>
+                    </div>
+				    <input type="button" class="btn-large btn-info" Value="Search Venues" />
+                </div>
+            </div>
+            <!-- Example row of columns -->
+            <div class="row-fluid">
+                <div class="span6">
+                    <h3>Featured Venues- for birthdays, weddings & more..</h3>
+                    <div class="flexslider">
+                        <ul class="slides">
+                        <li>
+                            <img src="assets/1.jpg" />
+                            <p class="flex-caption">Image ONE - 1</p>
+                        </li>
+                        <li>
+                            <img src="assets/2.jpg" />
+                            <p class="flex-caption">Image TWOoooo - 2</p>
+                        </li>
+                        <li>
+                            <img src="assets/3.jpg" />
+                            <p class="flex-caption">Image THREE - 3</p>
+                        </li>
+                        <li>
+                            <img src="assets/4.jpg" />
+                            <p class="flex-caption">Image FOUR - 4</p>
+                        </li>
+                        <li>
+                            <img src="assets/5.jpg" />
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span6">
+                    <h3>Featured Venues- for meetings, business & more..</h3>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn" href="#">View details &raquo;</a></p>
+               </div>
+            </div>
+
+            <%= render "layouts/footer" %>
+
+        </div> <!-- /container -->
+
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+        <script>window.jQuery || document.write('<script src="assets/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        
+        <script src="assets/vendor/bootstrap.min.js"></script>
+        <script src="assets/vendor/jquery.flexslider-min.js"></script>
+        <script src="assets/main.js"></script>
+
+        <!--<script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>-->
+    </body>
+</html>

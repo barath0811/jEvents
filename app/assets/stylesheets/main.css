@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-image: url('Background1.jpg');
+    padding-top: 6em;
+}
+.navbar-inner {
+    width: 100%;
+    background: #FFF;
+    /*height: auto;
+    float: left;
+    clear: both;
+    z-index: 10000;*/
+    position: absolute;
+    border-bottom: 1px solid #f88534;
+    padding: 1% 0;
+    top:0;
+}
+
+#awesomeText {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    background-color:transparent;
+    line-height: 1.5em;
+    padding-bottom:1em;
+    padding-top:1em;
+    margin: 2% 0 0 0;
+    text-align: center;
+}
+
+#searchArea {
+    background-color:transparent;
+    padding:0 0 7% 0;
+}
+
+#searchButtons .btn{
+   
+}
+
+.hero-unit h1 {
+    padding-top:4%;
+    padding-bottom:4%;
+}
+
+.flex-caption {
+    background-color:rgba(128, 128, 128, 0.25);
+    height:25%;
+    bottom:-20px;
+}
+
+#footerLists ul{
+    list-style-type: none;
+}
+
+#footerLists h4 {
+    color:#f88534;
+}
