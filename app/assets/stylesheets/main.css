@@ -4,8 +4,11 @@
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     background-image: url('Background1.jpg');
-    padding-top: 6em;
+    padding-top: 8em;
 }
+
+.navbar .container { height: 4em; }
+
 .navbar-inner {
     width: 100%;
     background: #FFF;
@@ -36,10 +39,6 @@ body {
     padding:0 0 7% 0;
 }
 
-#searchButtons .btn{
-   
-}
-
 .hero-unit h1 {
     padding-top:4%;
     padding-bottom:4%;
@@ -57,4 +56,17 @@ body {
 
 #footerLists h4 {
     color:#f88534;
+}
+
+#socialIcons{
+  margin-top:1.5em;
+}
+
+#socialIcons img{
+  float:right;
+  margin-right:0.5em;
+}
+
+#listVenueMsg h3{
+    color:green;
 }
