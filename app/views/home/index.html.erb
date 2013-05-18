@@ -2,39 +2,25 @@
 	<h2>Spending too much time searching for a venue? Relax, we'll find the right place for any event!</h2>
 </div>
 
+<%= form_tag({controller: "search", action: "query"}, method: "get") do %>
 <div id="searchArea">
 	<div id="searchButtons" class="pull-right">
-		<div class="btn-group">
-			<a class="btn btn-inverse btn-large dropdown-toggle" data-toggle="dropdown" href="#">		
-				I'm looking for
-				<span class="caret"></span>
-			</a>
-			<ul class="dropdown-menu" id="eventTypeDiv">
-				<li><a href="#">Wedding</a></li>
-				<li><a href="#">Birthday Party</a></li>
-				<li><a href="#">Corporate Meeting2342etsdgdghdfhydfgyd</a></li>
-			</ul>
-		</div>
-		<div class="btn-group" id="inAndAroundDiv">
-			<a class="btn btn-inverse btn-large dropdown-toggle" data-toggle="dropdown" href="#">
-				In & Around
-				<span class="caret"></span>
-			</a>
-			<ul class="dropdown-menu">
-				<li><a href="#">Guindy</a></li>
-				<li><a href="#">Adayar</a></li>
-				<li><a href="#">OMR</a></li>
-				<li><a href="#">Ashok Nagar</a></li>
-				<li><a href="#">K K Nagar</a></li>
-				<li><a href="#">OMR</a></li>
-				<li><a href="#">Guindy</a></li>
-				<li><a href="#">Adayar</a></li>
-				<li><a href="#">OMR</a></li>
-			</ul>
-		</div>
-		<input type="button" class="btn-large btn-info" Value="Search Venues" />
+		<select class="selectpicker" multiple title="I'm looking for..." data-style="btn-inverse btn-large">
+			<option>Wedding</option>
+			<option>Birthday Party</option>
+			<option>Corporate Meeting</option>
+		</select>
+
+		<select class="selectpicker" multiple title="In & Around" data-style="btn-inverse btn-large">
+			<option>Guindy</option>
+			<option>Adayar</option>
+			<option>Ashok Nagar</option>
+		</select>
+		<%= submit_tag("Search Venues", {id: "searchButton", class: "btn-info btn-large"}) %>
 	</div>
 </div>
+<% end %>
+
 <div id="listVenueMsg" class="row-fluid">
 	<hr />
 	<h3>Do you have space for conducting events? <em><a href="#" style="color:#fa8534;">List your venue!</a></em> &gt;&gt; Receive more bookings!!</h3>
@@ -49,7 +35,7 @@
 		<div class="flexslider">
 			<ul class="slides">
 				<li>
-					<img src="assets/1.jpg" />
+					<img src="assets/images/1.jpg" />
 					<p class="flex-caption">Image ONE - 1</p>
 				</li>
 				<li>

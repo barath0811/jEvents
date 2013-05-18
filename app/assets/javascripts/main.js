@@ -3,3 +3,7 @@ $(window).load(function () {
         animation: "slide"
     });
 });
+
+$(document).ready(function(){
+	$('.selectpicker').selectpicker();
+});

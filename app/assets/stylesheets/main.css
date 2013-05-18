@@ -70,3 +70,7 @@ body {
 #listVenueMsg h3{
     color:green;
 }
+
+#searchButton {
+    margin-bottom: 10px;
+}

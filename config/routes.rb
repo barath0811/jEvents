@@ -4,6 +4,8 @@ Jevents::Application.routes.draw do
   get "home/contact"
   get "home/faq"
 
+  get "search/query"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
