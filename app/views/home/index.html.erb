@@ -2,20 +2,16 @@
 	<h2>Spending too much time searching for a venue? Relax, we'll find the right place for any event!</h2>
 </div>
 
+<% locations_xml = File.read("app/data/locations.xml") %>
+<% locations = Hash.from_xml(locations_xml) %>
+<%= locations["Cities"]["City"] %>
+<%= locations["Cities"]["City"]["Name"] %>
+
 <%= form_tag({controller: "search", action: "query"}, method: "get") do %>
 <div id="searchArea">
 	<div id="searchButtons" class="pull-right">
-		<select class="selectpicker" multiple title="I'm looking for..." data-style="btn-inverse btn-large">
-			<option>Wedding</option>
-			<option>Birthday Party</option>
-			<option>Corporate Meeting</option>
-		</select>
-
-		<select class="selectpicker" multiple title="In & Around" data-style="btn-inverse btn-large">
-			<option>Guindy</option>
-			<option>Adayar</option>
-			<option>Ashok Nagar</option>
-		</select>
+		<%= select_tag(:eventtype_id, options_for_select([["I'm looking for...", 0], ['Wedding', 1], ['Birthday Party', 2],['Corporate Meeting', 3]]), {class: "selectpicker"}) %>
+		<%= select_tag(:location_id, options_for_select( ['Wedding', 1], ['Birthday Party', 2]), {class: "selectpicker"}) %>
 		<%= submit_tag("Search Venues", {id: "searchButton", class: "btn-info btn-large"}) %>
 	</div>
 </div>
@@ -35,23 +31,23 @@
 		<div class="flexslider">
 			<ul class="slides">
 				<li>
-					<img src="assets/images/1.jpg" />
+					<%= image_tag "1.jpg" %>
 					<p class="flex-caption">Image ONE - 1</p>
 				</li>
 				<li>
-					<img src="assets/2.jpg" />
+					<%= image_tag "2.jpg" %>
 					<p class="flex-caption">Image TWOoooo - 2</p>
 				</li>
 				<li>
-					<img src="assets/3.jpg" />
+					<%= image_tag "3.jpg" %>
 					<p class="flex-caption">Image THREE - 3</p>
 				</li>
 				<li>
-					<img src="assets/4.jpg" />
+					<%= image_tag "4.jpg" %>
 					<p class="flex-caption">Image FOUR - 4</p>
 				</li>
 				<li>
-					<img src="assets/5.jpg" />
+					<%= image_tag "5.jpg" %>
 				</li>
 			</ul>
 		</div>
@@ -61,23 +57,23 @@
 		<div class="flexslider">
 			<ul class="slides">
 				<li>
-					<img src="assets/3.jpg" />
+					<%= image_tag "3.jpg" %>
 					<p class="flex-caption">Image ONE - 1</p>
 				</li>
 				<li>
-					<img src="assets/5.jpg" />
+					<%= image_tag "4.jpg" %>
 					<p class="flex-caption">Image TWOoooo - 2</p>
 				</li>
 				<li>
-					<img src="assets/1.jpg" />
+					<%= image_tag "2.jpg" %>
 					<p class="flex-caption">Image THREE - 3</p>
 				</li>
 				<li>
-					<img src="assets/2.jpg" />
+					<%= image_tag "5.jpg" %>
 					<p class="flex-caption">Image FOUR - 4</p>
 				</li>
 				<li>
-					<img src="assets/4.jpg" />
+					<%= image_tag "1.jpg" %>
 				</li>
 			</ul>
 		</div>

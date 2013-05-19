@@ -1,9 +1,11 @@
 $(window).load(function () {
     $('.flexslider').flexslider({
-        animation: "slide"
+        animation: 'slide'
     });
 });
 
 $(document).ready(function(){
-	$('.selectpicker').selectpicker();
+	$('.selectpicker').selectpicker({
+		style: 'btn-inverse btn-large'
+	});
 });
