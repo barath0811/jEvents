@@ -16,14 +16,14 @@
 				<ul class="nav pull-right">
 					<li><%= link_to "How It Works", {:controller => "pages", :action => "placeholder"} %></li>
 					<li><%= link_to "Venue Search", {:controller => "pages", :action => "placeholder"} %></li>
-					<li><%= link_to "Blog", {:controller => "pages", :action => "placeholder"} %></li>
+					<li><%= link_to "Blog", 		{:controller => "pages", :action => "placeholder"} %></li>
 					<li><%= link_to "Venue Owners", {:controller => "pages", :action => "placeholder"} %></li>
 				</ul>
 			</div>
 		</div>
 		<div id="headerBottom" class="container">
-			<p>Ph:875 555 4556</p>
-			<!-- <div id="socialIcons"> -->
+			<div id="contactInHeader"><span>Ph:875 555 4556</span></div>
+			<div id="socialIcons">
 				<!-- <form class="navbar-search pull-left">
 					<input type="text" class="search-query" placeholder="Search">
 				</form> -->
@@ -32,7 +32,7 @@
 				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/narayana.rengaswamy", :target => "_blank" %>
 				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/rnarayana", :target => "_blank" %>
 				
-			<!-- </div> -->
+			</div>
 		</div>
 	</div>
 </div>
