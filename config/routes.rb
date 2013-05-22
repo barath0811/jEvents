@@ -6,6 +6,7 @@ Jevents::Application.routes.draw do
 
   get "search/query"
   
+  match '/placeholder' => 'pages#placeholder'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

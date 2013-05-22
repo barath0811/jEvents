@@ -2,16 +2,11 @@
 	<h2>Spending too much time searching for a venue? Relax, we'll find the right place for any event!</h2>
 </div>
 
-<% locations_xml = File.read("app/data/locations.xml") %>
-<% locations = Hash.from_xml(locations_xml) %>
-<%= locations["Cities"]["City"] %>
-<%= locations["Cities"]["City"]["Name"] %>
-
 <%= form_tag({controller: "search", action: "query"}, method: "get") do %>
 <div id="searchArea">
 	<div id="searchButtons" class="pull-right">
 		<%= select_tag(:eventtype_id, options_for_select([["I'm looking for...", 0], ['Wedding', 1], ['Birthday Party', 2],['Corporate Meeting', 3]]), {class: "selectpicker"}) %>
-		<%= select_tag(:location_id, options_for_select( ['Wedding', 1], ['Birthday Party', 2]), {class: "selectpicker"}) %>
+		<%= select_tag(:location_id, options_for_select( ['Guindy', 1], ['Ashok Nagar', 2]), {class: "selectpicker"}) %>
 		<%= submit_tag("Search Venues", {id: "searchButton", class: "btn-info btn-large"}) %>
 	</div>
 </div>

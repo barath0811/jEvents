@@ -10,21 +10,29 @@
 				<h1><span style="color:#f88534;">Jolly</span>Events</h1>
 			</a>
 			<br />
-			<span class="brand hidden-phone visible-tablet visible-desktop">&nbsp;|&nbsp;Eating stuff, since 1985.</span>
+			<span class="brand hidden-phone visible-tablet visible-desktop">&nbsp;|&nbsp;Chennai</span>
+			
 			<div class="nav-collapse collapse">
 				<ul class="nav pull-right">
-					<li class="active"><a href="#">How It Works</a></li>
-					<li><a href="#signup">Sign Up</a></li>
-					<li><a href="#login">Login</a></li>
+					<li><%= link_to "How It Works", {:controller => "pages", :action => "placeholder"} %></li>
+					<li><%= link_to "Venue Search", {:controller => "pages", :action => "placeholder"} %></li>
+					<li><%= link_to "Blog", {:controller => "pages", :action => "placeholder"} %></li>
+					<li><%= link_to "Venue Owners", {:controller => "pages", :action => "placeholder"} %></li>
 				</ul>
 			</div>
 		</div>
-		<div class="container">
-			<div id="socialIcons">
-				<%= link_to image_tag('google-plus.png'), 	"https://plus.google.com/102620915023778176041" %>
-				<%= link_to image_tag('facebook.png'), 		"http://www.facebook.com/narayana.rengaswamy" %>
-				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/rnarayana" %>
-			</div>
+		<div id="headerBottom" class="container">
+			<p>Ph:875 555 4556</p>
+			<!-- <div id="socialIcons"> -->
+				<!-- <form class="navbar-search pull-left">
+					<input type="text" class="search-query" placeholder="Search">
+				</form> -->
+				<%= link_to image_tag('blogger.png'), 		"http://rnarayana.blogspot.in", :target => "_blank" %>
+				<%= link_to image_tag('google-plus.png'), 	"https://plus.google.com/102620915023778176041", :target => "_blank" %>
+				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/narayana.rengaswamy", :target => "_blank" %>
+				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/rnarayana", :target => "_blank" %>
+				
+			<!-- </div> -->
 		</div>
 	</div>
 </div>

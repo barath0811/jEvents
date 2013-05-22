@@ -1,13 +1,21 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-body {
+   body {
     font-family: 'Open Sans', Arial, sans-serif;
     background-image: url('Background1.jpg');
-    padding-top: 8em;
+    margin-top: 110px;
+    padding-top: 110px;
 }
 
-.navbar .container { height: 4em; }
+@media (min-width: 980px) { 
+    body { 
+        margin-top: 80px;
+        padding-top: 80px; 
+    } 
+} 
+
+.navbar .container { height: 3em; }
 
 .navbar-inner {
     width: 100%;
@@ -29,8 +37,8 @@ body {
     background-color:transparent;
     line-height: 1.5em;
     padding-bottom:1em;
-    padding-top:1em;
-    margin: 2% 0 0 0;
+    padding-top:0em;
+    margin: 0 0 0 0;
     text-align: center;
 }
 
@@ -62,9 +70,17 @@ body {
   margin-top:1.5em;
 }
 
-#socialIcons img{
+#headerBottom img{
   float:right;
   margin-right:0.5em;
+}
+
+#headerBottom{
+    height: 100%;
+}
+
+#headerBottom p{
+    text-align: center;
 }
 
 #listVenueMsg h3{
@@ -73,4 +89,8 @@ body {
 
 #searchButton {
     margin-bottom: 10px;
+}
+
+.nav a:hover, a:active, a:focus {
+  outline: 0
 }
