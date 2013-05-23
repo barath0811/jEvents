@@ -1,9 +1,3 @@
-$(window).load(function () {
-    $('.flexslider').flexslider({
-        animation: 'slide'
-    });
-});
-
 $(document).ready(function(){
 	$('.selectpicker').selectpicker({
 		style: 'btn-inverse btn-large'
@@ -11,8 +5,11 @@ $(document).ready(function(){
 
 	$('.bxslider').bxSlider({
 		auto: true,
-		mode: 'fade',
-	  	captions: true
+		minSlides: 1,
+		maxSlides: 3,
+		slideWidth: 350,
+  		slideMargin: 10,
+		captions: true
 	});
 
 	$('.nav li').on('click', function(){

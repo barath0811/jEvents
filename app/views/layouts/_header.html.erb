@@ -7,12 +7,12 @@
 				<span class="icon-bar"></span>
 			</a>
 			<a class="brand" href="/home/index">
-				<h1><span style="color:#f88534;">Jolly</span>Events</h1>
+				<h1><span style="color:#f88534;">Jolly</span>Eventz</h1>
 			</a>
 			<br />
 			<span class="brand hidden-phone visible-tablet visible-desktop">&nbsp;|&nbsp;Chennai</span>
 			
-			<div class="nav-collapse collapse">
+			<div id="navLinkText" class="nav-collapse collapse">
 				<ul class="nav pull-right">
 					<li><%= link_to "How It Works", {:controller => "pages", :action => "placeholder"} %></li>
 					<li><%= link_to "Venue Search", {:controller => "pages", :action => "placeholder"} %></li>
@@ -22,16 +22,17 @@
 			</div>
 		</div>
 		<div id="headerBottom" class="container">
-			<div id="contactInHeader"><span>Ph:875 555 4556</span></div>
+			<div id="contactInHeader">
+				<span>Phone: <%= link_to "044-4201 2386", {:controller => "pages", :action => "placeholder"} %></span>
+			</div>
 			<div id="socialIcons">
 				<!-- <form class="navbar-search pull-left">
 					<input type="text" class="search-query" placeholder="Search">
 				</form> -->
-				<%= link_to image_tag('blogger.png'), 		"http://rnarayana.blogspot.in", :target => "_blank" %>
-				<%= link_to image_tag('google-plus.png'), 	"https://plus.google.com/102620915023778176041", :target => "_blank" %>
-				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/narayana.rengaswamy", :target => "_blank" %>
 				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/rnarayana", :target => "_blank" %>
-				
+				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/narayana.rengaswamy", :target => "_blank" %>
+				<%= link_to image_tag('google-plus.png'), 	"https://plus.google.com/102620915023778176041", :target => "_blank" %>
+				<%= link_to image_tag('blogger.png'), 		"http://rnarayana.blogspot.in", :target => "_blank" %>
 			</div>
 		</div>
 	</div>

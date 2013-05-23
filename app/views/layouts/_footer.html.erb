@@ -1,44 +1,48 @@
 <hr />
-<div class="row" id="footerLists">
+<div class="row-fluid" id="footerLists">
 	<div class="span3">
 		<h4>About JollyEvents</h4>
 		<ul>
-			<li><%= link_to "About Us", "#" %></li>
-			<li><%= link_to "How it works", "#" %></li>
-			<li><%= link_to "Contact Us", "#" %></li>
-			<li><%= link_to "FAQ", "#" %></li>
-			<li><%= link_to "Blog", "#" %></li>
+			<li><%= link_to "About Us", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "How it works", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "Contact Us", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "FAQ", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "Blog", {:controller => "pages", :action => "placeholder"} %></li>
 		</ul>
 	</div>
 	<div class="span3">
 		<h4>For Event Planners</h4>
 		<ul>
-			<li><%= link_to "Search Venue", "#" %></li>
-			<li><%= link_to "Venue Collections", "#" %></li>
-			<li><%= link_to "My Events", "#" %></li>
-			<li><%= link_to "Testimonials", "#" %></li>
+			<li><%= link_to "Search Venue", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "Venue Collections", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "My Events", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "Testimonials", {:controller => "pages", :action => "placeholder"} %></li>
 		</ul>
 	</div>
 	<div class="span3">
 		<h4>For Venue Owners</h4>
 		<ul>
-			<li><%= link_to "Add Venue", "#" %></li>
-			<li><%= link_to "My Venue", "#" %></li>
-			<li><%= link_to "Advertising", "#" %></li>
-			<li><%= link_to "Deals & Offers", "#" %></li>
+			<li><%= link_to "Add Venue", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "My Venue", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "Advertising", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "Deals & Offers", {:controller => "pages", :action => "placeholder"} %></li>
 		</ul>
 	</div>
 	<div class="span3">
 		<h4>Popular Events</h4>
 		<ul>
-			<li><%= link_to "Birthday Party", "#" %></li>
-			<li><%= link_to "Wedding", "#" %></li>
-			<li><%= link_to "Reception", "#" %></li>
-			<li><%= link_to "Corporate Meetings", "#" %></li>
+			<li><%= link_to "Birthday Party", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "Wedding", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "Reception", {:controller => "pages", :action => "placeholder"} %></li>
+			<li><%= link_to "Corporate Meetings", {:controller => "pages", :action => "placeholder"} %></li>
 		</ul>
 	</div>
 </div>
 <hr />
-<footer>
-	<p>&copy; JollyEventz 2013</p>
+<footer class="row-fluid">
+	<div class="pull-right">
+		&copy; JollyEventz 2013 | 
+		<%= link_to "Privacy Policy", {:controller => "pages", :action => "placeholder"} %> | 
+		<%= link_to "Site Terms of Use", {:controller => "pages", :action => "placeholder"} %>
+	</div>
 </footer>

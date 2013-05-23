@@ -1,104 +1,109 @@
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
 body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    background-image: url('Background1.jpg');
-    margin-top: 110px;
-    padding-top: 110px;
+	font-family: 'Open Sans', "Book Antiqua", Arial, sans-serif;
+	background-image: url(Background1.jpg);
+	margin-top: 110px;
+	padding-top: 110px;
 }
 
 @media (min-width: 980px) { 
-    body { 
-        margin-top: 80px;
-        padding-top: 80px; 
-    }
+	body { 
+		margin-top: 80px;
+		padding-top: 80px; 
+	}
 }
 
 @media (min-width: 400px) {
-    #contactInHeader span{
-        position: absolute;
-        left:0;
-        bottom: 0;
-    }
-}
-
-.navbar .container { height: 3em; }
-
-.navbar-inner {
-    width: 100%;
-    background: #FFF;
-    position: absolute;
-    border-bottom: 1px solid #f88534;
-    padding: 1em 0 0 0;
-    top:0;
-}
-
-
-#headerBottom{
-    position:relative;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    text-align: center;
-}
-
-#contactInHeader span{
-    position: absolute;
-    left:50%;
-    bottom: 0;
-}
-
-#socialIcons{
-    position: absolute;
-    right: 0;
-    bottom:0;
-}
-
-
-#awesomeText {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2em;
-    font-weight: bold;
-    background-color:transparent;
-    line-height: 1.5em;
-    padding-bottom:1em;
-    padding-top:0em;
-    margin: 0 0 0 0;
-    text-align: center;
-}
-
-#searchArea {
-    background-color:transparent;
-    padding:0 0 7% 0;
-}
-
-.hero-unit h1 {
-    padding-top:4%;
-    padding-bottom:4%;
-}
-
-.flex-caption {
-    background-color:rgba(128, 128, 128, 0.25);
-    height:25%;
-    bottom:-20px;
-}
-
-#footerLists ul{
-    list-style-type: none;
-}
-
-#footerLists h4 {
-    color:#f88534;
-}
-
-#listVenueMsg h3{
-    color:green;
-}
-
-#searchButton {
-    margin-bottom: 10px;
+	#contactInHeader span{
+		position: absolute;
+		left:0;
+		bottom: 0;
+	}
 }
 
 .nav a:hover, a:active, a:focus {
-  	outline: 0
+	outline: 0
 }
+
+/************** Header **************/
+.navbar .container { height: 3em; }
+
+.navbar-inner {
+	width: 100%;
+	background: #FFF;
+	position: absolute;
+	border-bottom: 1px solid #f88534;
+	padding: 1em 0 0 0;
+	top:0;
+}
+
+#navLinkText{
+	font-size: 1.2em;
+}
+
+#headerBottom{
+	position:relative;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+#contactInHeader span{
+	position: absolute;
+	left:0;
+	bottom: 0;
+}
+
+#socialIcons{
+	position: absolute;
+	right: 0;
+	bottom:0;
+}
+
+/************** Home Content **************/
+#homeHeading {
+	font-size: 2em;
+	font-weight: bold;
+	background-color: transparent;
+	line-height: 1.5em;
+	padding-bottom: 1em;
+	padding-top: 0em;
+	margin: 0 0 0 0;
+	text-align: center;
+}
+
+#searchArea {
+	background-color:transparent;
+	padding:0 0 2% 0;
+}
+
+#searchButton {
+	margin-bottom: 10px;
+}
+
+#listVenueMsg h3{
+	color:green;
+	text-align: center;
+}
+
+#featuredVenues h4{
+	text-align: center;
+	font-style: italic;
+	color: Red;
+
+}
+
+/************** Footer **************/
+#footerLists{
+	font-size: 1.1em;
+	font-family: "Book Antiqua", Arial, sans-serif;
+}
+
+#footerLists ul{
+	list-style-type: none;
+}
+
+#footerLists h4 {
+	color: #f88534;
+}
+
+/************** Customization of 3rd party css ***************/
