@@ -14,10 +14,11 @@
 			
 			<div id="navLinkText" class="nav-collapse collapse">
 				<ul class="nav pull-right">
-					<li><%= link_to "How It Works", {:controller => "pages", :action => "placeholder"} %></li>
-					<li><%= link_to "Venue Search", {:controller => "pages", :action => "placeholder"} %></li>
-					<li><%= link_to "Blog", 		{:controller => "pages", :action => "placeholder"} %></li>
-					<li><%= link_to "Venue Owners", {:controller => "pages", :action => "placeholder"} %></li>
+					<!-- TODO: Replace placeholder and _path with correct values once page is designed -->
+					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "How It Works", {:controller => "pages", :action => "placeholder"} %></li>
+					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Venue Search", {:controller => "pages", :action => "placeholder"} %></li>
+					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Blog", 		{:controller => "pages", :action => "placeholder"} %></li>
+					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Venue Owners", {:controller => "pages", :action => "placeholder"} %></li>
 				</ul>
 			</div>
 		</div>
