@@ -14,3 +14,6 @@
 /log/*.log
 /tmp
 /._redcar/*
+
+# Ignore the db config file so that connection strings are not checked in
+config/database.yml
