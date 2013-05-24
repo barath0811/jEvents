@@ -12,10 +12,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: jevents_development
+  database: blog1_development
   pool: 5
   username: root
-  password: Phoenix713
+  password: pwd1
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -25,18 +25,18 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: jevents_test
+  database: blog1_test
   pool: 5
   username: root
-  password: Phoenix713
+  password: pwd1
   host: localhost
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: jevents_production
+  database: blog1_production
   pool: 5
   username: root
-  password: Phoenix713
+  password: pwd1
   host: localhost

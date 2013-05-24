@@ -1,0 +1,46 @@
+<Properties>
+	<Area>
+		<option>Adayar</option>
+		<option>Guindy</option>
+		<option>Egmore</option>
+		<option>T Nagar</option>
+		<option>Ashok Nagar</option>
+	</Area>
+	<Budget>
+		<option>Upto 5000</option>
+		<option>5000-10000</option>
+		<option>10000-20000</option>
+		<option>20000-50000</option>
+		<option>50000 and above</option>
+	</Budget>
+	<Meal>
+		<option>Veg</option>
+		<option>Non-veg</option>
+		<option>Both</option>
+	</Meal>
+	<Capacity>
+		<option>10-25</option>
+		<option>25-50</option>
+		<option>50-100</option>
+		<option>100-300</option>
+	    <option>300-1000</option>
+	</Capacity>
+	<Amenities>
+		<option>Restaurant</option>
+		<option>Car Parking</option>
+		<option>Power backup</option>
+		<option>Projector</option>
+	</Amenities>
+	<Rating>
+		<option>1</option>
+    	<option>2</option>
+	 	<option>3</option>
+	  	<option>4</option>
+	  	<option>5</option>
+	</Rating>
+	<EventType>
+		<option>Wedding</option>
+		<option>Birthday Party</option>
+		<option>Corporate Meeting</option>
+	</EventType>
+</Properties>
