@@ -39,8 +39,10 @@
 }
 
 .filters ul{
-  margin-left:5px;
+  margin-left:0px;
   list-style: none outside none;
+  height:120px;
+  overflow:auto;
 }
 
 .filters li{

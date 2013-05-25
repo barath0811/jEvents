@@ -1,7 +1,18 @@
-
 <div class="row">
-	<div class="filters span2" style="margin-top:165px;">
+	<div class="filters span2" style="margin-top:75px;">
+		<h5>Areas</h5>
+		<input class="span2" type="text" id="areaSearchKey" onkeyup="textChanged(<%= @areas %>)"> </input>
 
+		<ul>
+			<%  @areas.each do |c| %>
+			<li id="<%= c %>"> 
+				<a>
+					<%= check_box_tag "something" %> 
+					<span><%= c %> </span>
+				</a>
+			</li>
+			<% end %>
+		</ul>
 
 		<h5>Capacity</h5>
 		<ul>
@@ -55,20 +66,8 @@
 		</ul>
 
 
-		<h5>Rating</h5>
-		<ul>
-			<%  @rating.each do |r| %>
-			<li id="<%= r %>"> 
-				<%= check_box_tag "something" %> 
-				<a>
-					<span for="something"><%= r %> </span>
-				</a>
-			</li>
-			<% end %>
-		</ul>			
-
 	</div>
-	<div class="span9" style="margin-top:100px;margin-left:80px;">
+	<div class="span9" style="margin-top:10px;margin-left:80px;">
 		<div style="margin-left:40px; margin-bottom:20px;">
 			<%= select_tag :event, options_for_select(@eventType), { :prompt => 'Event Type'} %>
 			<%= select_tag :area, options_for_select(@areas), { :prompt => 'Area'} %>
@@ -137,18 +136,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="jquery.js"></script>
-    <script src="bootstrap-transition.js"></script>
-    <script src="bootstrap-alert.js"></script>
-    <script src="bootstrap-modal.js"></script>
-    <script src="bootstrap-dropdown.js"></script>
-    <script src="bootstrap-scrollspy.js"></script>
-    <script src="bootstrap-tab.js"></script>
-    <script src="bootstrap-tooltip.js"></script>
-    <script src="bootstrap-popover.js"></script>
-    <script src="bootstrap-button.js"></script>
-    <script src="bootstrap-collapse.js"></script>
-    <script src="bootstrap-carousel.js"></script>
-    <script src="bootstrap-typeahead.js"></script>
+
+    <%= javascript_include_tag "application" %>
 
 
