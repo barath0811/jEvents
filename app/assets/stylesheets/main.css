@@ -85,6 +85,10 @@ body {
 	text-align: center;
 }
 
+#listVenueMsg a{
+	color:#fa8534;
+}
+
 #featuredVenues h4{
 	text-align: center;
 	font-style: italic;

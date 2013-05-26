@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Venue: 
+  IsCarParkingAvailable: false
+  IsRestaurantAvailable: false
+  IsAlcoholAllowed: false
+  IsCreditCardAccepted: false
+  IsExternalCateringAllowed: false
+  IsNonVegAllowed: false
+
+two:
+  Venue: 
+  IsCarParkingAvailable: false
+  IsRestaurantAvailable: false
+  IsAlcoholAllowed: false
+  IsCreditCardAccepted: false
+  IsExternalCateringAllowed: false
+  IsNonVegAllowed: false

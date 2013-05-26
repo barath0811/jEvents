@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Food: MyString
+  VegBuffetPricePerPlate: 1
+  NonVegBuffetPricePerPlate: 1
+
+two:
+  Food: MyString
+  VegBuffetPricePerPlate: 1
+  NonVegBuffetPricePerPlate: 1

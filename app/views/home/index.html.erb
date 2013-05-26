@@ -2,19 +2,20 @@
 	<h2>Spending too much time searching for a venue? Relax, we'll find the right place for any event!</h2>
 </div>
 
-<%= form_tag({controller: "search", action: "query"}, method: "get") do %>
+<%= form_tag({controller: "venues", action: "search"}, method: "get") do %>
 <div id="searchArea">
 	<div class="pull-right">
-		<%= select_tag(:eventtype_id, options_for_select([["I'm planning for...", 0], ['Wedding', 1], ['Birthday Party', 2],['Corporate Meeting', 3]]), {class: "selectpicker"}) %>
-		<%= select_tag(:location_id, options_for_select([["In & Around...", 0], ['Guindy', 1], ['Ashok Nagar', 2]]), {class: "selectpicker"}) %>
-		<%= submit_tag("Search Venues", {id: "searchButton", class: "btn-info btn-large"}) %>
+		<% @searchOptions = populateSearchCriteria %>
+		<%= select_tag(:eventType, options_for_select(@searchOptions.eventType), {class: "selectpicker"}) %>
+		<%= select_tag(:areas, options_for_select(@searchOptions.areas), {class: "selectpicker"}) %>
+		<%= submit_tag("Search Venues", {id: "searchButton", class: "btn-info btn-large", :name => nil}) %>
 	</div>
 </div>
 <% end %>
 
 <div id="listVenueMsg" class="row-fluid">
 	<hr />
-	<h3>Do you have space for conducting events? <em><a href="#" style="color:#fa8534;">List your venue!</a></em> &gt;&gt; Receive more bookings!!</h3>
+	<h3>Do you have space for conducting events? <em><%= link_to "List your venue!", {:controller => "venues", :action => "new"} %></em> &gt;&gt; Receive more bookings!!</h3>
 	<hr />
 </div>
 <div id="featuredVenues" class="row-fluid">

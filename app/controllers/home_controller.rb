@@ -1,14 +1,16 @@
 class HomeController < ApplicationController
-  def index
-  end
-  
-  def about
-  end
-  
-  def contact
-  end
-  
-  def faq
-  end
+	helper :venues
+	
+	def index
+	end
+
+	def about
+	end
+
+	def contact
+	end
+
+	def faq
+	end
 
 end
