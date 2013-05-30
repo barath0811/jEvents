@@ -1,0 +1,106 @@
+Possible Operations:
+Search venue by
+- area (stored in address and location)
+- event type
+- name of venue
+- capacity
+- cost per plate
+- cost of hall
+- meal choice
+- amenities
+
+Sort venues by
+- popularity
+- rating
+- location
+- cost
+- capacity
+
+We should start with a normalized design. Then, if we find that a denormalized table will yield better results as the data grows to big numbers, then only we should denormalize. Even if there are ten thousand venues, I think normalized tables are better.
+
+Venue
+  VenueId
+	Name 
+	Type -- Business hotel/ Luxury business hotel/ Corporate hall/ etc
+	NumberOfHalls
+	MinimumCapacity
+	MaximumCapacity
+	VenueAddressId
+	MealInfoId
+	AmenitiesId
+	AddressId
+	StatisticsId
+
+Address
+	AddressId
+	Location
+	Address
+	Landmark
+	PhoneNumber(s)
+	
+Review		(no mapping from Venue)
+	ReviewId
+	VenueId
+	EventHallId	(NULLable - review can be for the particular hall or the entire venue?)
+	UserId
+	RatingValue
+	ReviewText
+
+Amenities
+	AmenitiesId
+	IsCarParkingAvailable
+	IsRestaurantAvailable
+	IsCreditCardAccepted 
+	IsAlcoholAllowed
+	IsExternalCateringAllowed
+	IsNonVegAllowed
+	
+Statistics
+	StatisticsId
+	VenueId
+	EventHallId	(NULLable)
+	OverallRating
+	PopularityIndex
+	NumberOfViewers
+	NumberOfEnquiries
+	NumberOfBookings
+	
+-- Creating a separate table for MealInfo because we might have to display the menu or something more related to food/ buffet
+MealInfo	
+	MealInfoId
+	Food -- Veg/ Non-veg/ Both/ Not available
+	VegBuffetPricePerPlate
+	NonVegBuffetPricePerPlate
+	
+Location
+	LocationId
+	Area
+	Distance (in Kms)
+	
+Events
+	EventId
+	VenueId
+	EventType -- Birthday/ Wedding/ Corporate Meeting
+	
+Hall			(no mapping from Venue)
+	HallId
+	VenueId
+	Name
+	MinimumCapacity ?
+	MaximumCapacity ?
+	HallType -- Corporate hall/ Garden/ RoofTop/ etc
+	StatisticsId
+	
+Queries				(see if this can be gathered from log itself?)
+	QueryId
+	UserId
+	ClientIp --If possible
+	Area
+	Capacity
+	MealChoice
+	Budget
+	Amenities
+	EventType
+	ConvertedToEnquiry
+	ConvertedToBooking
+	
