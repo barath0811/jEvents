@@ -1,5 +1,5 @@
 class Address < ActiveRecord::Base
   attr_accessible :Address, :Landmark, :Location, :PhoneNumbers
 
-	belongs_to :Venue
+	has_one :venue
 end

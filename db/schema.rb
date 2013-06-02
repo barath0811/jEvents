@@ -11,19 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130525101751) do
+ActiveRecord::Schema.define(:version => 20130526173629) do
 
   create_table "addresses", :force => true do |t|
     t.string   "Address",      :null => false
     t.string   "Landmark"
     t.string   "Location",     :null => false
     t.string   "PhoneNumbers", :null => false
-    t.integer  "Venue_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
-
-  add_index "addresses", ["Venue_id"], :name => "index_addresses_on_Venue_id"
 
   create_table "amenities", :force => true do |t|
     t.boolean  "IsCarParkingAvailable"
@@ -62,23 +59,30 @@ ActiveRecord::Schema.define(:version => 20130525101751) do
   add_index "halls", ["Venue_id"], :name => "index_halls_on_Venue_id"
 
   create_table "meal_infos", :force => true do |t|
-    t.string   "Food",                                                     :null => false
-    t.decimal  "VegBuffetPricePerPlate",    :precision => 10, :scale => 0
-    t.decimal  "NonVegBuffetPricePerPlate", :precision => 10, :scale => 0
-    t.datetime "created_at",                                               :null => false
-    t.datetime "updated_at",                                               :null => false
+    t.string   "Food",                      :null => false
+    t.decimal  "VegBuffetPricePerPlate"
+    t.decimal  "NonVegBuffetPricePerPlate"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "statistics", :force => true do |t|
-    t.decimal  "OverallRating",   :precision => 10, :scale => 0
-    t.decimal  "PopularityIndex", :precision => 10, :scale => 0
+    t.decimal  "OverallRating"
+    t.decimal  "PopularityIndex"
     t.integer  "NumViewers"
     t.integer  "NumEnquiries"
     t.integer  "NumBookings"
     t.integer  "Venue_id"
     t.integer  "EventHall_id"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "statistics", ["EventHall_id"], :name => "index_statistics_on_EventHall_id"

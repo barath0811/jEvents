@@ -7,11 +7,7 @@ class CreateAddresses < ActiveRecord::Migration
 			t.string :Location, :length=>150, :null => false
 			t.string :PhoneNumbers, :length=>50, :null => false
 
-			t.references :Venue
-
 			t.timestamps
 		end
-		
-		add_index :addresses, :Venue_id
 	end
 end

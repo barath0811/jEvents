@@ -21,6 +21,7 @@ end
 
 group :development do
   gem 'annotate'
+  gem 'sqlite3'
 end
 
 gem 'jquery-rails'

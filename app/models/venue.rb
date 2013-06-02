@@ -1,8 +1,8 @@
 class Venue < ActiveRecord::Base
-	attr_accessible :Name, :NumHalls, :Type
+	attr_accessible :Name, :NumHalls, :Type, :address_attributes
 
-	has_one :addresses
-	accepts_nested_attributes_for :addresses, :allow_destroy => true
+	belongs_to :address
+	accepts_nested_attributes_for :address, :allow_destroy => true
 	
 	def self.search(query)
 		JeventzLogger.debug "query == #{query.inspect}"

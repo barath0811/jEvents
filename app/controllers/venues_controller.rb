@@ -6,7 +6,7 @@ class VenuesController < ApplicationController
 	def index
 		@venues = Venue.all
 
-		JeventzLogger.debug "#{@venue}"
+		# JeventzLogger.debug "#{@venue}"
 
 		respond_to do |format|
 			format.html # show.html.erb
@@ -44,6 +44,7 @@ class VenuesController < ApplicationController
 	# GET /venues/new.json
 	def new
 		@venue = Venue.new
+		@venue.build_address
 
 		respond_to do |format|
 			format.html # new.html.erb
