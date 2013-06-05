@@ -1,18 +1,15 @@
 Jevents::Application.routes.draw do
 
-  resources :people
-
-
 	get "home/index"
 	get "home/about"
 	get "home/contact"
 	get "home/faq"
-	
+	get "accounts/index"
+  
 	get 'placeholder' => 'pages#placeholder'
 
 	get 'venues/search' => 'venues#search'
 	
-	resources :venues
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
