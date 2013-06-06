@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  venue: 
+  name: MyString
+  type: 
+  pricing_mode: MyString
+  hall_rent: 9.99
+
+two:
+  venue: 
+  name: MyString
+  type: 
+  pricing_mode: MyString
+  hall_rent: 9.99

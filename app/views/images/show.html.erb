@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Venue:</b>
+  <%= @image.venue %>
+</p>
+
+<p>
+  <b>Hall:</b>
+  <%= @image.hall %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @image.image %>
+</p>
+
+<p>
+  <b>Caption:</b>
+  <%= @image.caption %>
+</p>
+
+<p>
+  <b>Can showcase:</b>
+  <%= @image.can_showcase %>
+</p>
+
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

@@ -1,5 +1,17 @@
 Jevents::Application.routes.draw do
 
+  resources :seating_arrangements
+  resources :images
+  resources :halls
+  resources :facilities
+  resources :rates
+  resources :contacts
+  resources :addresses
+  
+  resources :venues do
+    get 'search', on: :collection
+  end
+
 	get "home/index"
 	get "home/about"
 	get "home/contact"
@@ -7,8 +19,6 @@ Jevents::Application.routes.draw do
 	get "accounts/index"
   
 	get 'placeholder' => 'pages#placeholder'
-
-	get 'venues/search' => 'venues#search'
 	
 
   # The priority is based upon order of creation:

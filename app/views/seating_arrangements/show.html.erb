@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hall:</b>
+  <%= @seating_arrangement.hall %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @seating_arrangement.arrangement_type %>
+</p>
+
+<p>
+  <b>Capacity:</b>
+  <%= @seating_arrangement.capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_seating_arrangement_path(@seating_arrangement) %> |
+<%= link_to 'Back', seating_arrangements_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hall: 
+  type: 
+  capacity: 1
+
+two:
+  hall: 
+  type: 
+  capacity: 1

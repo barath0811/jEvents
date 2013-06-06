@@ -1,0 +1,31 @@
+<h1>Listing images</h1>
+
+<table>
+  <tr>
+    <th>Venue</th>
+    <th>Hall</th>
+    <th>Image</th>
+    <th>Caption</th>
+    <th>Can showcase</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @images.each do |image| %>
+  <tr>
+    <td><%= image.venue %></td>
+    <td><%= image.hall %></td>
+    <td><%= image.image %></td>
+    <td><%= image.caption %></td>
+    <td><%= image.can_showcase %></td>
+    <td><%= link_to 'Show', image %></td>
+    <td><%= link_to 'Edit', edit_image_path(image) %></td>
+    <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Image', new_image_path %>

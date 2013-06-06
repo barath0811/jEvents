@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  venue: 
+  hall: 
+  image: 
+  caption: MyString
+  can_showcase: false
+
+two:
+  venue: 
+  hall: 
+  image: 
+  caption: MyString
+  can_showcase: false

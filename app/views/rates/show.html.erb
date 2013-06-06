@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Venue:</b>
+  <%= @rate.venue %>
+</p>
+
+<p>
+  <b>Veg plate cost:</b>
+  <%= @rate.veg_plate_cost %>
+</p>
+
+<p>
+  <b>Nonveg plate cost:</b>
+  <%= @rate.nonveg_plate_cost %>
+</p>
+
+<p>
+  <b>Min total budget:</b>
+  <%= @rate.min_total_budget %>
+</p>
+
+<p>
+  <b>Max total budget:</b>
+  <%= @rate.max_total_budget %>
+</p>
+
+
+<%= link_to 'Edit', edit_rate_path(@rate) %> |
+<%= link_to 'Back', rates_path %>

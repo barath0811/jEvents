@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  venue: 
+  veg_plate_cost: 9.99
+  nonveg_plate_cost: 9.99
+  min_total_budget: 9.99
+  max_total_budget: 9.99
+
+two:
+  venue: 
+  veg_plate_cost: 9.99
+  nonveg_plate_cost: 9.99
+  min_total_budget: 9.99
+  max_total_budget: 9.99

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  venue: 
+  has_parking: false
+  has_buffet: false
+  is_alcohol_allowed: false
+  is_nonveg_allowed: false
+
+two:
+  venue: 
+  has_parking: false
+  has_buffet: false
+  is_alcohol_allowed: false
+  is_nonveg_allowed: false

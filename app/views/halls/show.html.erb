@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Venue:</b>
+  <%= @hall.venue %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @hall.name %>
+</p>
+
+<p>
+  <b>Hall Type:</b>
+  <%= @hall.venue_type %>
+</p>
+
+<p>
+  <b>Pricing mode:</b>
+  <%= @hall.pricing_mode %>
+</p>
+
+<p>
+  <b>Hall rent:</b>
+  <%= @hall.hall_rent %>
+</p>
+
+
+<%= link_to 'Edit', edit_hall_path(@hall) %> |
+<%= link_to 'Back', halls_path %>

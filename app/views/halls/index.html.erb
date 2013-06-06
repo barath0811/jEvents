@@ -1,0 +1,31 @@
+<h1>Listing halls</h1>
+
+<table>
+  <tr>
+    <th>Venue</th>
+    <th>Name</th>
+    <th>Hall Type</th>
+    <th>Pricing mode</th>
+    <th>Hall rent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @halls.each do |hall| %>
+  <tr>
+    <td><%= hall.venue %></td>
+    <td><%= hall.name %></td>
+    <td><%= hall.venue_type %></td>
+    <td><%= hall.pricing_mode %></td>
+    <td><%= hall.hall_rent %></td>
+    <td><%= link_to 'Show', hall %></td>
+    <td><%= link_to 'Edit', edit_hall_path(hall) %></td>
+    <td><%= link_to 'Destroy', hall, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hall', new_hall_path %>

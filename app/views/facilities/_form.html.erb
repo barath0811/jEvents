@@ -1,0 +1,37 @@
+<%= form_for(@facility) do |f| %>
+  <% if @facility.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@facility.errors.count, "error") %> prohibited this facility from being saved:</h2>
+
+      <ul>
+      <% @facility.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :venue %><br />
+    <%= f.text_field :venue %>
+  </div>
+  <div class="field">
+    <%= f.label :has_parking %><br />
+    <%= f.check_box :has_parking %>
+  </div>
+  <div class="field">
+    <%= f.label :has_buffet %><br />
+    <%= f.check_box :has_buffet %>
+  </div>
+  <div class="field">
+    <%= f.label :is_alcohol_allowed %><br />
+    <%= f.check_box :is_alcohol_allowed %>
+  </div>
+  <div class="field">
+    <%= f.label :is_nonveg_allowed %><br />
+    <%= f.check_box :is_nonveg_allowed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

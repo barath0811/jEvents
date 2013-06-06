@@ -1,0 +1,27 @@
+<h1>Listing seating_arrangements</h1>
+
+<table>
+  <tr>
+    <th>Hall</th>
+    <th>Type</th>
+    <th>Capacity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @seating_arrangements.each do |seating_arrangement| %>
+  <tr>
+    <td><%= seating_arrangement.hall %></td>
+    <td><%= seating_arrangement.arrangement_type %></td>
+    <td><%= seating_arrangement.capacity %></td>
+    <td><%= link_to 'Show', seating_arrangement %></td>
+    <td><%= link_to 'Edit', edit_seating_arrangement_path(seating_arrangement) %></td>
+    <td><%= link_to 'Destroy', seating_arrangement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Seating arrangement', new_seating_arrangement_path %>

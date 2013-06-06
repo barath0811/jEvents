@@ -1,0 +1,2 @@
+module SeatingArrangementsHelper
+end

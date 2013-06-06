@@ -32,6 +32,7 @@ body {
 	background: #FFF;
 	position: absolute;
 	border-bottom: 1px solid #f88534;
+	/*box-shadow: 0 5px 25px 0 black;*/
 	padding: 1em 0 0 0;
 	top:0;
 }

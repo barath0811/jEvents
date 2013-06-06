@@ -1,0 +1,31 @@
+<h1>Listing rates</h1>
+
+<table>
+  <tr>
+    <th>Venue</th>
+    <th>Veg plate cost</th>
+    <th>Nonveg plate cost</th>
+    <th>Min total budget</th>
+    <th>Max total budget</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rates.each do |rate| %>
+  <tr>
+    <td><%= rate.venue %></td>
+    <td><%= rate.veg_plate_cost %></td>
+    <td><%= rate.nonveg_plate_cost %></td>
+    <td><%= rate.min_total_budget %></td>
+    <td><%= rate.max_total_budget %></td>
+    <td><%= link_to 'Show', rate %></td>
+    <td><%= link_to 'Edit', edit_rate_path(rate) %></td>
+    <td><%= link_to 'Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rate', new_rate_path %>

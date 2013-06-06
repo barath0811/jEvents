@@ -1,3 +1,6 @@
+JOLLY = {}
+JOLLY.venues = {}
+
 $(document).ready(function(){
 	$('.selectpicker').selectpicker({
 		style: 'btn-inverse btn-large'
@@ -19,6 +22,7 @@ $(document).ready(function(){
 
 });
 
+//TODO: use JOLLY.venues.textChanged = function(){...} format
 function textChanged(areas){
 	var searchKey = document.getElementById("areaSearchKey").value.toLowerCase();
 	for (var i = 0; i < areas.length; i++) {
