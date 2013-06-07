@@ -76,6 +76,26 @@ class VenuesController < ApplicationController
       query.areas = params[:areas]
     end
 
+    unless params[:areas].nil?
+      query.areas = params[:areas]
+    end
+
+    unless params[:budget].nil?
+      query.areas = params[:budget]
+    end
+
+    unless params[:amenities].nil?
+      query.areas = params[:amenities]
+    end
+
+    unless params[:capacities].nil?
+      query.areas = params[:capacities]
+    end
+
+    unless params[:meal].nil?
+      query.areas = params[:meal]
+    end
+
     @venue = Venue.search(query)
   end
 

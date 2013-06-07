@@ -24,6 +24,7 @@ Jevents::Application.routes.draw do
       get 'show_settings' # ???
       
       get 'search'
+      post 'search'
     end
   end
 
