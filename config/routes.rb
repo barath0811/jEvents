@@ -9,14 +9,28 @@ Jevents::Application.routes.draw do
   resources :addresses
   
   resources :venues do
-    get 'search', on: :collection
+    member do   #member - requires an ID
+      get 'show_basic' # ???
+      get 'show_halls' # ???
+      get 'show_pricing' # ???
+      get 'show_amenities' # ???
+      get 'show_settings' # ???
+    end
+    collection do   #works on a collection, does not require an ID
+      get 'show_basic' # ???
+      get 'show_halls' # ???
+      get 'show_pricing' # ???
+      get 'show_amenities' # ???
+      get 'show_settings' # ???
+      
+      get 'search'
+    end
   end
 
 	get "home/index"
 	get "home/about"
 	get "home/contact"
 	get "home/faq"
-	get "accounts/index"
   
 	get 'placeholder' => 'pages#placeholder'
 	

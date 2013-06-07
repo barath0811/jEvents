@@ -21,6 +21,51 @@ class VenuesController < ApplicationController
     end
   end
 
+  def show_basic
+    @venue = Venue.new
+    @venue.build_address
+    @venue.build_contact
+
+    respond_to do |format|
+      format.js   #show_basic.js.erb
+    end
+  end
+
+  def show_halls
+    @venue = Venue.new
+    @venue.halls.build
+
+    respond_to do |format|
+      format.js   #show_basic.js.erb
+    end
+  end
+
+  def show_pricing
+    @venue = Venue.new
+    @venue.build_rate
+
+    respond_to do |format|
+      format.js   #show_basic.js.erb
+    end
+  end
+
+  def show_amenities
+    @venue = Venue.new
+    @venue.build_facility
+
+    respond_to do |format|
+      format.js   #show_basic.js.erb
+    end
+  end
+
+  def show_settings
+    @venue = Venue.new
+
+    respond_to do |format|
+      format.js   #show_basic.js.erb
+    end
+  end
+
   def search
     query = SearchCriteria.new
     unless params[:eventType].nil?

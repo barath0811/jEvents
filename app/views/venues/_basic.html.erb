@@ -1,4 +1,19 @@
 <h1>Basic Venue Information</h1>
+
+<%= form_for @venue do |f| %>
+  <% if @venue.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+
+    <ul>
+      <% @venue.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+
   <div class="field">
     <%= f.label(:name, "Venue Name:", :class => "title_label") %>
     <%= f.text_field :name %>
@@ -8,45 +23,52 @@
     <%= f.text_field :venue_type %>
   </div>
 
-<%= f.fields_for :address do |a| %>
+    <%= f.fields_for :address do |a| %>
 
-  <div class="field">
-    <%= a.label(:address, "Address:", :class => "title_label") %>
-    <%= a.text_field :address %>
-  </div>
-  
-  <div class="field">
-    <%= a.label(:area, "Area:", :class => "title_label") %>
-    <%= a.text_field :area %>
-  </div>
-  
-<% end %>
+    <div class="field">
+      <%= a.label(:address, "Address:", :class => "title_label") %>
+      <%= a.text_field :address %>
+    </div>
+
+    <div class="field">
+      <%= a.label(:area, "Area:", :class => "title_label") %>
+      <%= a.text_field :area %>
+    </div>
+
+    <% end %>
 
   <div class="field">
     <%= f.label(:website, "Website:", :class => "title_label") %>
     <%= f.text_field :website %>
   </div>
 
-<%= f.fields_for :contact do |c| %>
+    <%= f.fields_for :contact do |c| %>
 
-  <div class="field">
-    <%= c.label(:firstname, "Contact Person:", :class => "title_label") %>
-    <%= c.text_field :firstname %>
-    <%= c.text_field :lastname %>
-  </div>
-  
-  <div class="field">
-    <%= c.label(:email, "Email:", :class => "title_label") %>
-    <%= c.text_field :email %>
-  </div>
-  
-  <div class="field">
-    <%= c.label(:landline_number, "Landline Number:", :class => "title_label") %>
-    <%= c.text_field :landline_number %>
+    <div class="field">
+      <%= c.label(:firstname, "Contact Person:", :class => "title_label") %>
+      <%= c.text_field :firstname %>
+      <%= c.text_field :lastname %>
+    </div>
+
+    <div class="field">
+      <%= c.label(:email, "Email:", :class => "title_label") %>
+      <%= c.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= c.label(:landline_number, "Landline Number:", :class => "title_label") %>
+      <%= c.text_field :landline_number %>
+    </div>
+
+    <div class="field">
+      <%= c.label(:mobile_number, "Mobile Number:", :class => "title_label") %>
+      <%= c.text_field :mobile_number %>
+    </div>
+    <% end %>
+
+
+  <div class="actions">
+    <%= f.submit %>
   </div>
 
-  <div class="field">
-    <%= c.label(:mobile_number, "Mobile Number:", :class => "title_label") %>
-    <%= c.text_field :mobile_number %>
-  </div>
 <% end %>

@@ -1,3 +1,3 @@
-($("#venueEditNav").on('click', function(){
+$(document).ready(function(){
 	
-}));
+});

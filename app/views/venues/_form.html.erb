@@ -1,50 +1,17 @@
-<%= form_for @venue do |f| %>
-  <% if @venue.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+<div class="row-fluid">
+  <div class="span2"></div>
+  <ul id="venueEditNav" class="nav nav-pills nav-stacked span3">
+    <li class="active"><%= link_to 'Basic Information', {:action => 'show_basic'}, remote: true %></li>
+    <li><%= link_to 'Function Spaces', {:action => 'show_halls'}, remote: true %></li>
+    <li><%= link_to 'Pricing & Terms', {:action => 'show_pricing'}, remote: true %></li>
+    <li><%= link_to 'Amenities', {:action => 'show_amenities'}, remote: true %></li>
+    <li><%= link_to 'Account Settings', {:action => 'show_settings'}, remote: true %></li>
+  </ul>
+  <div class="span6">
 
-      <ul>
-      <% @venue.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div id="venueEditContent" class="venueContent">
+      <%= render partial: 'venues/basic', locals: { :venue => @venue } %>
     </div>
-  <% end %>
-
-  <div class="row-fluid">
-    <div class="span2"></div>
-    <ul id="venueEditNav" class="nav nav-pills nav-stacked span3">
-      <li class="active"><a href="#">Basic Information</a></li>
-      <li><a href="#">Function Spaces</a></li>
-      <li><a href="#">Pricing & Terms</a></li>
-      <li><a href="#">Amenities</a></li>
-      <li><a href="#">Account Settings</a></li>
-    </ul>
-    <div class="span6">
-      <div class="venueBasic">
-        <%= render "basic", :f => f %>
-      </div>
-
-      <div class="venueHalls">
-        <%= render "halls", :f => f %>
-      </div>
-
-      <div class="venuePricing">
-        <%= render "pricing", :f => f %>
-      </div>
-
-      <div class="venueAmenities">
-        <%= render "amenities", :f => f %>
-      </div>
-
-      <div class="accountSettings">
-        <%= render "settings", :f => f %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    </div>
+    
   </div>
-
-<% end %>
+</div>
