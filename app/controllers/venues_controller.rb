@@ -21,64 +21,6 @@ class VenuesController < ApplicationController
     end
   end
 
-  def show_basic
-    @venue = Venue.new
-    @venue.build_address
-    @venue.build_contact
-
-    respond_to do |format|
-      format.js   #show_basic.js.erb
-    end
-  end
-
-  def show_halls
-    @venue = Venue.new
-    @venue.halls.build
-
-    respond_to do |format|
-      format.js   #show_basic.js.erb
-    end
-  end
-
-  def show_pricing
-    @venue = Venue.new
-    @venue.build_rate
-
-    respond_to do |format|
-      format.js   #show_basic.js.erb
-    end
-  end
-
-  def show_amenities
-    @venue = Venue.new
-    @venue.build_facility
-
-    respond_to do |format|
-      format.js   #show_basic.js.erb
-    end
-  end
-
-  def show_settings
-    @venue = Venue.new
-
-    respond_to do |format|
-      format.js   #show_basic.js.erb
-    end
-  end
-
-  def search
-    query = SearchCriteria.new
-    unless params[:eventType].nil?
-      query.eventType = params[:eventType]
-    end
-
-    unless params[:areas].nil?
-      query.areas = params[:areas]
-    end
-
-    @venue = Venue.search(query)
-  end
-
   # GET /venues/new
   # GET /venues/new.json
   def new
@@ -92,9 +34,49 @@ class VenuesController < ApplicationController
     end
   end
 
-  # GET /venues/1/edit
-  def edit
-    @venue = Venue.find(params[:id])
+  def new_basic
+    @venue = Venue.new
+    @venue.build_address
+    @venue.build_contact
+
+    respond_to do |format|
+      format.js   #new_basic.js.erb
+    end
+  end
+
+  def new_halls
+    @venue = Venue.new
+    @venue.halls.build
+
+    respond_to do |format|
+      format.js   #new_basic.js.erb
+    end
+  end
+
+  def new_pricing
+    @venue = Venue.new
+    @venue.build_rate
+
+    respond_to do |format|
+      format.js   #new_basic.js.erb
+    end
+  end
+
+  def new_amenities
+    @venue = Venue.new
+    @venue.build_facility
+
+    respond_to do |format|
+      format.js   #new_basic.js.erb
+    end
+  end
+
+  def new_settings
+    @venue = Venue.new
+
+    respond_to do |format|
+      format.js   #new_basic.js.erb
+    end
   end
 
   # POST /venues
@@ -113,6 +95,56 @@ class VenuesController < ApplicationController
     end
   end
 
+  # GET /venues/1/edit
+  def edit
+    @venue = Venue.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.js   
+    end
+  end
+
+  def edit_basic
+    @venue = Venue.find(params[:id])
+
+    respond_to do |format|
+      format.js   
+    end
+  end
+
+  def edit_halls
+    @venue = Venue.find(params[:id])
+
+    respond_to do |format|
+      format.js   
+    end
+  end
+
+  def edit_pricing
+    @venue = Venue.find(params[:id])
+
+    respond_to do |format|
+      format.js   
+    end
+  end
+
+  def edit_amenities
+    @venue = Venue.find(params[:id])
+
+    respond_to do |format|
+      format.js   
+    end
+  end
+
+  def edit_settings
+    @venue = Venue.new
+
+    respond_to do |format|
+      format.js   
+    end
+  end
+
   # PUT /venues/1
   # PUT /venues/1.json
   def update
@@ -127,6 +159,19 @@ class VenuesController < ApplicationController
         format.json { render json: @venue.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def search
+    query = SearchCriteria.new
+    unless params[:eventType].nil?
+      query.eventType = params[:eventType]
+    end
+
+    unless params[:areas].nil?
+      query.areas = params[:areas]
+    end
+
+    @venue = Venue.search(query)
   end
 
   # DELETE /venues/1

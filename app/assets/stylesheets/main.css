@@ -24,6 +24,9 @@ body {
 	outline: 0
 }
 
+.fr{ float: right; }
+.fl{ float: left; }
+
 /************** Header **************/
 .navbar .container { height: 3em; }
 

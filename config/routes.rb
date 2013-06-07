@@ -10,19 +10,19 @@ Jevents::Application.routes.draw do
   
   resources :venues do
     member do   #member - requires an ID
-      get 'show_basic' # ???
-      get 'show_halls' # ???
-      get 'show_pricing' # ???
-      get 'show_amenities' # ???
-      get 'show_settings' # ???
+      get 'edit_basic'
+      get 'edit_halls'
+      get 'edit_pricing'
+      get 'edit_amenities'
+      get 'edit_settings'
     end
     collection do   #works on a collection, does not require an ID
-      get 'show_basic' # ???
-      get 'show_halls' # ???
-      get 'show_pricing' # ???
-      get 'show_amenities' # ???
-      get 'show_settings' # ???
-      
+      get 'new_basic'
+      get 'new_halls'
+      get 'new_pricing'
+      get 'new_amenities'
+      get 'new_settings'
+
       get 'search'
     end
   end
