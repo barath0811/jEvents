@@ -46,7 +46,8 @@ class VenuesController < ApplicationController
 
   def new_halls
     @venue = Venue.new
-    @venue.halls.build
+    @hall = Hall.new
+    #@hall.venue_id = @venue.id
 
     respond_to do |format|
       format.js   #new_basic.js.erb
