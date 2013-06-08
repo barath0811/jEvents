@@ -26,10 +26,33 @@ function searchFired(){
 	var cap = createSearchParams('cap');
 	var mo = createSearchParams('meal');
 
+	$('#results_div').html('');
+
 	$.ajax({
 		url: "/venues/search",
 		type: "POST",
-		data: {areas:areas, budget:bud, amenities:am, capacities:cap, meal:mo },
-			success: function(resp){ }
-		});
+		data: {areas:areas, budget:bud, amenities:am, capacities:cap, meal:mo, po:true },
+		success: function(data) {
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) { 
+			alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+		}   
+	});
+
+}
+
+//TODO: use JOLLY.venues.textChanged = function(){...} format
+function textChanged(areas){
+	var searchKey = document.getElementById("areaSearchKey").value.toLowerCase();
+
+	$('ul#area li').each(function(i){
+		var id = '#chk_area_' + $(this).attr('id');
+		var element = $(id).attr('value').toLowerCase();
+		
+		if (element.indexOf(searchKey) !=-1)
+			$(this).show();
+		else
+			$(this).hide();
+	});
+
 }

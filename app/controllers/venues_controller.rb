@@ -1,4 +1,5 @@
 class VenuesController < ApplicationController
+
   # GET /venues
   # GET /venues.json
   def index
@@ -97,6 +98,13 @@ class VenuesController < ApplicationController
     end
 
     @venue = Venue.search(query)
+
+    unless params[:po].nil?
+      respond_to do |format|
+        format.js 
+      end
+    end 
+ 
   end
 
   # GET /venues/new
