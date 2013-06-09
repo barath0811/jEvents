@@ -1,0 +1,163 @@
+Possible Operations:
+Search venue by
+- area (stored in address and location)
+- event type
+- name of venue
+- capacity
+- cost per plate
+- cost of hall
+- meal choice
+- amenities
+
+Sort venues by
+- popularity
+- rating
+- location
+- cost
+- capacity
+
+venues
+	id
+	name
+	type 	--Business hotel/ Luxury business hotel/ Corporate hall/ etc
+	website
+	terms_conditions
+
+	has_many: images, halls
+	has_one: amenities, address, contact, rate
+
+addresses
+	id
+	venue_id
+	address
+	area
+	landmark
+	phone_numbers
+
+	belongs_to :venue
+
+contacts
+	id
+	venue_id
+	firstname
+	lastname
+	email
+	stdcode
+	landline_number
+	mobile_number
+
+	belongs_to:venue
+
+rates
+	id
+	venue_id
+	veg_plate_cost
+	nonveg_plate_cost
+	min_total_budget
+	max_total_budget
+
+	belongs_to:venue
+
+facilities
+	id
+	venue_id
+	HasParking
+	IsOutdoorDrinksAllowed
+	IsOutdoorFoodAllowed
+	HasBuffet
+	HasValetParking
+	HasCoveredParking
+	HasFreeParking
+	HasFlorist
+	HasPandit
+	HasOnCallDoctor
+	HasOnCallTaxi
+	HasWiFi
+	HasLcdTv
+	HasWheelChair
+	HasRamps
+	HasShoeShiner
+	HasWebsite ????
+	...
+	...
+	...
+
+	belongs_to:venue
+
+halls
+	id
+	venue_id
+	name
+	type		--Banquet,Lawn,Conf,Board Room, Wedding Hall
+	pricing_mode 	--hourly, daily, etc.
+	hall_rent
+
+	has_many:images, seatingarrangements
+	belongs_to: venue
+
+images
+	id
+	venue_id
+	hall_id		--NULLABLE
+	image
+	caption
+	can_showcase
+
+	belongs_to:venue
+
+seating_arragements
+	id
+	hall_id
+	type
+	capacity
+
+	belongs_to:hall
+--------------------------------------
+
+authorizations
+	network		--none,twitter,fb,etc.
+	network_id	--users id for that social network
+
+users
+	id
+	username
+	name
+	email
+	password
+	show_email
+	show_dob
+	allow_pm
+	
+--------------------------------------
+
+review
+	id
+	venue_id
+	hall_id		--NULLABLE
+	user_id
+	rating_value
+	revie_text
+	
+statistics
+	id
+	venue_id
+	hall_id		--NULLABLE
+	overall_rating
+	popularity_index
+	num_viewers
+	num_enquiries
+	num_bookings
+	
+queries
+	QueryId
+	UserId
+	ClientIp --If possible
+	Area
+	Capacity
+	MealChoice
+	Budget
+	Amenities
+	EventType
+	ConvertedToEnquiry
+	ConvertedToBooking
+	
