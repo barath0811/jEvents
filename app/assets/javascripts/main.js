@@ -22,3 +22,22 @@ $(document).ready(function(){
 
 });
 
+
+
+var showMessage = function(text, style)
+{
+    style = style || 'notice';           //<== default style if it's not set
+
+    //create message and show it
+	$('<div>')
+    .attr('class', style)
+	.html(text)
+	.fadeIn('fast')
+	.insertBefore($('#user_message'))  		//<== wherever you want it to show
+	.animate({opacity: 1.0}, 2500)    		//<== wait 2.5 sec before fading out
+	.fadeOut('slow', function()
+	{
+		$(this).remove();
+	});
+};
+

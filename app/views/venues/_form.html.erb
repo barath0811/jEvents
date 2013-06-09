@@ -1,14 +1,12 @@
 <div class="row-fluid">
-  <div class="span2"></div>
   <ul id="venueEditNav" class="nav nav-pills nav-stacked span3">
-    <li class="active"><%= link_to 'Basic Information', {:action => 'show_basic'}, remote: true %></li>
-    <li><%= link_to 'Function Spaces', {:action => 'show_halls'}, remote: true %></li>
-    <li><%= link_to 'Pricing & Terms', {:action => 'show_pricing'}, remote: true %></li>
-    <li><%= link_to 'Amenities', {:action => 'show_amenities'}, remote: true %></li>
-    <li><%= link_to 'Account Settings', {:action => 'show_settings'}, remote: true %></li>
+    <li class="active"><%= link_to 'Basic Information', {:action => 'new_basic'}, remote: true %></li>
+    <li><%= link_to 'Function Spaces', {:action => 'new_halls'}, remote: true %></li>
+    <li><%= link_to 'Pricing & Terms', {:action => 'new_pricing'}, remote: true %></li>
+    <li><%= link_to 'Amenities', {:action => 'new_amenities'}, remote: true %></li>
+    <li><%= link_to 'Account Settings', {:action => 'new_settings'}, remote: true %></li>
   </ul>
-  <div class="span6">
-
+  <div class="span7">
     <div id="venueEditContent" class="venueContent">
       <%= render partial: 'venues/basic', locals: { :venue => @venue } %>
     </div>

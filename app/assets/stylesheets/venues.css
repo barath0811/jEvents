@@ -1,0 +1,45 @@
+#venueBasicContent label{
+	width: 8em;
+  	float: left;
+  	text-align: right;
+  	margin-right: 0.5em;
+  	display: block;
+}
+
+div.roundedBorder{
+	padding: 1em;
+	border-style: solid;
+	border-color: grey;
+	border-width: 1px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius:6px;
+	border-radius: 6px;
+}
+
+.contactname{
+	width: 12em;
+}
+
+#addHallSlide{
+	display:none;
+}
+
+#venueHallEditContent label{
+	width: 8em;
+  	float: left;
+  	text-align: right;
+  	margin-right: 0.5em;
+  	display: block;
+}
+
+#cancelHallSlide {
+	margin-left: 0.5em;
+}
+
+#venueRateContent label{
+	width: 10em;
+  	float: left;
+  	text-align: right;
+  	margin-right: 0.5em;
+  	display: block;
+}

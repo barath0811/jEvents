@@ -1,20 +1,56 @@
 <h1>Venue Pricing</h1>
 
 <%= form_for @venue do |f| %>
-	<% if @venue.errors.any? %>
-	<div id="error_explanation">
-	  <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
 
-	  <ul>
-	    <% @venue.errors.full_messages.each do |msg| %>
-	    <li><%= msg %></li>
-	    <% end %>
-	  </ul>
-	</div>
-	<% end %>
+<% if @venue.errors.any? %>
+<div id="error_explanation">
+	<h4><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h4>
+	<ul>
+		<% @venue.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div id="user_message"></div>
 
 <div class="actions">
-  <%= f.submit %>
+	<%= f.submit "Save Changes", :class => "btn btn-success fr" %>
+</div>
+
+<div id="venueRateContent" class="roundedBorder">
+	<%= f.fields_for :rate do |r| %>
+
+	<div class="field">
+		<%= r.label(:veg_plate_cost, "Cost/veg plate:") %>
+		<%= r.text_field :veg_plate_cost %>
+	</div>
+	
+	<div class="field">
+		<%= r.label(:non_veg_plate_cost, "Cost/non-veg plate:") %>
+		<%= r.text_field :non_veg_plate_cost %>
+	</div>
+
+	<div class="field">
+		<%= r.label(:min_total_budget, "Min budget:") %>
+		<%= r.text_field :min_total_budget %>
+	</div>
+	
+	<div class="field">
+		<%= r.label(:max_total_budget, "Max budget:") %>
+		<%= r.text_field :max_total_budget %>
+	</div>
+
+	<% end %>
+</div>
+<br />
+<div id="venueTermsContent" class="roundedBorder">
+	<div class="field">
+		<%= f.label(:terms_conditions, "Mention the terms and conditions of your venue:") %>
+		<%= f.text_area :terms_conditions %>
+	</div>
+	
 </div>
 
 <% end %>
