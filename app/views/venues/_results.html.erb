@@ -1,51 +1,62 @@
-<div class="SearchResults">
-	<%= image_tag('3.jpg', :class => "venue-img") %>
-
-	<div style="margin-left:190px">
-		<h3>Ambika Empire  |  Luxury business hotel</h3>
-		<div>
-			<%= image_tag('parking.png', :class => "venue-icons") %>
-			<%= image_tag('nv.png', :class => "venue-icons") %>
-			<%= image_tag('alcohol.png', :class => "venue-icons") %>
-			<%= image_tag('credcard.png', :class => "venue-icons") %>
-			<%= image_tag('restaurant.png', :class => "venue-icons") %>
-		</div>
-		<p class="address">#71, Nehru Salai, Vadapalani</p>
-
-		<p class="capacity"> Up to 100</p>
-		<p class="address">Landmark : Vadapalani Junction</p>
-
-		<div style="margin-top:15px;position:relative;">
-			<p><a href="#" class="btn btn-primary btn-small search-button">View venue</a></p>
-			<p><a href="#" class="btn btn-primary btn-small search-button">? Enquiry</a></p>
-			<p><a href="#" class="btn btn-primary btn-small search-button">Book now</a></p>
-		</div>
-		<p class="numRooms">3 rooms</p><br />
+<div id="query">
+	<span id="query_title" style="font-weight:bold;">
+		<%= unless @query.areas.count == 0 
+			'Areas: '
+			end %>
+		</span>
+		<% @query.areas.each do |a| %>
+		<span><%=  a + ' x ' %> </span>
+		<% end %>
 	</div>
-</div>
-<div class="SearchResults">
 
-	<%= image_tag('2.jpg', :class => "venue-img") %>
+	<div class="SearchResults">
+		<%= image_tag('3.jpg', :class => "venue-img") %>
 
-	<div style="margin-left:190px">
-		<h3>GRT Grand  |  Business hotel</h3>
-		<div>
-			<%= image_tag('parking.png', :class => "venue-icons") %>
-			<%= image_tag('nv.png', :class => "venue-icons") %>
-			<%= image_tag('alcohol.png', :class => "venue-icons") %>
-			<%= image_tag('credcard.png', :class => "venue-icons") %>
-			<%= image_tag('restaurant.png', :class => "venue-icons") %>
-			<p class="address">#42, Panagal Park, T Nagar</p>
-		</div>
-		<div>
-			<p class="capacity"> Up to 300</p>
-			<p class="address">Landmark : Near Pothys</p>
-		</div>
-		<div style="margin-top:15px;position:relative;">
-			<p><a href="#" class="btn btn-primary btn-small search-button">View venue</a></p>
-			<p><a href="#" class="btn btn-primary btn-small search-button">? Enquiry</a></p>
-			<p><a href="#" class="btn btn-primary btn-small search-button">Book now</a></p>
-			<p class="numRooms">1 room</a></p><br />
+		<div style="margin-left:190px">
+			<h3>Ambika Empire  |  Luxury business hotel</h3>
+			<div>
+				<%= image_tag('parking.png', :class => "venue-icons") %>
+				<%= image_tag('nv.png', :class => "venue-icons") %>
+				<%= image_tag('alcohol.png', :class => "venue-icons") %>
+				<%= image_tag('credcard.png', :class => "venue-icons") %>
+				<%= image_tag('restaurant.png', :class => "venue-icons") %>
+			</div>
+			<p class="address">#71, Nehru Salai, Vadapalani</p>
+
+			<p class="capacity"> Up to 100</p>
+			<p class="address">Landmark : Vadapalani Junction</p>
+
+			<div style="margin-top:15px;position:relative;">
+				<p><a href="#" class="btn btn-primary btn-small search-button">View venue</a></p>
+				<p><a href="#" class="btn btn-primary btn-small search-button">? Enquiry</a></p>
+				<p><a href="#" class="btn btn-primary btn-small search-button">Book now</a></p>
+			</div>
+			<p class="numRooms">3 rooms</p><br />
 		</div>
 	</div>
-</div>
+	<div class="SearchResults">
+
+		<%= image_tag('2.jpg', :class => "venue-img") %>
+
+		<div style="margin-left:190px">
+			<h3>GRT Grand  |  Business hotel</h3>
+			<div>
+				<%= image_tag('parking.png', :class => "venue-icons") %>
+				<%= image_tag('nv.png', :class => "venue-icons") %>
+				<%= image_tag('alcohol.png', :class => "venue-icons") %>
+				<%= image_tag('credcard.png', :class => "venue-icons") %>
+				<%= image_tag('restaurant.png', :class => "venue-icons") %>
+				<p class="address">#42, Panagal Park, T Nagar</p>
+			</div>
+			<div>
+				<p class="capacity"> Up to 300</p>
+				<p class="address">Landmark : Near Pothys</p>
+			</div>
+			<div style="margin-top:15px;position:relative;">
+				<p><a href="#" class="btn btn-primary btn-small search-button">View venue</a></p>
+				<p><a href="#" class="btn btn-primary btn-small search-button">? Enquiry</a></p>
+				<p><a href="#" class="btn btn-primary btn-small search-button">Book now</a></p>
+				<p class="numRooms">1 room</a></p><br />
+			</div>
+		</div>
+	</div>

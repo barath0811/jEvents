@@ -165,12 +165,14 @@ class VenuesController < ApplicationController
 
   def search
     query = SearchCriteria.new
+    @query = SearchCriteria.new
+    @query.eventType = nil
     unless params[:eventType].nil?
-      query.eventType = params[:eventType]
+      @query.eventType = params[:eventType]
     end
 
     unless params[:areas].nil?
-      query.areas = params[:areas]
+      @query.areas = params[:areas].split(',')
     end
 
     unless params[:areas].nil?
