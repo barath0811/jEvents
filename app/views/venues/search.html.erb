@@ -19,9 +19,9 @@
 		<h5>Capacity</h5>
 		<ul id='cap'>
 			<%  @options.capacity.each do |c| %>
-			<li id="<%= c %>"> 
+			<li id="<%= c.to_s.gsub(/\s+/, "") %>"> 
 				<a>
-					<%= check_box_tag 'chk_cap_' + c.to_s, c.to_s, false, :onclick => 'searchFired();' %> 
+					<%= check_box_tag 'chk_cap_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, false, :onclick => 'searchFired();' %> 
 					<span><%= c %> </span>
 				</a>
 			</li>
@@ -32,8 +32,8 @@
 		<h5>Meal Option</h5>
 		<ul id='meal'>
 			<%  @options.mealOptions.each do |m| %>
-			<li id="<%= m %>"> 
-				<%= check_box_tag 'chk_meal_' + m.to_s, m.to_s, false, :onclick => 'searchFired();' %> 
+			<li id="<%= m.to_s.gsub(/\s+/, "") %>"> 
+				<%= check_box_tag 'chk_meal_' + m.to_s.to_s.gsub(/\s+/, ""), m.to_s, false, :onclick => 'searchFired();' %> 
 				<a>
 					<span><%= m %> </span>
 				</a>
@@ -45,8 +45,8 @@
 		<h5>Budget</h5>
 		<ul id='bud'>
 			<%  @options.budget.each do |b| %>
-			<li id="<%= b %>"> 
-				<%= check_box_tag 'chk_bud_' + b.to_s, b.to_s, false, :onclick => 'searchFired();' %> 
+			<li id="<%= b.to_s.gsub(/\s+/, "") %>"> 
+				<%= check_box_tag 'chk_bud_' + b.to_s.to_s.gsub(/\s+/, ""), b.to_s, false, :onclick => 'searchFired();' %> 
 				<a>
 					<span><%= b %> </span>
 				</a>
@@ -58,8 +58,8 @@
 		<h5>Amenities</h5>
 		<ul id='am'>
 			<%  @options.amenities.each do |a| %>
-			<li id="<%= a %>"> 
-				<%= check_box_tag 'chk_am_' + a.to_s, a.to_s, false, :onclick => 'searchFired();' %> 
+			<li id="<%= a.to_s.gsub(/\s+/, "") %>"> 
+				<%= check_box_tag 'chk_am_' + a.to_s.to_s.gsub(/\s+/, ""), a.to_s, false, :onclick => 'searchFired();' %> 
 				<a>
 					<span><%= a %> </span>
 				</a>

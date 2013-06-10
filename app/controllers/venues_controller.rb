@@ -164,9 +164,8 @@ class VenuesController < ApplicationController
   end
 
   def search
-    query = SearchCriteria.new
     @query = SearchCriteria.new
-    @query.eventType = nil
+    
     unless params[:eventType].nil?
       @query.eventType = params[:eventType]
     end
@@ -175,27 +174,23 @@ class VenuesController < ApplicationController
       @query.areas = params[:areas].split(',')
     end
 
-    unless params[:areas].nil?
-      query.areas = params[:areas]
-    end
-
     unless params[:budget].nil?
-      query.areas = params[:budget]
+      @query.budget = params[:budget].split(',')
     end
 
     unless params[:amenities].nil?
-      query.areas = params[:amenities]
+      @query.amenities = params[:amenities].split(',')
     end
 
     unless params[:capacities].nil?
-      query.areas = params[:capacities]
+      @query.capacity = params[:capacities].split(',')
     end
 
     unless params[:meal].nil?
-      query.areas = params[:meal]
+      @query.mealOptions = params[:meal].split(',')
     end
 
-    @venue = Venue.search(query)
+    @venue = Venue.search(@query)
 
     unless params[:po].nil?
       respond_to do |format|

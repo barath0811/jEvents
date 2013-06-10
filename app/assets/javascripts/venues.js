@@ -16,7 +16,6 @@ function createSearchParams(entity){
 		}
 	});
 	return val;
-
 }
 
 function searchFired(){
@@ -35,7 +34,7 @@ function searchFired(){
 		success: function(data) {
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
-			alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+			
 		}   
 	});
 

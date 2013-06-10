@@ -71,6 +71,13 @@
 	height: 20px;
 }
 
+.close-icon{
+  position: relative;
+  width: 17px;
+  height: 17px;  
+  cursor:pointer;
+}
+
 .SearchResults h3 {
   padding-left: 10px;
   padding-right: 10px;
