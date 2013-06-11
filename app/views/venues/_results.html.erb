@@ -53,13 +53,32 @@
 
 <% @venue.each do |c| %>
 <div class="SearchResults">
-	<h3><%= c.name %></h3>
-	<p class="address"><%= c.address.address %></p>
+	<%= image_tag('3.jpg', :class => "venue-img") %>
+
+	<div style="margin-left:190px">
+		<h3><%= c.name %>  |  Luxury business hotel</h3>
+		<div>
+			<%= image_tag('parking.png', :class => "venue-icons") %>
+			<%= image_tag('nv.png', :class => "venue-icons") %>
+			<%= image_tag('alcohol.png', :class => "venue-icons") %>
+			<%= image_tag('credcard.png', :class => "venue-icons") %>
+			<%= image_tag('restaurant.png', :class => "venue-icons") %>
+		</div>
+		<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
+
+		<p class="capacity"><%= c.min_capacity %>-<%= c.min_capacity %></p>
+		<p class="address">Landmark : <%= c.address.landmark %></p>
+
+		<div style="margin-top:15px;position:relative;">
+			<p><a href="#" class="btn btn-primary btn-small search-button">View venue</a></p>
+		</div>
+		<p class="numRooms"><%= c.num_halls %> rooms</p><br />
+	</div>
 </div>
 <% end %>
 
-	<div class="SearchResults">
-		<%= image_tag('3.jpg', :class => "venue-img") %>
+<div class="SearchResults">
+	<%= image_tag('3.jpg', :class => "venue-img") %>
 
 	<div style="margin-left:190px">
 		<h3>Ambika Empire  |  Luxury business hotel</h3>
