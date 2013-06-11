@@ -1,10 +1,18 @@
 <div class="row-fluid">
   <ul id="venueEditNav" class="nav nav-pills nav-stacked span3">
-    <li class="active"><%= link_to 'Basic Information', {:action => 'new_basic'}, remote: true %></li>
-    <li><%= link_to 'Function Spaces', {:action => 'new_halls'}, remote: true %></li>
-    <li><%= link_to 'Pricing & Terms', {:action => 'new_pricing'}, remote: true %></li>
-    <li><%= link_to 'Amenities', {:action => 'new_amenities'}, remote: true %></li>
-    <li><%= link_to 'Account Settings', {:action => 'new_settings'}, remote: true %></li>
+    <% if @venue.new_record? %>
+      <li class="active"><%= link_to 'Basic Information', {:action => 'new_basic'}, remote: true %></li>
+      <li><%= link_to 'Function Spaces', {:action => 'index_halls'}, remote: true %></li>
+      <li><%= link_to 'Pricing & Terms', {:action => 'new_pricing'}, remote: true %></li>
+      <li><%= link_to 'Amenities', {:action => 'new_amenities'}, remote: true %></li>
+      <li><%= link_to 'Account Settings', {:action => 'new_settings'}, remote: true %></li>
+    <% else %>
+      <li class="active"><%= link_to 'Basic Information', {:action => 'edit_basic'}, remote: true %></li>
+      <li><%= link_to 'Function Spaces', {:action => 'index_halls'}, remote: true %></li>
+      <li><%= link_to 'Pricing & Terms', {:action => 'edit_pricing'}, remote: true %></li>
+      <li><%= link_to 'Amenities', {:action => 'edit_amenities'}, remote: true %></li>
+      <li><%= link_to 'Account Settings', {:action => 'edit_settings'}, remote: true %></li>
+    <% end %>  
   </ul>
   <div class="span7">
     <div id="venueEditContent" class="venueContent">

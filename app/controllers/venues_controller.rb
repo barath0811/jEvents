@@ -45,7 +45,7 @@ class VenuesController < ApplicationController
     end
   end
 
-  def new_halls
+  def index_halls
     @venue = Venue.new
     @hall = Hall.new
     #@hall.venue_id = @venue.id
@@ -116,7 +116,10 @@ class VenuesController < ApplicationController
   end
 
   def edit_halls
+    JeventzLogger.debug "#{params.inspect}"
+
     @venue = Venue.find(params[:id])
+    @hall = @venue.halls.new
 
     respond_to do |format|
       format.js   

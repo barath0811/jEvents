@@ -18,7 +18,7 @@ Jevents::Application.routes.draw do
     end
     collection do   #works on a collection, does not require an ID
       get 'new_basic'
-      get 'new_halls'
+      get 'index_halls'
       get 'new_pricing'
       get 'new_amenities'
       get 'new_settings'
