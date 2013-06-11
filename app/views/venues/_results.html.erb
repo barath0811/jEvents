@@ -7,7 +7,14 @@
 		<% @query.areas.each do |a| %>
 		<span><%=  a + ' x ' %> </span>
 		<% end %>
-	</div>
+</div>
+
+<% @venue.each do |c| %>
+<div class="SearchResults">
+	<h3><%= c.name %></h3>
+	<p class="address"><%= c.address.address %></p>
+</div>
+<% end %>
 
 	<div class="SearchResults">
 		<%= image_tag('3.jpg', :class => "venue-img") %>
