@@ -2,6 +2,8 @@ $(document).ready(function(){
 	
 });
 
+
+
 function createSearchParams(entity){
 	var val = '';
 	var ulid = 'ul#' + entity + ' li';
@@ -17,6 +19,7 @@ function createSearchParams(entity){
 	});
 	return val;
 }
+
 
 function searchFired(){
 	var areas = createSearchParams('area');

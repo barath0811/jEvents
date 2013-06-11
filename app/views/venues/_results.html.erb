@@ -1,62 +1,65 @@
-<div id="query" style="padding-left:20px;">
+<div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
 		<%= unless @query.areas.count == 0 
 			'Areas: '
 		end %>
 	</span>
 	<% @query.areas.each do |a| %>
-		<span><%= a %> 
-		<%= image_tag('close.png', :class => "close-icon") %>
-		</span>
+		<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
-<div id="query" style="padding-left:20px;">
+<div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
 		<%= unless @query.capacity.count == 0 
 			'Capacity: '
 		end %>
 	</span>
 	<% @query.capacity.each do |a| %>
-		<span><%= a %> </span>
-		<%= image_tag('close.png', :class => "close-icon") %>
+		<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
-<div id="query" style="padding-left:20px;">
+<div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
 		<%= unless @query.mealOptions.count == 0 
 			'Meal Options: '
 		end %>
 	</span>
 	<% @query.mealOptions.each do |a| %>
-		<span><%= a %> </span>
-		<%= image_tag('close.png', :class => "close-icon") %>
+		<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
-<div id="query" style="padding-left:20px;">
+<div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
 		<%= unless @query.budget.count == 0 
 			'Budget: '
 		end %>
 	</span>
 	<% @query.budget.each do |a| %>
-		<span><%= a %> </span>
-		<%= image_tag('close.png', :class => "close-icon") %>
+		<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
-<div id="query" style="padding-left:20px;">
+<div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
 		<%= unless @query.amenities.count == 0 
 			'Amenities: '
 		end %>
 	</span>
 	<% @query.amenities.each do |a| %>
-		<span><%= a %> </span>
-		<%= image_tag('close.png', :class => "close-icon") %>
+		<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
 </br>
+
+
+<% @venue.each do |c| %>
 <div class="SearchResults">
-	<%= image_tag('3.jpg', :class => "venue-img") %>
+	<h3><%= c.name %></h3>
+	<p class="address"><%= c.address.address %></p>
+</div>
+<% end %>
+
+	<div class="SearchResults">
+		<%= image_tag('3.jpg', :class => "venue-img") %>
 
 	<div style="margin-left:190px">
 		<h3>Ambika Empire  |  Luxury business hotel</h3>

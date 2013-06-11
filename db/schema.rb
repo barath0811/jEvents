@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605173756) do
+ActiveRecord::Schema.define(:version => 20130611061206) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(:version => 20130605173756) do
     t.string   "name"
     t.string   "hall_type"
     t.string   "pricing_mode"
-    t.decimal  "hall_rent"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.decimal  "hall_rent",    :precision => 10, :scale => 0
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   add_index "halls", ["venue_id"], :name => "index_halls_on_venue_id"
@@ -78,12 +78,12 @@ ActiveRecord::Schema.define(:version => 20130605173756) do
 
   create_table "rates", :force => true do |t|
     t.integer  "venue_id"
-    t.decimal  "veg_plate_cost"
-    t.decimal  "nonveg_plate_cost"
-    t.decimal  "min_total_budget"
-    t.decimal  "max_total_budget"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.decimal  "veg_plate_cost",    :precision => 10, :scale => 0
+    t.decimal  "nonveg_plate_cost", :precision => 10, :scale => 0
+    t.decimal  "min_total_budget",  :precision => 10, :scale => 0
+    t.decimal  "max_total_budget",  :precision => 10, :scale => 0
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
   end
 
   add_index "rates", ["venue_id"], :name => "index_rates_on_venue_id"
@@ -105,6 +105,10 @@ ActiveRecord::Schema.define(:version => 20130605173756) do
     t.text     "terms_conditions"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.binary   "base_image"
+    t.integer  "num_halls"
+    t.integer  "min_capacity"
+    t.integer  "max_capacity"
   end
 
 end

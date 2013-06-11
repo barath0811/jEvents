@@ -7,9 +7,9 @@
 
 		<ul id="area">
 			<% @options.areas.each do |c| %>
-			<li id="<%= c.to_s.gsub(/\s+/, "") %>"> 
+			<li id="<%= c.to_s.gsub(/\s+/, "") %>" style="cursor:pointer;"> 
 				<a>
-					<%= check_box_tag 'chk_area_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, false, :onclick => 'searchFired();' %> 
+					<%= check_box_tag 'chk_area_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, false, :onchange => 'searchFired();' %> 
 					<span><%= c %> </span>
 				</a>
 			</li>
