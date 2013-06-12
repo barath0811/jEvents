@@ -47,9 +47,18 @@ edit_seating_arrangement GET    /seating_arrangements/:id/edit(.:format) seating
                  address GET    /addresses/:id(.:format)                 addresses#show
                          PUT    /addresses/:id(.:format)                 addresses#update
                          DELETE /addresses/:id(.:format)                 addresses#destroy
-        show_basic_venue GET    /venues/:id/show_basic(.:format)         venues#show_basic
-      show_pricing_venue GET    /venues/:id/show_pricing(.:format)       venues#show_pricing
+        edit_basic_venue GET    /venues/:id/edit_basic(.:format)         venues#edit_basic
+       index_halls_venue GET    /venues/:id/index_halls(.:format)        venues#index_halls
+      edit_pricing_venue GET    /venues/:id/edit_pricing(.:format)       venues#edit_pricing
+    edit_amenities_venue GET    /venues/:id/edit_amenities(.:format)     venues#edit_amenities
+     edit_settings_venue GET    /venues/:id/edit_settings(.:format)      venues#edit_settings
+        new_basic_venues GET    /venues/new_basic(.:format)              venues#new_basic
+      index_halls_venues GET    /venues/index_halls(.:format)            venues#index_halls
+      new_pricing_venues GET    /venues/new_pricing(.:format)            venues#new_pricing
+    new_amenities_venues GET    /venues/new_amenities(.:format)          venues#new_amenities
+     new_settings_venues GET    /venues/new_settings(.:format)           venues#new_settings
            search_venues GET    /venues/search(.:format)                 venues#search
+                         POST   /venues/search(.:format)                 venues#search
                   venues GET    /venues(.:format)                        venues#index
                          POST   /venues(.:format)                        venues#create
                new_venue GET    /venues/new(.:format)                    venues#new

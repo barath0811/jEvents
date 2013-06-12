@@ -57,7 +57,7 @@ function textChanged(areas){
 
 }
 
-$('form').submit(function() {
+$('.ajax_form').submit(function() {
     var valuesToSubmit = $(this).serialize();
     $.ajax({
         url: $(this).attr('action'), //sumbits it to the given url of the form

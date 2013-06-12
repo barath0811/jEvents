@@ -46,12 +46,29 @@ class VenuesController < ApplicationController
   end
 
   def index_halls
-    @venue = Venue.new
-    @hall = Hall.new
-    #@hall.venue_id = @venue.id
+    @venue = Venue.find(params[:id])
+    @halls = @venue.halls.all
+    @new_hall = Hall.new
+    
+    JeventzLogger.debug "#{@venue.inspect}"
+    #JeventzLogger.debug "#{@halls.inspect}"
+
+    #@new_hall = Hall.new
 
     respond_to do |format|
-      format.js   #new_basic.js.erb
+      format.js   #index_halls.js.erb
+    end
+  end
+
+  def new_hall
+    @venue = Venue.find(params[:id])
+    @hall = Hall.new
+    
+    JeventzLogger.debug "#{@venue.inspect}"
+    #JeventzLogger.debug "#{@halls.inspect}"
+
+    respond_to do |format|
+      format.js   #index_halls.js.erb
     end
   end
 
