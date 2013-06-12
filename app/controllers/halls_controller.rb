@@ -1,4 +1,11 @@
 class HallsController < ApplicationController
+
+  before_filter :get_venue
+
+  def get_venue
+    @venue = Venue.find(params[:venue_id])
+  end
+
   # GET /halls
   # GET /halls.json
   def index
@@ -6,7 +13,7 @@ class HallsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @halls }
+      format.json { render json: @venue }
       format.js
     end
   end
@@ -18,7 +25,7 @@ class HallsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @hall }
+      format.json { render json: [@venue, @hall] }
     end
   end
 
@@ -42,11 +49,13 @@ class HallsController < ApplicationController
   # POST /halls.json
   def create
     @hall = Hall.new(params[:hall])
+    @hall.venue_id = @venue.id
+
 
     respond_to do |format|
       if @hall.save
-        format.html { redirect_to @hall, notice: 'Hall was successfully created.' }
-        format.json { render json: @hall, status: :created, location: @hall }
+        format.html { redirect_to [@venue, @hall], notice: 'Hall was successfully created.' }
+        format.json { render json: [@venue, @hall], status: :created, location: @hall }
       else
         format.html { render action: "new" }
         format.json { render json: @hall.errors, status: :unprocessable_entity }

@@ -1,1 +1,8 @@
 $("#addHallSlide").html('<%=j render partial: 'venues/new_hall', locals: { :venue => @venue } %>')
+
+$(document).ready(function() {
+    $('#cancelHallSlide').click(function(){
+    	$('#addHallSlide').slideUp('slow', function(){
+        });
+    });
+});
