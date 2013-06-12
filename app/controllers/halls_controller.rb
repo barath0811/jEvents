@@ -7,6 +7,7 @@ class HallsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @halls }
+      format.js
     end
   end
 

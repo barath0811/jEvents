@@ -1,6 +1,6 @@
 <h1>Basic Venue Information</h1>
 
-<%= form_for @venue do |f| %>
+<%= form_for @venue, :html => { :class => "ajax_form"} do |f| %>
 
 <% if @venue.errors.any? %>
 <div id="error_explanation">
