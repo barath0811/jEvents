@@ -1,4 +1,5 @@
 <% @options = populateSearchCriteria %>
+<%= @selectedArea = @query.areas.first %>
 
 <div class="row">
 	<div class="filters span2" style="margin-top:5px;">
@@ -9,7 +10,11 @@
 			<% @options.areas.each do |c| %>
 			<li id="<%= c.to_s.gsub(/\s+/, "") %>" style="cursor:pointer;"> 
 				<a>
-					<%= check_box_tag 'chk_area_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, false, :onchange => 'searchFired();' %> 
+					<%= if(@selectedArea == c) 
+							check_box_tag 'chk_area_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, true, :onchange => 'searchFired();'
+						else
+							check_box_tag 'chk_area_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, false, :onchange => 'searchFired();'
+					end %>
 					<span><%= c %> </span>
 				</a>
 			</li>
