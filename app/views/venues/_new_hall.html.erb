@@ -1,5 +1,5 @@
 <br />
-<%= form_for @hall, :html => { :class => "ajax_form"} do |f| %>
+<%= form_for [@venue, @hall], :html => { :class => "ajax_form"} do |f| %>
 <div class="actions">
 	<a id="cancelHallSlide" class="btn btn-success fr">Cancel</a>
 	<%= f.submit "Save Changes", :class => 'btn btn-success fr' %>

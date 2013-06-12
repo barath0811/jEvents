@@ -19,9 +19,6 @@
 	    <th>Hall Type</th>
 	    <th>Pricing mode</th>
 	    <th>Hall rent</th>
-	    <th></th>
-	    <th></th>
-	    <th></th>
 	  </tr>
 
 	<% if @halls.empty? %>
@@ -33,9 +30,6 @@
 	    <td><%= hall.hall_type %></td>
 	    <td><%= hall.pricing_mode %></td>
 	    <td><%= hall.hall_rent %></td>
-	    <td><%= link_to 'Show', hall %></td>
-	    <td><%= link_to 'Edit (id to be updated)', {:action => "edit_halls", :id => 0} %></td>
-	    <td><%= link_to 'Destroy', hall, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	  </tr>
 	<% end %>
 	<% end %>
@@ -45,5 +39,5 @@
 
 <%= link_to raw('<i class="glyphw icon-white icon-plus"></i>Add new function space'), {:action => 'new_hall'}, remote: true, :id => "addHallLnk", :class => "btn btn-success" %>
 <div id="addHallSlide">
-
+	<%= render partial: 'venues/new_hall', locals: { :venue => @venue } %>
 </div>

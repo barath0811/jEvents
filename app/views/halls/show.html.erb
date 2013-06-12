@@ -2,7 +2,7 @@
 
 <p>
   <b>Venue:</b>
-  <%= @hall.venue %>
+  <%= @hall.venue.name %>
 </p>
 
 <p>
@@ -25,6 +25,3 @@
   <%= @hall.hall_rent %>
 </p>
 
-
-<%= link_to 'Edit', edit_hall_path(@hall) %> |
-<%= link_to 'Back', halls_path %>

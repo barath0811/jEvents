@@ -2,13 +2,15 @@ Jevents::Application.routes.draw do
 
   resources :seating_arrangements
   resources :images
-  resources :halls
+  
   resources :facilities
   resources :rates
   resources :contacts
   resources :addresses
   
   resources :venues do
+    resources :halls
+    
     member do   #member - requires an ID
       get 'edit_basic'
       get 'index_halls'

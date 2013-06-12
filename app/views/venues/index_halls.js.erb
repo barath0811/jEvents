@@ -2,14 +2,7 @@ $("#venueEditContent").html('<%=j render partial: 'venues/halls', locals: { :ven
 
 $(document).ready(function() {
     $('#addHallLnk').click(function(){
-    	alert('Loading');
         $('#addHallSlide').slideDown('slow', function(){
-        	alert('fired done');
-        });
-    });
-
-    $('#cancelHallSlide').click(function(){
-    	$('#addHallSlide').slideUp('slow', function(){
         });
     });
 });
