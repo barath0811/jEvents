@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 
 
-function createSearchParams(entity){
+function createSearchParams(entity, value){
 	var val = '';
 	var ulid = 'ul#' + entity + ' li';
 	var chkid = '#chk_' + entity + '_';
@@ -14,9 +14,9 @@ function createSearchParams(entity){
 		var id = chkid + $(this).attr('id');
 		if($(id)[0] && $(id)[0].checked){
 			if(val == '')
-				val = val + $(this).attr('id');
+				val = val + (value == 1 ? $(id).attr('value') : $(this).attr('id'));
 			else
-				val = val + ','+ $(this).attr('id');
+				val = val + ','+ (value == 1 ? $(id).attr('value') : $(this).attr('id'));
 		}
 	});
 	return val;
@@ -24,18 +24,19 @@ function createSearchParams(entity){
 
 
 function searchFired(){
-	var areas = createSearchParams('area');
-	var bud = createSearchParams('bud');
-	var am = createSearchParams('am');
-	var cap = createSearchParams('cap');
-	var mo = createSearchParams('meal');
+	var areas = createSearchParams('area', 1);
+	var bud = createSearchParams('bud', 1);
+	var am = createSearchParams('am', 1);
+	var amn = createSearchParams('am', 2);
+	var cap = createSearchParams('cap', 1);
+	var mo = createSearchParams('meal', 1);
 
 	$('#results_div').html('');
 
 	$.ajax({
 		url: "/venues/search",
 		type: "POST",
-		data: {areas:areas, budget:bud, amenities:am, capacities:cap, meal:mo, po:true },
+		data: {areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, po:true },
 		success: function(data) {
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 

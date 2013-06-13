@@ -29,7 +29,11 @@ module VenuesHelper
 		end
 
 		doc.elements.each('//Amenities/option') do |ele|
-			query.amenities << ele.text
+			query.amenities_name << ele.text
+		end
+
+		doc.elements.each('//Amenities/column') do |ele|
+			query.amenities_val << ele.text
 		end
 
 		doc.elements.each('//Rating/option') do |ele|

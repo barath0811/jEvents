@@ -195,8 +195,12 @@ class VenuesController < ApplicationController
       @query.budget = params[:budget].split(',')
     end
 
-    unless params[:amenities].nil?
-      @query.amenities = params[:amenities].split(',')
+    unless params[:amenities_val].nil?
+      @query.amenities_val = params[:amenities_val].split(',')
+    end
+
+    unless params[:amenities_name].nil?
+      @query.amenities_name = params[:amenities_name].split(',')
     end
 
     unless params[:capacities].nil?

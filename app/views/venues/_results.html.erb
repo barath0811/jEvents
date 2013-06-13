@@ -20,16 +20,6 @@
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
-		<%= unless @query.mealOptions.count == 0 
-			'Meal Options: '
-		end %>
-	</span>
-	<% @query.mealOptions.each do |a| %>
-		<span class="query_param"><%= a %> </span>
-	<% end %>
-</div>
-<div id="query" class="query_param_div">
-	<span id="query_title" style="font-weight:bold;">
 		<%= unless @query.budget.count == 0 
 			'Budget: '
 		end %>
@@ -40,11 +30,11 @@
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
-		<%= unless @query.amenities.count == 0 
+		<%= unless @query.amenities_name.count == 0 
 			'Amenities: '
 		end %>
 	</span>
-	<% @query.amenities.each do |a| %>
+	<% @query.amenities_name.each do |a| %>
 		<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
