@@ -2,10 +2,10 @@
   <ul id="venueEditNav" class="nav nav-pills nav-stacked span3">
     <% if @venue.new_record? %>
       <li class="active"><%= link_to 'Basic Information', {:action => 'new_basic'}, remote: true %></li>
-      <li><%= link_to 'Function Spaces', {:action => 'index_halls'}, remote: true %></li>
-      <li><%= link_to 'Pricing & Terms', {:action => 'new_pricing'}, remote: true %></li>
-      <li><%= link_to 'Amenities', {:action => 'new_amenities'}, remote: true %></li>
-      <li><%= link_to 'Account Settings', {:action => 'new_settings'}, remote: true %></li>
+      <li><a href="#" class='disabledLinkForNew'>Function Spaces</a></li>
+      <li><a href="#" class='disabledLinkForNew'>Pricing & Terms</a></li>
+      <li><a href="#" class='disabledLinkForNew'>Amenities</a></li>
+      <li><a href="#" class='disabledLinkForNew'>Account Settings</a></li>
     <% else %>
       <li class="active"><%= link_to 'Basic Information', {:action => 'edit_basic'}, remote: true %></li>
       <li><%= link_to 'Function Spaces', {:action => 'index_halls'}, remote: true %></li>
