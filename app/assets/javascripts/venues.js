@@ -1,5 +1,7 @@
 $(document).ready(function(){
-	
+	$('.disabledLinkForNew').click(function(e){
+		return false;
+	});
 });
 
 
@@ -63,13 +65,14 @@ $('.ajax_form').submit(function() {
     var valuesToSubmit = $(this).serialize();
     var fileToSubmit = $(":base_image", this).serialize();
     $.ajax({
-        url: $(this).attr('action'), //sumbits it to the given url of the form
+        url: $(this).attr('action'),
         type: "POST",
         data: valuesToSubmit,
         file: fileToSubmit,
         dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
     }).success(function(json){
         showMessage('Saved successfully...', 'success');
+        debugger;
     }).error(function(json){
 
     });

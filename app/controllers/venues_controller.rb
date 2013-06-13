@@ -41,9 +41,7 @@ class VenuesController < ApplicationController
     @venue.build_address
     @venue.build_contact
 
-    respond_to do |format|
-      format.js   #new_basic.js.erb
-    end
+    redirect_to 'www.google.com'
   end
 
   def index_halls
@@ -60,9 +58,8 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
     @hall = Hall.new
     
-    JeventzLogger.debug "#{@venue.inspect}"
-    
     respond_to do |format|
+      format.json
       format.js   #index_halls.js.erb
     end
   end
@@ -105,7 +102,7 @@ class VenuesController < ApplicationController
     
     respond_to do |format|
       if @venue.save
-        format.html { redirect_to @venue, notice: 'Venue was successfully created.' }
+        format.html { redirect_to :action => 'edit', :id => @venue.id }
         format.json { render json: @venue, status: :created, location: @venue }
       else
         format.html { render action: "new" }
