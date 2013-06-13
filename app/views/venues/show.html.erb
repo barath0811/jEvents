@@ -26,9 +26,17 @@
 </p>
 
 <p>
+  <b>Area:</b>
+  <%= @venue.address.area %>
+</p>
+
+
+<p>
   <b>Contact:</b>
   <%= @venue.contact.firstname + " " + @venue.contact.lastname %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_venue_path(@venue) %> |
 <%= link_to 'Back', venues_path %>

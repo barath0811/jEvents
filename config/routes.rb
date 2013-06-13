@@ -26,6 +26,7 @@ Jevents::Application.routes.draw do
       get 'new_pricing'
       get 'new_amenities'
       get 'new_settings'
+      get 'show_image'
 
       get 'search'
       post 'search' # ???

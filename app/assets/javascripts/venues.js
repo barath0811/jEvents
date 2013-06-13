@@ -4,6 +4,8 @@ $(document).ready(function(){
 	});
 });
 
+
+
 function createSearchParams(entity){
 	var val = '';
 	var ulid = 'ul#' + entity + ' li';
@@ -18,8 +20,8 @@ function createSearchParams(entity){
 		}
 	});
 	return val;
-
 }
+
 
 function searchFired(){
 	var areas = createSearchParams('area');
@@ -37,7 +39,7 @@ function searchFired(){
 		success: function(data) {
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
-			alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+			
 		}   
 	});
 
@@ -61,11 +63,13 @@ function textChanged(areas){
 
 $('.ajax_form').submit(function() {
     var valuesToSubmit = $(this).serialize();
+    var fileToSubmit = $(":base_image", this).serialize();
     $.ajax({
         url: $(this).attr('action'),
         type: "POST",
         data: valuesToSubmit,
-        dataType: "JSON"
+        file: fileToSubmit,
+        dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
     }).success(function(json){
         showMessage('Saved successfully...', 'success');
         debugger;

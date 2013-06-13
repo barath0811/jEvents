@@ -29,6 +29,7 @@ class VenuesController < ApplicationController
     @venue.build_address
     @venue.build_contact
 
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @venue }
@@ -81,6 +82,11 @@ class VenuesController < ApplicationController
     end
   end
 
+  def show_image
+    @venue1 = Venue.find(params[:id])
+    send_data @venue1.base_image, :type => 'image/png',:disposition => 'inline'
+  end
+
   def new_settings
     @venue = Venue.new
 
@@ -93,7 +99,7 @@ class VenuesController < ApplicationController
   # POST /venues.json
   def create
     @venue = Venue.new(params[:venue])
-
+    
     respond_to do |format|
       if @venue.save
         format.html { redirect_to :action => 'edit', :id => @venue.id }
@@ -175,36 +181,33 @@ class VenuesController < ApplicationController
   end
 
   def search
-    query = SearchCriteria.new
+    @query = SearchCriteria.new
+    
     unless params[:eventType].nil?
-      query.eventType = params[:eventType]
+      @query.eventType = params[:eventType]
     end
 
     unless params[:areas].nil?
-      query.areas = params[:areas]
-    end
-
-    unless params[:areas].nil?
-      query.areas = params[:areas]
+      @query.areas = params[:areas].split(',')
     end
 
     unless params[:budget].nil?
-      query.areas = params[:budget]
+      @query.budget = params[:budget].split(',')
     end
 
     unless params[:amenities].nil?
-      query.areas = params[:amenities]
+      @query.amenities = params[:amenities].split(',')
     end
 
     unless params[:capacities].nil?
-      query.areas = params[:capacities]
+      @query.capacity = params[:capacities].split(',')
     end
 
     unless params[:meal].nil?
-      query.areas = params[:meal]
+      @query.mealOptions = params[:meal].split(',')
     end
 
-    @venue = Venue.search(query)
+    @venue = Venue.search(@query)
 
     unless params[:po].nil?
       respond_to do |format|

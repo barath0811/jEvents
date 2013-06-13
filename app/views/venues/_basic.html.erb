@@ -19,6 +19,10 @@
 	<%= f.submit "Save Changes", :class => "btn btn-success fr" %>
 </div>
 
+<div>
+	<%= image_tag url_for(:controller => "venues", :action => "show_image", :id => @venue.id) %>
+</div>
+
 <div id="venueBasicContent">
 	<div class="field">
 		<%= f.label(:name, "Venue Name:") %>
@@ -27,6 +31,11 @@
 	<div class="field">
 		<%= f.label(:venue_type, "Venue Type:") %>
 		<%= f.text_field :venue_type %>
+	</div>
+
+	<div class="field">
+		<%= f.label(:base_image, "Venue Image:") %>
+		<%= f.file_field :base_image%>
 	</div>
 
 	<%= f.fields_for :address do |a| %>

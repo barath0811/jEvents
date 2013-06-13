@@ -2,6 +2,7 @@ class Venue < ActiveRecord::Base
 	attr_accessible :name, 
 					:terms_conditions, 
 					:venue_type,
+					:base_image,
 					:website,
 					:address_attributes,
 					:contact_attributes,
@@ -22,8 +23,23 @@ class Venue < ActiveRecord::Base
 	#validations
 	#validates :type
 
+	def base_image=(value)
+    	write_attribute(:base_image, value.read)
+  	end
+
+
 	def self.search(query)
 		JeventzLogger.debug "query == #{query.inspect}"
-		find(:all)
+		#joins(:address).where('addresses.area' => query.areas).includes(:address)
+
+		venue_results = joins(:address).includes(:address, :facility)
+
+		unless query.areas.nil?
+			venue_results = venue_results.joins(:address).where('addresses.area' => query.areas).includes(:address)
+		end
+		unless query.amenities.nil?
+
+		end
+			return venue_results.limit(10)
 	end
 end

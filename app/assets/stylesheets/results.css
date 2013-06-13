@@ -2,7 +2,7 @@
   padding: 5px;
   padding-bottom: 0px;
   padding-top: 0px;
-  margin-bottom: 3px;
+  margin-bottom: 8px;
   font-size: 18px;
   font-weight: 200;
   width: 100%;
@@ -55,6 +55,30 @@
   background-color:rgb(206, 225, 233);
 }
 
+label.filebutton {
+    width:120px;
+    height:40px;
+    overflow:hidden;
+    position:relative;
+    background-color:#ccc;
+}
+
+label span input {
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    top: -2px;
+    left: -700px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding:0;
+}
+
 .venue-img{
 	float: left;
 	top: 10px;
@@ -69,6 +93,29 @@
 	position: relative;
 	width: 20px;
 	height: 20px;
+}
+
+.query_param{
+  background-color: rgb(220,220,150);
+  padding-left: 4px ;
+  padding-right: 4px ;
+  padding-top: 2px ;
+  padding-bottom: 2px ;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.query_param_div{
+  padding-left:20px;
+  margin-bottom:6px;
+}
+
+.close-icon{
+  position: relative;
+  width: 17px;
+  height: 17px;  
+  cursor:pointer;
 }
 
 .SearchResults h3 {

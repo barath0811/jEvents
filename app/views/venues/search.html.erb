@@ -1,4 +1,5 @@
 <% @options = populateSearchCriteria %>
+<%= @selectedArea = @query.areas.first %>
 
 <div class="row">
 	<div class="filters span2" style="margin-top:5px;">
@@ -7,9 +8,13 @@
 
 		<ul id="area">
 			<% @options.areas.each do |c| %>
-			<li id="<%= c.to_s.gsub(/\s+/, "") %>"> 
+			<li id="<%= c.to_s.gsub(/\s+/, "") %>" style="cursor:pointer;"> 
 				<a>
-					<%= check_box_tag 'chk_area_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, false, :onclick => 'searchFired();' %> 
+					<%= if(@selectedArea == c) 
+							check_box_tag 'chk_area_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, true, :onchange => 'searchFired();'
+						else
+							check_box_tag 'chk_area_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, false, :onchange => 'searchFired();'
+					end %>
 					<span><%= c %> </span>
 				</a>
 			</li>
@@ -19,34 +24,20 @@
 		<h5>Capacity</h5>
 		<ul id='cap'>
 			<%  @options.capacity.each do |c| %>
-			<li id="<%= c %>"> 
+			<li id="<%= c.to_s.gsub(/\s+/, "") %>"> 
 				<a>
-					<%= check_box_tag 'chk_cap_' + c.to_s, c.to_s, false, :onclick => 'searchFired();' %> 
+					<%= check_box_tag 'chk_cap_' + c.to_s.to_s.gsub(/\s+/, ""), c.to_s, false, :onclick => 'searchFired();' %> 
 					<span><%= c %> </span>
 				</a>
 			</li>
 			<% end %>
 		</ul>
 		
-		
-		<h5>Meal Option</h5>
-		<ul id='meal'>
-			<%  @options.mealOptions.each do |m| %>
-			<li id="<%= m %>"> 
-				<%= check_box_tag 'chk_meal_' + m.to_s, m.to_s, false, :onclick => 'searchFired();' %> 
-				<a>
-					<span><%= m %> </span>
-				</a>
-			</li>
-			<% end %>
-		</ul>
-		
-
 		<h5>Budget</h5>
 		<ul id='bud'>
 			<%  @options.budget.each do |b| %>
-			<li id="<%= b %>"> 
-				<%= check_box_tag 'chk_bud_' + b.to_s, b.to_s, false, :onclick => 'searchFired();' %> 
+			<li id="<%= b.to_s.gsub(/\s+/, "") %>"> 
+				<%= check_box_tag 'chk_bud_' + b.to_s.to_s.gsub(/\s+/, ""), b.to_s, false, :onclick => 'searchFired();' %> 
 				<a>
 					<span><%= b %> </span>
 				</a>
@@ -58,8 +49,8 @@
 		<h5>Amenities</h5>
 		<ul id='am'>
 			<%  @options.amenities.each do |a| %>
-			<li id="<%= a %>"> 
-				<%= check_box_tag 'chk_am_' + a.to_s, a.to_s, false, :onclick => 'searchFired();' %> 
+			<li id="<%= a.to_s.gsub(/\s+/, "") %>"> 
+				<%= check_box_tag 'chk_am_' + a.to_s.to_s.gsub(/\s+/, ""), a.to_s, false, :onclick => 'searchFired();' %> 
 				<a>
 					<span><%= a %> </span>
 				</a>
