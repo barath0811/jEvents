@@ -33,20 +33,6 @@
 			<% end %>
 		</ul>
 		
-		
-		<h5>Meal Option</h5>
-		<ul id='meal'>
-			<%  @options.mealOptions.each do |m| %>
-			<li id="<%= m.to_s.gsub(/\s+/, "") %>"> 
-				<%= check_box_tag 'chk_meal_' + m.to_s.to_s.gsub(/\s+/, ""), m.to_s, false, :onclick => 'searchFired();' %> 
-				<a>
-					<span><%= m %> </span>
-				</a>
-			</li>
-			<% end %>
-		</ul>
-		
-
 		<h5>Budget</h5>
 		<ul id='bud'>
 			<%  @options.budget.each do |b| %>

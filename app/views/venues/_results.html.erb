@@ -53,8 +53,11 @@
 
 <% @venue.each do |c| %>
 <div class="SearchResults">
-	<%= image_tag('3.jpg', :class => "venue-img") %>
-
+	<%= unless c.base_image.nil? 
+		image_tag url_for(:controller => "venues", :action => "show_image", :id => c.id), :class => "venue-img"
+	else 
+		 image_tag('3.jpg', :class => "venue-img") 
+	end %>
 	<div style="margin-left:190px">
 		<h3><%= c.name %>  |  Luxury business hotel</h3>
 		<div>

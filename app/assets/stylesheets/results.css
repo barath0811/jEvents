@@ -2,7 +2,7 @@
   padding: 5px;
   padding-bottom: 0px;
   padding-top: 0px;
-  margin-bottom: 3px;
+  margin-bottom: 8px;
   font-size: 18px;
   font-weight: 200;
   width: 100%;
@@ -53,6 +53,30 @@
 .filters li:hover
 {
   background-color:rgb(206, 225, 233);
+}
+
+label.filebutton {
+    width:120px;
+    height:40px;
+    overflow:hidden;
+    position:relative;
+    background-color:#ccc;
+}
+
+label span input {
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    top: -2px;
+    left: -700px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding:0;
 }
 
 .venue-img{

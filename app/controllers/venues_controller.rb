@@ -29,6 +29,7 @@ class VenuesController < ApplicationController
     @venue.build_address
     @venue.build_contact
 
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @venue }
@@ -84,6 +85,11 @@ class VenuesController < ApplicationController
     end
   end
 
+  def show_image
+    @venue1 = Venue.find(params[:id])
+    send_data @venue1.base_image, :type => 'image/png',:disposition => 'inline'
+  end
+
   def new_settings
     @venue = Venue.new
 
@@ -96,7 +102,7 @@ class VenuesController < ApplicationController
   # POST /venues.json
   def create
     @venue = Venue.new(params[:venue])
-
+    
     respond_to do |format|
       if @venue.save
         format.html { redirect_to @venue, notice: 'Venue was successfully created.' }
