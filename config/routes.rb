@@ -2,10 +2,10 @@ Jevents::Application.routes.draw do
 
   resources :seating_arrangements
   resources :images
-  resources :facilities
   
   resources :venues do
     resources :halls
+    resources :facilities, :only => [:edit, :create, :update]
 
     member do   #member - requires an ID
       get 'edit_pricing'

@@ -10,7 +10,7 @@
       <li class="active"><%= link_to 'Basic Information', edit_venue_path(@venue), remote: true %></li>
       <li><%= link_to 'Function Spaces', venue_halls_path(@venue), remote: true %></li>
       <li><%= link_to 'Pricing & Terms', edit_pricing_venue_path(@venue), remote: true %></li>
-      <li><%= link_to 'Amenities', edit_amenities_venue_path(@venue), remote: true %></li>
+      <li><%= link_to 'Amenities', edit_venue_facility_path(@venue), remote: true %></li>
       <li><%= link_to 'Account Settings', edit_settings_venue_path(@venue), remote: true %></li>
     <% end %>  
   </ul>

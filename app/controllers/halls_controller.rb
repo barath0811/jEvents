@@ -6,8 +6,6 @@ class HallsController < ApplicationController
     @venue = Venue.find(params[:venue_id])
   end
 
-  # GET /halls
-  # GET /halls.json
   def index
     @halls = @venue.halls.all
     @hall = Hall.new  # ???
@@ -17,8 +15,6 @@ class HallsController < ApplicationController
     end
   end
 
-  # GET /halls/1
-  # GET /halls/1.json
   def show
     @hall = Hall.find(params[:id])
 
@@ -28,8 +24,6 @@ class HallsController < ApplicationController
     end
   end
 
-  # GET /halls/new
-  # GET /halls/new.json
   def new
     @hall = Hall.new
     
@@ -38,7 +32,6 @@ class HallsController < ApplicationController
     end
   end
 
-  # GET /halls/1/edit
   def edit
     @hall = Hall.find(params[:id])
 
@@ -47,8 +40,6 @@ class HallsController < ApplicationController
     end
   end
 
-  # POST /halls
-  # POST /halls.json
   def create
     @hall = Hall.new(params[:hall])
     @hall.venue_id = @venue.id
@@ -64,8 +55,6 @@ class HallsController < ApplicationController
     end
   end
 
-  # PUT /halls/1
-  # PUT /halls/1.json
   def update
     @hall = Hall.find(params[:id])
 
@@ -80,8 +69,6 @@ class HallsController < ApplicationController
     end
   end
 
-  # DELETE /halls/1
-  # DELETE /halls/1.json
   def destroy
     @hall = Hall.find(params[:id])
     @hall.destroy
