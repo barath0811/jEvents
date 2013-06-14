@@ -30,13 +30,16 @@ function searchFired(){
 	var amn = createSearchParams('am', 2);
 	var cap = createSearchParams('cap', 1);
 	var mo = createSearchParams('meal', 1);
+	var et = $("#eventType option:selected").val();
+
+
 
 	$('#results_div').html('');
 
 	$.ajax({
 		url: "/venues/search",
 		type: "POST",
-		data: {areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, po:true },
+		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, po:true },
 		success: function(data) {
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
