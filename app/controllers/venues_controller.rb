@@ -29,70 +29,15 @@ class VenuesController < ApplicationController
     @venue.build_address
     @venue.build_contact
 
-
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @venue }
-    end
-  end
-
-  def new_basic
-    @venue = Venue.new
-    @venue.build_address
-    @venue.build_contact
-
-    redirect_to 'www.google.com'
-  end
-
-  def index_halls
-    @venue = Venue.find(params[:id])
-    @halls = @venue.halls.all
-    @hall = Hall.new
-    
-    respond_to do |format|
-      format.js   #index_halls.js.erb
-    end
-  end
-
-  def new_hall
-    @venue = Venue.find(params[:id])
-    @hall = Hall.new
-    
-    respond_to do |format|
-      format.json
-      format.js   #index_halls.js.erb
-    end
-  end
-
-  def new_pricing
-    @venue = Venue.new
-    @venue.build_rate
-
-    respond_to do |format|
-      format.js   #new_basic.js.erb
-    end
-  end
-
-  def new_amenities
-    @venue = Venue.new
-    @venue.build_facility
-
-    respond_to do |format|
-      format.js   #new_basic.js.erb
     end
   end
 
   def show_image
     @venue1 = Venue.find(params[:id])
     send_data @venue1.base_image, :type => 'image/png',:disposition => 'inline'
-  end
-
-  def new_settings
-    @venue = Venue.new
-
-    respond_to do |format|
-      format.js   #new_basic.js.erb
-    end
   end
 
   # POST /venues
@@ -121,27 +66,11 @@ class VenuesController < ApplicationController
     end
   end
 
-  def edit_basic
-    @venue = Venue.find(params[:id])
-
-    respond_to do |format|
-      format.js   
-    end
-  end
-
-  def edit_halls
-    JeventzLogger.debug "#{params.inspect}"
-
-    @venue = Venue.find(params[:id])
-    @hall = @venue.halls.new
-
-    respond_to do |format|
-      format.js   
-    end
-  end
-
   def edit_pricing
     @venue = Venue.find(params[:id])
+    if @venue.rate.blank?
+      @venue.build_rate
+    end
 
     respond_to do |format|
       format.js   
@@ -150,6 +79,9 @@ class VenuesController < ApplicationController
 
   def edit_amenities
     @venue = Venue.find(params[:id])
+    if @venue.facility.blank?
+      @venue.build_facility
+    end
 
     respond_to do |format|
       format.js   

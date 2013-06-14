@@ -2,30 +2,17 @@ Jevents::Application.routes.draw do
 
   resources :seating_arrangements
   resources :images
-  
   resources :facilities
-  resources :rates
-  resources :contacts
-  resources :addresses
   
   resources :venues do
     resources :halls
-    
+
     member do   #member - requires an ID
-      get 'edit_basic'
-      get 'index_halls'
-      get 'new_hall'
       get 'edit_pricing'
       get 'edit_amenities'
       get 'edit_settings'
     end
     collection do   #works on a collection, does not require an ID
-      get 'new_basic'
-      get 'index_halls'
-      get 'new_hall'
-      get 'new_pricing'
-      get 'new_amenities'
-      get 'new_settings'
       get 'show_image'
 
       get 'search'
