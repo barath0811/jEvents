@@ -1,23 +1,22 @@
 <div class="row-fluid">
   <ul id="venueEditNav" class="nav nav-pills nav-stacked span3">
     <% if @venue.new_record? %>
-      <li class="active"><%= link_to 'Basic Information', {:action => 'new_basic'}, remote: true %></li>
+      <li class="active"><a href="#">Basic Information</a></li>
       <li><a href="#" class='disabledLinkForNew'>Function Spaces</a></li>
       <li><a href="#" class='disabledLinkForNew'>Pricing & Terms</a></li>
       <li><a href="#" class='disabledLinkForNew'>Amenities</a></li>
       <li><a href="#" class='disabledLinkForNew'>Account Settings</a></li>
     <% else %>
-      <li class="active"><%= link_to 'Basic Information', {:action => 'edit_basic'}, remote: true %></li>
-      <li><%= link_to 'Function Spaces', {:action => 'index_halls'}, remote: true %></li>
-      <li><%= link_to 'Pricing & Terms', {:action => 'edit_pricing'}, remote: true %></li>
-      <li><%= link_to 'Amenities', {:action => 'edit_amenities'}, remote: true %></li>
-      <li><%= link_to 'Account Settings', {:action => 'edit_settings'}, remote: true %></li>
+      <li class="active"><%= link_to 'Basic Information', edit_venue_path(@venue), remote: true %></li>
+      <li><%= link_to 'Function Spaces', venue_halls_path(@venue), remote: true %></li>
+      <li><%= link_to 'Pricing & Terms', edit_pricing_venue_path(@venue), remote: true %></li>
+      <li><%= link_to 'Amenities', edit_venue_facility_path(@venue), remote: true %></li>
+      <li><%= link_to 'Account Settings', edit_settings_venue_path(@venue), remote: true %></li>
     <% end %>  
   </ul>
   <div class="span7">
     <div id="venueEditContent" class="venueContent">
       <%= render partial: 'venues/basic', locals: { :venue => @venue } %>
     </div>
-    
   </div>
 </div>
