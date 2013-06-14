@@ -1,74 +1,43 @@
-    seating_arrangements GET    /seating_arrangements(.:format)          seating_arrangements#index
-                         POST   /seating_arrangements(.:format)          seating_arrangements#create
- new_seating_arrangement GET    /seating_arrangements/new(.:format)      seating_arrangements#new
-edit_seating_arrangement GET    /seating_arrangements/:id/edit(.:format) seating_arrangements#edit
-     seating_arrangement GET    /seating_arrangements/:id(.:format)      seating_arrangements#show
-                         PUT    /seating_arrangements/:id(.:format)      seating_arrangements#update
-                         DELETE /seating_arrangements/:id(.:format)      seating_arrangements#destroy
-                  images GET    /images(.:format)                        images#index
-                         POST   /images(.:format)                        images#create
-               new_image GET    /images/new(.:format)                    images#new
-              edit_image GET    /images/:id/edit(.:format)               images#edit
-                   image GET    /images/:id(.:format)                    images#show
-                         PUT    /images/:id(.:format)                    images#update
-                         DELETE /images/:id(.:format)                    images#destroy
-                   halls GET    /halls(.:format)                         halls#index
-                         POST   /halls(.:format)                         halls#create
-                new_hall GET    /halls/new(.:format)                     halls#new
-               edit_hall GET    /halls/:id/edit(.:format)                halls#edit
-                    hall GET    /halls/:id(.:format)                     halls#show
-                         PUT    /halls/:id(.:format)                     halls#update
-                         DELETE /halls/:id(.:format)                     halls#destroy
-              facilities GET    /facilities(.:format)                    facilities#index
-                         POST   /facilities(.:format)                    facilities#create
-            new_facility GET    /facilities/new(.:format)                facilities#new
-           edit_facility GET    /facilities/:id/edit(.:format)           facilities#edit
-                facility GET    /facilities/:id(.:format)                facilities#show
-                         PUT    /facilities/:id(.:format)                facilities#update
-                         DELETE /facilities/:id(.:format)                facilities#destroy
-                   rates GET    /rates(.:format)                         rates#index
-                         POST   /rates(.:format)                         rates#create
-                new_rate GET    /rates/new(.:format)                     rates#new
-               edit_rate GET    /rates/:id/edit(.:format)                rates#edit
-                    rate GET    /rates/:id(.:format)                     rates#show
-                         PUT    /rates/:id(.:format)                     rates#update
-                         DELETE /rates/:id(.:format)                     rates#destroy
-                contacts GET    /contacts(.:format)                      contacts#index
-                         POST   /contacts(.:format)                      contacts#create
-             new_contact GET    /contacts/new(.:format)                  contacts#new
-            edit_contact GET    /contacts/:id/edit(.:format)             contacts#edit
-                 contact GET    /contacts/:id(.:format)                  contacts#show
-                         PUT    /contacts/:id(.:format)                  contacts#update
-                         DELETE /contacts/:id(.:format)                  contacts#destroy
-               addresses GET    /addresses(.:format)                     addresses#index
-                         POST   /addresses(.:format)                     addresses#create
-             new_address GET    /addresses/new(.:format)                 addresses#new
-            edit_address GET    /addresses/:id/edit(.:format)            addresses#edit
-                 address GET    /addresses/:id(.:format)                 addresses#show
-                         PUT    /addresses/:id(.:format)                 addresses#update
-                         DELETE /addresses/:id(.:format)                 addresses#destroy
-        edit_basic_venue GET    /venues/:id/edit_basic(.:format)         venues#edit_basic
-       index_halls_venue GET    /venues/:id/index_halls(.:format)        venues#index_halls
-      edit_pricing_venue GET    /venues/:id/edit_pricing(.:format)       venues#edit_pricing
-    edit_amenities_venue GET    /venues/:id/edit_amenities(.:format)     venues#edit_amenities
-     edit_settings_venue GET    /venues/:id/edit_settings(.:format)      venues#edit_settings
-        new_basic_venues GET    /venues/new_basic(.:format)              venues#new_basic
-      index_halls_venues GET    /venues/index_halls(.:format)            venues#index_halls
-      new_pricing_venues GET    /venues/new_pricing(.:format)            venues#new_pricing
-    new_amenities_venues GET    /venues/new_amenities(.:format)          venues#new_amenities
-     new_settings_venues GET    /venues/new_settings(.:format)           venues#new_settings
-           search_venues GET    /venues/search(.:format)                 venues#search
-                         POST   /venues/search(.:format)                 venues#search
-                  venues GET    /venues(.:format)                        venues#index
-                         POST   /venues(.:format)                        venues#create
-               new_venue GET    /venues/new(.:format)                    venues#new
-              edit_venue GET    /venues/:id/edit(.:format)               venues#edit
-                   venue GET    /venues/:id(.:format)                    venues#show
-                         PUT    /venues/:id(.:format)                    venues#update
-                         DELETE /venues/:id(.:format)                    venues#destroy
-              home_index GET    /home/index(.:format)                    home#index
-              home_about GET    /home/about(.:format)                    home#about
-            home_contact GET    /home/contact(.:format)                  home#contact
-                home_faq GET    /home/faq(.:format)                      home#faq
-             placeholder GET    /placeholder(.:format)                   pages#placeholder
-                    root        /                                        home#index
+    seating_arrangements GET    /seating_arrangements(.:format)                 seating_arrangements#index
+                         POST   /seating_arrangements(.:format)                 seating_arrangements#create
+ new_seating_arrangement GET    /seating_arrangements/new(.:format)             seating_arrangements#new
+edit_seating_arrangement GET    /seating_arrangements/:id/edit(.:format)        seating_arrangements#edit
+     seating_arrangement GET    /seating_arrangements/:id(.:format)             seating_arrangements#show
+                         PUT    /seating_arrangements/:id(.:format)             seating_arrangements#update
+                         DELETE /seating_arrangements/:id(.:format)             seating_arrangements#destroy
+                  images GET    /images(.:format)                               images#index
+                         POST   /images(.:format)                               images#create
+               new_image GET    /images/new(.:format)                           images#new
+              edit_image GET    /images/:id/edit(.:format)                      images#edit
+                   image GET    /images/:id(.:format)                           images#show
+                         PUT    /images/:id(.:format)                           images#update
+                         DELETE /images/:id(.:format)                           images#destroy
+             venue_halls GET    /venues/:venue_id/halls(.:format)               halls#index
+                         POST   /venues/:venue_id/halls(.:format)               halls#create
+          new_venue_hall GET    /venues/:venue_id/halls/new(.:format)           halls#new
+         edit_venue_hall GET    /venues/:venue_id/halls/:id/edit(.:format)      halls#edit
+              venue_hall GET    /venues/:venue_id/halls/:id(.:format)           halls#show
+                         PUT    /venues/:venue_id/halls/:id(.:format)           halls#update
+                         DELETE /venues/:venue_id/halls/:id(.:format)           halls#destroy
+        venue_facilities POST   /venues/:venue_id/facilities(.:format)          facilities#create
+     edit_venue_facility GET    /venues/:venue_id/facilities/:id/edit(.:format) facilities#edit
+          venue_facility PUT    /venues/:venue_id/facilities/:id(.:format)      facilities#update
+      edit_pricing_venue GET    /venues/:id/edit_pricing(.:format)              venues#edit_pricing
+    edit_amenities_venue GET    /venues/:id/edit_amenities(.:format)            venues#edit_amenities
+     edit_settings_venue GET    /venues/:id/edit_settings(.:format)             venues#edit_settings
+       show_image_venues GET    /venues/show_image(.:format)                    venues#show_image
+           search_venues GET    /venues/search(.:format)                        venues#search
+                         POST   /venues/search(.:format)                        venues#search
+                  venues GET    /venues(.:format)                               venues#index
+                         POST   /venues(.:format)                               venues#create
+               new_venue GET    /venues/new(.:format)                           venues#new
+              edit_venue GET    /venues/:id/edit(.:format)                      venues#edit
+                   venue GET    /venues/:id(.:format)                           venues#show
+                         PUT    /venues/:id(.:format)                           venues#update
+                         DELETE /venues/:id(.:format)                           venues#destroy
+              home_index GET    /home/index(.:format)                           home#index
+              home_about GET    /home/about(.:format)                           home#about
+            home_contact GET    /home/contact(.:format)                         home#contact
+                home_faq GET    /home/faq(.:format)                             home#faq
+             placeholder GET    /placeholder(.:format)                          pages#placeholder
+                    root        /                                               home#index

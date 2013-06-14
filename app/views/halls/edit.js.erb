@@ -1,4 +1,4 @@
-$("#addHallSlide").html('<%=j render partial: 'venues/new_hall', locals: { :venue => @venue } %>')
+$("#addHallSlide").html('<%=j render 'form', locals: { :venue => @venue, :id => @hall.id } %>')
 
 $(document).ready(function() {
     $('#cancelHallSlide').click(function(){
