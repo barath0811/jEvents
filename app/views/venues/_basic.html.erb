@@ -1,9 +1,9 @@
 <h1>Basic Venue Information</h1>
 
-<%= form_for @venue do |f| %>
+<%= form_for @venue, :html => {:class => "form-horizontal"}, :validate => true do |f| %>
 <% 
-	@venueTypes = getOptions('VenueType')
-	@areas = getOptions('Area')
+@venueTypes = getOptions('VenueType')
+@areas = getOptions('Area')
 %>
 
 <% if @venue.errors.any? %>
@@ -28,61 +28,61 @@
 </div>
 
 <div id="venueBasicContent">
-	<div class="field">
-		<%= f.label(:name, "Venue Name:") %>
-		<%= f.text_field :name %>
+	<div class="control-group">
+		<%= f.label(:name, "Venue Name:", class:"control-label") %>
+		<div class="controls"><%= f.text_field :name %></div>
 	</div>
-	<div class="field">
-		<%= f.label(:venue_type, "Venue Type:") %>
-		<%= f.select(:venue_type, @venueTypes) %>
+	<div class="control-group">
+		<%= f.label(:venue_type, "Venue Type:", class:"control-label") %>
+		<div class="controls"><%= f.select(:venue_type, @venueTypes) %></div>
 	</div>
 
-	<div class="field">
-		<%= f.label(:base_image, "Venue Image:") %>
-		<%= f.file_field :base_image%>
+	<div class="control-group">
+		<%= f.label(:base_image, "Venue Image:", class:"control-label") %>
+		<div class="controls"><%= f.file_field :base_image%></div>
 	</div>
 
 	<%= f.fields_for :address do |a| %>
 
-	<div class="field">
-		<%= a.label(:address, "Address:") %>
-		<%= a.text_field :address %>
+	<div class="control-group">
+		<%= a.label(:address, "Address:", class:"control-label") %>
+		<div class="controls"><%= a.text_field :address %></div>
 	</div>
 	
-	<div class="field">
-		<%= a.label(:area, "Area:") %>
-		<%= a.select(:area, @areas) %>
+	<div class="control-group">
+		<%= a.label(:area, "Area:", class:"control-label") %>
+		<div class="controls"><%= a.select(:area, @areas) %></div>
 	</div>
 
 	<% end %>
 
-	<div class="field">
-		<%= f.label(:website, "Website:") %>
-		<%= f.text_field :website %>
+	<div class="control-group">
+		<%= f.label(:website, "Website:", class:"control-label") %>
+		<div class="controls"><%= f.text_field :website %></div>
 	</div>
 
 	<%= f.fields_for :contact do |c| %>
 	<div class="roundedBorder">
-		<div class="field">
-			<%= c.label(:firstname, "Contact Person:") %>
-			<%= c.text_field :firstname, :class => "contactname" %>
-			<%= c.text_field :lastname, :class => "contactname" %>
+		<div class="control-group">
+			<%= c.label(:firstname, "Contact Person:", class:"control-label") %>
+			<div class="controls"><%= c.text_field :firstname, :class => "contactname" %>
+				<%= c.text_field :lastname, :class => "contactname" %></div>
+			</div>
+			<div class="control-group">
+				<%= c.label(:email, "Email:", class:"control-label") %>
+				<div class="controls"><%= c.text_field :email %></div>
+			</div>
+			<div class="control-group">
+				<%= c.label(:landline_number, "Landline #:", class:"control-label") %>
+				<div class="controls"><%= c.text_field :landline_number %></div>
+			</div>
+			<div class="control-group">
+				<%= c.label(:mobile_number, "Mobile #:", class:"control-label") %>
+				<div class="controls"><%= c.text_field :mobile_number %></div>
+			</div>
 		</div>
-		<div class="field">
-			<%= c.label(:email, "Email:") %>
-			<%= c.text_field :email %>
-		</div>
-		<div class="field">
-			<%= c.label(:landline_number, "Landline #:") %>
-			<%= c.text_field :landline_number %>
-		</div>
-		<div class="field">
-			<%= c.label(:mobile_number, "Mobile #:") %>
-			<%= c.text_field :mobile_number %>
-		</div>
+		<% end %>
+		<div id="user_message"></div>
 	</div>
-	<% end %>
-	<div id="user_message"></div>
-</div>
 
-<% end %>
+	<% end %>

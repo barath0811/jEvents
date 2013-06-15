@@ -32,6 +32,7 @@ GEM
       rake
     arel (3.0.2)
     builder (3.0.4)
+    client_side_validations (3.2.5)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -116,6 +117,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  client_side_validations
   coffee-rails (~> 3.2.1)
   debugger
   jquery-rails

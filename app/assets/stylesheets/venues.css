@@ -1,4 +1,4 @@
-#venueBasicContent label{
+#venueBasicContent1 label{
 	width: 8em;
   	float: left;
   	text-align: right;
@@ -26,10 +26,10 @@ div.roundedBorder{
 
 #venueHallEditContent label{
 	width: 8em;
-  	float: left;
-  	text-align: right;
-  	margin-right: 0.5em;
-  	display: block;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block;
 }
 
 #cancelHallSlide {
@@ -38,18 +38,18 @@ div.roundedBorder{
 
 #venueRateContent label{
 	width: 10em;
-  	float: left;
-  	text-align: right;
-  	margin-right: 0.5em;
-  	display: block;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block;
 }
 
 #venueAmenitiesContent label{
-	width: 10em;
-  	float: left;
-  	text-align: right;
-  	margin-right: 0.5em;
-  	display: block;
+  width: 10em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block;
 }
 
 .disabledLinkForNew{
