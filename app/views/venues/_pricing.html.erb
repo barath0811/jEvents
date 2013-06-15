@@ -1,17 +1,6 @@
 <h1>Venue Pricing</h1>
 
-<%= form_for @venue, :html => { :class => "ajax_form"} do |f| %>
-
-<% if @venue.errors.any? %>
-<div id="error_explanation">
-  <h4><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h4>
-  <ul>
-    <% @venue.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+<%= form_for @venue, :validate => true, :html => { :class => "ajax_form form-horizontal"} do |f| %>
 
 <div id="user_message"></div>
 
@@ -19,27 +8,27 @@
   <%= f.submit "Save Changes", :class => "btn btn-success fr" %>
 </div>
 
-  <%= f.fields_for :rate do |r| %>
-  <div id="venueRateContent" class="roundedBorder">
-    <div class="field">
-      <%= r.label(:veg_plate_cost, "Cost/veg plate:") %>
-      <%= r.text_field :veg_plate_cost %>
-    </div>
-    
-    <div class="field">
-      <%= r.label(:nonveg_plate_cost, "Cost/non-veg plate:") %>
-      <%= r.text_field :nonveg_plate_cost %>
-    </div>
+<%= f.fields_for :rate do |r| %>
+<div id="venueRateContent" class="roundedBorder">
+  <div class="control-group">
+    <%= r.label(:veg_plate_cost, "Cost/veg plate:", class:"control-label") %>
+    <div class="controls"><%= r.text_field :veg_plate_cost %></div>
+  </div>
 
-    <div class="field">
-      <%= r.label(:min_total_budget, "Min budget:") %>
-      <%= r.text_field :min_total_budget %>
-    </div>
-    
-    <div class="field">
-      <%= r.label(:max_total_budget, "Max budget:") %>
-      <%= r.text_field :max_total_budget %>
-    </div>
+  <div class="control-group">
+    <%= r.label(:nonveg_plate_cost, "Cost/non-veg plate:", class:"control-label") %>
+    <div class="controls"><%= r.text_field :nonveg_plate_cost %></div>
+  </div>
+
+  <div class="control-group">
+    <%= r.label(:min_total_budget, "Min budget:", class:"control-label") %>
+    <div class="controls"><%= r.text_field :min_total_budget %></div>
+  </div>
+
+  <div class="control-group">
+    <%= r.label(:max_total_budget, "Max budget:", class:"control-label") %>
+    <div class="controls"><%= r.text_field :max_total_budget %></div>
+  </div>
   <% end %>
 </div>
 <br />
