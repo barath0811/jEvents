@@ -1,8 +1,14 @@
 <br />
 <%= form_for [@venue, @hall], :html => { :class => "ajax_form"} do |f| %>
+
+<% 
+  @hallTypes = getOptions('HallType')
+  @pricingmodes = getOptions('HallPricingMode')
+ %>
+
 <div class="actions">
   <a id="cancelHallSlide" class="btn btn-success fr">Cancel</a>
-  <%= f.submit "Save Changes", :class => 'btn btn-success fr' %>
+  <%= f.submit "Save Changes", :class => 'btn btn-success fr', :id => "saveHallBtn" %>
 </div>
 <div id="venueHallEditContent" class="roundedBorder">
   <div class="field">
@@ -11,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label(:hall_type, "Hall Type:") %>
-    <%= f.text_field :hall_type %>
+    <%= f.select(:hall_type, @hallTypes) %>
   </div>
   <div class="field">
     <%= f.label(:pricing_mode, "Pricing Mode:") %>
-    <%= f.text_field :pricing_mode %>
+    <%= f.select(:pricing_mode, @pricingmodes) %>
   </div>
   <div class="field">
     <%= f.label(:hall_rent, "Hall Rent:") %>

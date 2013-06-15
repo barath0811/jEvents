@@ -1,6 +1,10 @@
 <h1>Basic Venue Information</h1>
 
 <%= form_for @venue do |f| %>
+<% 
+	@venueTypes = getOptions('VenueType')
+	@areas = getOptions('Area')
+%>
 
 <% if @venue.errors.any? %>
 <div id="error_explanation">
@@ -30,7 +34,7 @@
 	</div>
 	<div class="field">
 		<%= f.label(:venue_type, "Venue Type:") %>
-		<%= f.text_field :venue_type %>
+		<%= f.select(:venue_type, @venueTypes) %>
 	</div>
 
 	<div class="field">
@@ -47,7 +51,7 @@
 	
 	<div class="field">
 		<%= a.label(:area, "Area:") %>
-		<%= a.text_field :area %>
+		<%= a.select(:area, @areas) %>
 	</div>
 
 	<% end %>
