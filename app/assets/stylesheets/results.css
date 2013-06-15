@@ -19,6 +19,11 @@
   border-radius: 6px;
 }
 
+.SearchResults:hover{
+  border: 2px solid #dddddd;
+  border-color: #666666;
+  background-color: rgba(146, 224, 249, 0.5);
+}
 .filters{
 
 }
@@ -87,6 +92,18 @@ label span input {
 	position: relative;
 }
 
+.new-venue-img{
+  float: left;
+  top: 10px;
+  width:170px;
+  height:130px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+  border: 2px solid #dddddd;
+  border-color: #666666;
+}
+
 .venue-icons{
 	float: right;
 	padding-right: 4px;
@@ -104,6 +121,12 @@ label span input {
   margin-right: 5px;
   margin-bottom: 10px;
   border-radius: 8px;
+}
+
+.navigation{
+  margin-bottom:6px;
+  padding-bottom: 6px;
+  float:right;
 }
 
 .query_param_div{

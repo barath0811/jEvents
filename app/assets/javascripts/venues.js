@@ -22,8 +22,39 @@ function createSearchParams(entity, value){
 	return val;
 }
 
+function imageupload_click(file_field){
+	$('#'+file_field).click();
+}
 
-function searchFired(){
+function prev_click(){
+	var page = $('#page_number:hidden').attr('value');
+	searchFired(parseInt(page) -1);
+}
+
+function next_click(){
+	var page = $('#page_number:hidden').attr('value');
+	searchFired(parseInt(page) +1);
+}
+
+function uploadFile(){
+    var fileToSubmit = $("#file_upload_1").serialize();
+
+    $.ajax({
+        url: "/venues/save_image",
+        type: "POST",
+        data: "",
+        file: fileToSubmit,
+        dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+    }).success(function(json){
+        showMessage('Saved successfully...', 'success');
+        debugger;
+    }).error(function(XMLHttpRequest, textStatus, errorThrown){
+    		alert(textStatus + errorThrown);
+    });
+    return false;
+}
+
+function searchFired(page_num){
 	var areas = createSearchParams('area', 1);
 	var bud = createSearchParams('bud', 1);
 	var am = createSearchParams('am', 1);
@@ -31,7 +62,7 @@ function searchFired(){
 	var cap = createSearchParams('cap', 1);
 	var mo = createSearchParams('meal', 1);
 	var et = $("#eventType option:selected").val();
-
+	var page = page_num ? page_num : 1;
 
 
 	$('#results_div').html('');
@@ -39,11 +70,11 @@ function searchFired(){
 	$.ajax({
 		url: "/venues/search",
 		type: "POST",
-		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, po:true },
+		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, po:true, page:page },
 		success: function(data) {
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
-			
+			alert(textStatus + errorThrown);
 		}   
 	});
 
@@ -68,6 +99,7 @@ function textChanged(areas){
 $('.ajax_form').submit(function() {
     var valuesToSubmit = $(this).serialize();
     var fileToSubmit = $(":base_image", this).serialize();
+
     $.ajax({
         url: $(this).attr('action'),
         type: "POST",

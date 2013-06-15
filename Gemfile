@@ -40,3 +40,6 @@ gem 'jquery-rails'
 
 # To use debugger
 gem 'debugger'
+
+# To Paginate
+gem 'will_paginate'

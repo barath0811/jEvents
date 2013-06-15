@@ -112,6 +112,12 @@ class VenuesController < ApplicationController
     end
   end
 
+  def save_image
+    respond_to do |format|
+      format.js   
+    end
+  end
+
   def search
     @query = SearchCriteria.new
     
@@ -143,12 +149,20 @@ class VenuesController < ApplicationController
       @query.mealOptions = params[:meal].split(',')
     end
 
-    @venue = Venue.search(@query)
+    unless params[:page].nil?
+      @query.page_number = params[:page]
+    else
+      @query.page_number = 1
+    end
+
+    @venue, @count = Venue.search(@query)
+    
 
     unless params[:po].nil?
       respond_to do |format|
         format.js 
       end
+    else
     end 
   end
 
@@ -164,3 +178,4 @@ class VenuesController < ApplicationController
     end
   end
 end
+
