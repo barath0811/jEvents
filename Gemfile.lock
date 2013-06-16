@@ -32,6 +32,7 @@ GEM
       rake
     arel (3.0.2)
     builder (3.0.4)
+    client_side_validations (3.2.5)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -60,7 +61,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
-    multi_json (1.7.6)
+    multi_json (1.7.7)
     mysql2 (0.3.11-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -115,6 +116,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  client_side_validations
   coffee-rails (~> 3.2.1)
   debugger
   jquery-rails

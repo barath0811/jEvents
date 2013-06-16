@@ -1,8 +1,8 @@
 $("#addHallSlide").html('<%=j render 'form', locals: { :venue => @venue, :id => @hall.id } %>')
 
 $(document).ready(function() {
-    $('#cancelHallSlide').click(function(){
-    	$('#addHallSlide').slideUp('slow', function(){
-        });
-    });
+	$('#cancelHallSlide').click(function(){
+		$('#addHallSlide').slideUp('slow', function(){
+		});
+	});
 });

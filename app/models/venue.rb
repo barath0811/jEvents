@@ -23,7 +23,10 @@ class Venue < ActiveRecord::Base
 	accepts_nested_attributes_for :images, :allow_destroy => true
 
 	#validations
-	#validates :type
+	validates :name, :presence =>true, :length => { :minimum => 3 }
+	validates :terms_conditions, :length => { :maximum => 1000 }
+	validates :venue_type, :presence =>true
+	validates_associated :address, :contact
 
 	def base_image=(value)
     	write_attribute(:base_image, value.read)

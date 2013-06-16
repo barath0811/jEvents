@@ -17,8 +17,7 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @venue }
+      format.html
     end
   end
 
@@ -31,7 +30,6 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @venue }
     end
   end
 
@@ -48,10 +46,8 @@ class VenuesController < ApplicationController
     respond_to do |format|
       if @venue.save
         format.html { redirect_to :action => 'edit', :id => @venue.id }
-        format.json { render json: @venue, status: :created, location: @venue }
       else
         format.html { render action: "new" }
-        format.json { render json: @venue.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,7 +58,7 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js   
+      format.js
     end
   end
 
@@ -103,7 +99,7 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       if @venue.update_attributes(params[:venue])
-        format.html { redirect_to @venue, notice: 'Venue was successfully updated.' }
+        format.html { redirect_to :action => 'edit', :id => @venue.id }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -5,7 +5,6 @@ $(document).ready(function(){
 });
 
 
-
 function createSearchParams(entity, value){
 	var val = '';
 	var ulid = 'ul#' + entity + ' li';
@@ -108,7 +107,6 @@ $('.ajax_form').submit(function() {
         dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
     }).success(function(json){
         showMessage('Saved successfully...', 'success');
-        debugger;
     }).error(function(json){
 
     });

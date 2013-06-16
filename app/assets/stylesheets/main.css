@@ -27,9 +27,6 @@ body {
 .fr{ float: right; }
 .fl{ float: left; }
 
-.glyphw{
-    background-image: url(/assets/glyphicons-halflings-white.png);
-}
 
 .notice, .success, .error {
 	padding:0.8em;
@@ -145,3 +142,17 @@ body {
 }
 
 /************** Customization of 3rd party css ***************/
+.glyphw{
+    background-image: url(/assets/glyphicons-halflings-white.png);
+}
+
+.field_with_errors .message {
+	display: inline;
+  	color: #D00;
+  	padding-left: 5px;
+  	font-size: 12px;
+}
+
+.form-horizontal .control-group {
+	margin-bottom: 10px;
+}
