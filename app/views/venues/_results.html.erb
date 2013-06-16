@@ -60,6 +60,7 @@
 	'No results found matching your search criteria...'
 end %>
 
+<div id="results">
 <% @venue.each do |c| %>
 <div class="SearchResults">
 	<%= unless c.base_image.nil? 
@@ -89,3 +90,4 @@ end %>
 </div>
 <% end %>
 
+</div>

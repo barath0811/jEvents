@@ -118,7 +118,7 @@ class VenuesController < ApplicationController
     @query = SearchCriteria.new
     
     unless params[:eventType].nil?
-      @query.eventType = params[:eventType]
+      @query.eventType = params[:eventType].split(',')
     end
 
     unless params[:areas].nil?
