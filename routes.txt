@@ -1,49 +1,51 @@
-        new_user_session GET    /users/sign_in(.:format)                        devise/sessions#new
-            user_session POST   /users/sign_in(.:format)                        devise/sessions#create
-    destroy_user_session GET    /users/sign_out(.:format)                       devise/sessions#destroy
-           user_password POST   /users/password(.:format)                       devise/passwords#create
-       new_user_password GET    /users/password/new(.:format)                   devise/passwords#new
-      edit_user_password GET    /users/password/edit(.:format)                  devise/passwords#edit
-                         PUT    /users/password(.:format)                       devise/passwords#update
-cancel_user_registration GET    /users/cancel(.:format)                         devise/registrations#cancel
-       user_registration POST   /users(.:format)                                devise/registrations#create
-   new_user_registration GET    /users/sign_up(.:format)                        devise/registrations#new
-  edit_user_registration GET    /users/edit(.:format)                           devise/registrations#edit
-                         PUT    /users(.:format)                                devise/registrations#update
-                         DELETE /users(.:format)                                devise/registrations#destroy
-       user_confirmation POST   /users/confirmation(.:format)                   devise/confirmations#create
-   new_user_confirmation GET    /users/confirmation/new(.:format)               devise/confirmations#new
-                         GET    /users/confirmation(.:format)                   devise/confirmations#show
-             user_unlock POST   /users/unlock(.:format)                         devise/unlocks#create
-         new_user_unlock GET    /users/unlock/new(.:format)                     devise/unlocks#new
-                         GET    /users/unlock(.:format)                         devise/unlocks#show
-      venues_admin_index GET    /admin/venues(.:format)                         admin#venues
-             admin_index GET    /admin(.:format)                                admin#index
-             venue_halls GET    /venues/:venue_id/halls(.:format)               halls#index
-                         POST   /venues/:venue_id/halls(.:format)               halls#create
-          new_venue_hall GET    /venues/:venue_id/halls/new(.:format)           halls#new
-         edit_venue_hall GET    /venues/:venue_id/halls/:id/edit(.:format)      halls#edit
-              venue_hall GET    /venues/:venue_id/halls/:id(.:format)           halls#show
-                         PUT    /venues/:venue_id/halls/:id(.:format)           halls#update
-                         DELETE /venues/:venue_id/halls/:id(.:format)           halls#destroy
-        venue_facilities POST   /venues/:venue_id/facilities(.:format)          facilities#create
-     edit_venue_facility GET    /venues/:venue_id/facilities/:id/edit(.:format) facilities#edit
-          venue_facility PUT    /venues/:venue_id/facilities/:id(.:format)      facilities#update
-      edit_pricing_venue GET    /venues/:id/edit_pricing(.:format)              venues#edit_pricing
-    edit_amenities_venue GET    /venues/:id/edit_amenities(.:format)            venues#edit_amenities
-       show_image_venues GET    /venues/show_image(.:format)                    venues#show_image
-           search_venues GET    /venues/search(.:format)                        venues#search
-                         POST   /venues/search(.:format)                        venues#search
-                  venues GET    /venues(.:format)                               venues#index
-                         POST   /venues(.:format)                               venues#create
-               new_venue GET    /venues/new(.:format)                           venues#new
-              edit_venue GET    /venues/:id/edit(.:format)                      venues#edit
-                   venue GET    /venues/:id(.:format)                           venues#show
-                         PUT    /venues/:id(.:format)                           venues#update
-                         DELETE /venues/:id(.:format)                           venues#destroy
-              home_index GET    /home/index(.:format)                           home#index
-              home_about GET    /home/about(.:format)                           home#about
-            home_contact GET    /home/contact(.:format)                         home#contact
-                home_faq GET    /home/faq(.:format)                             home#faq
-             placeholder GET    /placeholder(.:format)                          pages#placeholder
-                    root        /                                               home#index
+        new_user_session GET      /users/sign_in(.:format)                        devise/sessions#new
+            user_session POST     /users/sign_in(.:format)                        devise/sessions#create
+    destroy_user_session GET      /users/sign_out(.:format)                       devise/sessions#destroy
+           user_password POST     /users/password(.:format)                       devise/passwords#create
+       new_user_password GET      /users/password/new(.:format)                   devise/passwords#new
+      edit_user_password GET      /users/password/edit(.:format)                  devise/passwords#edit
+                         PUT      /users/password(.:format)                       devise/passwords#update
+cancel_user_registration GET      /users/cancel(.:format)                         devise/registrations#cancel
+       user_registration POST     /users(.:format)                                devise/registrations#create
+   new_user_registration GET      /users/sign_up(.:format)                        devise/registrations#new
+  edit_user_registration GET      /users/edit(.:format)                           devise/registrations#edit
+                         PUT      /users(.:format)                                devise/registrations#update
+                         DELETE   /users(.:format)                                devise/registrations#destroy
+       user_confirmation POST     /users/confirmation(.:format)                   devise/confirmations#create
+   new_user_confirmation GET      /users/confirmation/new(.:format)               devise/confirmations#new
+                         GET      /users/confirmation(.:format)                   devise/confirmations#show
+             user_unlock POST     /users/unlock(.:format)                         devise/unlocks#create
+         new_user_unlock GET      /users/unlock/new(.:format)                     devise/unlocks#new
+                         GET      /users/unlock(.:format)                         devise/unlocks#show
+ user_omniauth_authorize GET|POST /users/auth/:provider(.:format)                 devise/omniauth_callbacks#passthru {:provider=>/facebook/}
+  user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)          devise/omniauth_callbacks#(?-mix:facebook)
+      venues_admin_index GET      /admin/venues(.:format)                         admin#venues
+             admin_index GET      /admin(.:format)                                admin#index
+             venue_halls GET      /venues/:venue_id/halls(.:format)               halls#index
+                         POST     /venues/:venue_id/halls(.:format)               halls#create
+          new_venue_hall GET      /venues/:venue_id/halls/new(.:format)           halls#new
+         edit_venue_hall GET      /venues/:venue_id/halls/:id/edit(.:format)      halls#edit
+              venue_hall GET      /venues/:venue_id/halls/:id(.:format)           halls#show
+                         PUT      /venues/:venue_id/halls/:id(.:format)           halls#update
+                         DELETE   /venues/:venue_id/halls/:id(.:format)           halls#destroy
+        venue_facilities POST     /venues/:venue_id/facilities(.:format)          facilities#create
+     edit_venue_facility GET      /venues/:venue_id/facilities/:id/edit(.:format) facilities#edit
+          venue_facility PUT      /venues/:venue_id/facilities/:id(.:format)      facilities#update
+      edit_pricing_venue GET      /venues/:id/edit_pricing(.:format)              venues#edit_pricing
+    edit_amenities_venue GET      /venues/:id/edit_amenities(.:format)            venues#edit_amenities
+       show_image_venues GET      /venues/show_image(.:format)                    venues#show_image
+           search_venues GET      /venues/search(.:format)                        venues#search
+                         POST     /venues/search(.:format)                        venues#search
+                  venues GET      /venues(.:format)                               venues#index
+                         POST     /venues(.:format)                               venues#create
+               new_venue GET      /venues/new(.:format)                           venues#new
+              edit_venue GET      /venues/:id/edit(.:format)                      venues#edit
+                   venue GET      /venues/:id(.:format)                           venues#show
+                         PUT      /venues/:id(.:format)                           venues#update
+                         DELETE   /venues/:id(.:format)                           venues#destroy
+              home_index GET      /home/index(.:format)                           home#index
+              home_about GET      /home/about(.:format)                           home#about
+            home_contact GET      /home/contact(.:format)                         home#contact
+                home_faq GET      /home/faq(.:format)                             home#faq
+             placeholder GET      /placeholder(.:format)                          pages#placeholder
+                    root          /                                               home#index
