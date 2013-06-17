@@ -41,3 +41,6 @@ gem 'client_side_validations'
 
 # To use debugger
 gem 'debugger'
+
+# To Paginate
+gem 'will_paginate'
