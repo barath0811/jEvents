@@ -1,6 +1,6 @@
 <h1>Basic Venue Information</h1>
 
-<%= form_for @venue, :validate => true, :html => {:class => "form-horizontal"} do |f| %>
+<%= form_for @venue, :remote => true, :validate => true, :html => {:class => "form-horizontal"} do |f| %>
 <% 
 	@venueTypes = getOptions('VenueType')
 	@areas = getOptions('Area')

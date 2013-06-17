@@ -76,14 +76,6 @@ class VenuesController < ApplicationController
 		end
 	end
 
-	def edit_settings
-		@venue = Venue.new
-
-		respond_to do |format|
-			format.js   
-		end
-	end
-
 	# PUT /venues/1
 	# PUT /venues/1.json
 	def update
@@ -92,10 +84,9 @@ class VenuesController < ApplicationController
 		respond_to do |format|
 			if @venue.update_attributes(params[:venue])
 				format.html { redirect_to :action => 'edit', :id => @venue.id }
-				format.json { head :no_content }
+				format.js
 			else
 				format.html { render action: "edit" }
-				format.json { render json: @venue.errors, status: :unprocessable_entity }
 			end
 		end
 	end

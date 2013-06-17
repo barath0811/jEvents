@@ -17,8 +17,8 @@ cancel_user_registration GET      /users/cancel(.:format)                       
              user_unlock POST     /users/unlock(.:format)                         devise/unlocks#create
          new_user_unlock GET      /users/unlock/new(.:format)                     devise/unlocks#new
                          GET      /users/unlock(.:format)                         devise/unlocks#show
- user_omniauth_authorize GET|POST /users/auth/:provider(.:format)                 devise/omniauth_callbacks#passthru {:provider=>/facebook/}
-  user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)          devise/omniauth_callbacks#(?-mix:facebook)
+ user_omniauth_authorize GET|POST /users/auth/:provider(.:format)                 users/omniauth_callbacks#passthru {:provider=>/facebook/}
+  user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)          users/omniauth_callbacks#(?-mix:facebook)
       venues_admin_index GET      /admin/venues(.:format)                         admin#venues
              admin_index GET      /admin(.:format)                                admin#index
              venue_halls GET      /venues/:venue_id/halls(.:format)               halls#index

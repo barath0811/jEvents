@@ -38,7 +38,7 @@ class Venue < ActiveRecord::Base
 
 
 	def self.search(query)
-		JeventzLogger.debug "query == #{query.inspect}"
+		#JeventzLogger.debug "query == #{query.inspect}"
 		#joins(:address).where('addresses.area' => query.areas).includes(:address)
 
 		venue_results = joins(:address).includes(:address, :facility)
