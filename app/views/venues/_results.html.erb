@@ -1,3 +1,18 @@
+<%= hidden_field_tag 'page_number', @query.page_number %>
+<%= hidden_field_tag 'total_count', @count %>
+
+<div class="navigation">
+	<% if @query.page_number.to_i == 1 %>
+		<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;">&lt; Prev</a>
+	<% else %>
+		<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
+	<% end %>
+	<% if (@query.page_number.to_i*2)>=@count %>
+		<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;" >Next &gt;</a>
+	<% else %>
+		<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
+	<% end %>
+</div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
 		<%= unless @query.areas.count == 0 
@@ -38,11 +53,13 @@
 		<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
-</br>
+<br></br>
+
 
 <%= if @venue.count == 0
 	'No results found matching your search criteria...'
 end %>
+
 <% @venue.each do |c| %>
 <div class="SearchResults">
 	<%= unless c.base_image.nil? 

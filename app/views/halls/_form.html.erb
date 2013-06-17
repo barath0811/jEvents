@@ -1,25 +1,43 @@
 <br />
-<%= form_for [@venue, @hall], :html => { :class => "ajax_form"} do |f| %>
+<%= form_for [@venue, @hall], :html => { :class => "ajax_form form-horizontal" }, :validate => true do |f| %>
+
+<% 
+@hallTypes = getOptions('HallType')
+@pricingmodes = getOptions('HallPricingMode')
+%>
+
 <div class="actions">
-  <a id="cancelHallSlide" class="btn btn-success fr">Cancel</a>
-  <%= f.submit "Save Changes", :class => 'btn btn-success fr' %>
+	<a id="cancelHallSlide" class="btn btn-success fr">Cancel</a>
+	<%= f.submit "Save Changes", :class => 'btn btn-success fr', :id => "saveHallBtn" %>
 </div>
-<div id="venueHallEditContent" class="roundedBorder">
-  <div class="field">
-    <%= f.label(:name, "Hall Name:") %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label(:hall_type, "Hall Type:") %>
-    <%= f.text_field :hall_type %>
-  </div>
-  <div class="field">
-    <%= f.label(:pricing_mode, "Pricing Mode:") %>
-    <%= f.text_field :pricing_mode %>
-  </div>
-  <div class="field">
-    <%= f.label(:hall_rent, "Hall Rent:") %>
-    <%= f.text_field :hall_rent %>
-  </div>
+<div class="roundedBorder">
+	<div class="control-group">
+		<%= f.label(:name, "Hall Name:", class:"control-label") %>
+		<div class="controls"><%= f.text_field :name %></div>
+	</div>
+	<div class="control-group">
+		<%= f.label(:hall_type, "Hall Type:", class:"control-label") %>
+		<div class="controls"><%= f.select(:hall_type, @hallTypes) %></div>
+	</div>
+	<div class="control-group">
+		<%= f.label(:pricing_mode, "Pricing Mode:", class:"control-label") %>
+		<div class="controls"><%= f.select(:pricing_mode, @pricingmodes) %></div>
+	</div>
+	<div class="control-group">
+		<%= f.label(:hall_rent, "Hall Rent:", class:"control-label") %>
+		<div class="controls"><%= f.text_field :hall_rent %></div>
+	</div>
+
+	<div class="roundedBorder">
+		<%= f.fields_for :seating_arrangements do |s| %>
+		<div class="control-group">
+			<div class="controls span6"><%= s.label(:arrangement_type, s.object.arrangement_type) %></div>
+			<div class="controls span6">
+				<%= s.hidden_field :arrangement_type, :value => s.object.arrangement_type %>
+				<%= s.text_field(:capacity, :class => "seatingCap") %>
+			</div>
+		</div>
+		<% end %>
+	</div>
 </div>
 <% end %>

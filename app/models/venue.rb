@@ -23,7 +23,10 @@ class Venue < ActiveRecord::Base
 	accepts_nested_attributes_for :images, :allow_destroy => true
 
 	#validations
-	#validates :type
+	validates :name, :presence =>true, :length => { :minimum => 3 }
+	validates :terms_conditions, :length => { :maximum => 1000 }
+	validates :venue_type, :presence =>true
+	validates_associated :address, :contact
 
 	def base_image=(value)
     	write_attribute(:base_image, value.read)
@@ -43,6 +46,7 @@ class Venue < ActiveRecord::Base
 		query.amenities_val.each do |a| 
 			venue_results = venue_results.joins(:facility).where('facilities.' + a => 1)
 		end
-		return venue_results.limit(10)
+
+		return venue_results.paginate(:page => query.page_number, :per_page => 2), venue_results.count
 	end
 end
