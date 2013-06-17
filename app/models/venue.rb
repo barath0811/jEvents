@@ -4,12 +4,15 @@ class Venue < ActiveRecord::Base
 					:venue_type,
 					:base_image,
 					:website,
+					:user_id,
 					:address_attributes,
 					:contact_attributes,
 					:rate_attributes,
 					:images_attributes
 
 	#associations
+	belongs_to :user
+
 	has_many :images, :dependent => :destroy
 	has_many :halls, :dependent => :destroy
 	has_one :facility, :dependent => :destroy
@@ -23,7 +26,8 @@ class Venue < ActiveRecord::Base
 	accepts_nested_attributes_for :images, :allow_destroy => true
 
 	#validations
-	validates :name, :presence =>true, :length => { :minimum => 3 }
+	validates :user_id, :presence => true
+	validates :name, :presence => true, :length => { :minimum => 3 }
 	validates :terms_conditions, :length => { :maximum => 1000 }
 	validates :venue_type, :presence =>true
 	validates_associated :address, :contact

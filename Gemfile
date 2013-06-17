@@ -26,6 +26,11 @@ end
 
 gem 'jquery-rails'
 gem 'client_side_validations'
+gem 'devise'
+#gem 'omniauth'
+#gem 'omniauth-facebook'
+#gem 'omniauth-google'
+#gem 'omniauth-twitter'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

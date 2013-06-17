@@ -14,21 +14,33 @@
 			
 			<div id="navLinkText" class="nav-collapse collapse">
 				<ul class="nav pull-right">
-					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "How It Works", {:controller => "pages", :action => "placeholder"} %></li>
-					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Venue Search", {:controller => "venues", :action => "search"} %></li>
-					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Blog", 		{:controller => "pages", :action => "placeholder"} %></li>
-					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Venue Owners", {:controller => "venues", :action => "index"} %></li>
+					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "How It Works", placeholder_path %></li>
+					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Venue Search", search_venues_path %></li>
+					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Blog", placeholder_path %></li>
+					<li><%= link_to "Venue Owners", venues_path %></li>
+					<% if user_signed_in? %> 
+					<li><%= link_to current_user.email, edit_user_registration_path %></li>
+					<li><%= link_to "Sign out", destroy_user_session_path %></li>
+					<% else %> 
+					<li><%= link_to "Sign up", new_user_registration_path %></li> 
+					<li><%= link_to "Sign in", new_user_session_path %></li>
+					<% end %>
 				</ul>
 			</div>
 		</div>
 		<div id="headerBottom" class="container">
 			<div id="contactInHeader">
-				<span>Phone: <%= link_to "044-4201 2386", {:controller => "pages", :action => "placeholder"} %></span>
+				<span>Phone: <%= link_to "044-4201 2386", placeholder_path %></span>
 			</div>
 			<div id="socialIcons">
 				<!-- <form class="navbar-search pull-left">
 					<input type="text" class="search-query" placeholder="Search">
 				</form> -->
+				<section id="flash">
+					<% flash.each do |key, value| %>
+					<div class="flash <%= key %>"><%= value %></div>
+					<% end %>
+				</section>
 				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/rnarayana", :target => "_blank" %>
 				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/narayana.rengaswamy", :target => "_blank" %>
 				<%= link_to image_tag('google-plus.png'), 	"https://plus.google.com/102620915023778176041", :target => "_blank" %>

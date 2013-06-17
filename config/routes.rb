@@ -1,7 +1,12 @@
 Jevents::Application.routes.draw do
 
-  resources :seating_arrangements
-  resources :images
+  devise_for :users
+  
+  resources :admin, :only => [:index] do
+    collection do
+      get 'venues'
+    end
+  end
   
   resources :venues do
     resources :halls
@@ -10,7 +15,6 @@ Jevents::Application.routes.draw do
     member do   #member - requires an ID
       get 'edit_pricing'
       get 'edit_amenities'
-      get 'edit_settings'
     end
     collection do   #works on a collection, does not require an ID
       get 'show_image'
@@ -20,13 +24,13 @@ Jevents::Application.routes.draw do
     end
   end
 
-	get "home/index"
-	get "home/about"
-	get "home/contact"
-	get "home/faq"
+  get "home/index"
+  get "home/about"
+  get "home/contact"
+  get "home/faq"
   
-	get 'placeholder' => 'pages#placeholder'
-	
+  get 'placeholder' => 'pages#placeholder'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -77,7 +81,7 @@ Jevents::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'home#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

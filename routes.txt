@@ -1,17 +1,24 @@
-    seating_arrangements GET    /seating_arrangements(.:format)                 seating_arrangements#index
-                         POST   /seating_arrangements(.:format)                 seating_arrangements#create
- new_seating_arrangement GET    /seating_arrangements/new(.:format)             seating_arrangements#new
-edit_seating_arrangement GET    /seating_arrangements/:id/edit(.:format)        seating_arrangements#edit
-     seating_arrangement GET    /seating_arrangements/:id(.:format)             seating_arrangements#show
-                         PUT    /seating_arrangements/:id(.:format)             seating_arrangements#update
-                         DELETE /seating_arrangements/:id(.:format)             seating_arrangements#destroy
-                  images GET    /images(.:format)                               images#index
-                         POST   /images(.:format)                               images#create
-               new_image GET    /images/new(.:format)                           images#new
-              edit_image GET    /images/:id/edit(.:format)                      images#edit
-                   image GET    /images/:id(.:format)                           images#show
-                         PUT    /images/:id(.:format)                           images#update
-                         DELETE /images/:id(.:format)                           images#destroy
+        new_user_session GET    /users/sign_in(.:format)                        devise/sessions#new
+            user_session POST   /users/sign_in(.:format)                        devise/sessions#create
+    destroy_user_session GET    /users/sign_out(.:format)                       devise/sessions#destroy
+           user_password POST   /users/password(.:format)                       devise/passwords#create
+       new_user_password GET    /users/password/new(.:format)                   devise/passwords#new
+      edit_user_password GET    /users/password/edit(.:format)                  devise/passwords#edit
+                         PUT    /users/password(.:format)                       devise/passwords#update
+cancel_user_registration GET    /users/cancel(.:format)                         devise/registrations#cancel
+       user_registration POST   /users(.:format)                                devise/registrations#create
+   new_user_registration GET    /users/sign_up(.:format)                        devise/registrations#new
+  edit_user_registration GET    /users/edit(.:format)                           devise/registrations#edit
+                         PUT    /users(.:format)                                devise/registrations#update
+                         DELETE /users(.:format)                                devise/registrations#destroy
+       user_confirmation POST   /users/confirmation(.:format)                   devise/confirmations#create
+   new_user_confirmation GET    /users/confirmation/new(.:format)               devise/confirmations#new
+                         GET    /users/confirmation(.:format)                   devise/confirmations#show
+             user_unlock POST   /users/unlock(.:format)                         devise/unlocks#create
+         new_user_unlock GET    /users/unlock/new(.:format)                     devise/unlocks#new
+                         GET    /users/unlock(.:format)                         devise/unlocks#show
+      venues_admin_index GET    /admin/venues(.:format)                         admin#venues
+             admin_index GET    /admin(.:format)                                admin#index
              venue_halls GET    /venues/:venue_id/halls(.:format)               halls#index
                          POST   /venues/:venue_id/halls(.:format)               halls#create
           new_venue_hall GET    /venues/:venue_id/halls/new(.:format)           halls#new
@@ -24,7 +31,6 @@ edit_seating_arrangement GET    /seating_arrangements/:id/edit(.:format)        
           venue_facility PUT    /venues/:venue_id/facilities/:id(.:format)      facilities#update
       edit_pricing_venue GET    /venues/:id/edit_pricing(.:format)              venues#edit_pricing
     edit_amenities_venue GET    /venues/:id/edit_amenities(.:format)            venues#edit_amenities
-     edit_settings_venue GET    /venues/:id/edit_settings(.:format)             venues#edit_settings
        show_image_venues GET    /venues/show_image(.:format)                    venues#show_image
            search_venues GET    /venues/search(.:format)                        venues#search
                          POST   /venues/search(.:format)                        venues#search

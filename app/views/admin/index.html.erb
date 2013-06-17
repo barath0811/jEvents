@@ -1,0 +1,41 @@
+<section id = "admin">
+	<h2>Admin: Dashboard</h2>
+
+	<h3>Venues</h3> 
+	<p>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Website</th>
+				<th>User</th>
+			</tr>
+
+			<% @venues.each do |venue| %>
+			<tr>
+				<td><%= venue.name %></td>
+				<td><%= venue.venue_type %></td>
+				<td><%= venue.website %></td>
+				<td><%= venue.user_id %></td>
+			</tr>
+			<% end %>
+		</table>
+	</p>
+
+	<h3>Users</h3> 
+	<p>
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Email</th>
+			</tr>
+
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= user.id %></td>
+				<td><%= user.email %></td>
+			</tr>
+			<% end %>
+		</table>
+	</p>
+</section>
