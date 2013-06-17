@@ -55,4 +55,30 @@
 		<option>Birthday Party</option>
 		<option>Corporate Meeting</option>
 	</EventType>
+	<VenueType>
+		<option>Luxury Hotel</option>
+		<option>Business Hotel</option>
+		<option>Business-Luxury Hotel</option>
+	</VenueType>
+	<HallType>
+		<option>Banquet Hall</option>
+		<option>Conference Room</option>
+		<option>Convention Centre</option>
+		<option>Hotel</option>
+		<option>Wedding Hall</option>
+		<option>Resort</option>
+		<option>Garden Lawn</option>		
+	</HallType>
+	<HallPricingMode>
+		<option>Hourly</option>
+		<option>Per Plate</option>
+	</HallPricingMode>
+	<Seating>
+		<option>Theatre</option>
+		<option>U-Shape</option>
+		<option>Double-U</option>
+		<option>Classroom</option>
+		<option>Board</option>
+		<option>Roundtable</option>
+	</Seating>
 </Properties>

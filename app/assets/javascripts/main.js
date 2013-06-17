@@ -11,7 +11,7 @@ $(document).ready(function(){
 		minSlides: 1,
 		maxSlides: 3,
 		slideWidth: 350,
-  		slideMargin: 10,
+		slideMargin: 10,
 		captions: true
 	});
 
@@ -19,20 +19,24 @@ $(document).ready(function(){
 		$('.nav li').removeClass('active');
 		$(this).addClass('active');
 	});
-
 });
 
 
+$(document).on('ajax:success', function(){
+	if($('form[data-validate]').length){
+		$('form[data-validate]').enableClientSideValidations();
+	}
+});
 
 var showMessage = function(text, style)
 {
     style = style || 'notice';           //<== default style if it's not set
 
     //create message and show it
-	$('<div>')
+    $('<div>')
     .attr('class', style)
-	.html(text)
-	.fadeIn('fast')
+    .html(text)
+    .fadeIn('fast')
 	.insertBefore($('#user_message'))  		//<== wherever you want it to show
 	.animate({opacity: 1.0}, 2500)    		//<== wait 2.5 sec before fading out
 	.fadeOut('slow', function()

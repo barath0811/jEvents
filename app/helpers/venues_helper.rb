@@ -48,4 +48,5 @@ module VenuesHelper
 		return query
 
 	end
+
 end
