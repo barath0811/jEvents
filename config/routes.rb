@@ -9,11 +9,10 @@ Jevents::Application.routes.draw do
   
   resources :venues do
     resources :halls
-    resources :facilities, :only => [:edit, :create, :update]
-
+    
     member do   #member - requires an ID
-      get 'edit_pricing'
-      get 'edit_amenities'
+      get 'rates'
+      get 'facilities'
     end
     collection do   #works on a collection, does not require an ID
       get 'show_image'

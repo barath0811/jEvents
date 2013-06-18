@@ -8,6 +8,7 @@ class Venue < ActiveRecord::Base
 					:address_attributes,
 					:contact_attributes,
 					:rate_attributes,
+					:facility_attributes,
 					:images_attributes
 
 	#associations
@@ -23,6 +24,7 @@ class Venue < ActiveRecord::Base
 	accepts_nested_attributes_for :address, :reject_if => lambda { |a| a[:address].blank? }, :allow_destroy => true
 	accepts_nested_attributes_for :contact, :allow_destroy => true
 	accepts_nested_attributes_for :rate, :allow_destroy => true
+	accepts_nested_attributes_for :facility, :allow_destroy => true
 	accepts_nested_attributes_for :images, :allow_destroy => true
 
 	#validations

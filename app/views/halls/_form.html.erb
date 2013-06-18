@@ -1,5 +1,5 @@
 <br />
-<%= form_for [@venue, @hall], :html => { :class => "ajax_form form-horizontal" }, :validate => true do |f| %>
+<%= form_for [@venue, @hall], :remote => true, :html => { :class => "ajax_form form-horizontal" }, :validate => true do |f| %>
 
 <% 
 @hallTypes = getOptions('HallType')

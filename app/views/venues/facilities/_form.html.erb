@@ -1,0 +1,46 @@
+<h1>Venue Amenities</h1>
+
+<%= form_for @venue, :remote => true, :html => { :class => "ajax_form form-horizontal"} do |v| %>
+
+<div id="user_message"></div>
+
+<div class="actions">
+  <%= v.submit "Save Changes", :class => "btn btn-success fr" %>
+</div>
+
+<%= v.fields_for :facility do |f| %>
+
+<div class="span12">
+  <div class="span6">
+    <div class="control-groups">
+      <div class="controls"><%= f.label(:has_parking, class: "checkbox") do %>
+        <%= f.check_box :has_parking %>Has parking?
+        <% end %>
+      </div>
+    </div>
+    <div class="control-groups">
+      <div class="controls"><%= f.label(:has_buffet, class: "checkbox") do %>
+        <%= f.check_box :has_buffet %>Has buffet?
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="control-groups">
+      <div class="controls">
+        <%= f.label :is_alcohol_allowed, class: "checkbox" do %>
+        <%= f.check_box :is_alcohol_allowed %>Is Alcohol allowed?
+        <% end %>
+      </div>
+    </div>
+    <div class="control-groups">
+      <div class="controls">
+        <%= f.label(:is_nonveg_allowed, class: "checkbox") do %>
+        <%= f.check_box :is_nonveg_allowed %>Is Non-Veg allowed?
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>

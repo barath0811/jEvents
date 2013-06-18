@@ -8,8 +8,7 @@ class VenuesController < ApplicationController
 		@venues = current_user.venues.all
 
 		respond_to do |format|
-			format.html # index.html.erb
-			format.json { render json: @venues }
+			format.html
 		end
 	end
 
@@ -38,6 +37,7 @@ class VenuesController < ApplicationController
 		respond_to do |format|
 			if @venue.save
 				format.html { redirect_to :action => 'edit', :id => @venue.id }
+				format.js { render :nothing => true }
 			else
 				format.html { render action: "new" }
 			end
@@ -54,25 +54,25 @@ class VenuesController < ApplicationController
 		end
 	end
 
-	def edit_pricing
+	def rates
 		@venue =  current_user.venues.find(params[:id])
 		if @venue.rate.blank?
 			@venue.build_rate
 		end
 
 		respond_to do |format|
-			format.js   
+			format.js { render :template => 'venues/rates/addedit'}
 		end
 	end
 
-	def edit_amenities
-		@venue =  current_user.venues.find(params[:id])
+	def facilities
+		@venue = current_user.venues.find(params[:id])
 		if @venue.facility.blank?
 			@venue.build_facility
 		end
 
 		respond_to do |format|
-			format.js   
+			format.js { render :template => 'venues/facilities/addedit'}
 		end
 	end
 
@@ -84,7 +84,7 @@ class VenuesController < ApplicationController
 		respond_to do |format|
 			if @venue.update_attributes(params[:venue])
 				format.html { redirect_to :action => 'edit', :id => @venue.id }
-				format.js
+				format.js { render :nothing => true }
 			else
 				format.html { render action: "edit" }
 			end
@@ -99,7 +99,6 @@ class VenuesController < ApplicationController
 
 		respond_to do |format|
 			format.html { redirect_to venues_url }
-			format.json { head :no_content }
 		end
 	end
 
