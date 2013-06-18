@@ -20,7 +20,7 @@ class VenuesController < ApplicationController
 		@venue.build_contact
 
 		respond_to do |format|
-			format.html
+			format.html { render :template => 'venues/basic/addedit'}
 		end
 	end
 
@@ -36,7 +36,7 @@ class VenuesController < ApplicationController
 
 		respond_to do |format|
 			if @venue.save
-				format.html { redirect_to :action => 'edit', :id => @venue.id }
+				format.html { redirect_to edit_venue_path(@venue) }
 				format.js { render :nothing => true }
 			else
 				format.html { render action: "new" }
@@ -49,8 +49,8 @@ class VenuesController < ApplicationController
 		@venue =  current_user.venues.find(params[:id])
 
 		respond_to do |format|
-			format.html
-			format.js
+			format.html { render :template => 'venues/basic/addedit'}
+			format.js { render :template => 'venues/basic/edit'}
 		end
 	end
 
@@ -83,7 +83,7 @@ class VenuesController < ApplicationController
 
 		respond_to do |format|
 			if @venue.update_attributes(params[:venue])
-				format.html { redirect_to :action => 'edit', :id => @venue.id }
+				format.html { redirect_to edit_venue_path(@venue) }
 				format.js { render :nothing => true }
 			else
 				format.html { render action: "edit" }
@@ -93,14 +93,14 @@ class VenuesController < ApplicationController
 
 	# DELETE /venues/1
 	# DELETE /venues/1.json
-	def destroy
-		@venue = current_user.venues.find(params[:id])
-		@venue.destroy
+	# def destroy
+	# 	@venue = current_user.venues.find(params[:id])
+	# 	@venue.destroy
 
-		respond_to do |format|
-			format.html { redirect_to venues_url }
-		end
-	end
+	# 	respond_to do |format|
+	# 		format.html { redirect_to venues_url }
+	# 	end
+	# end
 
 	# GET /venues/1
 	# GET /venues/1.json
