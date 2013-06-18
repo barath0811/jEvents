@@ -1,12 +1,8 @@
-$("#addHallSlide").html('<%=j render 'form', locals: { :venue => @venue, :id => @hall.id } %>')
+$("#openHallSlide").html('<%=j render 'form', locals: { :venue => @venue, :id => @hall.id } %>')
 
 $(document).ready(function() {
-	$('#cancelHallSlide').click(function(){
-		$('#addHallSlide').slideUp('slow', function(){
+	$('#closeHallSlide').click(function(){
+		$('#openHallSlide').slideUp('slow', function(){
 		});
-	});
-
-	$('#hallFormLnk').click(function(){
-		$('#addHallSlide').slideUp('slow', function(){
 	});
 });
