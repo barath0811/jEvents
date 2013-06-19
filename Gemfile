@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
+ruby "1.9.3"
 
-gem 'rails' #, '3.2.13'
+gem 'rails', '~> 3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -48,7 +50,7 @@ gem 'certified'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+# gem 'debugger'
 
 # To Paginate
 gem 'will_paginate'
