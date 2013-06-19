@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  area1: MyString
+  area2: MyString
+  distance: 9.99
+
+two:
+  area1: MyString
+  area2: MyString
+  distance: 9.99

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130616113815) do
+ActiveRecord::Schema.define(:version => 20130619213852) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(:version => 20130616113815) do
   end
 
   add_index "addresses", ["venue_id"], :name => "index_addresses_on_venue_id"
+
+  create_table "areas", :force => true do |t|
+    t.string   "area1"
+    t.string   "area2"
+    t.decimal  "distance",   :precision => 10, :scale => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
 
   create_table "contacts", :force => true do |t|
     t.integer  "venue_id"
@@ -62,6 +70,15 @@ ActiveRecord::Schema.define(:version => 20130616113815) do
   end
 
   add_index "halls", ["venue_id"], :name => "index_halls_on_venue_id"
+
+  create_table "highlights", :force => true do |t|
+    t.string   "highlight"
+    t.decimal  "display_order", :precision => 10, :scale => 0
+    t.string   "references"
+    t.string   "venue"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
 
   create_table "images", :force => true do |t|
     t.integer  "venue_id"
@@ -105,17 +122,51 @@ ActiveRecord::Schema.define(:version => 20130616113815) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        :default => 5
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+  end
+
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
   create_table "venues", :force => true do |t|
     t.string   "name"
     t.string   "venue_type"
     t.string   "website"
     t.text     "terms_conditions"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
     t.binary   "base_image"
     t.integer  "num_halls"
     t.integer  "min_capacity"
     t.integer  "max_capacity"
+    t.integer  "user_id",                                                       :null => false
+    t.decimal  "popularity_index",               :precision => 10, :scale => 0
+    t.binary   "view_available",    :limit => 1
+    t.binary   "booking_available", :limit => 1
+    t.binary   "enquiry_available", :limit => 1
   end
 
 end
