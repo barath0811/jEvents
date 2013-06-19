@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(:version => 20130617045040) do
     t.integer  "num_halls"
     t.integer  "min_capacity"
     t.integer  "max_capacity"
-    t.integer  "user_id"
+    t.integer  "user_id",          :null => false
   end
 
 end

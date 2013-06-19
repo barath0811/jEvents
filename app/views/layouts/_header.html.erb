@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-top" >
+<div class="navbar navbar-fixed-top" id="customNav" >
 	<div class="navbar-inner">
 		<div class="container">
 			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -15,7 +15,7 @@
 			<div id="navLinkText" class="nav-collapse collapse">
 				<ul class="nav pull-right">
 					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "How It Works", placeholder_path %></li>
-					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Venue Search", search_venues_path %></li>
+					<li class="<%= 'active' if current_page?(search_venues_path) %>"><%= link_to "Venue Search", search_venues_path %></li>
 					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Blog", placeholder_path %></li>
 					<li><%= link_to "Venue Owners", venues_path %></li>
 					<% if user_signed_in? %> 

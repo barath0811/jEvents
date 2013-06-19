@@ -26,6 +26,7 @@ group :development do
 end
 
 gem 'jquery-rails'
+gem "bootstrap-sass-rails"
 gem 'client_side_validations'
 gem 'devise'
 gem 'omniauth'
