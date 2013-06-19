@@ -1,9 +1,8 @@
 class VenuesController < ApplicationController
 
 	before_filter :authenticate_user!, :except => [:show, :search]
-	
+
 	# GET /venues
-	# GET /venues.json
 	def index
 		@venues = current_user.venues.all
 
@@ -13,7 +12,6 @@ class VenuesController < ApplicationController
 	end
 
 	# GET /venues/new
-	# GET /venues/new.json
 	def new
 		@venue = current_user.venues.new
 		@venue.build_address
@@ -30,7 +28,6 @@ class VenuesController < ApplicationController
 	end
 
 	# POST /venues
-	# POST /venues.json
 	def create
 		@venue =  current_user.venues.new(params[:venue])
 
@@ -77,7 +74,6 @@ class VenuesController < ApplicationController
 	end
 
 	# PUT /venues/1
-	# PUT /venues/1.json
 	def update
 		@venue =  current_user.venues.find(params[:id])
 
@@ -92,7 +88,6 @@ class VenuesController < ApplicationController
 	end
 
 	# DELETE /venues/1
-	# DELETE /venues/1.json
 	# def destroy
 	# 	@venue = current_user.venues.find(params[:id])
 	# 	@venue.destroy
@@ -103,12 +98,17 @@ class VenuesController < ApplicationController
 	# end
 
 	# GET /venues/1
-	# GET /venues/1.json
 	def show
 		@venue = Venue.find(params[:id])
 
 		respond_to do |format|
 			format.html
+		end
+	end
+
+	def save_image
+		respond_to do |format|
+			format.js   
 		end
 	end
 
@@ -127,8 +127,12 @@ class VenuesController < ApplicationController
 			@query.budget = params[:budget].split(',')
 		end
 
-		unless params[:amenities].nil?
-			@query.amenities = params[:amenities].split(',')
+		unless params[:amenities_val].nil?
+			@query.amenities_val = params[:amenities_val].split(',')
+		end
+
+		unless params[:amenities_name].nil?
+			@query.amenities_name = params[:amenities_name].split(',')
 		end
 
 		unless params[:capacities].nil?
@@ -139,13 +143,20 @@ class VenuesController < ApplicationController
 			@query.mealOptions = params[:meal].split(',')
 		end
 
-		@venue = Venue.search(@query)
+		unless params[:page].nil?
+			@query.page_number = params[:page]
+		else
+			@query.page_number = 1
+		end
+
+		@venue, @count = Venue.search(@query)
+
 
 		unless params[:po].nil?
 			respond_to do |format|
 				format.js 
 			end
+		else
 		end 
 	end
-
 end

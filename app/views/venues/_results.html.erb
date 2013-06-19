@@ -1,3 +1,18 @@
+<%= hidden_field_tag 'page_number', @query.page_number %>
+<%= hidden_field_tag 'total_count', @count %>
+
+<div class="navigation">
+	<% if @query.page_number.to_i == 1 %>
+		<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;">&lt; Prev</a>
+	<% else %>
+		<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
+	<% end %>
+	<% if (@query.page_number.to_i*2)>=@count %>
+		<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;" >Next &gt;</a>
+	<% else %>
+		<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
+	<% end %>
+</div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
 		<%= unless @query.areas.count == 0 
@@ -20,16 +35,6 @@
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
-		<%= unless @query.mealOptions.count == 0 
-			'Meal Options: '
-		end %>
-	</span>
-	<% @query.mealOptions.each do |a| %>
-		<span class="query_param"><%= a %> </span>
-	<% end %>
-</div>
-<div id="query" class="query_param_div">
-	<span id="query_title" style="font-weight:bold;">
 		<%= unless @query.budget.count == 0 
 			'Budget: '
 		end %>
@@ -40,23 +45,27 @@
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
-		<%= unless @query.amenities.count == 0 
+		<%= unless @query.amenities_name.count == 0 
 			'Amenities: '
 		end %>
 	</span>
-	<% @query.amenities.each do |a| %>
+	<% @query.amenities_name.each do |a| %>
 		<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
-</br>
+<br></br>
 
+
+<%= if @venue.count == 0
+	'No results found matching your search criteria...'
+end %>
 
 <% @venue.each do |c| %>
 <div class="SearchResults">
 	<%= unless c.base_image.nil? 
 		image_tag url_for(:controller => "venues", :action => "show_image", :id => c.id), :class => "venue-img"
 	else 
-		 image_tag('3.jpg', :class => "venue-img") 
+		 image_tag('venue.jpg', :class => "venue-img") 
 	end %>
 	<div style="margin-left:190px">
 		<h3><%= c.name %>  |  Luxury business hotel</h3>
@@ -80,54 +89,3 @@
 </div>
 <% end %>
 
-<div class="SearchResults">
-	<%= image_tag('3.jpg', :class => "venue-img") %>
-
-	<div style="margin-left:190px">
-		<h3>Ambika Empire  |  Luxury business hotel</h3>
-		<div>
-			<%= image_tag('parking.png', :class => "venue-icons") %>
-			<%= image_tag('nv.png', :class => "venue-icons") %>
-			<%= image_tag('alcohol.png', :class => "venue-icons") %>
-			<%= image_tag('credcard.png', :class => "venue-icons") %>
-			<%= image_tag('restaurant.png', :class => "venue-icons") %>
-		</div>
-		<p class="address">#71, Nehru Salai, Vadapalani</p>
-
-		<p class="capacity"> Up to 100</p>
-		<p class="address">Landmark : Vadapalani Junction</p>
-
-		<div style="margin-top:15px;position:relative;">
-			<p><a href="#" class="btn btn-primary btn-small search-button">View venue</a></p>
-			<p><a href="#" class="btn btn-primary btn-small search-button">? Enquiry</a></p>
-			<p><a href="#" class="btn btn-primary btn-small search-button">Book now</a></p>
-		</div>
-		<p class="numRooms">3 rooms</p><br />
-	</div>
-</div>
-<div class="SearchResults">
-
-	<%= image_tag('2.jpg', :class => "venue-img") %>
-
-	<div style="margin-left:190px">
-		<h3>GRT Grand  |  Business hotel</h3>
-		<div>
-			<%= image_tag('parking.png', :class => "venue-icons") %>
-			<%= image_tag('nv.png', :class => "venue-icons") %>
-			<%= image_tag('alcohol.png', :class => "venue-icons") %>
-			<%= image_tag('credcard.png', :class => "venue-icons") %>
-			<%= image_tag('restaurant.png', :class => "venue-icons") %>
-			<p class="address">#42, Panagal Park, T Nagar</p>
-		</div>
-		<div>
-			<p class="capacity"> Up to 300</p>
-			<p class="address">Landmark : Near Pothys</p>
-		</div>
-		<div style="margin-top:15px;position:relative;">
-			<p><a href="#" class="btn btn-primary btn-small search-button">View venue</a></p>
-			<p><a href="#" class="btn btn-primary btn-small search-button">? Enquiry</a></p>
-			<p><a href="#" class="btn btn-primary btn-small search-button">Book now</a></p>
-			<p class="numRooms">1 room</a></p><br />
-		</div>
-	</div>
-</div>

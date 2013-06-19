@@ -25,7 +25,8 @@ $(document).ready(function(){
 
 });
 
-function createSearchParams(entity){
+
+function createSearchParams(entity, value){
 	var val = '';
 	var ulid = 'ul#' + entity + ' li';
 	var chkid = '#chk_' + entity + '_';
@@ -33,32 +34,67 @@ function createSearchParams(entity){
 		var id = chkid + $(this).attr('id');
 		if($(id)[0] && $(id)[0].checked){
 			if(val == '')
-				val = val + $(this).attr('id');
+				val = val + (value == 1 ? $(id).attr('value') : $(this).attr('id'));
 			else
-				val = val + ','+ $(this).attr('id');
+				val = val + ','+ (value == 1 ? $(id).attr('value') : $(this).attr('id'));
 		}
 	});
 	return val;
 }
 
+function imageupload_click(file_field){
+	$('#'+file_field).click();
+}
 
-function searchFired(){
-	var areas = createSearchParams('area');
-	var bud = createSearchParams('bud');
-	var am = createSearchParams('am');
-	var cap = createSearchParams('cap');
-	var mo = createSearchParams('meal');
+function prev_click(){
+	var page = $('#page_number:hidden').attr('value');
+	searchFired(parseInt(page) -1);
+}
+
+function next_click(){
+	var page = $('#page_number:hidden').attr('value');
+	searchFired(parseInt(page) +1);
+}
+
+function uploadFile(){
+    var fileToSubmit = $("#file_upload_1").serialize();
+
+    $.ajax({
+        url: "/venues/save_image",
+        type: "POST",
+        data: "",
+        file: fileToSubmit,
+        dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+    }).success(function(json){
+        showMessage('Saved successfully...', 'success');
+        debugger;
+    }).error(function(XMLHttpRequest, textStatus, errorThrown){
+    		alert(textStatus + errorThrown);
+    });
+    return false;
+}
+
+function searchFired(page_num){
+	var areas = createSearchParams('area', 1);
+	var bud = createSearchParams('bud', 1);
+	var am = createSearchParams('am', 1);
+	var amn = createSearchParams('am', 2);
+	var cap = createSearchParams('cap', 1);
+	var mo = createSearchParams('meal', 1);
+	var et = $("#eventType option:selected").val();
+	var page = page_num ? page_num : 1;
+
 
 	$('#results_div').html('');
 
 	$.ajax({
 		url: "/venues/search",
 		type: "POST",
-		data: {areas:areas, budget:bud, amenities:am, capacities:cap, meal:mo, po:true },
+		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, po:true, page:page },
 		success: function(data) {
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
-			
+			alert(textStatus + errorThrown);
 		}   
 	});
 

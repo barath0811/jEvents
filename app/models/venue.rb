@@ -45,12 +45,14 @@ class Venue < ActiveRecord::Base
 
 		venue_results = joins(:address).includes(:address, :facility)
 
-		unless query.areas.nil?
+		unless query.areas.count == 0
 			venue_results = venue_results.joins(:address).where('addresses.area' => query.areas).includes(:address)
 		end
-		unless query.amenities.nil?
-
+		
+		query.amenities_val.each do |a| 
+			venue_results = venue_results.joins(:facility).where('facilities.' + a => 1)
 		end
-			return venue_results.limit(10)
+
+		return venue_results.paginate(:page => query.page_number, :per_page => 2), venue_results.count
 	end
 end
