@@ -4,6 +4,8 @@ class Venue < ActiveRecord::Base
 					:venue_type,
 					:base_image,
 					:website,
+					:min_capacity,
+					:max_capacity,
 					:address_attributes,
 					:contact_attributes,
 					:rate_attributes,
@@ -52,8 +54,13 @@ class Venue < ActiveRecord::Base
 
 		query.eventType.each do |a| 
 			venue_results = venue_results.joins(:suittable_events).where('suittable_events.name' => a)
-		end	
+		end
 
-		return venue_results.paginate(:page => query.page_number, :per_page => 2), venue_results.count
+		query.capacity.each do |a| 
+			range = a.split('-')
+			venue_results = venue_results.where("min_capacity <= ? or max_capacity >= ?", range[0], range[1])
+		end
+			
+		return venue_results.paginate(:page => query.page_number, :per_page => 10), venue_results.count
 	end
 end

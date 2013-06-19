@@ -73,6 +73,19 @@ class VenuesController < ApplicationController
     end
   end
 
+  def view
+    @columns = ['Hall name','Theatre Style', 'Classroom style', 'Cluster Style', 'Casual Sitting', 'U Shape', 'Board room style']
+    @halls = Venue.find(:all)
+
+    if request.xhr?
+      render :json => json_for_jqgrid(@halls, @columns)
+    end
+
+    respond_to do |format|
+      format.html   
+    end
+  end
+
   def edit_amenities
     @venue = Venue.find(params[:id])
     if @venue.facility.blank?
