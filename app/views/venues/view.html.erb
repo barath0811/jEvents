@@ -28,7 +28,27 @@
 <div class="view-suit">
 	<p>Suitable for Weddings, Birthdays, Association meetings and Conferences</p>
 </div>
-<table id=halls_list></table>
-<div id=halls_pager></div>
 
-<%= raw(halls_jqgrid) %>
+<table class="table table-bordered">
+	<tr>
+		<td>Hall name</td>
+		<td>Theatre</td>
+		<td>U-Shape</td>
+		<td>Double-U</td>
+		<td>Classroom</td>
+		<td>Board</td>
+		<td>Roundtable</td>
+	</tr>
+	<% @venue.halls.each do |h| %>
+		<tr>
+			<td><%= h.name %></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	<% end %>
+</table>
+
+
