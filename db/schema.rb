@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620083308) do
+ActiveRecord::Schema.define(:version => 20130620171715) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(:version => 20130620083308) do
     t.binary   "booking_available", :limit => 1
     t.binary   "enquiry_available", :limit => 1
     t.binary   "isApproved",        :limit => 1
+    t.string   "description"
   end
 
 end

@@ -1,6 +1,7 @@
 class Venue < ActiveRecord::Base
 	attr_accessible :name, 
 					:terms_conditions, 
+					:description,
 					:venue_type,
 					:base_image,
 					:website,
@@ -33,10 +34,12 @@ class Venue < ActiveRecord::Base
 	accepts_nested_attributes_for :images, :allow_destroy => true
 	accepts_nested_attributes_for :suittable_events, :allow_destroy => true
 	accepts_nested_attributes_for :highligths, :allow_destroy => true
+	accepts_nested_attributes_for :halls, :allow_destroy => true
 
 	#validations
 	validates :user_id, :presence => true
 	validates :name, :presence => true, :length => { :minimum => 3 }
+	validates :description, :presence => true, :length => { :maximum => 500 }
 	validates :terms_conditions, :length => { :maximum => 1000 }
 	validates :venue_type, :presence =>true
 	validates_associated :address, :contact

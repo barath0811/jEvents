@@ -25,7 +25,10 @@
 		<%= f.label(:venue_type, "Venue Type:", class:"control-label") %>
 		<div class="controls"><%= f.select(:venue_type, @venueTypes) %></div>
 	</div>
-
+	<div class="control-group">
+		<%= f.label(:description, "Venue Description:", class:"control-label") %>
+		<div class="controls"><%= f.text_field :description %></div>
+	</div>
 	<div class="control-group">
 		<%= f.label(:base_image, "Venue Image:", class:"control-label") %>
 		<div class="controls"><%= f.file_field :base_image%></div>
