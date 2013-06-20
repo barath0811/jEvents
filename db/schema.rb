@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619213852) do
+ActiveRecord::Schema.define(:version => 20130620083308) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -107,10 +107,14 @@ ActiveRecord::Schema.define(:version => 20130619213852) do
 
   create_table "seating_arrangements", :force => true do |t|
     t.integer  "hall_id"
-    t.string   "arrangement_type"
-    t.integer  "capacity"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "capacity_theatre"
+    t.integer  "capacity_ushape"
+    t.integer  "capacity_doubleu"
+    t.integer  "capacity_classroom"
+    t.integer  "capacity_board"
+    t.integer  "capacity_roundtable"
   end
 
   add_index "seating_arrangements", ["hall_id"], :name => "index_seating_arrangements_on_hall_id"
@@ -167,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20130619213852) do
     t.binary   "view_available",    :limit => 1
     t.binary   "booking_available", :limit => 1
     t.binary   "enquiry_available", :limit => 1
+    t.binary   "isApproved",        :limit => 1
   end
 
 end
