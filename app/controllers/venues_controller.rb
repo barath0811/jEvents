@@ -73,6 +73,14 @@ class VenuesController < ApplicationController
     end
   end
 
+  def view
+    @venue = Venue.find(params[:id])
+
+    respond_to do |format|
+      format.html   
+    end
+  end
+
   def edit_amenities
     @venue = Venue.find(params[:id])
     if @venue.facility.blank?
@@ -118,7 +126,7 @@ class VenuesController < ApplicationController
     @query = SearchCriteria.new
     
     unless params[:eventType].nil?
-      @query.eventType = params[:eventType]
+      @query.eventType = params[:eventType].split(',')
     end
 
     unless params[:areas].nil?
