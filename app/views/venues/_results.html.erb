@@ -83,7 +83,7 @@ end %>
 		<p class="address">Landmark : <%= c.address.landmark %></p>
 
 		<div style="margin-top:15px;position:relative;">
-			<p><a href="#" class="btn btn-primary btn-small search-button">View venue</a></p>
+			<%= link_to 'View venue', venue_path(c), :class => "btn btn-primary btn-small search-button" %>
 		</div>
 		<p class="numRooms"><%= c.num_halls %> rooms</p><br />
 	</div>
