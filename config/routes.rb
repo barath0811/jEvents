@@ -16,7 +16,7 @@ Jevents::Application.routes.draw do
     end
     collection do   #works on a collection, does not require an ID
       get 'show_image'
-
+      get 'view'
       get 'search'
       post 'search' # ???
     end

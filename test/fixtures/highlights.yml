@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  highlight: MyString
+  display_order: 9.99
+  references: MyString
+  venue: MyString
+
+two:
+  highlight: MyString
+  display_order: 9.99
+  references: MyString
+  venue: MyString

@@ -23,8 +23,8 @@ Jevents::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'gmail.com',
-    :user_name            => 'rnarayana@gmail.com',
-    :password             => 'abcdefg!123',
+    :user_name            => 'barath0811@gmail.com',
+    :password             => 'ninethmay2',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 

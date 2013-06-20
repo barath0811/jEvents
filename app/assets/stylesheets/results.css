@@ -19,6 +19,10 @@
   border-radius: 6px;
 }
 
+.head-venue{
+  background-color: rgba(207, 243, 250, 0.5);
+}
+
 .SearchResults:hover{
   border: 2px solid #dddddd;
   border-color: #666666;
@@ -55,8 +59,7 @@
   margin: 1px;
 }
 
-.filters li:hover
-{
+.filters li:hover{
   background-color:rgb(206, 225, 233);
 }
 
@@ -90,6 +93,55 @@ label span input {
 	width:170px;
 	height:130px;
 	position: relative;
+}
+
+.amenities-div{
+
+}
+
+.amenities-div p{
+  width: 200px;
+  height: 30px;
+}
+
+.amenities-div span{
+  width: 50px;
+}
+
+.view-suit {
+
+}
+
+.view-suit p{
+  background-color: #c3d69d;
+  font-size: 20px;
+  position: relative;
+  border-radius: 8px;
+  padding: 5px;
+  padding-left: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.venue-img-div{
+  margin-top: 10px;
+}
+
+.venue-img-div img{
+  float: left;
+  top: 10px;
+  width:320px;
+  height:240px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.venue-amenities{
+  padding: 20px;
+  margin: 10px;
+  border: 4px solid #cc1111;
+  border-radius: 16px;
+  position: relative;
 }
 
 .new-venue-img{

@@ -85,7 +85,7 @@ function searchFired(page_num){
 	var page = page_num ? page_num : 1;
 
 
-	$('#results_div').html('');
+	$('#results').html('');
 
 	$.ajax({
 		url: "/venues/search",
