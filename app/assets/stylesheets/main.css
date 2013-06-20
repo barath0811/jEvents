@@ -1,15 +1,22 @@
 body {
 	font-family: 'Open Sans', "Book Antiqua", Arial, sans-serif;
 	background-image: url(Background1.jpg);
-	margin-top: 110px;
-	padding-top: 110px;
+	padding-top: 60px;
+	padding-bottom: 40px;
 }
 
-@media (min-width: 980px) { 
-	body { 
-		margin-top: 80px;
-		padding-top: 80px; 
-	}
+#bodyAndFooter {
+	padding-top: 60px;
+}
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0;
+  }
+
+  #bodyAndFooter {
+    padding-top: 0;
+  }
 }
 
 @media (min-width: 400px) {
@@ -55,16 +62,24 @@ body {
 .success a {color:#264409;}
 
 /************** Header **************/
-.navbar .container { height: 3em; }
+/*.navbar .container { height: 3em; }*/
 
 .navbar-inner {
-	width: 100%;
 	background: #FFF;
-	position: absolute;
 	border-bottom: 1px solid #f88534;
-	/*box-shadow: 0 5px 25px 0 black;*/
-	padding: 1em 0 0 0;
-	top:0;
+}
+
+#customNav {
+	-webkit-box-shadow: 0 0px 2px 0 #f88534;
+    -moz-box-shadow:    0 0px 2px 0 #f88534;
+    box-shadow: 		0 0px 3px 0 #f88534;
+}
+
+.collapse.in li {
+	background-color: white;
+	list-style-position: inside;
+	border-bottom: 1px solid lightgrey;
+	overflow: visible;
 }
 
 #navLinkText{
@@ -91,6 +106,7 @@ body {
 }
 
 /************** Home Content **************/
+
 #homeHeading {
 	font-size: 2em;
 	font-weight: bold;

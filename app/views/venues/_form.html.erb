@@ -5,18 +5,16 @@
       <li><a href="#" class='disabledLinkForNew'>Function Spaces</a></li>
       <li><a href="#" class='disabledLinkForNew'>Pricing & Terms</a></li>
       <li><a href="#" class='disabledLinkForNew'>Amenities</a></li>
-      <li><a href="#" class='disabledLinkForNew'>Account Settings</a></li>
     <% else %>
       <li class="active"><%= link_to 'Basic Information', edit_venue_path(@venue), remote: true %></li>
       <li><%= link_to 'Function Spaces', venue_halls_path(@venue), remote: true %></li>
-      <li><%= link_to 'Pricing & Terms', edit_pricing_venue_path(@venue), remote: true %></li>
-      <li><%= link_to 'Amenities', edit_venue_facility_path(@venue), remote: true %></li>
-      <li><%= link_to 'Account Settings', edit_settings_venue_path(@venue), remote: true %></li>
+      <li><%= link_to 'Pricing & Terms', rates_venue_path(@venue), remote: true %></li>
+      <li><%= link_to 'Amenities', facilities_venue_path(@venue), remote: true %></li>
     <% end %>  
   </ul>
   <div class="span7">
     <div id="venueEditContent" class="venueContent">
-      <%= render partial: 'venues/basic', locals: { :venue => @venue } %>
+      <%= render partial: 'venues/basic/form', locals: { :venue => @venue } %>
     </div>
   </div>
 </div>

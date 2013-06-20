@@ -4,14 +4,18 @@ class Venue < ActiveRecord::Base
 					:venue_type,
 					:base_image,
 					:website,
+					:user_id,
 					:min_capacity,
 					:max_capacity,
 					:address_attributes,
 					:contact_attributes,
 					:rate_attributes,
+					:facility_attributes,
 					:images_attributes
 
 	#associations
+	belongs_to :user
+
 	has_many :images, :dependent => :destroy
 	has_many :halls, :dependent => :destroy
 	has_many :suittable_events, :dependent => :destroy
@@ -25,12 +29,14 @@ class Venue < ActiveRecord::Base
 	accepts_nested_attributes_for :address, :reject_if => lambda { |a| a[:address].blank? }, :allow_destroy => true
 	accepts_nested_attributes_for :contact, :allow_destroy => true
 	accepts_nested_attributes_for :rate, :allow_destroy => true
+	accepts_nested_attributes_for :facility, :allow_destroy => true
 	accepts_nested_attributes_for :images, :allow_destroy => true
 	accepts_nested_attributes_for :suittable_events, :allow_destroy => true
 	accepts_nested_attributes_for :highligths, :allow_destroy => true
 
 	#validations
-	validates :name, :presence =>true, :length => { :minimum => 3 }
+	validates :user_id, :presence => true
+	validates :name, :presence => true, :length => { :minimum => 3 }
 	validates :terms_conditions, :length => { :maximum => 1000 }
 	validates :venue_type, :presence =>true
 	validates_associated :address, :contact
@@ -41,7 +47,7 @@ class Venue < ActiveRecord::Base
 
 
 	def self.search(query)
-		JeventzLogger.debug "query == #{query.inspect}"
+		#JeventzLogger.debug "query == #{query.inspect}"
 		#joins(:address).where('addresses.area' => query.areas).includes(:address)
 
 		venue_results = joins(:address).includes(:address, :facility, :suittable_events)

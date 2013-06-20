@@ -1,0 +1,23 @@
+<table class="table table-striped table-bordered table-condensed">
+	<tr>
+		<th>Hall Name</th>
+		<th>Hall Type</th>
+		<th>Pricing mode</th>
+		<th>Hall rent</th>
+		<th></th>
+	</tr>
+
+	<% if @halls.empty? %>
+	<td colspan="7">No halls have been added so far.</td>
+	<% else %>
+	<% for hall in @halls.each do %>
+	<tr>
+		<td><%= hall.name %></td>
+		<td><%= hall.hall_type %></td>
+		<td><%= hall.pricing_mode %></td>
+		<td><%= hall.hall_rent %></td>
+		<td><%= link_to 'Edit Hall', edit_venue_hall_path(@venue, hall), :remote => true, :class => 'hallFormLnk' %></td>
+	</tr>
+	<% end %>
+	<% end %>
+</table>

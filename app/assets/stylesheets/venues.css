@@ -12,11 +12,11 @@ div.roundedBorder{
 	width: 12em;
 }
 
-#addHallSlide{
+#openHallSlide{
 	display:none;
 }
 
-#cancelHallSlide {
+#closeHallSlide {
 	margin-left: 0.5em;
 }
 

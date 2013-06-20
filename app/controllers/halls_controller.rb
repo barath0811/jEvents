@@ -38,6 +38,7 @@ class HallsController < ApplicationController
 
 	def edit
 		@hall = Hall.find(params[:id])
+
 		seatingTypes = getOptions('Seating')
 		@hall.seating_arrangements.each do |sa| 
 			seatingTypes.delete(sa.arrangement_type) 
@@ -57,8 +58,7 @@ class HallsController < ApplicationController
 
 		respond_to do |format|
 			if @hall.save
-				format.html { redirect_to edit_venue_path(@venue) }
-	        	format.json { render json: [@venue, @hall], status: :created, location: @hall } #To BE UPDATED
+	        	format.js { redirect_to venue_halls_path(@venue) }
 	        else
 	        	format.html { render action: "new" }
 	        	format.json { render json: @hall.errors, status: :unprocessable_entity }
@@ -69,11 +69,15 @@ class HallsController < ApplicationController
 	def update
 		@hall = Hall.find(params[:id])
 
+		#TODO - Do not save empty seats.
+		# @hall.seating_arrangements.each do |sa|
+		# 	sa.destroy
+		# end
+
 		respond_to do |format|
 			if @hall.update_attributes(params[:hall])
 				remove_blank_seating()
-				format.html { redirect_to edit_venue_path(@venue) }
-				format.json { head :no_content }
+				format.js { redirect_to venue_halls_path(@venue) }
 			else
 				format.html { render action: "edit" }
 				format.json { render json: @hall.errors, status: :unprocessable_entity }

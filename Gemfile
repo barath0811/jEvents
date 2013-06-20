@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails' #, '3.2.13'
+ruby '1.9.3'
+gem 'rails', '~> 3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,12 +19,24 @@ group :assets do
 end
 
 group :development do
-  gem 'annotate'
-  gem 'sqlite3'
+	gem 'mysql2'
+  	gem 'annotate'
+  	gem 'sqlite3'
+  	gem 'webrick'
+end
+
+group :production do
+	gem 'pg'
 end
 
 gem 'jquery-rails'
 gem 'client_side_validations'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google'
+gem 'omniauth-twitter'
+gem 'certified'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -40,7 +51,7 @@ gem 'client_side_validations'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+# gem 'debugger'
 
 # To Paginate
 gem 'will_paginate'

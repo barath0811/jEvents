@@ -28,6 +28,14 @@ $(document).on('ajax:success', function(){
 	}
 });
 
+$(document).on('ajax:success', 'form.ajax_form', function() {  
+    showMessage('Saved successfully!', 'success')
+});
+
+// $(document).on('ajax:error', 'form.ajax_form', function() {  
+//     alert('Ouch!');
+// });
+
 var showMessage = function(text, style)
 {
     style = style || 'notice';           //<== default style if it's not set
