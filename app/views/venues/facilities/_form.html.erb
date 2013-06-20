@@ -2,8 +2,6 @@
 
 <%= form_for @venue, :remote => true, :html => { :class => "ajax_form form-horizontal"} do |v| %>
 
-<div id="user_message"></div>
-
 <div class="actions">
   <%= v.submit "Save Changes", :class => "btn btn-success fr" %>
 </div>

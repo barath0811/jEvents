@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
 
-	before_filter :authenticate_user!, :except => [:show, :search]
+	before_filter :authenticate_user!, :except => [:show, :search, :show_image]
 
 	# GET /venues
 	def index
@@ -23,7 +23,7 @@ class VenuesController < ApplicationController
 	end
 
 	def show_image
-		@venue1 =  current_user.venues.find(params[:id])
+		@venue1 =  Venue.find(params[:id])
 		send_data @venue1.base_image, :type => 'image/png',:disposition => 'inline'
 	end
 
@@ -62,11 +62,11 @@ class VenuesController < ApplicationController
 		end
 	end
 
-	def facilities
-		@venue = current_user.venues.find(params[:id])
-		if @venue.facility.blank?
-			@venue.build_facility
-		end
+  def edit_amenities
+    @venue = Venue.find(params[:id])
+    if @venue.facility.blank?
+      @venue.build_facility
+    end
 
 		respond_to do |format|
 			format.js { render :template => 'venues/facilities/addedit'}
@@ -112,12 +112,12 @@ class VenuesController < ApplicationController
 		end
 	end
 
-	def search
-		@query = SearchCriteria.new
-
-		unless params[:eventType].nil?
-			@query.eventType = params[:eventType]
-		end
+  def search
+    @query = SearchCriteria.new
+    
+    unless params[:eventType].nil?
+      @query.eventType = params[:eventType].split(',')
+    end
 
 		unless params[:areas].nil?
 			@query.areas = params[:areas].split(',')

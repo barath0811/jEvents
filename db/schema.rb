@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617045040) do
+ActiveRecord::Schema.define(:version => 20130620083308) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(:version => 20130617045040) do
   end
 
   add_index "addresses", ["venue_id"], :name => "index_addresses_on_venue_id"
+
+  create_table "areas", :force => true do |t|
+    t.string   "area1"
+    t.string   "area2"
+    t.decimal  "distance",   :precision => 10, :scale => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
 
   create_table "contacts", :force => true do |t|
     t.integer  "venue_id"
@@ -63,6 +71,15 @@ ActiveRecord::Schema.define(:version => 20130617045040) do
 
   add_index "halls", ["venue_id"], :name => "index_halls_on_venue_id"
 
+  create_table "highlights", :force => true do |t|
+    t.string   "highlight"
+    t.decimal  "display_order", :precision => 10, :scale => 0
+    t.string   "references"
+    t.string   "venue"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
   create_table "images", :force => true do |t|
     t.integer  "venue_id"
     t.integer  "hall_id"
@@ -90,13 +107,24 @@ ActiveRecord::Schema.define(:version => 20130617045040) do
 
   create_table "seating_arrangements", :force => true do |t|
     t.integer  "hall_id"
-    t.string   "arrangement_type"
-    t.integer  "capacity"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "capacity_theatre"
+    t.integer  "capacity_ushape"
+    t.integer  "capacity_doubleu"
+    t.integer  "capacity_classroom"
+    t.integer  "capacity_board"
+    t.integer  "capacity_roundtable"
   end
 
   add_index "seating_arrangements", ["hall_id"], :name => "index_seating_arrangements_on_hall_id"
+
+  create_table "suittable_events", :force => true do |t|
+    t.string   "name"
+    t.integer  "venue_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -132,13 +160,18 @@ ActiveRecord::Schema.define(:version => 20130617045040) do
     t.string   "venue_type"
     t.string   "website"
     t.text     "terms_conditions"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
     t.binary   "base_image"
     t.integer  "num_halls"
     t.integer  "min_capacity"
     t.integer  "max_capacity"
-    t.integer  "user_id",          :null => false
+    t.integer  "user_id",                                                       :null => false
+    t.decimal  "popularity_index",               :precision => 10, :scale => 0
+    t.binary   "view_available",    :limit => 1
+    t.binary   "booking_available", :limit => 1
+    t.binary   "enquiry_available", :limit => 1
+    t.binary   "isApproved",        :limit => 1
   end
 
 end

@@ -221,7 +221,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   require "omniauth-facebook"
   require "omniauth-twitter"
-  config.omniauth :facebook, 'APP_ID', 'APP_SECRET'
+  config.omniauth :facebook, '337836476319124', '340f6e79e9efd6b6124542e5d7ad877c'
   config.omniauth :twitter, 'APP_ID', 'APP_SECRET'
 
   # ==> Warden configuration

@@ -1,42 +1,55 @@
-<p id="notice"><%= notice %></p>
+<h4>Ambica Empire, Luxury Business Hotel</h4>
+<h6>Jawaharlal Nehru Road, Vadapalani</h6>
 
-<p>
-  <b>Venue Name:</b>
-  <%= @venue.name %>
-</p>
+<div style="height:300px">
+  <div class="span4 venue-img-div">
+    <img src="/assets/1.jpg" class='view-venue-img' >
+  </div>
+  <div class="span7 venue-amenities">
+    <p style="font-size:20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ambica Empire is an inspired choice of venue for a meeting, conference, seminar or an occasion</p>
 
-<p>
-  <b>Venue Type:</b>
-  <%= @venue.venue_type %>
-</p>
+    <div class="span3 amenities-div">
+      <p><span><img src="/assets/capacity.jpg"></span>25-1000</p>
+      <p><span><img src="/assets/parking.png"></span>Valet Parking</p>
+      <p><span><img src="/assets/restaurant.png"></span>External catering allowed</p>
+      <p><span><img src="/assets/alcohol.png"></span>Alcohol allowed</p>
+    </div>
 
-<p>
-  <b>Website:</b>
-  <%= @venue.website %>
-</p>
+    <div class="span3 amenities-div">
+      <p><span><img src="/assets/credcard.png"></span>Credit cards accepted</p>
+      <p><span><img src="/assets/rupee.jpg" ></span>25,000 to 3 Lakhs</p>
+      <p><span><img src="/assets/veg.gif"></span>Cost/Plate: Rs 450</p>
+      <p><span><img src="/assets/nv.png" ></span>Cost/Plate: Rs 550</p>
+    </div>
+  </div>
 
-<p>
-  <b>Terms conditions:</b>
-  <%= @venue.terms_conditions %>
-</p>
+</div>
 
-<p>
-  <b>Address:</b>
-  <%= @venue.address.address %>
-</p>
+<div class="view-suit">
+  <p>Suitable for Weddings, Birthdays, Association meetings and Conferences</p>
+</div>
+</br>
 
-<p>
-  <b>Area:</b>
-  <%= @venue.address.area %>
-</p>
+<table class="table table-bordered">
+  <tr>
+    <td>Hall name</td>
+    <td>Theatre</td>
+    <td>U-Shape</td>
+    <td>Double-U</td>
+    <td>Classroom</td>
+    <td>Board</td>
+    <td>Roundtable</td>
+  </tr>
+  <% @venue.halls.each do |h| %>
+    <tr>
+      <td><%= h.name %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  <% end %>
+</table>
 
 
-<p>
-  <b>Contact:</b>
-  <%= @venue.contact.firstname + " " + @venue.contact.lastname %>
-</p>
-
-
-
-<%= link_to 'Edit', edit_venue_path(@venue) %> |
-<%= link_to 'Back', venues_path %>

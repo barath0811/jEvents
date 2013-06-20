@@ -28,28 +28,21 @@ $(document).on('ajax:success', function(){
 	}
 });
 
-$(document).on('ajax:success', 'form.ajax_form', function() {  
-    showMessage('Saved successfully!', 'success')
+$(document).on('ajax:success', 'form.ajax_form', function() {
+    showNotification('Saved successfully!', 'success');
 });
 
 // $(document).on('ajax:error', 'form.ajax_form', function() {  
 //     alert('Ouch!');
 // });
 
-var showMessage = function(text, style)
+var showNotification = function(text, style)
 {
-    style = style || 'notice';           //<== default style if it's not set
+	$('#notification-bar')
+	.attr('class', 'notify')
+	.html(text)
+	.slideDown(1000)
+	.delay(2000)
+	.fadeOut(1500);
 
-    //create message and show it
-    $('<div>')
-    .attr('class', style)
-    .html(text)
-    .fadeIn('fast')
-	.insertBefore($('#user_message'))  		//<== wherever you want it to show
-	.animate({opacity: 1.0}, 2500)    		//<== wait 2.5 sec before fading out
-	.fadeOut('slow', function()
-	{
-		$(this).remove();
-	});
-};
-
+}
