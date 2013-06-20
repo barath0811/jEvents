@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require_tree ./vendor/
 //= require rails.validations
 //= require_tree .
-*= require twitter/bootstrap/responsive
