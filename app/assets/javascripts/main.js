@@ -21,7 +21,6 @@ $(document).ready(function(){
 	});
 });
 
-
 $(document).on('ajax:success', function(){
 	if($('form[data-validate]').length){
 		$('form[data-validate]').enableClientSideValidations();
@@ -44,5 +43,4 @@ var showNotification = function(text, style)
 	.slideDown(1000)
 	.delay(2000)
 	.fadeOut(1500);
-
 }

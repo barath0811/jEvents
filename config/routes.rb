@@ -23,7 +23,7 @@ Jevents::Application.routes.draw do
     end
   end
 
-  resources :feedbacks, :only => [:new, :index]
+  resources :feedbacks, :only => [:new, :index, :create]
 
   get "home/index"
   get "home/about"

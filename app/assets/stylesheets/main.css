@@ -184,10 +184,6 @@ body {
 }
 
 /************** Customization of 3rd party css ***************/
-.glyphw{
-    background-image: url(/assets/glyphicons-halflings-white.png);
-}
-
 .field_with_errors .message {
 	display: inline;
   	color: #D00;

@@ -47,7 +47,6 @@ class Venue < ActiveRecord::Base
     	write_attribute(:base_image, value.read)
   	end
 
-
 	def self.search(query)
 		#JeventzLogger.debug "query == #{query.inspect}"
 		#joins(:address).where('addresses.area' => query.areas).includes(:address)

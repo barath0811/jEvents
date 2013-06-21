@@ -11,7 +11,7 @@
 </div>
 
 <div>
-	<%= image_tag url_for(:controller => "venues", :action => "show_image", :id => @venue.id) %>
+	<%= image_tag url_for(:controller => "venues", :action => "show_image", :id => @venue.id) unless @venue.new_record? %>
 </div>
 
 <div id="venueBasicContent">
