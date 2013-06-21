@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '~> 3.2.13'
 
+gem 'mysql2', '~> 0.3.11'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -11,7 +13,9 @@ gem 'rails', '~> 3.2.13'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  gem 'jquery-ui-rails'
+  gem 'jquery-modal-rails'
+  gem "twitter-bootstrap-rails"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -19,7 +23,6 @@ group :assets do
 end
 
 group :development do
-	gem 'mysql2'
   	gem 'annotate'
   	gem 'sqlite3'
   	gem 'webrick'
@@ -29,14 +32,14 @@ group :production do
 	gem 'pg'
 end
 
-gem 'jquery-rails'
-gem 'client_side_validations'
-gem 'devise'
-gem 'omniauth'
+gem 'jquery-rails', '~> 3.0.1'
+gem 'client_side_validations', '~> 3.2.5'
+gem 'devise', '~> 2.2.4'
+gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-facebook'
 gem 'omniauth-google'
 gem 'omniauth-twitter'
-gem 'certified'
+gem 'certified', '~> 0.1.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -51,4 +54,4 @@ gem 'certified'
 # gem 'capistrano'
 
 # To Paginate
-gem 'will_paginate'
+gem 'will_paginate', '~> 3.0.4'

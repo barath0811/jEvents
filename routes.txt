@@ -41,9 +41,15 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
                    venue GET      /venues/:id(.:format)                      venues#show
                          PUT      /venues/:id(.:format)                      venues#update
                          DELETE   /venues/:id(.:format)                      venues#destroy
+               feedbacks GET      /feedbacks(.:format)                       feedbacks#index
+                         POST     /feedbacks(.:format)                       feedbacks#create
+            new_feedback GET      /feedbacks/new(.:format)                   feedbacks#new
+           edit_feedback GET      /feedbacks/:id/edit(.:format)              feedbacks#edit
+                feedback GET      /feedbacks/:id(.:format)                   feedbacks#show
+                         PUT      /feedbacks/:id(.:format)                   feedbacks#update
+                         DELETE   /feedbacks/:id(.:format)                   feedbacks#destroy
               home_index GET      /home/index(.:format)                      home#index
               home_about GET      /home/about(.:format)                      home#about
-            home_contact GET      /home/contact(.:format)                    home#contact
                 home_faq GET      /home/faq(.:format)                        home#faq
               home_terms GET      /home/terms(.:format)                      home#terms
             home_privacy GET      /home/privacy(.:format)                    home#privacy

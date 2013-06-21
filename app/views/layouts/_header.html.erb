@@ -24,14 +24,14 @@
 				<ul class="nav pull-right">
 					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "How It Works", placeholder_path %></li>
 					<li class="<%= 'active' if current_page?(search_venues_path) %>"><%= link_to "Venue Search", search_venues_path %></li>
-					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "Blog", placeholder_path %></li>
+					<li ><%= link_to "Blog", placeholder_path %></li>
 					<li><%= link_to "Venue Owners", venues_path %></li>
 					<% if user_signed_in? %> 
 					<li><%= link_to current_user.email, edit_user_registration_path %></li>
 					<li><%= link_to "Sign out", destroy_user_session_path %></li>
 					<% else %> 
 					<li><%= link_to "Sign up", new_user_registration_path %></li> 
-					<li><%= link_to "Sign in", new_user_session_path %></li>
+					<li><%= link_to "Sign in", new_user_session_path, :rel => "modal:open" %></li>
 					<% end %>
 				</ul>
 			</div>
