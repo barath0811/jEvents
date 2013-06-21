@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620083308) do
+ActiveRecord::Schema.define(:version => 20130621045712) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -160,18 +160,18 @@ ActiveRecord::Schema.define(:version => 20130620083308) do
     t.string   "venue_type"
     t.string   "website"
     t.text     "terms_conditions"
-    t.datetime "created_at",                                                    :null => false
-    t.datetime "updated_at",                                                    :null => false
+    t.datetime "created_at",                                                                         :null => false
+    t.datetime "updated_at",                                                                         :null => false
     t.binary   "base_image"
     t.integer  "num_halls"
     t.integer  "min_capacity"
     t.integer  "max_capacity"
-    t.integer  "user_id",                                                       :null => false
-    t.decimal  "popularity_index",               :precision => 10, :scale => 0
-    t.binary   "view_available",    :limit => 1
-    t.binary   "booking_available", :limit => 1
-    t.binary   "enquiry_available", :limit => 1
-    t.binary   "isApproved",        :limit => 1
+    t.integer  "user_id"
+    t.decimal  "popularity_index",                 :precision => 10, :scale => 0
+    t.binary   "view_available",    :limit => 255
+    t.binary   "booking_available", :limit => 255
+    t.binary   "enquiry_available", :limit => 255
+    t.boolean  "is_approved",                                                     :default => false
   end
 
 end

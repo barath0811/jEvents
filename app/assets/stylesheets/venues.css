@@ -24,6 +24,10 @@ div.roundedBorder{
 	color: grey;
 }
 
+.seating {
+	overflow: hidden;
+}
+
 .seatingCap{
 	width: 3em;
 }

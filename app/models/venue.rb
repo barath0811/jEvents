@@ -7,6 +7,8 @@ class Venue < ActiveRecord::Base
 					:user_id,
 					:min_capacity,
 					:max_capacity,
+					:is_approved,
+
 					:address_attributes,
 					:contact_attributes,
 					:rate_attributes,

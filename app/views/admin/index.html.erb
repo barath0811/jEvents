@@ -9,6 +9,7 @@
 				<th>Type</th>
 				<th>Website</th>
 				<th>User</th>
+				<th>Is approved?</th>
 			</tr>
 
 			<% @venues.each do |venue| %>
@@ -17,6 +18,7 @@
 				<td><%= venue.venue_type %></td>
 				<td><%= venue.website %></td>
 				<td><%= venue.user_id %></td>
+				<td><%= venue.is_approved %></td>
 			</tr>
 			<% end %>
 		</table>
