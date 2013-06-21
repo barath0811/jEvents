@@ -1,4 +1,10 @@
-<div id="notification-bar"></div>
+<div id="notification-bar">
+	<section id="flash">
+		<% flash.each do |key, value| %>
+		<div class="flash <%= key %>"><%= value %></div>
+		<% end %>
+	</section>
+</div>
 
 <div class="navbar navbar-fixed-top" id="customNav" >
 	<div class="navbar-inner">
@@ -38,16 +44,11 @@
 				<!-- <form class="navbar-search pull-left">
 					<input type="text" class="search-query" placeholder="Search">
 				</form> -->
-				<section id="flash">
-					<% flash.each do |key, value| %>
-					<div class="flash <%= key %>"><%= value %></div>
-					<% end %>
-				</section>
 				<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/rnarayana", :target => "_blank" %>
-				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/narayana.rengaswamy", :target => "_blank" %>
-				<%= link_to image_tag('google-plus.png'), 	"https://plus.google.com/102620915023778176041", :target => "_blank" %>
-				<%= link_to image_tag('blogger.png'), 		"http://rnarayana.blogspot.in", :target => "_blank" %>
+				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/JollyEventz", :target => "_blank" %>
+				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/JollyEventz", :target => "_blank" %>
+				<%= link_to image_tag('google-plus.png'), 	"#", :target => "_blank" %>
+				<%= link_to image_tag('blogger.png'), 		"http://www.jollyeventz.com/blog", :target => "_blank" %>
 			</div>
 		</div>
 	</div>

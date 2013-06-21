@@ -26,6 +26,8 @@ Jevents::Application.routes.draw do
   get "home/about"
   get "home/contact"
   get "home/faq"
+  get "home/terms"
+  get "home/privacy"
   
   get 'placeholder' => 'pages#placeholder'
 

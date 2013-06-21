@@ -1,16 +1,7 @@
 class HomeController < ApplicationController
 	helper :venues
 	
-	def index
-	end
-
-	def about
-	end
-
 	def contact
+		render :layout => false
 	end
-
-	def faq
-	end
-
 end

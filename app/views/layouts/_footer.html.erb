@@ -3,17 +3,17 @@
 	<div class="span3">
 		<h4>About JollyEvents</h4>
 		<ul>
-			<li><%= link_to "About Us", placeholder_path %></li>
+			<li><%= link_to "About Us", home_about_path %></li>
 			<li><%= link_to "How it works", placeholder_path %></li>
-			<li><%= link_to "Contact Us", placeholder_path %></li>
-			<li><%= link_to "FAQ", placeholder_path %></li>
+			<li><%= link_to "Contact Us", home_contact_path, :rel => "modal:open" %></li>
+			<li><%= link_to "FAQ", home_faq_path %></li>
 			<li><%= link_to "Blog", placeholder_path %></li>
 		</ul>
 	</div>
 	<div class="span3">
 		<h4>For Event Planners</h4>
 		<ul>
-			<li><%= link_to "Search Venue", placeholder_path %></li>
+			<li><%= link_to "Search Venue", search_venues_path %></li>
 			<li><%= link_to "Venue Collections", placeholder_path %></li>
 			<li><%= link_to "My Events", placeholder_path %></li>
 			<li><%= link_to "Testimonials", placeholder_path %></li>
@@ -22,8 +22,8 @@
 	<div class="span3">
 		<h4>For Venue Owners</h4>
 		<ul>
-			<li><%= link_to "Add Venue", placeholder_path %></li>
-			<li><%= link_to "My Venue", placeholder_path %></li>
+			<li><%= link_to "Add Venue", new_venue_path %></li>
+			<li><%= link_to "My Venue", venues_path %></li>
 			<li><%= link_to "Advertising", placeholder_path %></li>
 			<li><%= link_to "Deals & Offers", placeholder_path %></li>
 		</ul>
@@ -42,7 +42,7 @@
 <footer class="row-fluid">
 	<div class="pull-right">
 		&copy; JollyEventz 2013 | 
-		<%= link_to "Privacy Policy", placeholder_path %> | 
-		<%= link_to "Site Terms of Use", placeholder_path %>
+		<%= link_to "Privacy Policy", home_privacy_path %> | 
+		<%= link_to "Site Terms of Use", home_terms_path %>
 	</div>
 </footer>
