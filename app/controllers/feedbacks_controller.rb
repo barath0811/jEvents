@@ -15,6 +15,7 @@ class FeedbacksController < ApplicationController
 
 		respond_to do |format|
 			if @feedback.save
+				FeedbackMailer.send_feedback(@feedback).deliver
 				format.html { redirect_to home_index_path }
 			else
 				format.html { render action: "new" }
