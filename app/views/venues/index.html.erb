@@ -3,31 +3,37 @@
 </div>
 
 <h1>My venues</h1>
+<div class="row-fluid">
+	<table class="table table-striped table-bordered table-condensed">
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Area</th>
+			<th>Website</th>
+			<th>Contact Person</th>
+			<th>Email</th>
+			<th>Mobile</th>
+			<th></th>
+		</tr>
 
-<table class="table table-striped table-bordered table-condensed">
-	<tr>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Website</th>
-		<th>Terms conditions</th>
-		<th></th>
-		<th></th>
-		<th></th>
-	</tr>
-
-	<% @venues.each do |venue| %>
-	<tr>
-		<td><%= venue.name %></td>
-		<td><%= venue.venue_type %></td>
-		<td><%= venue.website %></td>
-		<td><%= venue.terms_conditions %></td>
-		<td><%= link_to 'Show', venue %></td>
-		<td><%= link_to 'Edit', edit_venue_path(venue) %></td>
-		<td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	</tr>
-	<% end %>
-</table>
-
+		<% @venues.each do |venue| %>
+		<tr>
+			<td><%= venue.name %></td>
+			<td><%= venue.venue_type %></td>
+			<td><%= venue.address.area %></td>
+			<td><%= venue.website %></td>
+			<td><%= venue.contact.firstname %> <%= venue.contact.lastname %></td>
+			<td><%= venue.contact.email %></td>
+			<td><%= venue.contact.mobile_number %></td>
+			<td>
+				<%= link_to raw('<i class="icon-eye-open"></i>'), venue, :rel => "modal:open" %>&nbsp;&nbsp;
+				<%= link_to raw('<i class="icon-pencil"></i>'), edit_venue_path(venue) %>&nbsp;&nbsp;
+				<%= link_to raw('<i class="icon-trash"></i>'), venue, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>
 <br />
 
 <%= link_to 'New Venue', new_venue_path %>

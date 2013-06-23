@@ -15,6 +15,7 @@ class FeedbacksController < ApplicationController
 
 		respond_to do |format|
 			if @feedback.save
+				flash[:notice] = "Thank you for your valuable feedback!"
 				FeedbackMailer.send_feedback(@feedback).deliver
 				format.html { redirect_to home_index_path }
 			else

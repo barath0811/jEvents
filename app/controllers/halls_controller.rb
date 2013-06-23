@@ -52,8 +52,8 @@ class HallsController < ApplicationController
 			if @hall.save
 				capacity = findMinMaxCap(@hall.seating_arrangement)
 				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1])
-
-				format.js { redirect_to venue_halls_path(@venue) }
+				
+				format.js { redirect_to venue_halls_path(@venue), :notice => "Function space created successfully" }
 			else
 				format.html { render action: "new" }
 				format.json { render json: @hall.errors, status: :unprocessable_entity }
@@ -68,8 +68,8 @@ class HallsController < ApplicationController
 			if @hall.update_attributes(params[:hall])
 				capacity = findMinMaxCap(@hall.seating_arrangement)
 				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1])
-
-				format.js { redirect_to venue_halls_path(@venue) }
+				
+				format.js { redirect_to venue_halls_path(@venue), :notice => "Function space saved successfully" }
 			else
 				format.html { render action: "edit" }
 				format.json { render json: @hall.errors, status: :unprocessable_entity }
@@ -80,6 +80,7 @@ class HallsController < ApplicationController
 	def destroy
 		@hall = Hall.find(params[:id])
 		@hall.destroy
+		flash[:notice] = "Function space deleted successfully"
 
 		respond_to do |format|
 			format.html { redirect_to halls_url }

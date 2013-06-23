@@ -33,6 +33,7 @@ class VenuesController < ApplicationController
 
 		respond_to do |format|
 			if @venue.save
+				flash[:notice] = "Venue created successfully. It will be approved by the administrator withing 24 hours."
 				format.html { redirect_to edit_venue_path(@venue) }
 				format.js { render :nothing => true }
 			else
@@ -62,7 +63,7 @@ class VenuesController < ApplicationController
 		end
 	end
 
-  def edit_amenities
+  def facilities
     @venue = Venue.find(params[:id])
     if @venue.facility.blank?
       @venue.build_facility
@@ -75,14 +76,18 @@ class VenuesController < ApplicationController
 
 	# PUT /venues/1
 	def update
-		@venue =  current_user.venues.find(params[:id])
+		@venue = current_user.venues.find(params[:id])
 
 		respond_to do |format|
 			if @venue.update_attributes(params[:venue])
+				flash[:notice] = "Venue saved successfully"
+
 				format.html { redirect_to edit_venue_path(@venue) }
 				format.js { render :nothing => true }
+				format.json { respond_with_bip(@venue) }
 			else
 				format.html { render action: "edit" }
+				format.json { respond_with_bip(@venue) }
 			end
 		end
 	end

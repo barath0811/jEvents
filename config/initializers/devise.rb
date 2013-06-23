@@ -220,8 +220,10 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   require "omniauth-facebook"
+  require "omniauth-google-oauth2"
   require "omniauth-twitter"
-  config.omniauth :facebook, '337836476319124', '340f6e79e9efd6b6124542e5d7ad877c'
+  config.omniauth :facebook, ENV["FACEBOOK_ID"], ENV["FACEBOOK_SECRET"]
+  config.omniauth :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"], { access_type: "offline", approval_prompt: "" }
   config.omniauth :twitter, 'APP_ID', 'APP_SECRET'
 
   # ==> Warden configuration

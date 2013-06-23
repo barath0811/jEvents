@@ -1,14 +1,10 @@
 class Venue < ActiveRecord::Base
-	attr_accessible :name, 
-					:terms_conditions, 
-					:venue_type,
-					:base_image,
-					:website,
-					:user_id,
-					:min_capacity,
-					:max_capacity,
-					:is_approved,
+	attr_accessible :name, :venue_type, :terms_conditions, :website, :base_image,					
+					
+					:num_halls, :min_capacity, :max_capacity,
+					:is_approved, :view_available, :booking_available, :enquiry_available,
 
+					:user_id,
 					:address_attributes,
 					:contact_attributes,
 					:rate_attributes,
@@ -20,20 +16,19 @@ class Venue < ActiveRecord::Base
 
 	has_many :images, :dependent => :destroy
 	has_many :halls, :dependent => :destroy
-	has_many :suittable_events, :dependent => :destroy
+	has_many :suitable_events, :dependent => :destroy
 	has_many :highligths, :dependent => :destroy
 	has_one :facility, :dependent => :destroy
 	has_one :address, :dependent => :destroy
 	has_one :contact, :dependent => :destroy
 	has_one :rate, :dependent => :destroy
 
-
 	accepts_nested_attributes_for :address, :reject_if => lambda { |a| a[:address].blank? }, :allow_destroy => true
 	accepts_nested_attributes_for :contact, :allow_destroy => true
 	accepts_nested_attributes_for :rate, :allow_destroy => true
 	accepts_nested_attributes_for :facility, :allow_destroy => true
 	accepts_nested_attributes_for :images, :allow_destroy => true
-	accepts_nested_attributes_for :suittable_events, :allow_destroy => true
+	accepts_nested_attributes_for :suitable_events, :allow_destroy => true
 	accepts_nested_attributes_for :highligths, :allow_destroy => true
 
 	#validations
@@ -43,15 +38,13 @@ class Venue < ActiveRecord::Base
 	validates :venue_type, :presence =>true
 	validates_associated :address, :contact
 
+	#methods
 	def base_image=(value)
     	write_attribute(:base_image, value.read)
   	end
 
 	def self.search(query)
-		#JeventzLogger.debug "query == #{query.inspect}"
-		#joins(:address).where('addresses.area' => query.areas).includes(:address)
-
-		venue_results = joins(:address).includes(:address, :facility, :suittable_events)
+		venue_results = joins(:address).includes(:address, :facility, :suitable_events)
 
 		unless query.areas.count == 0
 			venue_results = venue_results.joins(:address).where('addresses.area' => query.areas).includes(:address)
@@ -62,7 +55,7 @@ class Venue < ActiveRecord::Base
 		end
 
 		query.eventType.each do |a| 
-			venue_results = venue_results.joins(:suittable_events).where('suittable_events.name' => a)
+			venue_results = venue_results.joins(:suitable_events).where('suitable_events.name' => a)
 		end
 
 		query.capacity.each do |a| 

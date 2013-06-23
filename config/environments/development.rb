@@ -25,7 +25,8 @@ Jevents::Application.configure do
     :domain               => ENV['ADMIN_EMAIL_DOMAIN'],
     :user_name            => ENV['ADMIN_EMAIL_USER'],
     :password             => ENV['ADMIN_EMAIL_PASSWORD'],
-    :authentication       => :login  }
+    :authentication       => :login,
+    :enable_starttls_auto => true  }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

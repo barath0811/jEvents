@@ -112,7 +112,7 @@ body {
 	display: none;
 	background: rgba(255, 255, 255, 0.94);
 	font-size: 20px;
-	background-color: lavender;
+	background-color: lightgrey;
 	font-weight: bold;
 	text-align: center;
 	left: 0px;
@@ -193,4 +193,18 @@ body {
 
 .form-horizontal .control-group {
 	margin-bottom: 10px;
+}
+
+.best_in_place {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.best_in_place:hover {
+	background-color: yellow;
+}
+
+/***************** Authentication ******************/
+#sign_in_left {
+	border-right: 1px solid grey;
 }

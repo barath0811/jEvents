@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621191213) do
+ActiveRecord::Schema.define(:version => 20130623060322) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20130621191213) do
 
   add_index "seating_arrangements", ["hall_id"], :name => "index_seating_arrangements_on_hall_id"
 
-  create_table "suittable_events", :force => true do |t|
+  create_table "suitable_events", :force => true do |t|
     t.string   "name"
     t.integer  "venue_id"
     t.datetime "created_at", :null => false
@@ -171,18 +171,18 @@ ActiveRecord::Schema.define(:version => 20130621191213) do
     t.string   "venue_type"
     t.string   "website"
     t.text     "terms_conditions"
-    t.datetime "created_at",                                                                         :null => false
-    t.datetime "updated_at",                                                                         :null => false
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
     t.binary   "base_image"
     t.integer  "num_halls"
     t.integer  "min_capacity"
     t.integer  "max_capacity"
-    t.integer  "user_id"
-    t.decimal  "popularity_index",                 :precision => 10, :scale => 0
-    t.binary   "view_available",    :limit => 255
-    t.binary   "booking_available", :limit => 255
-    t.binary   "enquiry_available", :limit => 255
-    t.boolean  "is_approved",                                                     :default => false
+    t.integer  "user_id",                                                             :null => false
+    t.decimal  "popularity_index",  :precision => 10, :scale => 0
+    t.boolean  "view_available",                                   :default => false
+    t.boolean  "booking_available",                                :default => false
+    t.boolean  "enquiry_available",                                :default => false
+    t.boolean  "is_approved",                                      :default => false
   end
 
 end

@@ -34,12 +34,18 @@ end
 
 gem 'jquery-rails', '~> 3.0.1'
 gem 'client_side_validations', '~> 3.2.5'
+gem 'best_in_place'
+
+# Authentication & OAuth
 gem 'devise', '~> 2.2.4'
 gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-facebook'
-gem 'omniauth-google'
+gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'certified', '~> 0.1.1'
+
+#Authorization
+gem "cancan"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

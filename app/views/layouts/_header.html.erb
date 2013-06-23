@@ -1,9 +1,7 @@
 <div id="notification-bar">
-	<section id="flash">
-		<% flash.each do |key, value| %>
-		<div class="flash <%= key %>"><%= value %></div>
-		<% end %>
-	</section>
+	<% flash.each do |key, value| %>
+	<div class="flash <%= key %>"><%= value %></div>
+	<% end %>
 </div>
 
 <div class="navbar navbar-fixed-top" id="customNav" >
@@ -40,11 +38,11 @@
 			<div id="contactInHeader">
 				<span>Phone: <%= link_to "044-4201 2386", placeholder_path %></span>
 			</div>
-			<div id="socialIcons">
+			<div id="socialIcons" class="hidden-phone visible-tablet visible-desktop">
 				<!-- <form class="navbar-search pull-left">
 					<input type="text" class="search-query" placeholder="Search">
 				</form> -->
-				<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+				<!-- <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> -->
 				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/JollyEventz", :target => "_blank" %>
 				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/JollyEventz", :target => "_blank" %>
 				<%= link_to image_tag('google-plus.png'), 	"#", :target => "_blank" %>

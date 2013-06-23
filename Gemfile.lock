@@ -33,7 +33,11 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
+    best_in_place (2.1.0)
+      jquery-rails
+      rails (~> 3.1)
     builder (3.0.4)
+    cancan (1.6.10)
     certified (0.1.1)
     client_side_validations (3.2.5)
     coffee-rails (3.2.2)
@@ -92,10 +96,9 @@ GEM
       rack
     omniauth-facebook (1.4.1)
       omniauth-oauth2 (~> 1.1.0)
-    omniauth-google (1.0.2)
-      multi_json
+    omniauth-google-oauth2 (0.1.19)
       omniauth (~> 1.0)
-      omniauth-oauth
+      omniauth-oauth2
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -170,6 +173,8 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  best_in_place
+  cancan
   certified (~> 0.1.1)
   client_side_validations (~> 3.2.5)
   coffee-rails (~> 3.2.1)
@@ -180,7 +185,7 @@ DEPENDENCIES
   mysql2 (~> 0.3.11)
   omniauth (~> 1.1.4)
   omniauth-facebook
-  omniauth-google
+  omniauth-google-oauth2
   omniauth-twitter
   pg
   rails (~> 3.2.13)
