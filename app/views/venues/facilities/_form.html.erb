@@ -7,34 +7,25 @@
 </div>
 
 <%= v.fields_for :facility do |f| %>
-
-<div class="span12">
-  <div class="span6">
+<div class="row-fluid">
+  <div class="span12">
     <div class="control-groups">
-      <div class="controls"><%= f.label(:has_parking, class: "checkbox") do %>
-        <%= f.check_box :has_parking %>Has parking?
+      <div class="controls span6">
+        <%= f.label :has_parking, class: "checkbox" do %>
+        Has parking? <%= f.check_box :has_parking %>
+        <% end %>
+        <%= f.label :has_buffet, class: "checkbox" do %>
+        Has buffet? <%= f.check_box :has_buffet %>
         <% end %>
       </div>
     </div>
     <div class="control-groups">
-      <div class="controls"><%= f.label(:has_buffet, class: "checkbox") do %>
-        <%= f.check_box :has_buffet %>Has buffet?
+      <div class="controls span6">
+        <%= f.label :is_alcohol_allowed, class: "checkbox"  do %>
+        Is Alcohol allowed? <%= f.check_box :is_alcohol_allowed %>
         <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="span6">
-    <div class="control-groups">
-      <div class="controls">
-        <%= f.label :is_alcohol_allowed, class: "checkbox" do %>
-        <%= f.check_box :is_alcohol_allowed %>Is Alcohol allowed?
-        <% end %>
-      </div>
-    </div>
-    <div class="control-groups">
-      <div class="controls">
-        <%= f.label(:is_nonveg_allowed, class: "checkbox") do %>
-        <%= f.check_box :is_nonveg_allowed %>Is Non-Veg allowed?
+        <%= f.label :is_nonveg_allowed , class: "checkbox" do %>
+        Is Non-Veg allowed? <%= f.check_box :is_nonveg_allowed %>
         <% end %>
       </div>
     </div>
