@@ -9,7 +9,8 @@ class Venue < ActiveRecord::Base
 					:contact_attributes,
 					:rate_attributes,
 					:facility_attributes,
-					:images_attributes
+					:images_attributes,
+					:suitable_events_attributes
 
 	#associations
 	belongs_to :user
