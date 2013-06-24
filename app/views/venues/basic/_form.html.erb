@@ -28,10 +28,9 @@
 	<div class="control-group">
 		<label class="control-label">Suitable for:</label>
 		<div class="controls">
-			<%= f.fields_for :suitable_events do |s| %>
-			<%= s.label :name, class: "checkbox" do %>
-				<%= s.check_box :name %> <%= s.object.name %>
-			<% end %>
+			<% @eventTypes.each do |evnt| %>
+				<%= check_box_tag 'event_types[]', evnt, @selected_event_types.include?(evnt) %>
+				<%= evnt.humanize %>
 			<% end %>
 		</div>
 	</div>

@@ -16,12 +16,10 @@ class VenuesController < ApplicationController
 		@venue = current_user.venues.new
 		@venue.build_address
 		@venue.build_contact
+		@venue.suitable_events.build
 
-		eventTypes = getOptions('EventType')
-		eventTypes.each do |n|
-			@venue.suitable_events.build(:name => n)
-		end
-
+		@selected_event_types = Array.new
+		
 		respond_to do |format|
 			format.html { render :template => 'venues/basic/addedit'}
 		end
@@ -35,6 +33,7 @@ class VenuesController < ApplicationController
 	# POST /venues
 	def create
 		@venue = current_user.venues.new(params[:venue])
+		params[:event_types].each { |e| @venue.suitable_events.build(:name => e)} unless params[:event_types].nil?
 
 		respond_to do |format|
 			if @venue.save
@@ -49,7 +48,8 @@ class VenuesController < ApplicationController
 
 	# GET /venues/1/edit
 	def edit
-		@venue =  current_user.venues.find(params[:id])
+		@venue = current_user.venues.find(params[:id])
+		@selected_event_types = @venue.suitable_events.pluck(:name)
 
 		respond_to do |format|
 			format.html { render :template => 'venues/basic/addedit'}
@@ -58,7 +58,7 @@ class VenuesController < ApplicationController
 	end
 
 	def rates
-		@venue =  current_user.venues.find(params[:id])
+		@venue = current_user.venues.find(params[:id])
 		if @venue.rate.blank?
 			@venue.build_rate
 		end
@@ -82,9 +82,10 @@ class VenuesController < ApplicationController
 	# PUT /venues/1
 	def update
 		@venue = current_user.venues.find(params[:id])
-
-		
-
+		getOptions('EventType').each do |evnt|
+			@venue.suitable_events.where(:name => evnt).destroy_all unless params[:event_types].include?(evnt)
+		end
+				
 		respond_to do |format|
 			if @venue.update_attributes(params[:venue])
 				flash[:notice] = "Venue saved successfully"
