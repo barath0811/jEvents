@@ -1,46 +1,56 @@
 <div class="row-fluid">
-	<div class="span12">
-		<div>
-			<h3>Already have an account? Sign in!</h3>
-			<h4>Login with Facebook or Google or Twitter!</h4>
-			<h5>(We will not post or like anything without your consent)</h5>
-			<div class="offset1">
-				<%= render "devise/shared/facebook_login" %>
+	<div>
+		<h2>Login</h2>
+	</div>
+	<div class="wrapper">
+		<div id="emailLogin">
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name) ) do |f| %>
+			<div class="control-group">
+				<div class="controls"><%= f.email_field :email, :autofocus => true, :placeholder => "Email" %></div>
 			</div>
-			<div class="offset2">
-				<%= render "devise/shared/google_login" %>
-				<%= link_to "Sign in with Google", user_omniauth_authorize_path(:gplus) %>
+			<div class="control-group">
+				<div class="controls"><%= f.password_field :password, :placeholder => "Password" %></div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<div>
+						<% if devise_mapping.rememberable? %>
+						<%= f.label :remember_me , class: "checkbox" do %>
+						<%= f.check_box :remember_me %>Remember me?
+						<% end %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls fl">
+					<%= f.submit "Sign in" %>
+				</div>
+				<div class="fr">
+					<% if devise_mapping.recoverable? && controller_name != 'passwords' %>
+					<%= link_to "Forgot password?", new_password_path(resource_name) %><br />
+					<% end %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="line"></div>
+		<div class="wordwrapper">
+			<div class="word">or</div>
+		</div>
+		<div id="socialLogin">
+			<div>
+				<div>
+					<%= render "devise/shared/facebook_login" %>
+				</div>
+				<div>
+					<ul>
+						<li>One less password to remember</li>
+						<li>Easily share with your friends</li>
+						<li>We never post without your permission</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-		<hr />
-		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal"} ) do |f| %>
-		<div class="control-group">
-			<%= f.label :email, class:"control-label" %>
-			<div class="controls"><%= f.email_field :email, :autofocus => true %></div>
-		</div>
-		<div class="control-group">
-			<%= f.label :password, class:"control-label" %>
-			<div class="controls"><%= f.password_field :password %></div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<% if devise_mapping.rememberable? %>
-				<%= f.label :remember_me , class: "checkbox" do %>
-				<%= f.check_box :remember_me %>Remember me?
-				<% end %>
-				<% end %>
-			</div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<%= f.submit "Sign in" %>
-			</div>
-			<div class="offset6">
-				<% if devise_mapping.recoverable? && controller_name != 'passwords' %>
-				<%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-				<% end %>
-			</div>
-		</div>
-		<% end %>
 	</div>
 </div>

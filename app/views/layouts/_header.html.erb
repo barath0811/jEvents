@@ -19,30 +19,37 @@
 			<span class="brand hidden-phone visible-tablet visible-desktop">&nbsp;|&nbsp;Chennai</span>
 			
 			<div id="navLinkText" class="nav-collapse collapse">
-				<ul class="nav pull-right">
-					<li class="<%= 'Xactive' if current_page?(placeholder_path) %>"><%= link_to "How It Works", placeholder_path %></li>
+				<ul class="nav nav-pills pull-right">
+					<li class="<%= 'active' if current_page?(placeholder_path) %>"><%= link_to "How It Works", placeholder_path %></li>
 					<li class="<%= 'active' if current_page?(search_venues_path) %>"><%= link_to "Venue Search", search_venues_path %></li>
 					<li ><%= link_to "Blog", placeholder_path %></li>
 					<li><%= link_to "Venue Owners", venues_path %></li>
-					<% if user_signed_in? %> 
-					<li><%= link_to current_user.email, edit_user_registration_path %></li>
-					<li><%= link_to "Sign out", destroy_user_session_path %></li>
-					<% else %> 
-					<li><%= link_to "Sign up", new_user_registration_path %></li> 
-					<li><%= link_to "Sign in", new_user_session_path, :rel => "modal:open" %></li>
-					<% end %>
-				</ul>
-			</div>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							Profile <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<% if user_signed_in? %> 
+							<li><%= link_to current_user.email, edit_user_registration_path %></li>
+							<li><%= link_to "Sign out", destroy_user_session_path %></li>
+							<% else %> 
+							<li><%= link_to "Sign up", new_user_registration_path %></li> 
+							<li><%= link_to "Sign in", new_user_session_path, :rel => "modal:open" %></li>
+							<% end %>
+						</ul>
+					</ul>
+				</li>
+			</ul>
 		</div>
-		<div id="headerBottom" class="container">
-			<div id="contactInHeader">
-				<span>Phone: <%= link_to "044-4201 2386", placeholder_path %></span>
-			</div>
-			<div id="socialIcons" class="hidden-phone visible-tablet visible-desktop">
+	</div>
+	<div id="headerBottom" class="container">
+		<div id="contactInHeader">
+			<span>Phone: <%= link_to "044-4201 2386", placeholder_path %></span>
+		</div>
+		<div id="socialIcons" class="hidden-phone visible-tablet visible-desktop">
 				<!-- <form class="navbar-search pull-left">
 					<input type="text" class="search-query" placeholder="Search">
 				</form> -->
-				<!-- <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> -->
 				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/JollyEventz", :target => "_blank" %>
 				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/JollyEventz", :target => "_blank" %>
 				<%= link_to image_tag('google-plus.png'), 	"#", :target => "_blank" %>

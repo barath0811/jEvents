@@ -1,7 +1,4 @@
-<div class="fr">
-	<%= link_to "My Profile", edit_user_registration_path, :class => "btn btn-warning" %>
-</div>
-
+<%= link_to raw('<i class="icon-white icon-plus"></i> Create new venue'), new_venue_path, :class => "hallFormLnk btn btn-success fr" %>
 <h1>My venues</h1>
 <div class="row-fluid">
 	<table class="table table-striped table-bordered table-condensed">
@@ -35,5 +32,3 @@
 	</table>
 </div>
 <br />
-
-<%= link_to 'New Venue', new_venue_path %>

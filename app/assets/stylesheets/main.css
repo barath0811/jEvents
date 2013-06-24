@@ -208,3 +208,52 @@ body {
 #sign_in_left {
 	border-right: 1px solid grey;
 }
+
+#emailLogin {
+	float:left;
+	font-size: 1em;
+	padding:60px 0 0 0;
+}
+
+#socialLogin {
+	float:right;
+	padding:60px 0 0 0;
+}
+
+.wrapper {
+	position: relative;
+	height: 300px;
+	margin: 10px;
+	border-top:1px solid lightgrey;
+}
+
+.line {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	background: #ccc;
+	z-index: 1;
+}
+
+.wordwrapper {
+	text-align: center;
+	height: 12px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	margin-top: -12px;
+	z-index: 2;
+}
+
+.word {
+	position: absolute;
+	color: #ccc;
+	letter-spacing: 1px;
+	left: 49%;
+	width:10px;
+	font: bold 12px arial,sans-serif;
+	background: #fff;
+}
