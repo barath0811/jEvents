@@ -30,14 +30,51 @@
 
 	<div class="roundedBorder">
 		<%= f.fields_for :seating_arrangements do |s| %>
-		<div class="control-group">
-			<div class="controls span6"><%= s.label(:arrangement_type, s.object.arrangement_type) %></div>
-			<div class="controls span6">
-				<%= s.hidden_field :arrangement_type, :value => s.object.arrangement_type %>
-				<%= s.text_field(:capacity, :class => "seatingCap") %>
+		<div class="seating">
+			<div class="span12">
+				<div class="span4 offset1">
+					<div class="controls span6"><%= image_tag 'theatre.png' %></div>
+					<div class="controls span6">
+						<%= s.text_field(:capacity_theatre, :class => "seatingCap") %>
+					</div>
+				</div>
+				<div class="span4 offset2">
+					<div class="controls span6"><%= image_tag 'ushape.png' %></div>
+					<div class="controls span6">
+						<%= s.text_field(:capacity_ushape, :class => "seatingCap") %>
+					</div>
+				</div>
 			</div>
+			<div class="span12">
+				<div class="span4 offset1">
+					<div class="controls span6"><%= image_tag 'doubleu.png' %></div>
+					<div class="controls span6">
+						<%= s.text_field(:capacity_doubleu, :class => "seatingCap") %>
+					</div>
+				</div>
+				<div class="span4 offset2">
+					<div class="controls span6"><%= image_tag 'classroom.png' %></div>
+					<div class="controls span6">
+						<%= s.text_field(:capacity_classroom, :class => "seatingCap") %>
+					</div>
+				</div>
+			</div>
+			<div class="span12">
+				<div class="span4 offset1">
+					<div class="controls span6"><%= image_tag 'board.png' %></div>
+					<div class="controls span6">
+						<%= s.text_field(:capacity_board, :class => "seatingCap") %>
+					</div>
+				</div>
+				<div class="span4 offset2">
+					<div class="controls span6"><%= image_tag 'roundtable.png' %></div>
+					<div class="controls span6">
+						<%= s.text_field(:capacity_roundtable, :class => "seatingCap") %>
+					</div>
+				</div>
+			</div>
+			<% end %>
 		</div>
-		<% end %>
 	</div>
 </div>
 <% end %>

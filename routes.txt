@@ -31,6 +31,7 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
              rates_venue GET      /venues/:id/rates(.:format)                venues#rates
         facilities_venue GET      /venues/:id/facilities(.:format)           venues#facilities
        show_image_venues GET      /venues/show_image(.:format)               venues#show_image
+             view_venues GET      /venues/view(.:format)                     venues#view
            search_venues GET      /venues/search(.:format)                   venues#search
                          POST     /venues/search(.:format)                   venues#search
                   venues GET      /venues(.:format)                          venues#index
@@ -44,5 +45,7 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
               home_about GET      /home/about(.:format)                      home#about
             home_contact GET      /home/contact(.:format)                    home#contact
                 home_faq GET      /home/faq(.:format)                        home#faq
+              home_terms GET      /home/terms(.:format)                      home#terms
+            home_privacy GET      /home/privacy(.:format)                    home#privacy
              placeholder GET      /placeholder(.:format)                     pages#placeholder
                     root          /                                          home#index

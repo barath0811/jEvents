@@ -291,3 +291,6 @@ label span input {
 .btn-medium [class*=" icon-"] {
   margin-top: 4px;
 }
+
+#results.modal { width: 600px; }
+#show_venue.modal{ width: 600px; }

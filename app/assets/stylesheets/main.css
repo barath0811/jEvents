@@ -62,11 +62,11 @@ body {
 .success a {color:#264409;}
 
 /************** Header **************/
-/*.navbar .container { height: 3em; }*/
 
 .navbar-inner {
 	background: #FFF;
 	border-bottom: 1px solid #f88534;
+	z-index: 0;
 }
 
 #customNav {
@@ -103,6 +103,32 @@ body {
 	position: absolute;
 	right: 0;
 	bottom:0;
+}
+
+/************** Notification **************/
+
+#notification-bar {
+	opacity: 0.8;
+	display: none;
+	background: rgba(255, 255, 255, 0.94);
+	font-size: 20px;
+	background-color: lavender;
+	font-weight: bold;
+	text-align: center;
+	left: 0px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	padding-right: 10%;
+	padding-left: 10%;
+	position: fixed;
+	top: 0px;
+	width: 80%;
+	z-index: 10000;
+	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.notify{
+	display: inline;
 }
 
 /************** Home Content **************/

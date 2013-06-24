@@ -50,8 +50,5 @@ gem 'certified'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
-
 # To Paginate
 gem 'will_paginate'

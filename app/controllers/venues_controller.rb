@@ -102,7 +102,7 @@ class VenuesController < ApplicationController
 		@venue = Venue.find(params[:id])
 
 		respond_to do |format|
-			format.html
+      format.html { render :layout => false }
 		end
 	end
 

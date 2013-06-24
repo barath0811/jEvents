@@ -26,10 +26,7 @@ class HallsController < ApplicationController
 
 	def new
 		@hall = Hall.new
-		seatingTypes = getOptions('Seating')
-		seatingTypes.each do |t|
-			@hall.seating_arrangements.build(:arrangement_type => t)
-		end
+		@hall.seating_arrangements.build
 
 		respond_to do |format|
 			format.js
@@ -38,13 +35,8 @@ class HallsController < ApplicationController
 
 	def edit
 		@hall = Hall.find(params[:id])
-
-		seatingTypes = getOptions('Seating')
-		@hall.seating_arrangements.each do |sa| 
-			seatingTypes.delete(sa.arrangement_type) 
-		end
-		seatingTypes.each do |t| 
-			@hall.seating_arrangements.build(:arrangement_type => t) 
+		if @hall.seating_arrangements.blank?
+			@hall.seating_arrangements.build
 		end
 
 		respond_to do |format|
@@ -76,7 +68,6 @@ class HallsController < ApplicationController
 
 		respond_to do |format|
 			if @hall.update_attributes(params[:hall])
-				remove_blank_seating()
 				format.js { redirect_to venue_halls_path(@venue) }
 			else
 				format.html { render action: "edit" }
@@ -92,15 +83,6 @@ class HallsController < ApplicationController
 		respond_to do |format|
 			format.html { redirect_to halls_url }
 			format.json { head :no_content }
-		end
-	end
-
-	private
-	def remove_blank_seating
-		@hall.seating_arrangements.each do |sa|
-			if sa.capacity.blank?
-				sa.destroy
-			end
 		end
 	end
 end
