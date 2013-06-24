@@ -292,5 +292,10 @@ label span input {
   margin-top: 4px;
 }
 
+.modal{
+  width: 60%;
+
+}
+
 #results.modal { width: 600px; }
 #show_venue.modal{ width: 600px; }
