@@ -15,7 +15,7 @@ development:
   database: jevents_development
   pool: 5
   username: root
-  password: Phoenix713
+  password: pwd
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
