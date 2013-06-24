@@ -109,7 +109,7 @@ label span input {
 }
 
 .view-suit {
-
+  max-height: 100px;
 }
 
 .view-suit p{
@@ -293,7 +293,7 @@ label span input {
 }
 
 .modal{
-  width: 60%;
+  width: 50%;
 
 }
 
