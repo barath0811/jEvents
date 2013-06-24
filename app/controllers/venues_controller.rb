@@ -17,6 +17,11 @@ class VenuesController < ApplicationController
 		@venue.build_address
 		@venue.build_contact
 
+		eventTypes = getOptions('EventType')
+		eventTypes.each do |n|
+			@venue.suitable_events.build(:name => n)
+		end
+
 		respond_to do |format|
 			format.html { render :template => 'venues/basic/addedit'}
 		end
@@ -29,7 +34,7 @@ class VenuesController < ApplicationController
 
 	# POST /venues
 	def create
-		@venue =  current_user.venues.new(params[:venue])
+		@venue = current_user.venues.new(params[:venue])
 
 		respond_to do |format|
 			if @venue.save
@@ -63,11 +68,11 @@ class VenuesController < ApplicationController
 		end
 	end
 
-  def facilities
-    @venue = Venue.find(params[:id])
-    if @venue.facility.blank?
-      @venue.build_facility
-    end
+	def facilities
+		@venue = Venue.find(params[:id])
+		if @venue.facility.blank?
+			@venue.build_facility
+		end
 
 		respond_to do |format|
 			format.js { render :template => 'venues/facilities/addedit'}
@@ -77,6 +82,8 @@ class VenuesController < ApplicationController
 	# PUT /venues/1
 	def update
 		@venue = current_user.venues.find(params[:id])
+
+		
 
 		respond_to do |format|
 			if @venue.update_attributes(params[:venue])
@@ -117,12 +124,12 @@ class VenuesController < ApplicationController
 		end
 	end
 
-  def search
-    @query = SearchCriteria.new
-    
-    unless params[:eventType].nil?
-      @query.eventType = params[:eventType].split(',')
-    end
+	def search
+		@query = SearchCriteria.new
+
+		unless params[:eventType].nil?
+			@query.eventType = params[:eventType].split(',')
+		end
 
 		unless params[:areas].nil?
 			@query.areas = params[:areas].split(',')

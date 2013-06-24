@@ -4,6 +4,7 @@
 <% 
 	@venueTypes = getOptions('VenueType')
 	@areas = getOptions('Area')
+	@eventTypes = getOptions('EventType')
 %>
 
 <div class="actions">
@@ -22,6 +23,17 @@
 	<div class="control-group">
 		<%= f.label(:venue_type, "Venue Type:", class:"control-label") %>
 		<div class="controls"><%= f.select(:venue_type, @venueTypes) %></div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label">Suitable for:</label>
+		<div class="controls">
+			<%= f.fields_for :suitable_events do |s| %>
+			<%= s.label :name, class: "checkbox" do %>
+				<%= s.check_box :name %> <%= s.object.name %>
+			<% end %>
+			<% end %>
+		</div>
 	</div>
 
 	<div class="control-group">
