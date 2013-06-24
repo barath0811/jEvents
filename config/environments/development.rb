@@ -18,14 +18,14 @@ Jevents::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   
   # Send emails via Gmail
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :sendmail
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'gmail.com',
-    :user_name            => 'barath0811@gmail.com',
-    :password             => 'ninethmay2',
-    :authentication       => 'plain',
+    :address              => ENV['ADMIN_SMTP_ADDRESS'],
+    :port                 => ENV['ADMIN_SMTP_PORT'],
+    :domain               => ENV['ADMIN_EMAIL_DOMAIN'],
+    :user_name            => ENV['ADMIN_EMAIL_USER'],
+    :password             => ENV['ADMIN_EMAIL_PASSWORD'],
+    :authentication       => :login,
     :enable_starttls_auto => true  }
 
   # Print deprecation notices to the Rails logger

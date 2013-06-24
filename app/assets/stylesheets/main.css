@@ -10,13 +10,13 @@ body {
 }
 
 @media (max-width: 979px) {
-  body {
-    padding-top: 0;
-  }
+	body {
+		padding-top: 0;
+	}
 
-  #bodyAndFooter {
-    padding-top: 0;
-  }
+	#bodyAndFooter {
+		padding-top: 0;
+	}
 }
 
 @media (min-width: 400px) {
@@ -71,8 +71,8 @@ body {
 
 #customNav {
 	-webkit-box-shadow: 0 0px 2px 0 #f88534;
-    -moz-box-shadow:    0 0px 2px 0 #f88534;
-    box-shadow: 		0 0px 3px 0 #f88534;
+	-moz-box-shadow:    0 0px 2px 0 #f88534;
+	box-shadow: 		0 0px 3px 0 #f88534;
 }
 
 .collapse.in li {
@@ -112,7 +112,7 @@ body {
 	display: none;
 	background: rgba(255, 255, 255, 0.94);
 	font-size: 20px;
-	background-color: lavender;
+	background-color: lightgrey;
 	font-weight: bold;
 	text-align: center;
 	left: 0px;
@@ -184,17 +184,27 @@ body {
 }
 
 /************** Customization of 3rd party css ***************/
-.glyphw{
-    background-image: url(/assets/glyphicons-halflings-white.png);
-}
-
 .field_with_errors .message {
 	display: inline;
-  	color: #D00;
-  	padding-left: 5px;
-  	font-size: 12px;
+	color: #D00;
+	padding-left: 5px;
+	font-size: 12px;
 }
 
 .form-horizontal .control-group {
 	margin-bottom: 10px;
+}
+
+.best_in_place {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.best_in_place:hover {
+	background-color: yellow;
+}
+
+/***************** Authentication ******************/
+#sign_in_left {
+	border-right: 1px solid grey;
 }

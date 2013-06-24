@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable,
   :confirmable, :lockable
 
-  devise :omniauthable, :omniauth_providers => [:facebook]
+  devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -22,18 +22,37 @@ class User < ActiveRecord::Base
 
   has_many :venues
 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-  	user = User.where(:provider => auth.provider, :uid => auth.uid).first
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+  	user = User.where(:email => access_token.info.email).first
   	unless user
   		user = User.create(
-  			name:auth.extra.raw_info.name,
-  			provider:auth.provider,
-  			uid:auth.uid,
-  			email:auth.info.email,
+  			provider:access_token.provider,
+  			uid:access_token.uid,
+        name:access_token.extra.raw_info.name,
+  			email:access_token.info.email,
   			password:Devise.friendly_token[0,20]
   			)
   	end
   	user
+  end
+
+  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+    JEventzLogger.debug "#{access_token.inspect}"
+    JEventzLogger.debug "#{signed_in_resource.inspect}"
+
+    user = User.where(:email => access_token.info.email).first
+
+    unless user
+      user = User.create(
+        provider:access_token.provider,
+        uid:access_token.uid,
+        name: access_token.info.name,
+        email: access_token.info.email,
+        password: Devise.friendly_token[0,20]
+        )
+    end
+
+    user
   end
 
   def self.new_with_session(params, session)

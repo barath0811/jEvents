@@ -17,3 +17,5 @@
 
 # Ignore the db config file so that connection strings are not checked in
 /config/database.yml
+# Ignore the environment variables which contain secret stuff
+/config/local_env.yml

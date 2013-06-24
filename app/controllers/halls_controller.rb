@@ -26,7 +26,7 @@ class HallsController < ApplicationController
 
 	def new
 		@hall = Hall.new
-		@hall.seating_arrangements.build
+		@hall.build_seating_arrangement
 
 		respond_to do |format|
 			format.js
@@ -35,8 +35,8 @@ class HallsController < ApplicationController
 
 	def edit
 		@hall = Hall.find(params[:id])
-		if @hall.seating_arrangements.blank?
-			@hall.seating_arrangements.build
+		if @hall.seating_arrangement.blank?
+			@hall.build_seating_arrangement
 		end
 
 		respond_to do |format|
@@ -50,25 +50,26 @@ class HallsController < ApplicationController
 
 		respond_to do |format|
 			if @hall.save
-	        	format.js { redirect_to venue_halls_path(@venue) }
-	        else
-	        	format.html { render action: "new" }
-	        	format.json { render json: @hall.errors, status: :unprocessable_entity }
-	        end
-	    end
+				capacity = findMinMaxCap(@hall.seating_arrangement)
+				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1])
+				
+				format.js { redirect_to venue_halls_path(@venue), :notice => "Function space created successfully" }
+			else
+				format.html { render action: "new" }
+				format.json { render json: @hall.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def update
 		@hall = Hall.find(params[:id])
 
-		#TODO - Do not save empty seats.
-		# @hall.seating_arrangements.each do |sa|
-		# 	sa.destroy
-		# end
-
 		respond_to do |format|
 			if @hall.update_attributes(params[:hall])
-				format.js { redirect_to venue_halls_path(@venue) }
+				capacity = findMinMaxCap(@hall.seating_arrangement)
+				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1])
+				
+				format.js { redirect_to venue_halls_path(@venue), :notice => "Function space saved successfully" }
 			else
 				format.html { render action: "edit" }
 				format.json { render json: @hall.errors, status: :unprocessable_entity }
@@ -79,10 +80,29 @@ class HallsController < ApplicationController
 	def destroy
 		@hall = Hall.find(params[:id])
 		@hall.destroy
+		flash[:notice] = "Function space deleted successfully"
 
 		respond_to do |format|
 			format.html { redirect_to halls_url }
 			format.json { head :no_content }
 		end
+	end
+
+	private
+	def findMinMaxCap(seating)
+		if seating.nil?
+			return [0, 0]
+		end
+
+		seats = Array.new
+		seats << 0
+		seats << seating.capacity_theatre unless seating.capacity_theatre.nil?
+		seats << seating.capacity_ushape unless seating.capacity_ushape.nil?
+		seats << seating.capacity_doubleu unless seating.capacity_doubleu.nil?
+		seats << seating.capacity_classroom unless seating.capacity_classroom.nil?
+		seats << seating.capacity_board unless seating.capacity_board.nil?
+		seats << seating.capacity_roundtable unless seating.capacity_roundtable.nil?
+
+		return seats.minmax
 	end
 end

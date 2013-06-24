@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621045712) do
+ActiveRecord::Schema.define(:version => 20130623060322) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(:version => 20130621045712) do
   end
 
   add_index "facilities", ["venue_id"], :name => "index_facilities_on_venue_id"
+
+  create_table "feedbacks", :force => true do |t|
+    t.string   "name",          :null => false
+    t.string   "email",         :null => false
+    t.string   "subject",       :null => false
+    t.text     "feedback",      :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "user_ip"
+    t.datetime "feedback_date"
+  end
 
   create_table "halls", :force => true do |t|
     t.integer  "venue_id"
@@ -107,19 +118,19 @@ ActiveRecord::Schema.define(:version => 20130621045712) do
 
   create_table "seating_arrangements", :force => true do |t|
     t.integer  "hall_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.integer  "capacity_theatre"
-    t.integer  "capacity_ushape"
-    t.integer  "capacity_doubleu"
-    t.integer  "capacity_classroom"
-    t.integer  "capacity_board"
-    t.integer  "capacity_roundtable"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.integer  "capacity_theatre",    :default => 0
+    t.integer  "capacity_ushape",     :default => 0
+    t.integer  "capacity_doubleu",    :default => 0
+    t.integer  "capacity_classroom",  :default => 0
+    t.integer  "capacity_board",      :default => 0
+    t.integer  "capacity_roundtable", :default => 0
   end
 
   add_index "seating_arrangements", ["hall_id"], :name => "index_seating_arrangements_on_hall_id"
 
-  create_table "suittable_events", :force => true do |t|
+  create_table "suitable_events", :force => true do |t|
     t.string   "name"
     t.integer  "venue_id"
     t.datetime "created_at", :null => false
@@ -160,19 +171,19 @@ ActiveRecord::Schema.define(:version => 20130621045712) do
     t.string   "venue_type"
     t.string   "website"
     t.text     "terms_conditions"
-    t.datetime "created_at",                                                                       :null => false
-    t.datetime "updated_at",                                                                       :null => false
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
     t.binary   "base_image"
     t.integer  "num_halls"
     t.integer  "min_capacity"
     t.integer  "max_capacity"
-    t.integer  "user_id",                                                                          :null => false
-    t.decimal  "popularity_index",               :precision => 10, :scale => 0
-    t.binary   "view_available",    :limit => 1
-    t.binary   "booking_available", :limit => 1
-    t.binary   "enquiry_available", :limit => 1
-    t.boolean  "is_approved",                                                   :default => false
-    t.string   "description"
+    t.integer  "user_id",                                                             :null => false
+    t.decimal  "popularity_index",  :precision => 10, :scale => 0
+    t.boolean  "view_available",                                   :default => false
+    t.boolean  "booking_available",                                :default => false
+    t.boolean  "enquiry_available",                                :default => false
+    t.boolean  "is_approved",                                      :default => false
+    t.string   "description"  
   end
 
 end

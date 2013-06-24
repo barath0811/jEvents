@@ -1,6 +1,6 @@
 class Hall < ActiveRecord::Base
 
-	attr_accessible :hall_rent, :name, :pricing_mode, :hall_type, :seating_arrangements_attributes
+	attr_accessible :hall_rent, :name, :pricing_mode, :hall_type, :seating_arrangement_attributes
 
 	belongs_to :venue
 	has_one :seating_arrangement, :dependent => :destroy
