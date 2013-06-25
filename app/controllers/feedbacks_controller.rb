@@ -12,6 +12,7 @@ class FeedbacksController < ApplicationController
 
   def create
 		@feedback = Feedback.new(params[:feedback])
+		@feedback.user_ip = request.remote_ip
 
 		respond_to do |format|
 			if @feedback.save

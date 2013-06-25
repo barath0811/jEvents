@@ -27,6 +27,16 @@ body {
 	}
 }
 
+@media (min-width: 768px) and (max-width: 979px) {
+    .row-fluid > [class*=span]:nth-child(2n+1) {
+      clear: both;
+      margin-left: 0;
+    }
+    .row-fluid .span3 {
+        width: 48.61878453038674%;
+    }
+}
+
 .nav a:hover, a:active, a:focus {
 	outline: 0
 }
@@ -99,7 +109,34 @@ body {
 	bottom: 0;
 }
 
-#socialIcons{
+#socialIcons .fb-wrap {
+	position:absolute;
+	left: 150px;
+	bottom:0;
+	height:20px;
+	overflow:hidden;
+}
+
+#socialIcons .fb-like {
+	position: relative;
+	top:-41px;	
+}
+
+#socialIcons .tw-wrap {
+	position: absolute;
+	left: 200px;
+	height: 20px;
+	bottom:0;
+}
+
+#socialIcons .gp-wrap {
+	position: absolute;
+	left: 262px;
+	height: 20px;
+	bottom:0;
+}
+
+#socialLinks {
 	position: absolute;
 	right: 0;
 	bottom:0;
@@ -137,7 +174,7 @@ body {
 	font-size: 2em;
 	font-weight: bold;
 	background-color: transparent;
-	line-height: 1.5em;
+/*	line-height: 1.5em;*/
 	padding-bottom: 1em;
 	padding-top: 0em;
 	margin: 0 0 0 0;
