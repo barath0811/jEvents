@@ -82,10 +82,18 @@ class VenuesController < ApplicationController
 	# PUT /venues/1
 	def update
 		@venue = current_user.venues.find(params[:id])
-		getOptions('EventType').each do |evnt|
-			@venue.suitable_events.where(:name => evnt).destroy_all unless params[:event_types].include?(evnt)
+
+		if params[:event_types].nil?
+			@venue.suitable_events.destroy_all
+		else
+			getOptions('EventType').each do |e|
+				# Delete what is in DB, but was unchecked.
+				@venue.suitable_events.where(name: e).destroy_all unless params[:event_types].include?(e)
+			end
+			# Create what is not there in DB, but checked in UI.
+			params[:event_types].each { |e| @venue.suitable_events.find_or_create_by_name(e) }
 		end
-				
+
 		respond_to do |format|
 			if @venue.update_attributes(params[:venue])
 				flash[:notice] = "Venue saved successfully"
@@ -115,7 +123,7 @@ class VenuesController < ApplicationController
 		@venue = Venue.find(params[:id])
 
 		respond_to do |format|
-      format.html { render :layout => false }
+			format.html { render :layout => false }
 		end
 	end
 
