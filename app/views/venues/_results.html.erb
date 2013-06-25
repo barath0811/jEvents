@@ -79,11 +79,11 @@ end %>
 		</div>
 		<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
 
-		<p class="capacity"><%= c.min_capacity %>-<%= c.min_capacity %></p>
+		<p class="capacity">Capacity &nbsp;&nbsp;<%= c.min_capacity %>&nbsp;-&nbsp;<%= c.max_capacity %></p>
 		<p class="address">Landmark : <%= c.address.landmark %></p>
 
 		<div style="margin-top:15px;position:relative;">
-			<%= link_to 'View venue', venue_path(c), :class => "btn btn-primary btn-small search-button" %>
+			<%= link_to 'View venue', venue_path(c), :class => "btn btn-primary btn-small search-button", :rel => "modal:open" %>
 		</div>
 		<p class="numRooms"><%= c.num_halls %> rooms</p><br />
 	</div>

@@ -109,7 +109,7 @@ label span input {
 }
 
 .view-suit {
-
+  max-height: 100px;
 }
 
 .view-suit p{
@@ -291,3 +291,11 @@ label span input {
 .btn-medium [class*=" icon-"] {
   margin-top: 4px;
 }
+
+.modal{
+  width: 50%;
+
+}
+
+#results.modal { width: 600px; }
+#show_venue.modal{ width: 600px; }

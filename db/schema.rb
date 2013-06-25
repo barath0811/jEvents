@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20130623060322) do
     t.boolean  "booking_available",                                :default => false
     t.boolean  "enquiry_available",                                :default => false
     t.boolean  "is_approved",                                      :default => false
+    t.string   "description"
   end
 
 end

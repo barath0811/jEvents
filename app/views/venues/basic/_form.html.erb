@@ -24,7 +24,10 @@
 		<%= f.label(:venue_type, "Venue Type:", class:"control-label") %>
 		<div class="controls"><%= f.select(:venue_type, @venueTypes) %></div>
 	</div>
-
+	<div class="control-group">
+		<%= f.label(:description, "Venue Description:", class:"control-label") %>
+		<div class="controls"><%= f.text_field :description %></div>
+	</div>
 	<div class="control-group">
 		<label class="control-label">Suitable for:</label>
 		<div class="controls">
@@ -50,6 +53,11 @@
 	<div class="control-group">
 		<%= a.label(:area, "Area:", class:"control-label") %>
 		<div class="controls"><%= a.select(:area, @areas) %></div>
+	</div>
+
+	<div class="control-group">
+		<%= a.label(:landmark, "Landmark:", class:"control-label") %>
+		<div class="controls"><%= a.text_field :landmark %></div>
 	</div>
 
 	<% end %>
