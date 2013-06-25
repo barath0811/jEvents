@@ -4,6 +4,6 @@ class Address < ActiveRecord::Base
 	belongs_to :venue
 
 	#validations
-	validates :address, :area, presence: true
+	validates :address, :area, :landmark, presence: true
 
 end

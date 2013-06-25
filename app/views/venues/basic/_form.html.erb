@@ -55,6 +55,11 @@
 		<div class="controls"><%= a.select(:area, @areas) %></div>
 	</div>
 
+	<div class="control-group">
+		<%= a.label(:landmark, "Landmark:", class:"control-label") %>
+		<div class="controls"><%= a.text_field :landmark %></div>
+	</div>
+
 	<% end %>
 
 	<div class="control-group">

@@ -51,7 +51,8 @@ class HallsController < ApplicationController
 		respond_to do |format|
 			if @hall.save
 				capacity = findMinMaxCap(@hall.seating_arrangement)
-				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1])
+				num_halls = @venue.halls.size
+				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1], :num_halls => num_halls)
 				
 				format.js { redirect_to venue_halls_path(@venue), :notice => "Function space created successfully" }
 			else
@@ -67,7 +68,8 @@ class HallsController < ApplicationController
 		respond_to do |format|
 			if @hall.update_attributes(params[:hall])
 				capacity = findMinMaxCap(@hall.seating_arrangement)
-				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1])
+				num_halls = @venue.halls.size
+				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1], :num_halls => num_halls)
 				
 				format.js { redirect_to venue_halls_path(@venue), :notice => "Function space saved successfully" }
 			else
