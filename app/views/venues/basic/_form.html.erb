@@ -4,6 +4,7 @@
 <% 
 	@venueTypes = getOptions('VenueType')
 	@areas = getOptions('Area')
+	@eventTypes = getOptions('EventType')
 %>
 
 <div class="actions">
@@ -27,6 +28,16 @@
 		<%= f.label(:description, "Venue Description:", class:"control-label") %>
 		<div class="controls"><%= f.text_field :description %></div>
 	</div>
+	<div class="control-group">
+		<label class="control-label">Suitable for:</label>
+		<div class="controls">
+			<% @eventTypes.each do |evnt| %>
+				<%= check_box_tag 'event_types[]', evnt, @selected_event_types.include?(evnt) %>
+				<%= evnt.humanize %>
+			<% end %>
+		</div>
+	</div>
+
 	<div class="control-group">
 		<%= f.label(:base_image, "Venue Image:", class:"control-label") %>
 		<div class="controls"><%= f.file_field :base_image%></div>
