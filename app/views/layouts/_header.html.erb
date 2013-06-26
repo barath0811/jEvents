@@ -4,7 +4,7 @@
     // init the FB JS SDK
     FB.init({
       appId      : '337836476319124',                        // App ID from the app dashboard
-      channelUrl : '//JOLLYEVENTZ.HEROKUAPP.COM/channel.html', // Channel file for x-domain comms
+      channelUrl : '//jollyeventz.herokuapp.com/channel.html', // Channel file for x-domain comms
       status     : true,                                 // Check Facebook Login status
       xfbml      : true                                  // Look for social plugins on the page
     });
@@ -63,9 +63,9 @@
 							<li><%= link_to "Sign in", new_user_session_path, :rel => "modal:open" %></li>
 							<% end %>
 						</ul>
-					</ul>
-				</li>
-			</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div id="headerBottom" class="container">
