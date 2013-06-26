@@ -203,7 +203,10 @@ body {
 	text-align: center;
 	font-style: italic;
 	color: Red;
+}
 
+.bxslider  {
+	position: absolute;
 }
 
 /************** Footer **************/
