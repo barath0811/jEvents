@@ -76,7 +76,6 @@ body {
 .navbar-inner {
 	background: #FFF;
 	border-bottom: 1px solid #f88534;
-	z-index: 0;
 }
 
 #customNav {
@@ -98,9 +97,9 @@ body {
 
 #headerBottom{
 	position:relative;
-	margin-top: 1em;
-	margin-bottom: 1em;
-	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-bottom: 0.5em;
 }
 
 #contactInHeader span{
@@ -109,30 +108,22 @@ body {
 	bottom: 0;
 }
 
-#socialIcons .fb-wrap {
-	position:absolute;
+.fb-wrap {
+	position: absolute;
+	left: 250px;
+	bottom:0;
+}
+
+.tw-wrap {
+	position: absolute;
 	left: 150px;
-	bottom:0;
-	height:20px;
-	overflow:hidden;
-}
-
-#socialIcons .fb-like {
-	position: relative;
-	top:-41px;	
-}
-
-#socialIcons .tw-wrap {
-	position: absolute;
-	left: 200px;
-	height: 20px;
+	
 	bottom:0;
 }
 
-#socialIcons .gp-wrap {
+.gp-wrap {
 	position: absolute;
-	left: 262px;
-	height: 20px;
+	left: 214px;
 	bottom:0;
 }
 
