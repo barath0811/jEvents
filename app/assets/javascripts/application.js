@@ -14,8 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery.modal
-//= require_tree ./vendor/
 //= require rails.validations
+//= require bootstrap-select
+//= require bxslider
 //= require jquery.purr
 //= require best_in_place
 //= require_tree .

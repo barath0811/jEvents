@@ -11,5 +11,7 @@
  *= require jquery.ui.all
  *= require jquery.modal
  *= require_self
+ *= require bootstrap-select
+ *= require bxslider
  *= require_tree .
  */

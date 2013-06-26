@@ -29,10 +29,12 @@ group :production do
 	gem 'pg'
 end
 
+gem 'jquery-rails', '~> 3.0.1'
 gem 'jquery-ui-rails'
 gem 'jquery-modal-rails'
-gem "twitter-bootstrap-rails"
-gem 'jquery-rails', '~> 3.0.1'
+gem 'twitter-bootstrap-rails'
+gem 'bxslider-rails'
+gem 'bootstrap-select-rails'
 gem 'client_side_validations', '~> 3.2.5'
 gem 'best_in_place'
 
