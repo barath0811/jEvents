@@ -1,5 +1,5 @@
 class FeedbackMailer < ActionMailer::Base
-  default from: ENV["ADMIN_EMAIL"], to: 'rnarayana@gmail.com' #, cc: 'barath0811@gmail.com'
+  default from: ENV['FEEDBACK_EMAIL_FROM'], to: ENV['FEEDBACK_EMAIL_TO'] #, cc: 'barath0811@gmail.com'
 
   def send_feedback(feedback)
   	@feedback = feedback
