@@ -29,7 +29,7 @@ $(document).ready(function(){
 		showNotification(msg.text());
 });
 
-$(document).on('ajax:success', function(){
+$(document).ajaxSuccess(function(){
 	if($('form[data-validate]').length){
 		$('form[data-validate]').enableClientSideValidations();
 	}
