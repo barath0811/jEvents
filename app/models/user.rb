@@ -1,13 +1,16 @@
 class User < ActiveRecord::Base
+
+  before_save :setup_role
   
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable,
   :confirmable, :lockable, :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter]
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :provider, :uid, :name
+  attr_accessible :provider, :uid, :name, :role_ids
 
   has_many :venues
+  has_and_belongs_to_many :roles
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
   	user = User.where(:email => access_token.info.email).first
@@ -49,4 +52,16 @@ class User < ActiveRecord::Base
   		end
   	end
   end
+
+  def role?(role)
+      return !!self.roles.find_by_name(role.to_s.camelize)
+  end
+
+  # Default role is "Registered"
+  def setup_role 
+    if self.role_ids.empty?     
+      self.role_ids = Role.where(name: 'Customer').first.id
+    end
+  end
+
 end

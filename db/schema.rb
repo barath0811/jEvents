@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130623060322) do
+ActiveRecord::Schema.define(:version => 20130627113618) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -116,6 +116,17 @@ ActiveRecord::Schema.define(:version => 20130623060322) do
 
   add_index "rates", ["venue_id"], :name => "index_rates_on_venue_id"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
   create_table "seating_arrangements", :force => true do |t|
     t.integer  "hall_id"
     t.datetime "created_at",                         :null => false
@@ -160,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20130623060322) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "role"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

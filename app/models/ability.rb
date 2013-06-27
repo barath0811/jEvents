@@ -28,5 +28,16 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+
+    user ||= User.new # guest user
+    if user.role? :admin
+      can :manage, :all
+    elsif user.role? :venue_owner
+      can :manage, Venue do |venue|
+        venue.try(:owner) == user
+      end
+    else
+      can :read, :all
+    end
   end
 end
