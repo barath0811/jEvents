@@ -1,48 +1,50 @@
-<hr />
-<div class="row-fluid" id="footerLists">
-	<div class="span3">
-		<h4>About JollyEvents</h4>
-		<ul>
-			<li><%= link_to "About Us", home_about_path %></li>
-			<li><%= link_to "How it works", placeholder_path %></li>
-			<li><%= link_to "Contact Us", new_feedback_path, :rel => "modal:open", :remote => true %></li>
-			<li><%= link_to "FAQ", home_faq_path %></li>
-			<li><%= link_to "Blog", placeholder_path %></li>
-		</ul>
+<div id="footer" class="container">
+	<hr />
+	<div class="row-fluid" id="footerLists">
+		<div class="span3">
+			<h4>About JollyEvents</h4>
+			<ul>
+				<li><%= link_to "About Us", home_about_path %></li>
+				<li><%= link_to "How it works", placeholder_path %></li>
+				<li><%= link_to "Contact Us", new_feedback_path, :rel => "modal:open", :remote => true %></li>
+				<li><%= link_to "FAQ", home_faq_path %></li>
+				<li><%= link_to "Blog", placeholder_path %></li>
+			</ul>
+		</div>
+		<div class="span3">
+			<h4>For Event Planners</h4>
+			<ul>
+				<li><%= link_to "Search Venue", search_venues_path %></li>
+				<li><%= link_to "Venue Collections", placeholder_path %></li>
+				<li><%= link_to "My Events", placeholder_path %></li>
+				<li><%= link_to "Testimonials", placeholder_path %></li>
+			</ul>
+		</div>
+		<div class="span3">
+			<h4>For Venue Owners</h4>
+			<ul>
+				<li><%= link_to "Add Venue", new_venue_path %></li>
+				<li><%= link_to "My Venue", venues_path %></li>
+				<li><%= link_to "Advertising", placeholder_path %></li>
+				<li><%= link_to "Deals & Offers", placeholder_path %></li>
+			</ul>
+		</div>
+		<div class="span3">
+			<h4>Popular Events</h4>
+			<ul>
+				<li><%= link_to "Birthday Party", placeholder_path %></li>
+				<li><%= link_to "Wedding", placeholder_path %></li>
+				<li><%= link_to "Reception", placeholder_path %></li>
+				<li><%= link_to "Corporate Meetings", placeholder_path %></li>
+			</ul>
+		</div>
 	</div>
-	<div class="span3">
-		<h4>For Event Planners</h4>
-		<ul>
-			<li><%= link_to "Search Venue", search_venues_path %></li>
-			<li><%= link_to "Venue Collections", placeholder_path %></li>
-			<li><%= link_to "My Events", placeholder_path %></li>
-			<li><%= link_to "Testimonials", placeholder_path %></li>
-		</ul>
-	</div>
-	<div class="span3">
-		<h4>For Venue Owners</h4>
-		<ul>
-			<li><%= link_to "Add Venue", new_venue_path %></li>
-			<li><%= link_to "My Venue", venues_path %></li>
-			<li><%= link_to "Advertising", placeholder_path %></li>
-			<li><%= link_to "Deals & Offers", placeholder_path %></li>
-		</ul>
-	</div>
-	<div class="span3">
-		<h4>Popular Events</h4>
-		<ul>
-			<li><%= link_to "Birthday Party", placeholder_path %></li>
-			<li><%= link_to "Wedding", placeholder_path %></li>
-			<li><%= link_to "Reception", placeholder_path %></li>
-			<li><%= link_to "Corporate Meetings", placeholder_path %></li>
-		</ul>
+	<hr />
+	<div class="row-fluid">
+		<div class="pull-right">
+			&copy; JollyEventz 2013 | 
+			<%= link_to "Privacy Policy", home_privacy_path %> | 
+			<%= link_to "Site Terms of Use", home_terms_path %>
+		</div>
 	</div>
 </div>
-<hr />
-<footer class="row-fluid">
-	<div class="pull-right">
-		&copy; JollyEventz 2013 | 
-		<%= link_to "Privacy Policy", home_privacy_path %> | 
-		<%= link_to "Site Terms of Use", home_terms_path %>
-	</div>
-</footer>

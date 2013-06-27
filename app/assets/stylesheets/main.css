@@ -2,7 +2,6 @@ body {
 	font-family: 'Open Sans', "Book Antiqua", Arial, sans-serif;
 	background-image: url(Background1.jpg);
 	padding-top: 60px;
-	padding-bottom: 40px;
 }
 
 #bodyAndFooter {
@@ -28,13 +27,13 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
-    .row-fluid > [class*=span]:nth-child(2n+1) {
-      clear: both;
-      margin-left: 0;
-    }
-    .row-fluid .span3 {
-        width: 48.61878453038674%;
-    }
+	.row-fluid > [class*=span]:nth-child(2n+1) {
+		clear: both;
+		margin-left: 0;
+	}
+	.row-fluid .span3 {
+		width: 48.61878453038674%;
+	}
 }
 
 .nav a:hover, a:active, a:focus {
@@ -197,7 +196,7 @@ body {
 
 /************** Footer **************/
 #footerLists{
-	font-size: 1.1em;
+	font-size: 1em;
 	font-family: "Book Antiqua", Arial, sans-serif;
 }
 
@@ -207,6 +206,11 @@ body {
 
 #footerLists h4 {
 	color: #f88534;
+}
+
+#footer hr {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 /************** Customization of 3rd party css ***************/
