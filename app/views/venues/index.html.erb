@@ -23,8 +23,8 @@
 			<td><%= venue.contact.email %></td>
 			<td><%= venue.contact.mobile_number %></td>
 			<td>
-				<%= link_to raw('<i class="icon-eye-open"></i>'), venue, :rel => "modal:open" %>&nbsp;&nbsp;
-				<%= link_to raw('<i class="icon-pencil"></i>'), edit_venue_path(venue) %>&nbsp;&nbsp;
+				<%= link_to raw('<i class="icon-eye-open"></i>'), venue, :rel => "modal:open" %>&nbsp;|
+				<%= link_to raw('<i class="icon-pencil"></i>'), edit_venue_path(venue) %>&nbsp;|
 				<%= link_to raw('<i class="icon-trash"></i>'), venue, method: :delete, data: { confirm: 'Are you sure?' } %>
 			</td>
 		</tr>

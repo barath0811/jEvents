@@ -40,9 +40,8 @@ class Admin::UsersController < Admin::AdminController
   # POST /users
   # POST /users.json
   def create
-    @user.attributes = params[:user]
-    @user.role_ids = params[:user][:role_ids] if params[:user]
     @user = User.new(params[:user])
+    @user.role_ids = params[:user][:role_ids] if params[:user]
     respond_to do |format|
       if @user.save
         flash[:notice] = flash[:notice].to_a.concat @user.errors.full_messages

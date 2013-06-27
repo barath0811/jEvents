@@ -3,28 +3,29 @@
  <thead>
   <tr>
     <th>ID</th>
-        <th>
-      <%= t("activerecord.attributes.user.email", :default => t("activerecord.labels.email", :default => "Email")) %>
-    </th>
-        <th>Created at</th>
+    <th><%= t("activerecord.attributes.user.email", :default => t("activerecord.labels.email", :default => "Email")) %></th>
+    <th>Name</th>
+    <th>Roles</th>
+    <th>Created at</th>
     <th>Actions</th>
   </tr>
-  </thead>
-  <tbody>
+</thead>
+<tbody>
   <% @users.each do |user| -%>
-   <tr>
+  <tr>
     <td><%= user.id %></td>
-        <td><%= link_to user.email, admin_user_path(user) %>
-    </td>
-        <td><%= user.created_at %></td>
+    <td><%= link_to user.email, admin_user_path(user) %></td>
+    <td><%= user.name %></td>
+    <td><%= user.roles.pluck(:name) %></td>
+    <td><%= user.created_at %></td>
     <td>
-      <%= link_to "Show", admin_user_path(user) %>
-      <%= link_to "Edit", edit_admin_user_path(user) %>
-      <%= link_to "Destroy", admin_user_path(user), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      <%= link_to raw('<i class="icon-eye-open"></i>'), admin_user_path(user) %>&nbsp;|
+      <%= link_to raw('<i class="icon-pencil"></i>'), edit_admin_user_path(user) %>&nbsp;|
+      <%= link_to raw('<i class="icon-trash"></i>'), admin_user_path(user), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
     </td>
-    </tr>
-    <% end -%>
-   </tbody>
+  </tr>
+  <% end -%>
+</tbody>
 </table>
 
 <%= link_to "New", new_admin_user_path, :class => 'btn btn-primary' %>
