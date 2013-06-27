@@ -3,6 +3,6 @@ class FeedbackMailer < ActionMailer::Base
 
   def send_feedback(feedback)
   	@feedback = feedback
-  	mail(:subject => 'Feedback' + feedback.subject)
+  	mail(:subject => 'Feedback: ' + feedback.subject)
   end
 end
