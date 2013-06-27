@@ -1,9 +1,68 @@
+<h3>User details</h3>
+<div class="row-fluid">
+	<div class="span6 offset2">
+		<table class="table table-striped table-bordered table-condensed">
+			<tr>
+				<th>Prop</th>
+				<th>Value</th>
+			</tr>
+			<tr>
+				<td><label class="label">Email:</td>
+				<td><%= @user.email %></td>
+			</tr>
+			<tr>
+				<td><label class="label">Name:</td>
+				<td><%= @user.name %></td>
+			</tr>
+			<tr>
+				<td><label class="label">UID:</td>
+				<td><%= @user.uid %></td>
+			</tr>
+			<tr>
+				<td><label class="label">Provider:</td>
+				<td><%= @user.provider %></td>
+			</tr>
 
-<label class="label"><%= t("activerecord.attributes.user.email", :default => t("activerecord.labels.email", :default => "Email")) %>:</label>
-<p><%= @user.email %></p>
+			<tr>
+				<td><label class="label">Current SignIn at:</td>
+				<td><%= @user.current_sign_in_at %></td>
+			</tr>
+			<tr>
+				<td><label class="label">Current SignIn from:</td>
+				<td><%= @user.current_sign_in_ip %></td>
+			</tr>
+			<tr>
+				<td><label class="label">Last SignIn at:</td>
+				<td><%= @user.last_sign_in_at %></td>
+			</tr>
+			<tr>
+				<td><label class="label">Last SignIn from:</td>
+				<td><%= @user.last_sign_in_ip %></td>
+			</tr>
 
-<div class="form-actions">
-<%= link_to "Back", admin_users_path, :class => 'btn'  %>
-<%= link_to "Edit", edit_admin_user_path(@user), :class => 'btn' %>
-<%= link_to "Delete", admin_user_path(@user), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn' %>
+			<tr>
+				<td><label class="label">User created at:</td>
+				<td><%= @user.created_at %></td>
+			</tr>
+			<tr>
+				<td><label class="label">User confirmed at:</td>
+				<td><%= @user.confirmed_at %></td>
+			</tr>
+
+			<tr>
+				<td><label class="label">Email confirmed?</td>
+				<td><%= if @user.unconfirmed_email then 'No' else 'Yes' end %></td>
+			</tr>
+
+			<tr>
+				<td><label class="label"># Failed attempts:</td>
+				<td><%= @user.failed_attempts %></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="offset6 actions">
+	<%= link_to "Back", admin_path, :class => 'btn'  %>
+	<%= link_to "Edit", edit_admin_user_path(@user), :class => 'btn' %>
+	<%= link_to "Delete", admin_path, :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn' %>
 </div>

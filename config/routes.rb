@@ -1,5 +1,5 @@
 Jevents::Application.routes.draw do
-  
+
   match '/profiles/dashboard' => 'profiles#dashboard', :as => :user_root
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -7,8 +7,8 @@ Jevents::Application.routes.draw do
   resources :profiles, :only => [:dashboard]
 
   namespace :admin do
-    match '/' => 'users#index'
-    resources :users
+    match '/' => 'admin#index'
+    resources :users 
   end
   
   resources :venues do
@@ -22,7 +22,7 @@ Jevents::Application.routes.draw do
       get 'show_image'
       get 'view'
       get 'search'
-      post 'search' # ???
+      post 'search'
     end
   end
 

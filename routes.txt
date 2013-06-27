@@ -20,7 +20,7 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
              user_unlock POST     /users/unlock(.:format)                    devise/unlocks#create
          new_user_unlock GET      /users/unlock/new(.:format)                devise/unlocks#new
                          GET      /users/unlock(.:format)                    devise/unlocks#show
-                   admin          /admin(.:format)                           admin/users#index
+                   admin          /admin(.:format)                           admin/admin#index
              admin_users GET      /admin/users(.:format)                     admin/users#index
                          POST     /admin/users(.:format)                     admin/users#create
           new_admin_user GET      /admin/users/new(.:format)                 admin/users#new

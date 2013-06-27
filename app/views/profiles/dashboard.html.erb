@@ -1,3 +1,5 @@
 <div class="row-fluid">
-	Hello <%= @user.name.presence || @user.email %>, here you can <%= link_to "Edit your profile", edit_user_registration_path(current_user)%>
+	<h4>Hello <%= @user.name.presence || @user.email %></h4>
+
+	<%= link_to "Edit your profile", edit_user_registration_path(current_user), :class => 'btn btn-warning'%>
 </div>
