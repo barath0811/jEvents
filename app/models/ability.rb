@@ -31,13 +31,18 @@ class Ability
 
     user ||= User.new # guest user
     if user.role? :admin
-      can :manage, :all
+        can :manage, :all
     elsif user.role? :venue_owner
-      can :manage, Venue do |venue|
-        venue.try(:owner) == user
-      end
+        can :manage, Venue do |venue|
+            venue.try(:owner) == user
+        end
+        can :read, :all
+    elsif user.role? :customer
+        can :read, :all
+        can [:view, :show_image, :search], Venue
     else
-      can :read, :all
+        can :read, :all
+        can [:view, :show_image, :search], Venue
     end
   end
 end
