@@ -60,7 +60,6 @@ Jevents::Application.configure do
   config.action_mailer.smtp_settings = {
     :address              => ENV['ADMIN_SMTP_ADDRESS'],
     :port                 => ENV['ADMIN_SMTP_PORT'],
-    :domain               => ENV['ADMIN_EMAIL_DOMAIN'],
     :user_name            => ENV['ADMIN_EMAIL_USER'],
     :password             => ENV['ADMIN_EMAIL_PASSWORD'],
     :authentication       => :login,
