@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html xmlns:fb="https://www.facebook.com/2008/fbml">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -7,12 +7,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>JollyEventz</title>
-	<meta name="description" content="">
+	<meta name="description" content="Book venues Chennai, find venue Chennai, Wedding venue Chennai, Birthday event Chennai, book conferece room">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- <%= stylesheet_link_tag		"http://fonts.googleapis.com/css?family=Open+Sans", :media => "all" %> -->
 	<%= stylesheet_link_tag    	"application", :media => "all" %>
-	<%= javascript_include_tag 	'application' %>
 
 	<%= csrf_meta_tags %>
 </head>
@@ -27,8 +26,7 @@
     </div>
 	<%= render "layouts/footer" %>
 	
-    <%= render "layouts/scripts" %>
-
-    <!-- debug(params) if Rails.env.development? -->
+    <%= javascript_include_tag 	'application' %>
+    
 </body>
 </html>
