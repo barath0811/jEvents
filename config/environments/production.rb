@@ -63,7 +63,7 @@ Jevents::Application.configure do
     :domain               => ENV['ADMIN_EMAIL_DOMAIN'],
     :user_name            => ENV['ADMIN_EMAIL_USER'],
     :password             => ENV['ADMIN_EMAIL_PASSWORD'],
-    :authentication       => :plain,
+    :authentication       => :login,
     :enable_starttls_auto => false  }
 
   # Enable threaded mode
