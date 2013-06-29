@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '~> 3.2.13'
+gem 'rake'
 
 gem 'mysql2', '~> 0.3.11'
 
@@ -30,24 +31,24 @@ group :production do
 end
 
 gem 'jquery-rails', '~> 3.0.1'
-gem 'jquery-ui-rails'
-gem 'jquery-modal-rails'
-gem 'twitter-bootstrap-rails'
-gem 'bxslider-rails'
-gem 'bootstrap-select-rails'
+gem 'jquery-ui-rails', '~> 4.0.3'
+gem 'jquery-modal-rails', '~> 0.0.3'
+gem 'twitter-bootstrap-rails', '~> 2.2.7'
+gem 'bxslider-rails', '~> 4.1.0'
+gem 'bootstrap-select-rails', '~> 1.3.0.1'
 gem 'client_side_validations', '~> 3.2.5'
-gem 'best_in_place'
+gem 'best_in_place', '~> 2.1.0'
 
 # Authentication & OAuth
 gem 'devise', '~> 2.2.4'
 gem 'omniauth', '~> 1.1.4'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 1.4.1'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'certified', '~> 0.1.1'
 
 #Authorization
-gem "cancan"
+gem 'cancan', '~> 1.6.10'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -59,7 +60,7 @@ gem "cancan"
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To Paginate
 gem 'will_paginate', '~> 3.0.4'
