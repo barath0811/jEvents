@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '~> 3.2.13'
 gem 'rake'
-gem 'bundler'
 gem 'mysql2', '~> 0.3.11'
 
 # Bundle edge Rails instead:
@@ -61,6 +60,7 @@ gem 'cancan', '~> 1.6.10'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'rvm-capistrano'
 
 # To Paginate
 gem 'will_paginate', '~> 3.0.4'
