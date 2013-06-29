@@ -130,15 +130,23 @@ label span input {
 .venue-img-div img{
   float: left;
   top: 10px;
-  width:320px;
-  height:240px;
+  width:280px;
+  height:210px;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .venue-amenities{
-  padding: 20px;
+  padding: 10px;
   margin: 10px;
+  border: 4px solid #cc1111;
+  border-radius: 16px;
+  position: relative;
+}
+
+.highlights-div{
+  padding: 20px;
+  margin-left: 30px;
   border: 4px solid #cc1111;
   border-radius: 16px;
   position: relative;
@@ -293,8 +301,7 @@ label span input {
 }
 
 .modal{
-  width: 50%;
-
+  width: 70%;
 }
 
 #results.modal { width: 600px; }

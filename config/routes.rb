@@ -17,6 +17,7 @@ Jevents::Application.routes.draw do
     member do   #member - requires an ID
       get 'rates'
       get 'facilities'
+      get 'highlights'
     end
     collection do   #works on a collection, does not require an ID
       get 'show_image'

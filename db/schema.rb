@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627113618) do
+ActiveRecord::Schema.define(:version => 20130628213133) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -53,8 +53,18 @@ ActiveRecord::Schema.define(:version => 20130627113618) do
     t.boolean  "has_buffet"
     t.boolean  "is_alcohol_allowed"
     t.boolean  "is_nonveg_allowed"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.boolean  "airconditioning",            :default => false
+    t.boolean  "audio_video_equipment",      :default => false
+    t.boolean  "has_bar",                    :default => false
+    t.boolean  "has_projector",              :default => false
+    t.boolean  "has_stage",                  :default => false
+    t.boolean  "has_smoking_area",           :default => false
+    t.boolean  "has_wifi_or_internet",       :default => false
+    t.boolean  "has_whiteboard",             :default => false
+    t.boolean  "has_video_conference_phone", :default => false
+    t.boolean  "has_dance_floor",            :default => false
   end
 
   add_index "facilities", ["venue_id"], :name => "index_facilities_on_venue_id"
@@ -85,10 +95,9 @@ ActiveRecord::Schema.define(:version => 20130627113618) do
   create_table "highlights", :force => true do |t|
     t.string   "highlight"
     t.decimal  "display_order", :precision => 10, :scale => 0
-    t.string   "references"
-    t.string   "venue"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
+    t.integer  "venue_id"
   end
 
   create_table "images", :force => true do |t|
@@ -171,7 +180,6 @@ ActiveRecord::Schema.define(:version => 20130627113618) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "role"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

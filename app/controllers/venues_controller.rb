@@ -18,7 +18,7 @@ class VenuesController < ApplicationController
 		@venue.build_address
 		@venue.build_contact
 		@venue.suitable_events.build
-
+		
 		@selected_event_types = Array.new
 		
 		respond_to do |format|
@@ -69,6 +69,18 @@ class VenuesController < ApplicationController
 		end
 	end
 
+	def highlights
+		@venue = current_user.venues.find(params[:id])
+
+		if @venue.highlights.blank?
+			@venue.highlights.build
+		end
+
+		respond_to do |format|
+			format.js { render :template => 'venues/highlights/addedit'}
+		end
+	end
+
 	def facilities
 		@venue = Venue.find(params[:id])
 		if @venue.facility.blank?
@@ -83,6 +95,15 @@ class VenuesController < ApplicationController
 	# PUT /venues/1
 	def update
 		@venue = current_user.venues.find(params[:id])
+
+		unless params[:highlights].nil?
+			@venue.highlights.destroy_all
+			params[:highlights].each_with_index do |h, i| 
+				unless h.nil? || h == ""
+					@venue.highlights.find_or_create_by_highlight_and_display_order(h, i+1) 
+				end
+			end
+		end
 
 		if params[:event_types].nil?
 			@venue.suitable_events.destroy_all

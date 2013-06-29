@@ -1,7 +1,7 @@
 <h4><%= @venue.name %>, <%= @venue.venue_type %></h4>
 <h6><%= @venue.address.address %>, <%= @venue.address.area %></h6>
 <div id="show_venue">
-<div style="height:300px">
+<div style="height:250px">
   <div class="span4 venue-img-div">
     <%= unless @venue.base_image.nil? 
       image_tag url_for(:controller => "venues", :action => "show_image", :id => @venue.id), :class => "view-venue-img"
@@ -17,14 +17,12 @@
       <%= unless @venue.min_capacity.nil? 
           image_tag('capacity.jpg') 
       end %>
-      <%= if @venue.facility != nil || @venue.facility.has_parking?
+      <%= if @venue.facility != nil && @venue.facility.has_parking?
         image_tag('parking.png') 
       end %>
-      <%= if @venue.facility != nil || @venue.facility.has_parking?
+      <%= if @venue.facility != nil && @venue.facility.has_parking?
         'Valet Parking'
       end %>
-
-      
 
       <p><span><img src="/assets/restaurant.png"></span>External catering allowed</p>
       <p><span><img src="/assets/alcohol.png"></span>Alcohol allowed</p>
@@ -45,6 +43,7 @@
 </div>
 </br>
 
+<div id="halls-div" class="span7">
 <table id="halls" class="table table-bordered">
   <tr>
     <td>Hall name</td>
@@ -105,4 +104,13 @@
     <% end %>
   <% end %>
 </table>
+</div>
+
+<div class="span2 highlights-div">
+  <p style="font-size:18px; text-align:centre;">Highlights</p>
+  <% @venue.highlights.each do |h| %>
+    <label><%= h.highlight %></label>
+  <%end%>
+</div>
+
 </div>

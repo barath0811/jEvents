@@ -29,6 +29,62 @@
         <% end %>
       </div>
     </div>
+
+    <div class="control-groups">
+      <div class="controls span6">
+        <%= f.label :airconditioning, class: "checkbox"  do %>
+        Has Air conditioning? <%= f.check_box :airconditioning %>
+        <% end %>
+        <%= f.label :audio_video_equipment , class: "checkbox" do %>
+        Has Audio Video equipments? <%= f.check_box :audio_video_equipment %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="control-groups">
+      <div class="controls span6">
+        <%= f.label :has_bar, class: "checkbox"  do %>
+        Has bar facility? <%= f.check_box :has_bar %>
+        <% end %>
+        <%= f.label :has_projector , class: "checkbox" do %>
+        Has Projector? <%= f.check_box :has_projector %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="control-groups">
+      <div class="controls span6">
+        <%= f.label :has_stage, class: "checkbox"  do %>
+        Has stage(s)? <%= f.check_box :has_stage %>
+        <% end %>
+        <%= f.label :has_smoking_area , class: "checkbox" do %>
+        Is there a smoking area? <%= f.check_box :has_smoking_area %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="control-groups">
+      <div class="controls span6">
+        <%= f.label :has_wifi_or_internet, class: "checkbox"  do %>
+        Has WiFi or Internet facility? <%= f.check_box :has_wifi_or_internet %>
+        <% end %>
+        <%= f.label :has_whiteboard , class: "checkbox" do %>
+        Has a White board? <%= f.check_box :has_whiteboard %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="control-groups">
+      <div class="controls span6">
+        <%= f.label :has_video_conference_phone, class: "checkbox"  do %>
+        Has video conference facility? <%= f.check_box :has_video_conference_phone %>
+        <% end %>
+        <%= f.label :has_dance_floor , class: "checkbox" do %>
+        Has Dance floor? <%= f.check_box :has_dance_floor %>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
 <% end %>
