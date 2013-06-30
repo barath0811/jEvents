@@ -3,4 +3,8 @@ class Image < ActiveRecord::Base
 
   belongs_to :venue
   belongs_to :hall
+
+  def image=(value)
+    	write_attribute(:image, value.read)
+  	end
 end

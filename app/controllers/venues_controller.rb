@@ -26,9 +26,26 @@ class VenuesController < ApplicationController
 		end
 	end
 
+	def images
+		@venue = current_user.venues.find(params[:id])
+		if @venue.images.blank?
+			@venue.images.build
+		end
+
+		respond_to do |format|
+			format.js { render :template => 'venues/images/addedit'}
+		end
+	end
+
 	def show_image
-		@venue1 =  Venue.find(params[:id])
-		send_data @venue1.base_image, :type => 'image/png',:disposition => 'inline'
+		unless params[:id].nil?
+			@venue1 =  Venue.find(params[:id])
+			send_data @venue1.base_image, :type => 'image/png',:disposition => 'inline'
+		end
+		unless params[:image_id].nil?
+			@image =  Image.find(params[:image_id])
+			send_data @image.image, :type => 'image/png',:disposition => 'inline'
+		end
 	end
 
 	# POST /venues
