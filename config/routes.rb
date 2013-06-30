@@ -27,6 +27,7 @@ Jevents::Application.routes.draw do
   end
 
   resources :feedbacks, :only => [:new, :index, :create]
+  resources :venue_requests, :only => [:new, :index, :create]
 
   get "home/index"
   get "home/about"
@@ -35,7 +36,6 @@ Jevents::Application.routes.draw do
   get "home/privacy"
   
   get 'placeholder' => 'pages#placeholder'
-  get 'feedbacks/add_as_venue_owner'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

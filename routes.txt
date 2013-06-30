@@ -51,11 +51,13 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
                feedbacks GET      /feedbacks(.:format)                       feedbacks#index
                          POST     /feedbacks(.:format)                       feedbacks#create
             new_feedback GET      /feedbacks/new(.:format)                   feedbacks#new
+          venue_requests GET      /venue_requests(.:format)                  venue_requests#index
+                         POST     /venue_requests(.:format)                  venue_requests#create
+       new_venue_request GET      /venue_requests/new(.:format)              venue_requests#new
               home_index GET      /home/index(.:format)                      home#index
               home_about GET      /home/about(.:format)                      home#about
                 home_faq GET      /home/faq(.:format)                        home#faq
               home_terms GET      /home/terms(.:format)                      home#terms
             home_privacy GET      /home/privacy(.:format)                    home#privacy
              placeholder GET      /placeholder(.:format)                     pages#placeholder
-            add_as_owner GET      /feedbacks/add_as_venue_owner(.:format)    feedbacks#add_as_venue_owner
                     root          /                                          home#index

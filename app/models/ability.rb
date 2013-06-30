@@ -35,9 +35,9 @@ class Ability
     elsif user.role? :venue_owner
         can :manage, Venue, :user_id => user.id
     elsif user.role? :customer
-        can [:view, :show, :show_image, :search], Venue
+        can [:index, :view, :show, :show_image, :search], Venue
     else
-        can [:view, :show, :show_image, :search], Venue
+        can [:index, :view, :show, :show_image, :search], Venue
     end
   end
 end

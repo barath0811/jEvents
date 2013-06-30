@@ -1,4 +1,3 @@
-<% if current_user.role?(:venue_owner) || current_user.role?(:admin) then %>
 <%= link_to raw('<i class="icon-white icon-plus"></i> Create new venue'), new_venue_path, :class => "hallFormLnk btn btn-success fr" %>
 <h1>My venues</h1>
 <div class="row-fluid">
@@ -33,6 +32,3 @@
 	</table>
 </div>
 <br />
-<% else %>
-<h5>You are not registered as a Venue Owner. If you own a venue, click <%= link_to "here", {:controller => "feedbacks", :action => "add_as_venue_owner"}, :layout => false, :rel => "modal:open" %>, and we will call you back for details</h5>
-<% end %>
