@@ -2,14 +2,10 @@
 
 <%= form_for @venue, :validate => true, :html => {:class => "form-horizontal"} do |f| %>
 <% 
-	@venueTypes = getOptions('VenueType')
-	@areas = getOptions('Area')
-	@eventTypes = getOptions('EventType')
+@venueTypes = getOptions('VenueType')
+@areas = getOptions('Area')
+@eventTypes = getOptions('EventType')
 %>
-
-<div class="actions">
-	<%= f.submit "Save Changes", :class => "btn btn-success fr" %>
-</div>
 
 <div>
 	<%= image_tag url_for(:controller => "venues", :action => "show_image", :id => @venue.id) unless @venue.new_record? %>
@@ -32,8 +28,8 @@
 		<label class="control-label">Suitable for:</label>
 		<div class="controls">
 			<% @eventTypes.each do |evnt| %>
-				<%= check_box_tag 'event_types[]', evnt, @selected_event_types.include?(evnt) %>
-				<%= evnt.humanize %>
+			<%= check_box_tag 'event_types[]', evnt, @selected_event_types.include?(evnt) %>
+			<%= evnt.humanize %>
 			<% end %>
 		</div>
 	</div>
@@ -72,7 +68,7 @@
 		<div class="control-group">
 			<%= c.label(:firstname, "Contact Person:", class:"control-label") %>
 			<div class="controls"><%= c.text_field :firstname, :class => "contactname" %>
-				<%= c.text_field :lastname, :class => "contactname" %></div>
+				<div class="controls"><%= c.text_field :lastname, :class => "contactname" %></div>
 			</div>
 			<div class="control-group">
 				<%= c.label(:email, "Email:", class:"control-label") %>
@@ -87,7 +83,12 @@
 				<div class="controls"><%= c.text_field :mobile_number %></div>
 			</div>
 		</div>
-		<% end %>
 	</div>
-
 	<% end %>
+</div>
+<br />
+<div class="actions">
+	<%= f.submit "Save Changes", :class => "btn btn-success fr" %>
+</div>
+
+<% end %>
