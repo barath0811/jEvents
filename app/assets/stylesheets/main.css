@@ -101,7 +101,8 @@ body {
 	margin-bottom: 0.5em;
 }
 
-#contactInHeader span{
+#contactInHeader div{
+	display:inline;
 	position: absolute;
 	left:0;
 	bottom: 0;
@@ -185,7 +186,7 @@ body {
 }
 
 #listVenueMsg a{
-	color:#fa8534;
+	color:#f88534;
 }
 
 #featuredVenues h4{

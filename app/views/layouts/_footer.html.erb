@@ -8,7 +8,7 @@
 				<li><%= link_to "How it works", placeholder_path %></li>
 				<li><%= link_to "Contact Us", new_feedback_path, :rel => "modal:open", :remote => true %></li>
 				<li><%= link_to "FAQ", home_faq_path %></li>
-				<li><%= link_to "Blog", placeholder_path %></li>
+				<li><%= link_to "Blog", "http://www.jollyeventz.com/blog" %></li>
 			</ul>
 		</div>
 		<div class="span3">
@@ -24,7 +24,7 @@
 			<h4>For Venue Owners</h4>
 			<ul>
 				<li><%= link_to "Add Venue", new_venue_path %></li>
-				<li><%= link_to "My Venue", venues_path %></li>
+				<li><%= link_to "My Venues", venues_path %></li>
 				<li><%= link_to "Advertising", placeholder_path %></li>
 				<li><%= link_to "Deals & Offers", placeholder_path %></li>
 			</ul>
@@ -32,10 +32,10 @@
 		<div class="span3">
 			<h4>Popular Events</h4>
 			<ul>
-				<li><%= link_to "Birthday Party", placeholder_path %></li>
-				<li><%= link_to "Wedding", placeholder_path %></li>
-				<li><%= link_to "Reception", placeholder_path %></li>
-				<li><%= link_to "Corporate Meetings", placeholder_path %></li>
+				<li><%= link_to "Birthday Party", search_venues_path(:eventType => "Birthday Party") %></li>
+				<li><%= link_to "Wedding", search_venues_path(:eventType => "Wedding") %></li>
+				<li><%= link_to "Reception", search_venues_path(:eventType => "Reception") %></li>
+				<li><%= link_to "Corporate Meetings", search_venues_path(:eventType => "Corporate Meeting") %></li>
 			</ul>
 		</div>
 	</div>

@@ -13,6 +13,7 @@ class Admin::AdminController < ApplicationController
 
 	def index
 		@venues = Venue.all
+		
 		@num_venues = Venue.all.count
 
 		@users = User.all
