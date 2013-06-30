@@ -57,4 +57,5 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
               home_terms GET      /home/terms(.:format)                      home#terms
             home_privacy GET      /home/privacy(.:format)                    home#privacy
              placeholder GET      /placeholder(.:format)                     pages#placeholder
+            add_as_owner GET      /feedbacks/add_as_venue_owner(.:format)    feedbacks#add_as_venue_owner
                     root          /                                          home#index

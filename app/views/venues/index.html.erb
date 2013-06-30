@@ -34,5 +34,5 @@
 </div>
 <br />
 <% else %>
-<p>You are not registered as a Venue Owner. If you own a venue, click <%= link_to "here", add_as_owner_path, :layout => false, :rel => "modal:open" %>, and we will call you back for details (TODO - send email).</p>
+<p>You are not registered as a Venue Owner. If you own a venue, click <%= link_to "here", {:controller => "feedbacks", :action => "add_as_venue_owner"}, :layout => false, :rel => "modal:open" %>, and we will call you back for details (TODO - send email).</p>
 <% end %>

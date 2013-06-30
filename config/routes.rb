@@ -35,7 +35,7 @@ Jevents::Application.routes.draw do
   get "home/privacy"
   
   get 'placeholder' => 'pages#placeholder'
-  get 'pages/add_as_venue_owner', :as => 'add_as_owner'
+  get 'feedbacks/add_as_venue_owner'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
