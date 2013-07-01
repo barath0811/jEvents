@@ -8,7 +8,8 @@ Jevents::Application.routes.draw do
 
   namespace :admin do
     match '/' => 'admin#index'
-    resources :users 
+    resources :users
+    resources :venues, :only => [:index]
   end
   
   resources :venues do

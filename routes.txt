@@ -28,6 +28,7 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
               admin_user GET      /admin/users/:id(.:format)                 admin/users#show
                          PUT      /admin/users/:id(.:format)                 admin/users#update
                          DELETE   /admin/users/:id(.:format)                 admin/users#destroy
+            admin_venues GET      /admin/venues(.:format)                    admin/venues#index
              venue_halls GET      /venues/:venue_id/halls(.:format)          halls#index
                          POST     /venues/:venue_id/halls(.:format)          halls#create
           new_venue_hall GET      /venues/:venue_id/halls/new(.:format)      halls#new
