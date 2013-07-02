@@ -52,10 +52,13 @@ class Venue < ActiveRecord::Base
 
 		unless query.areas.count == 0
 			@areas = Area.where(:area1 => query.areas).where("distance <= 5").select('area2')
-			
-			@areas << query.areas
+			areas_search = Array.new
+			areas_search << query.areas
+			@areas.each do |a|
+				areas_search << a
+			end
 
-			venue_results = venue_results.joins(:address).where('addresses.area' => @areas).includes(:address)
+			venue_results = venue_results.joins(:address).where('addresses.area' => areas_search).includes(:address)
 			#venue_results = venue_results.joins("left outer join areas on addresses.area = areas.area1").where("areas.area1 is null or areas.distance <= 5")
 		end
 		

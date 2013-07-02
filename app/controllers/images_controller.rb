@@ -11,6 +11,7 @@ class ImagesController < ApplicationController
 
 		respond_to do |format|
 			format.js
+			format.json { render json: [@venue, @image] }
 		end
 	end
 	
