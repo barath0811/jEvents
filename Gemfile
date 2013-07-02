@@ -49,6 +49,7 @@ gem 'certified', '~> 0.1.1'
 #Authorization
 gem "cancan"
 gem 'gmaps4rails'
+gem 'remotipart', '~> 1.0'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -20,11 +20,11 @@ Jevents::Application.configure do
   # Send emails via Gmail
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => ENV['ADMIN_SMTP_ADDRESS'],
-    :port                 => ENV['ADMIN_SMTP_PORT'],
-    :domain               => ENV['ADMIN_EMAIL_DOMAIN'],
-    :user_name            => ENV['ADMIN_EMAIL_USER'],
-    :password             => ENV['ADMIN_EMAIL_PASSWORD'],
+    :address              => 'smtp.gmail.com',
+    :port                 => 465,
+    :domain               => 'gmail',
+    :user_name            => 'barath0811',
+    :password             => 'ninethmay2',
     :authentication       => :login,
     :enable_starttls_auto => true  }
 

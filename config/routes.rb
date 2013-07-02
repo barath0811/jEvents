@@ -13,12 +13,12 @@ Jevents::Application.routes.draw do
   
   resources :venues do
     resources :halls
+    resource :images
     
     member do   #member - requires an ID
       get 'rates'
       get 'facilities'
       get 'highlights'
-      get 'images'
     end
     collection do   #works on a collection, does not require an ID
       get 'show_image'

@@ -1,0 +1,34 @@
+<h4>You are not registered as a Venue Owner. If you own a venue, please fill the below form and submit it. Our representative will contact you soon for verification and details.</h4>
+
+<div class="row-fluid">
+	<div class="span6 offset1">
+		<%= form_for @venue_request, :validate => true, :html => {:class => "form-horizontal"} do |f| %>
+		<div class="control-group">
+			<%= f.label(:name, "Venue Name", class:"control-label") %>
+			<div class="controls"><%= f.text_field  :name, placeholder:"Name of the venue" %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label(:area, "Venue Area", class:"control-label") %>
+			<div class="controls"><%= f.text_field  :area, placeholder:"Area where the venue is located" %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label(:contact_name, class:"control-label") %>
+			<div class="controls"><%= f.text_field :contact_name, placeholder:"Contact Name" %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label(:email, class:"control-label") %>
+			<div class="controls"><%= f.text_field :email, placeholder:"Your Email" %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label(:contact_mobile, class:"control-label") %>
+			<div class="controls"><%= f.text_field :contact_mobile, placeholder: 'Mobile #' %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label(:contact_landline, class:"control-label") %>
+			<div class="controls"><%= f.text_field :contact_landline, placeholder:'Landline #' %></div>
+		</div>
+		<div class="actions"><%= f.submit "Submit", :class => "btn btn-success fr" %></div>
+		<br />
+		<% end %>
+	</div>
+</div>

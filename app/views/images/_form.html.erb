@@ -1,6 +1,6 @@
 <h1>Venue Images</h1>
 <% @images = @venue.images %>
-<%= form_for @venue, :remote => true, :multipart => true, :html => { :class => "ajax_form"} do |v| %>
+<%= form_for [@venue, @image], :remote => true,  :html => {:multipart => true, :class => "ajax_form"} do |v| %>
 
 <div class="actions">
   <%= v.submit "Upload Image", :class => "btn btn-success fr" %>
@@ -9,10 +9,10 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<%= v.fields_for :images do |a| %>
-			<%= a.label(:image, "Venue Image:", class:"control-label") %>
-			<div class="controls"><%= a.file_field :image%></div>
-		<%end%>
+		
+			<%= v.label(:image, "Venue Image:", class:"control-label") %>
+			<div class="controls"><%= v.file_field :image%></div>
+		
 
 		<% @images.each_with_index do |h, i| %>
 			<%= image_tag url_for(:controller => "venues", :action => "show_image", :image_id => h.id), :class => "venue-img"  %>
