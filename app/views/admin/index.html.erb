@@ -1,18 +1,21 @@
-<section id = "admin" class="adminDashboard">
+<section id = "adminNav" class="adminDashboard">
 	<div class="navbar">
 		<div class="navbar-inner">
-			<a class="brand" href="#">Admin Dashboard</a>
+			<%= link_to "Admin Dashboard", admin_path, :class => "brand" %>
 			<ul class="nav">
 				<li class="divider-vertical"></li>
-				<li><a href="#">Users</a></li>
+				<li><%= link_to "Users", admin_users_path, :remote => true %></li>
 				<li class="divider-vertical"></li>
-				<li><a href="#">Venues</a></li>
+				<li><%= link_to "Venues", admin_venues_path, :remote => true %></li>
 				<li class="divider-vertical"></li>
-				<li><a href="#">Venue Add Requests</a></li>
+				<li><%= link_to "Requests", admin_users_path, :remote => true %></li>
 				<li class="divider-vertical"></li>
-				<li><a href="#">Feedbacks</a></li>
+				<li><%= link_to "Feedbacks", admin_users_path, :remote => true %></li>
 				<li class="divider-vertical"></li>
 			</ul>
 		</div>
-	</div>	
+	</div>
+
+	<div id="adminContent">
+	</div>
 </section>

@@ -34,8 +34,5 @@
 	<% end %>
 </table>
 <div class="flickr_pagination">
-	<div class="page_info">
-		<%= page_entries_info @venues %>
-	</div>
-	<%= will_paginate @venues, :container => false %>
+	<%= paginate @venues, :container => false %>
 </div>

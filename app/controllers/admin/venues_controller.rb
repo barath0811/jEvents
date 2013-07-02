@@ -1,5 +1,4 @@
 class Admin::VenuesController < Admin::AdminController
-	set_tab :venues
 
 	def index
 		@venues = Venue.paginate(:page => params[:page], :per_page =>1).order(:name)
@@ -7,7 +6,7 @@ class Admin::VenuesController < Admin::AdminController
 		@num_venues = Venue.all.count
 
 		respond_to do |format|
-			format.html { render template: "admin/index"}
+			format.js
 		end
 	end
 end
