@@ -1,5 +1,5 @@
 class Admin::VenuesController < Admin::AdminController
-
+	
 	def index
 		@venues = Venue.paginate(:page => params[:page], :per_page =>1).order(:name)
 		
