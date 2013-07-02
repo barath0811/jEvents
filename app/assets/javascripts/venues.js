@@ -3,25 +3,25 @@ $(document).ready(function(){
 		return false;
 	});
 
-	$('.ajax_form').submit(function() {
-		alert('submitting...');
-	    var valuesToSubmit = $(this).serialize();
-	    var fileToSubmit = $(":base_image", this).serialize();
+	// $('.ajax_form').submit(function() {
+	// 	alert('submitting...');
+	//     var valuesToSubmit = $(this).serialize();
+	//     var fileToSubmit = $(":base_image", this).serialize();
 
-	    $.ajax({
-	        url: $(this).attr('action'),
-	        type: "POST",
-	        data: valuesToSubmit,
-	        file: fileToSubmit,
-	        dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
-	    }).success(function(json){
-	    	alert('saved successfully');
-	        showMessage('Saved successfully...', 'success');
-	    }).error(function(json){
+	//     $.ajax({
+	//         url: $(this).attr('action'),
+	//         type: "POST",
+	//         data: valuesToSubmit,
+	//         file: fileToSubmit,
+	//         dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+	//     }).success(function(json){
+	//     	alert('saved successfully');
+	//         showMessage('Saved successfully...', 'success');
+	//     }).error(function(json){
 
-	    });
-	    return false; // prevents normal behaviour
-	});
+	//     });
+	//     return false; // prevents normal behaviour
+	// });
 
 });
 

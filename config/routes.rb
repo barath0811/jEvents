@@ -8,7 +8,8 @@ Jevents::Application.routes.draw do
 
   namespace :admin do
     match '/' => 'admin#index'
-    resources :users 
+    resources :users
+    resources :venues, :only => [:index]
   end
   
   resources :venues do
@@ -29,6 +30,7 @@ Jevents::Application.routes.draw do
   end
 
   resources :feedbacks, :only => [:new, :index, :create]
+  resources :venue_requests, :only => [:new, :index, :create]
 
   get "home/index"
   get "home/about"
@@ -37,7 +39,6 @@ Jevents::Application.routes.draw do
   get "home/privacy"
   
   get 'placeholder' => 'pages#placeholder'
-  get 'pages/add_as_venue_owner', :as => 'add_as_owner'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

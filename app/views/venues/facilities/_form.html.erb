@@ -1,13 +1,9 @@
 <h1>Venue Amenities</h1>
 
 <%= form_for @venue, :remote => true, :html => { :class => "ajax_form form-horizontal"} do |v| %>
-
-<div class="actions">
-  <%= v.submit "Save Changes", :class => "btn btn-success fr" %>
-</div>
-
 <%= v.fields_for :facility do |f| %>
 <div class="row-fluid">
+
   <div class="span12">
     <div class="control-groups">
       <div class="controls span6">
@@ -88,4 +84,9 @@
   </div>
 </div>
 <% end %>
+<br />
+<div class="actions">
+	<%= v.submit "Save Changes", :class => "btn btn-success fr" %>
+</div>
+<br />
 <% end %>

@@ -1,12 +1,4 @@
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-	var js, fjs = d.getElementsByTagName(s)[0];
-	if (d.getElementById(id)) return;
-	js = d.createElement(s); js.id = id;
-	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=337836476319124";
-	fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 <div id="notification-bar">
 	<% flash.each do |key, value| %>
 	<div class="flash <%= key %>"><%= value %></div>
@@ -28,30 +20,22 @@
 			<span class="brand hidden-phone visible-tablet visible-desktop">&nbsp;|&nbsp;Chennai</span>
 			<div id="navLinkText" class="nav-collapse collapse">
 				<ul class="nav nav-pills pull-right">
-					<li class="<%= 'active' if current_page?(placeholder_path) %>"><%= link_to "How It Works", placeholder_path %></li>
 					<li class="<%= 'active' if current_page?(search_venues_path) %>"><%= link_to "Venue Search", search_venues_path %></li>
-					<li ><%= link_to "Blog", placeholder_path %></li>
-					<li><%= link_to "Venue Owners", venues_path %></li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							Profile <b class="caret"></b>
-						</a>
-						<ul class="dropdown-menu">
-							<% if user_signed_in? %> 
-							<li><%= link_to current_user.email, user_root_path %></li>
-							<li><%= link_to "Sign out", destroy_user_session_path %></li>
-							<% else %> 
-							<li><%= link_to "Sign up", new_user_registration_path %></li> 
-							<li><%= link_to "Sign in", new_user_session_path, :rel => "modal:open" %></li>
-							<% end %>
-						</ul>
-					</li>
+					<li class="<%= 'active' if current_page?(venues_path) %>"><%= link_to "Venue Owners", venues_path %></li>
+					<li class="<%= 'active' if current_page?(placeholder_path) %>"><%= link_to "About Us", placeholder_path %></li>
+					<% if user_signed_in? %> 
+					<li><%= link_to current_user.name.presence || current_user.email, user_root_path %></li>
+					<li><%= link_to "Logout", destroy_user_session_path %></li>
+					<% else %> 
+					<li><%= link_to "Login", new_user_session_path, :rel => "modal:open" %></li>
+					<li><%= link_to "Register", new_user_registration_path, :rel => "modal:open" %></li> 
+					<% end %>
 				</ul>
 			</div>
 		</div>
 		<div id="headerBottom" class="container">
 			<div id="contactInHeader">
-				<span>Phone: <%= link_to "044-4201 2386", '#' %></span>
+				<span>Phone: <%= link_to "82200 43507", 'tel:8220043507' %></span>
 			</div>
 			<div id="socialIcons">
 				<div class="tw-wrap">
@@ -61,22 +45,15 @@
 					<div class="g-plusone" data-size="medium" data-annotation="none" data-href="http://www.jollyeventz.com"></div>
 				</div>
 				<div class="fb-wrap">
-					<div class="fb-like" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false"></div>
+					<div class="fb-like" data-href="https://www.facebook.com/JollyEventz" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false"></div>
 				</div>
 			</div>
 			<div id="socialLinks" class="hidden-phone visible-tablet visible-desktop">
-				<%= link_to image_tag('twitter.png'), 		"https://twitter.com/JollyEventz", :target => "_blank" %>
-				<%= link_to image_tag('facebook.png'), 		"https://www.facebook.com/JollyEventz", :target => "_blank" %>
-				<%= link_to image_tag('google-plus.png'), 	"#", :target => "_blank" %>
-				<%= link_to image_tag('blogger.png'), 		"http://www.jollyeventz.com/blog", :target => "_blank" %>
+				<%= link_to image_tag('twitter.png', :size => "34x35"), 		"https://twitter.com/JollyEventz",  :target => "_blank" %>
+				<%= link_to image_tag('facebook.png', :size => "34x35"), 		"https://www.facebook.com/JollyEventz", :target => "_blank" %>
+				<%= link_to image_tag('google-plus.png', :size => "34x35"), 	"#", :target => "_blank" %>
+				<%= link_to image_tag('blogger.png', :size => "34x35"), 		"http://www.jollyeventz.com/blog", :target => "_blank" %>
 			</div>
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-(function() {
-	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-	po.src = 'https://apis.google.com/js/plusone.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
-</script>

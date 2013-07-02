@@ -54,16 +54,17 @@ Jevents::Application.configure do
   # Send emails via Gmail
 
   config.action_mailer.default_url_options = { :host => 'jollyeventz.herokuapp.com' }
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => ENV['ADMIN_SMTP_ADDRESS'],
     :port                 => ENV['ADMIN_SMTP_PORT'],
+    :domain               => ENV['ADMIN_EMAIL_DOMAIN'],
     :user_name            => ENV['ADMIN_EMAIL_USER'],
     :password             => ENV['ADMIN_EMAIL_PASSWORD'],
     :authentication       => :login,
-    :enable_starttls_auto => false  }
+    :enable_starttls_auto => true  }
 
   # Enable threaded mode
   # config.threadsafe!

@@ -1,9 +1,30 @@
-JOLLY = {}
-JOLLY.venues = {}
-
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+window.fbAsyncInit = function() {
+	FB.init({
+		appId: '337836476319124', 
+		status: true, 
+		cookie: true,
+		xfbml: true
+	});
+};
 
 $(document).ready(function(){
+
+	(function() {
+		var gp = document.createElement('script'); gp.async = true;
+		gp.src = 'https://apis.google.com/js/plusone.js';
+		var pgp = document.getElementsByTagName('script')[0];
+		pgp.parentNode.insertBefore(gp, pgp);
+
+		var tw=document.createElement('script'); tw.async=true;
+		tw.src="//platform.twitter.com/widgets.js";
+		var ptw=document.getElementsByTagName('script')[0];
+		ptw.parentNode.insertBefore(tw, ptw);
+
+		var fb = document.createElement('script'); fb.async = true;
+		fb.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+		document.getElementById('fb-root').appendChild(fb);
+	})();
+
 	$('.selectpicker').selectpicker({
 		style: 'btn-inverse btn-large'
 	});

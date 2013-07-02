@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+	<h3><u>Venue Add Request from <%= @venue_request.contact_name %> [<%= @venue_request.email %>]</u></h3>
+	<p>
+	<% if @venue_request.user.nil? %>
+		Not yet registered in JollyEventz
+	<% else %>
+		Already a user in JollyEventz(<%= @venue_request.user.email %>)
+	<% end %>
+
+	<p>Venue Name - <%= @venue_request.name %></p>
+	<p>Venue Area - <%= @venue_request.area %></p>
+
+	<p>Contact Name - <%= @venue_request.contact_name %></p>
+	<p>Contact Email - <%= @venue_request.email %></p>
+	<p>Mobile # - <%= @venue_request.contact_mobile %></p>
+	<p>Landline # - <%= @venue_request.contact_landline %></p>
+	
+</body>
+</html>

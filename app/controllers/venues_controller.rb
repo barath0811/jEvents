@@ -1,20 +1,18 @@
 class VenuesController < ApplicationController
-
-	load_and_authorize_resource
-	before_filter :authenticate_user!, :except => [:show, :search, :show_image]
+	before_filter :authenticate_user!, :except => [:index, :show, :search, :show_image]
+	load_and_authorize_resource #, :except => [:show, :search, :show_image]
 
 	# GET /venues
 	def index
-		@venues = current_user.venues.all
-
+		user = current_user || User.new
 		respond_to do |format|
-			format.html
-		end
+			format.html { redirect_to new_venue_request_path }
+		end unless user.role?(:venue_owner) || user.role?(:admin)
 	end
 
 	# GET /venues/new
 	def new
-		@venue = current_user.venues.new
+		@venue = Venue.new
 		@venue.build_address
 		@venue.build_contact
 		@venue.suitable_events.build
@@ -50,7 +48,6 @@ class VenuesController < ApplicationController
 
 	# POST /venues
 	def create
-		@venue = current_user.venues.new(params[:venue])
 		params[:event_types].each { |e| @venue.suitable_events.build(:name => e)} unless params[:event_types].nil?
 
 		respond_to do |format|
@@ -66,7 +63,6 @@ class VenuesController < ApplicationController
 
 	# GET /venues/1/edit
 	def edit
-		@venue = current_user.venues.find(params[:id])
 		@selected_event_types = @venue.suitable_events.pluck(:name)
 
 		respond_to do |format|
@@ -76,7 +72,6 @@ class VenuesController < ApplicationController
 	end
 
 	def rates
-		@venue = current_user.venues.find(params[:id])
 		if @venue.rate.blank?
 			@venue.build_rate
 		end
@@ -99,7 +94,6 @@ class VenuesController < ApplicationController
 	end
 
 	def facilities
-		@venue = Venue.find(params[:id])
 		if @venue.facility.blank?
 			@venue.build_facility
 		end

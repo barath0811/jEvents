@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  area: MyString
+  contact_mobile: MyString
+  contact_landline: MyString
+  email: MyString
+  request_date: 2013-06-30 18:37:34
+  user_ip: MyString
+  user: 
+
+two:
+  name: MyString
+  area: MyString
+  contact_mobile: MyString
+  contact_landline: MyString
+  email: MyString
+  request_date: 2013-06-30 18:37:34
+  user_ip: MyString
+  user: 
