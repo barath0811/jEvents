@@ -1,10 +1,10 @@
 class VenuesController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show, :search, :show_image]
+	before_filter :authenticate_user!, :except => [:index, :view, :show, :search, :show_image]
 	load_and_authorize_resource #, :except => [:show, :search, :show_image]
 
 	# GET /venues
 	def index
-		user = current_user || User.new
+		user = current_user.presence || User.new
 		respond_to do |format|
 			format.html { redirect_to new_venue_request_path }
 		end unless user.role?(:venue_owner) || user.role?(:admin)

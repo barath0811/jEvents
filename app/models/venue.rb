@@ -18,7 +18,7 @@ class Venue < ActiveRecord::Base
 	has_many :images, :dependent => :destroy
 	has_many :halls, :dependent => :destroy
 	has_many :suitable_events, :dependent => :destroy
-	has_many :highligths, :dependent => :destroy
+	has_many :highlights, :dependent => :destroy
 	has_one :facility, :dependent => :destroy
 	has_one :address, :dependent => :destroy
 	has_one :contact, :dependent => :destroy
@@ -30,7 +30,7 @@ class Venue < ActiveRecord::Base
 	accepts_nested_attributes_for :facility, :allow_destroy => true
 	accepts_nested_attributes_for :images, :allow_destroy => true
 	accepts_nested_attributes_for :suitable_events, :allow_destroy => true
-	accepts_nested_attributes_for :highligths, :allow_destroy => true
+	accepts_nested_attributes_for :highlights, :allow_destroy => true
 	accepts_nested_attributes_for :halls, :allow_destroy => true
 
 	#validations

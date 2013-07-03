@@ -3,8 +3,11 @@ class Admin::VenuesController < Admin::AdminController
 	def index
 		@venues = Venue.paginate(:page => params[:page], :per_page =>1).order(:name)
 		
-		@num_venues = Venue.all.count
-
+		@all_users = Array.new
+		User.select([:id, :email]).each do |user|
+			@all_users << [user.id, user.email]
+		end
+		
 		respond_to do |format|
 			format.js
 		end
