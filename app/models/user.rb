@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
   end
 
   def role?(role)
-      return !current_user.nil? && !!self.roles.find_by_name(role.to_s.camelize)
+      return !self.nil? && !!self.roles.find_by_name(role.to_s.camelize)
   end
 
   # Default role is "Registered"
