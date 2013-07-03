@@ -16,7 +16,7 @@ class VenuesController < ApplicationController
 		@venue.build_address
 		@venue.build_contact
 		@venue.suitable_events.build
-
+		
 		@selected_event_types = Array.new
 		
 		respond_to do |format|
@@ -24,9 +24,26 @@ class VenuesController < ApplicationController
 		end
 	end
 
+	def images
+		@venue = current_user.venues.find(params[:id])
+		if @venue.images.blank?
+			@venue.images.build
+		end
+
+		respond_to do |format|
+			format.js { render :template => 'venues/images/addedit'}
+		end
+	end
+
 	def show_image
-		@venue1 =  Venue.find(params[:id])
-		send_data @venue1.base_image, :type => 'image/png',:disposition => 'inline'
+		unless params[:id].nil?
+			@venue1 =  Venue.find(params[:id])
+			send_data @venue1.base_image, :type => 'image/png',:disposition => 'inline'
+		end
+		unless params[:image_id].nil?
+			@image =  Image.find(params[:image_id])
+			send_data @image.image, :type => 'image/png',:disposition => 'inline'
+		end
 	end
 
 	# POST /venues
@@ -66,6 +83,18 @@ class VenuesController < ApplicationController
 		end
 	end
 
+	def highlights
+		@venue = current_user.venues.find(params[:id])
+
+		if @venue.highlights.blank?
+			@venue.highlights.build
+		end
+
+		respond_to do |format|
+			format.js { render :template => 'venues/highlights/addedit'}
+		end
+	end
+
 	def facilities
 		if @venue.facility.blank?
 			@venue.build_facility
@@ -78,6 +107,17 @@ class VenuesController < ApplicationController
 
 	# PUT /venues/1
 	def update
+		@venue = current_user.venues.find(params[:id])
+
+		unless params[:highlights].nil?
+			@venue.highlights.destroy_all
+			params[:highlights].each_with_index do |h, i| 
+				unless h.nil? || h == ""
+					@venue.highlights.find_or_create_by_highlight_and_display_order(h, i+1) 
+				end
+			end
+		end
+
 		if params[:event_types].nil?
 			@venue.suitable_events.destroy_all
 		else
@@ -92,7 +132,6 @@ class VenuesController < ApplicationController
 		respond_to do |format|
 			if @venue.update_attributes(params[:venue])
 				flash[:notice] = "Venue saved successfully"
-
 				format.html { redirect_to edit_venue_path(@venue) }
 				format.js { render :nothing => true }
 				format.json { respond_with_bip(@venue) }
@@ -121,6 +160,15 @@ class VenuesController < ApplicationController
 			format.html { render :layout => false }
 		end
 	end
+
+	def view
+		@venue = Venue.find(params[:venue])
+
+		respond_to do |format|
+			format.html 
+		end
+	end
+
 
 	def save_image
 		respond_to do |format|

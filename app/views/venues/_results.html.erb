@@ -2,6 +2,7 @@
 <%= hidden_field_tag 'total_count', @count %>
 
 <div class="navigation">
+	<% if @count > 10%>
 	<% if @query.page_number.to_i == 1 %>
 		<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;">&lt; Prev</a>
 	<% else %>
@@ -12,6 +13,7 @@
 	<% else %>
 		<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
 	<% end %>
+	<% end%>
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
@@ -69,13 +71,20 @@ end %>
 		 image_tag('venue.jpg', :class => "venue-img") 
 	end %>
 	<div style="margin-left:190px">
-		<h3><%= c.name %>  |  Luxury business hotel</h3>
+		<h3><%= link_to(c.name + c.venue_type, venue_path(c), :rel => "modal:open")%></h3>
 		<div>
-			<%= image_tag('parking.png', :class => "venue-icons") %>
-			<%= image_tag('nv.png', :class => "venue-icons") %>
-			<%= image_tag('alcohol.png', :class => "venue-icons") %>
-			<%= image_tag('credcard.png', :class => "venue-icons") %>
-			<%= image_tag('restaurant.png', :class => "venue-icons") %>
+			<%= if c.facility != nil && c.facility.has_parking?
+				image_tag('parking.png', :class => "venue-icons")
+			end %>
+			<%= if c.facility != nil && c.facility.is_nonveg_allowed?
+				image_tag('nv.png', :class => "venue-icons")
+			end %>
+			<%= if c.facility != nil && c.facility.is_alcohol_allowed?
+				image_tag('alcohol.png', :class => "venue-icons")
+			end %>
+			<%= if c.facility != nil && c.facility.has_buffet?
+				image_tag('restaurant.png', :class => "venue-icons")
+			end %>
 		</div>
 		<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
 
@@ -83,9 +92,9 @@ end %>
 		<p class="address">Landmark : <%= c.address.landmark %></p>
 
 		<div style="margin-top:15px;position:relative;">
-			<%= link_to 'View venue', venue_path(c), :class => "btn btn-primary btn-small search-button", :rel => "modal:open" %>
+			<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
 		</div>
-		<p class="numRooms"><%= c.num_halls %> rooms</p><br />
+		<p class="numRooms"><%= c.num_halls %> halls</p><br />
 	</div>
 </div>
 <% end %>

@@ -12,11 +12,11 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: jevents_development
+  database: jooly_development
   pool: 5
   username: root
-  password: pwd1
-  host: localhost
+  password: ninethmay
+  host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

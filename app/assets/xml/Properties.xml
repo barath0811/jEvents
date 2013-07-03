@@ -96,14 +96,13 @@
 		<option>300-1000</option>
 	</Capacity>
 	<Amenities>
-		<option>Restaurant</option>
-		<column>has_buffet</column>
-		<option>Car Parking</option>
-		<column>has_parking</column>
-		<option>Alcohol</option>
-		<column>is_alcohol_allowed</column>
-		<option>Non-veg</option>
-		<column>is_nonveg_allowed</column>
+		<option>Restaurant</option><column>has_buffet</column>
+		<option>Car Parking</option><column>has_parking</column>
+		<option>Alcohol</option><column>is_alcohol_allowed</column>
+		<option>Non-veg</option><column>is_nonveg_allowed</column>
+		<option>Air conditioning</option><column>airconditioning</column>
+		<option>Stage</option><column>has_stage</column>
+		<option>WiFi or Internet</option><column>has_wifi_or_internet</column>
 	</Amenities>
 	<Rating>
 		<option>1</option>
