@@ -33,16 +33,11 @@ class Ability
     if user.role? :admin
         can :manage, :all
     elsif user.role? :venue_owner
-        can :manage, Venue do |venue|
-            venue.try(:owner) == user
-        end
-        can :read, :all
+        can :manage, Venue, :user_id => user.id
     elsif user.role? :customer
-        can :read, :all
-        can [:view, :show_image, :search], Venue
+        can [:index, :view, :show, :show_image, :search], Venue
     else
-        can :read, :all
-        can [:view, :show_image, :search], Venue
+        can [:index, :view, :show, :show_image, :search], Venue
     end
   end
 end

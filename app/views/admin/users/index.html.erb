@@ -1,5 +1,5 @@
-<h2>Users</h2>
-<%= link_to "New", new_admin_user_path, :class => 'btn btn-success fr' %>
+<h3>Users</h3>
+<%= link_to "Create new user", new_admin_user_path, :class => 'btn btn-success fr' %>
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
 		<tr>
@@ -9,11 +9,11 @@
 			<th>Roles</th>
 			<th>Created at</th>
 			<th>Locked?</th>
-			<th>Actions</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
-		<% @users.each do |user| -%>
+		<% @users.each do |user| %>
 		<tr>
 			<td><%= user.id %></td>
 			<td><%= link_to user.email, admin_user_path(user) %></td>
@@ -24,9 +24,15 @@
 			<td>
 				<%= link_to raw('<i class="icon-eye-open"></i>'), admin_user_path(user) %>&nbsp;|
 				<%= link_to raw('<i class="icon-pencil"></i>'), edit_admin_user_path(user) %>&nbsp;|
-				<%= link_to raw('<i class="icon-trash"></i>'), admin_user_path(user), :method => :delete, :confirm => "Are you sure?" %>
+				<%= link_to_unless user.id == current_user.id, raw('<i class="icon-trash"></i>'), admin_user_path(user), :method => :delete, :confirm => "Are you sure?" %>
 			</td>
 		</tr>
-		<% end -%>
+		<% end %>
 	</tbody>
 </table>
+<div class="flickr_pagination">
+	<div class="page_info">
+		<%= page_entries_info @users %>
+	</div>
+	<%= will_paginate @users, :container => false %>
+</div>

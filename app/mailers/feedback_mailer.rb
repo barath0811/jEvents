@@ -1,8 +1,8 @@
 class FeedbackMailer < ActionMailer::Base
   default from: ENV['FEEDBACK_EMAIL_FROM'], to: ENV['FEEDBACK_EMAIL_TO']
 
-  def send_feedback(feedback)
+  def create_mail(feedback)
   	@feedback = feedback
-  	mail(:subject => 'Feedback: ' + feedback.subject)
+  	mail(:subject => 'Feedback : ' + feedback.subject)
   end
 end

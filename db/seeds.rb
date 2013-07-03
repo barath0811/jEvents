@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Role.create([{name: 'Admin'}, {name: 'Customer'}, {name: 'VenueOwner'}])
+
+User.create([{email:'rnarayana@live.com', password:'pinngs7123', password_confirmation:'pinngs7123', role_ids:'1'}])
