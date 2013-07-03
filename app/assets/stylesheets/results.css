@@ -32,6 +32,10 @@
 
 }
 
+.filters label{
+  margin-bottom: 1px;
+}
+
 .filters input[type="checkbox"]{
   margin-top: 0px;
 }
@@ -220,6 +224,10 @@ label span input {
   width: 17px;
   height: 17px;  
   cursor:pointer;
+}
+
+.SearchResults a:hover {
+  text-decoration:none;
 }
 
 .SearchResults h3 {

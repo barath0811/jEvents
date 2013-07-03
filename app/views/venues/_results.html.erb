@@ -2,6 +2,7 @@
 <%= hidden_field_tag 'total_count', @count %>
 
 <div class="navigation">
+	<% if @count > 10%>
 	<% if @query.page_number.to_i == 1 %>
 		<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;">&lt; Prev</a>
 	<% else %>
@@ -12,6 +13,7 @@
 	<% else %>
 		<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
 	<% end %>
+	<% end%>
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
@@ -92,7 +94,7 @@ end %>
 		<div style="margin-top:15px;position:relative;">
 			<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
 		</div>
-		<p class="numRooms"><%= c.num_halls %> rooms</p><br />
+		<p class="numRooms"><%= c.num_halls %> halls</p><br />
 	</div>
 </div>
 <% end %>

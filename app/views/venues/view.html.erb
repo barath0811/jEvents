@@ -1,3 +1,8 @@
+<% @suitable = '' 
+@venue.suitable_events.each do |a| 
+    @suitable = @suitable+a.name+', ' 
+end%>
+
 <h4><%= @venue.name %>, <%= @venue.venue_type %></h4>
 <h6><%= @venue.address.address %>, <%= @venue.address.area %></h6>
 <div id="show_venue">
@@ -66,9 +71,11 @@
 
     </div>
 
-          <div class="view-suit">
-            <span>Suitable for Weddings, Birthdays, Association meetings and Conferences</span>
-          </div>
+    <div class="view-suit">
+      <%= unless @suitable == ''
+        content_tag(:span, 'Suitable for ' + @suitable[0..(@suitable.length-3)])  
+      end%>
+    </div>          
         </br>
 
         <div id="halls-div" class="span6">

@@ -9,6 +9,7 @@
 		<ul id="area">
 			<% @options.areas.each do |c| %>
 			<li id="<%= c.to_s.gsub(/\s+/, "") %>" style="cursor:pointer;"> 
+				<label for=<%='chk_area_' + c.to_s.gsub(/\s+/, "")%>>
 				<a>
 					<%= if(@selectedArea == c) 
 							check_box_tag 'chk_area_' + c.to_s.gsub(/\s+/, ""), c.to_s, true, :onchange => 'searchFired();'
@@ -17,6 +18,7 @@
 					end %>
 					<span><%= c %> </span>
 				</a>
+				</label>
 			</li>
 			<% end %>
 		</ul>
@@ -25,10 +27,12 @@
 		<ul id='cap'>
 			<%  @options.capacity.each do |c| %>
 			<li id="<%= c.to_s.gsub(/\s+/, "") %>"> 
+				<label for=<%='chk_cap_' + c.to_s.gsub(/\s+/, "")%>> 
 				<a>
 					<%= check_box_tag 'chk_cap_' + c.to_s.gsub(/\s+/, ""), c.to_s, false, :onclick => 'searchFired();' %> 
 					<span><%= c %> </span>
 				</a>
+				</label>
 			</li>
 			<% end %>
 		</ul>
@@ -36,11 +40,14 @@
 		<h5>Budget</h5>
 		<ul id='bud'>
 			<%  @options.budget.each do |b| %>
+
 			<li id="<%= b.to_s.gsub(/\s+/, "") %>"> 
+				<label for=<%='chk_bud_' + b.to_s.gsub(/\s+/, "")%>>
 				<%= check_box_tag 'chk_bud_' + b.to_s.gsub(/\s+/, ""), b.to_s, false, :onclick => 'searchFired();' %> 
 				<a>
 					<span><%= b %> </span>
 				</a>
+				</label>
 			</li>
 			<% end %>
 		</ul>
@@ -50,10 +57,12 @@
 		<ul id='am'>
 			<%  @options.amenities_name.each_with_index do |a, index| %>
 			<li id="<%= a.to_s.gsub(/\s+/, "") %>"> 
+				<label for=<%='chk_am_' + a.to_s.gsub(/\s+/, "")%>>
 				<%= check_box_tag 'chk_am_' + a.to_s.gsub(/\s+/, ""), @options.amenities_val[index], false, :onclick => 'searchFired();' %> 
 				<a>
 					<span><%= a %> </span>
 				</a>
+				</label>
 			</li>
 			<% end %>
 		</ul>
