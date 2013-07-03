@@ -160,6 +160,10 @@ label span input {
   position: relative;
 }
 
+.halls-table{
+  font-size: 12px;
+}
+
 .highlights-div{
   padding: 20px;
   margin-left: 30px;

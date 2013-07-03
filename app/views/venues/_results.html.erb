@@ -71,11 +71,18 @@ end %>
 	<div style="margin-left:190px">
 		<h3><%= link_to(c.name + c.venue_type, venue_path(c), :rel => "modal:open")%></h3>
 		<div>
-			<%= image_tag('parking.png', :class => "venue-icons") %>
-			<%= image_tag('nv.png', :class => "venue-icons") %>
-			<%= image_tag('alcohol.png', :class => "venue-icons") %>
-			<%= image_tag('credcard.png', :class => "venue-icons") %>
-			<%= image_tag('restaurant.png', :class => "venue-icons") %>
+			<%= if c.facility != nil && c.facility.has_parking?
+				image_tag('parking.png', :class => "venue-icons")
+			end %>
+			<%= if c.facility != nil && c.facility.is_nonveg_allowed?
+				image_tag('nv.png', :class => "venue-icons")
+			end %>
+			<%= if c.facility != nil && c.facility.is_alcohol_allowed?
+				image_tag('alcohol.png', :class => "venue-icons")
+			end %>
+			<%= if c.facility != nil && c.facility.has_buffet?
+				image_tag('restaurant.png', :class => "venue-icons")
+			end %>
 		</div>
 		<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
 
