@@ -1,8 +1,5 @@
 class VenueRequestsController < ApplicationController
 
-	def index
-	end
-
 	def new
 		@venue_request = VenueRequest.new
 	end

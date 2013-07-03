@@ -1,0 +1,26 @@
+<h3>Feedbacks</h3>
+<table class="table table-striped table-bordered table-condensed">
+	<tr>
+		<th>Name</th>
+		<th>Email</th>
+		<th>Subject</th>
+		<th>Feedback</th>
+		<th>Date</th>
+		<th>Mark as Read</th>
+		<th>User IP</th>
+	</tr>
+	<% @feedbacks.each do |feedback| %>
+	<tr>
+		<td><%= feedback.name %></td>
+		<td><%= feedback.email %></td>
+		<td><%= feedback.subject %></td>
+		<td><%= feedback.feedback %></td>
+		<td><%= feedback.created_date %></td>
+		<td>XXX</td>
+		<td><%= feedback.user_ip %></td>
+	</tr>
+	<% end %>
+</table>
+<div class="flickr_pagination">
+	<%= paginate @feedbacks, :container => false %>
+</div>

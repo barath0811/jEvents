@@ -1,10 +1,10 @@
 class VenuesController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show, :search, :show_image]
+	before_filter :authenticate_user!, :except => [:index, :view, :show, :search, :show_image]
 	load_and_authorize_resource #, :except => [:show, :search, :show_image]
 
 	# GET /venues
 	def index
-		user = current_user || User.new
+		user = current_user.presence || User.new
 		respond_to do |format|
 			format.html { redirect_to new_venue_request_path }
 		end unless user.role?(:venue_owner) || user.role?(:admin)
@@ -12,7 +12,7 @@ class VenuesController < ApplicationController
 
 	# GET /venues/new
 	def new
-		@venue = Venue.new
+		@venue = current_user.venues.new
 		@venue.build_address
 		@venue.build_contact
 		@venue.suitable_events.build
@@ -20,7 +20,7 @@ class VenuesController < ApplicationController
 		@selected_event_types = Array.new
 		
 		respond_to do |format|
-			format.html { render :template => 'venues/basic/addedit'}
+			format.html { render :template => 'venues/basic/addedit' }
 		end
 	end
 
@@ -48,6 +48,7 @@ class VenuesController < ApplicationController
 
 	# POST /venues
 	def create
+		@venue = current_user.venues.new(params[:venue])
 		params[:event_types].each { |e| @venue.suitable_events.build(:name => e)} unless params[:event_types].nil?
 
 		respond_to do |format|
@@ -57,6 +58,7 @@ class VenuesController < ApplicationController
 				format.js { render :nothing => true }
 			else
 				format.html { render action: "new" }
+				format.js { render action: "new" }
 			end
 		end
 	end

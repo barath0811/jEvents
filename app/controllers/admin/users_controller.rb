@@ -1,5 +1,4 @@
 class Admin::UsersController < Admin::AdminController
-	set_tab :users
 	
 	#load_and_authorize_resource
 	# GET /users
@@ -7,6 +6,10 @@ class Admin::UsersController < Admin::AdminController
 	def index
 		@users = User.paginate(:page => params[:page], :per_page => 1).order(:id)
 		@num_users = User.all.count
+
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	# GET /users/1
