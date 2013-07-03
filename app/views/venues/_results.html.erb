@@ -69,7 +69,7 @@ end %>
 		 image_tag('venue.jpg', :class => "venue-img") 
 	end %>
 	<div style="margin-left:190px">
-		<h3><%= c.name %>  |  Luxury business hotel</h3>
+		<h3><%= link_to(c.name + c.venue_type, venue_path(c), :rel => "modal:open")%></h3>
 		<div>
 			<%= image_tag('parking.png', :class => "venue-icons") %>
 			<%= image_tag('nv.png', :class => "venue-icons") %>
@@ -83,7 +83,7 @@ end %>
 		<p class="address">Landmark : <%= c.address.landmark %></p>
 
 		<div style="margin-top:15px;position:relative;">
-			<%= link_to 'View venue', venue_path(c), :class => "btn btn-primary btn-small search-button", :rel => "modal:open" %>
+			<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
 		</div>
 		<p class="numRooms"><%= c.num_halls %> rooms</p><br />
 	</div>

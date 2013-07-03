@@ -99,6 +99,19 @@ label span input {
 
 }
 
+.amenities-div img{
+  width: 22px;
+  height: 22px;
+}
+
+.amenities-div ul{
+  list-style: none outside none;
+}
+
+.amenities-div li{
+  margin-bottom: 5px;
+}
+
 .amenities-div p{
   width: 200px;
   height: 30px;
@@ -112,14 +125,16 @@ label span input {
   max-height: 100px;
 }
 
-.view-suit p{
+.view-suit span{
+  min-width: 800px;
   background-color: #c3d69d;
   font-size: 20px;
   position: relative;
   border-radius: 8px;
   padding: 5px;
-  padding-left: 20px;
-  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 30px;
   margin-right: 10px;
 }
 
@@ -130,8 +145,8 @@ label span input {
 .venue-img-div img{
   float: left;
   top: 10px;
-  width:280px;
-  height:210px;
+  width:240px;
+  height:180px;
   position: relative;
   margin-bottom: 10px;
 }
@@ -139,6 +154,7 @@ label span input {
 .venue-amenities{
   padding: 10px;
   margin: 10px;
+  margin-top: 25px;
   border: 4px solid #cc1111;
   border-radius: 16px;
   position: relative;
@@ -150,6 +166,7 @@ label span input {
   border: 4px solid #cc1111;
   border-radius: 16px;
   position: relative;
+  font-size: 11px;
 }
 
 .new-venue-img{

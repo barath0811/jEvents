@@ -122,11 +122,6 @@ class VenuesController < ApplicationController
 			end
 		end
 
-		unless params[:image1].nil?
-			image = Images.New(params[:image1])
-			image.venue_id = @venue.id
-		end
-
 		if params[:event_types].nil?
 			@venue.suitable_events.destroy_all
 		else
@@ -141,13 +136,8 @@ class VenuesController < ApplicationController
 		respond_to do |format|
 			if @venue.update_attributes(params[:venue])
 				flash[:notice] = "Venue saved successfully"
-
 				format.html { redirect_to edit_venue_path(@venue) }
-				if params[:image1].nil?
-					format.js { render :nothing => true }
-				else
-					format.js { render :template => 'venues/images/addedit'}
-				end
+				format.js { render :nothing => true }
 				format.json { respond_with_bip(@venue) }
 			else
 				format.html { render action: "edit" }
@@ -174,6 +164,15 @@ class VenuesController < ApplicationController
 			format.html { render :layout => false }
 		end
 	end
+
+	def view
+		@venue = Venue.find(params[:venue])
+
+		respond_to do |format|
+			format.html 
+		end
+	end
+
 
 	def save_image
 		respond_to do |format|
