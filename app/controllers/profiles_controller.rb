@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   def dashboard
     @user = User.find(current_user.id)
-    if @user.role? :admin
+    if @user && @user.role?(:admin)
       redirect_to admin_path, :notice => "May the force be with you!"
     else
       respond_to do |format|
