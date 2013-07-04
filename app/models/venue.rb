@@ -3,6 +3,7 @@ class Venue < ActiveRecord::Base
 					
 					:num_halls, :min_capacity, :max_capacity,
 					:is_approved, :view_available, :booking_available, :enquiry_available,
+					:rating, :review_count,
 
 					:user_id,
 					:address_attributes,
@@ -11,7 +12,8 @@ class Venue < ActiveRecord::Base
 					:facility_attributes,
 					:images_attributes,
 					:suitable_events_attributes,
-					:highlights_attributes
+					:highlights_attributes,
+					:reviews_attributes
 
 	#associations
 	belongs_to :user
@@ -20,6 +22,7 @@ class Venue < ActiveRecord::Base
 	has_many :halls, :dependent => :destroy
 	has_many :suitable_events, :dependent => :destroy
 	has_many :highlights, :dependent => :destroy
+	has_many :reviews, :dependent => :destroy
 	has_one :facility, :dependent => :destroy
 	has_one :address, :dependent => :destroy
 	has_one :contact, :dependent => :destroy
@@ -33,6 +36,8 @@ class Venue < ActiveRecord::Base
 	accepts_nested_attributes_for :suitable_events, :allow_destroy => true
 	accepts_nested_attributes_for :highlights, :allow_destroy => true
 	accepts_nested_attributes_for :halls, :allow_destroy => true
+	accepts_nested_attributes_for :reviews, :allow_destroy => true
+
 
 	#validations
 	validates :user_id, :presence => true
