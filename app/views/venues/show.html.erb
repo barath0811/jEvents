@@ -7,7 +7,7 @@ end%>
 <h4><%= @venue.name %>, <%= @venue.venue_type %></h4>
 <h6><%= @venue.address.address %>, <%= @venue.address.area %></h6>
 <div id="show_venue">
-  <div style="height:220px">
+  <div class="row-fluid">
     <div class="span3 venue-img-div">
       <%= unless @venue.base_image.nil? 
         image_tag url_for(:controller => "venues", :action => "show_image", :id => @venue.id), :class => "view-venue-img"
@@ -19,7 +19,7 @@ end%>
       <p style="font-size:20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @venue.description %></p>
 
 
-        <div class="span2 amenities-div">
+        <div class="span4 amenities-div">
           <ul>
             <li>
               <%= unless @venue.min_capacity.nil? 
@@ -44,7 +44,7 @@ end%>
           </ul>
         </div>
 
-        <div class="span3 amenities-div">
+        <div class="span4 amenities-div">
           <ul>
             <li>
               <%= if @venue.facility != nil && @venue.facility.airconditioning?
@@ -72,13 +72,13 @@ end%>
 
     </div>
     
-    <div class="view-suit">
+    <div class="row-fluid view-suit">
       <%= unless @suitable == ''
         content_tag(:span, 'Suitable for ' + @suitable[0..(@suitable.length-3)])  
       end%>
     </div>          
         </br>
-
+<div class="row-fluid">
         <div id="halls-div" class="span6">
           <table id="halls" class="table table-bordered halls-table">
             <tr>
@@ -148,5 +148,5 @@ end%>
             <label><%= h.highlight %></label>
           <%end%>
         </div>
-      
+      </div>
 </div>

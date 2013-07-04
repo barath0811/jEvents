@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :name, :role_ids
 
   has_many :venues
+  has_many :reviews
   has_and_belongs_to_many :roles
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
