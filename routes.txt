@@ -20,6 +20,10 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
              user_unlock POST     /users/unlock(.:format)                    devise/unlocks#create
          new_user_unlock GET      /users/unlock/new(.:format)                devise/unlocks#new
                          GET      /users/unlock(.:format)                    devise/unlocks#show
+               feedbacks POST     /feedbacks(.:format)                       feedbacks#create
+            new_feedback GET      /feedbacks/new(.:format)                   feedbacks#new
+          venue_requests POST     /venue_requests(.:format)                  venue_requests#create
+       new_venue_request GET      /venue_requests/new(.:format)              venue_requests#new
                    admin          /admin(.:format)                           admin/admin#index
              admin_users GET      /admin/users(.:format)                     admin/users#index
                          POST     /admin/users(.:format)                     admin/users#create
@@ -29,6 +33,14 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
                          PUT      /admin/users/:id(.:format)                 admin/users#update
                          DELETE   /admin/users/:id(.:format)                 admin/users#destroy
             admin_venues GET      /admin/venues(.:format)                    admin/venues#index
+    admin_venue_requests GET      /admin/venue_requests(.:format)            admin/venue_requests#index
+edit_admin_venue_request GET      /admin/venue_requests/:id/edit(.:format)   admin/venue_requests#edit
+     admin_venue_request PUT      /admin/venue_requests/:id(.:format)        admin/venue_requests#update
+                         DELETE   /admin/venue_requests/:id(.:format)        admin/venue_requests#destroy
+         admin_feedbacks GET      /admin/feedbacks(.:format)                 admin/feedbacks#index
+     edit_admin_feedback GET      /admin/feedbacks/:id/edit(.:format)        admin/feedbacks#edit
+          admin_feedback PUT      /admin/feedbacks/:id(.:format)             admin/feedbacks#update
+                         DELETE   /admin/feedbacks/:id(.:format)             admin/feedbacks#destroy
              venue_halls GET      /venues/:venue_id/halls(.:format)          halls#index
                          POST     /venues/:venue_id/halls(.:format)          halls#create
           new_venue_hall GET      /venues/:venue_id/halls/new(.:format)      halls#new
@@ -49,12 +61,6 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
                    venue GET      /venues/:id(.:format)                      venues#show
                          PUT      /venues/:id(.:format)                      venues#update
                          DELETE   /venues/:id(.:format)                      venues#destroy
-               feedbacks GET      /feedbacks(.:format)                       feedbacks#index
-                         POST     /feedbacks(.:format)                       feedbacks#create
-            new_feedback GET      /feedbacks/new(.:format)                   feedbacks#new
-          venue_requests GET      /venue_requests(.:format)                  venue_requests#index
-                         POST     /venue_requests(.:format)                  venue_requests#create
-       new_venue_request GET      /venue_requests/new(.:format)              venue_requests#new
               home_index GET      /home/index(.:format)                      home#index
               home_about GET      /home/about(.:format)                      home#about
                 home_faq GET      /home/faq(.:format)                        home#faq

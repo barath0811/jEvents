@@ -31,8 +31,5 @@
 	</tbody>
 </table>
 <div class="flickr_pagination">
-	<div class="page_info">
-		<%= page_entries_info @users %>
-	</div>
-	<%= will_paginate @users, :container => false %>
+	<%= paginate @users, :container => false %>
 </div>

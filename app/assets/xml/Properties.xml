@@ -1,18 +1,80 @@
 <Properties>
 	<Area>
-		<option>Adayar</option>
-		<option>Guindy</option>
-		<option>Egmore</option>
-		<option>T Nagar</option>
-		<option>Tamparam</option>
-		<option>Chromepet</option>
-		<option>Triplicane</option>
-		<option>Besant Nagar</option>
-		<option>Saidapet</option>
+		<option>Adambakkam</option>
+		<option>Adyar</option>
+		<option>Alandur</option>
+		<option>Alwarpet</option>
+		<option>Ambattur</option>
+		<option>Aminjikarai</option>
 		<option>Anna Nagar</option>
-		<option>Pallavaram</option>
-		<option>Porur</option>
+		<option>Arumbakkam</option>
+		<option>Ashok Nagar</option>
+		<option>Avadi</option>
+		<option>Aynavaram</option>
+		<option>Besant Nagar</option>
+		<option>Broadway</option>
+		<option>Chetpet</option>
+		<option>Choolaimedu</option>
+		<option>Chrompet</option>
+		<option>ECR</option>
+		<option>Egmore</option>
+		<option>Ekkaduthangal</option>
+		<option>Guindy</option>
+		<option>Injambakkam</option>
+		<option>Jafferkhanpet</option>
+		<option>K.K.Nagar</option>
+		<option>Kelambakkam</option>
+		<option>Kilpauk</option>
+		<option>Kodambakkam</option>
+		<option>Kolathur</option>
+		<option>Korattur</option>
+		<option>Kotturpuram</option>
+		<option>Kovalam</option>
+		<option>Koyambedu</option>
 		<option>Madipakkam</option>
+		<option>Mahabalipuram</option>
+		<option>Madhavaram</option>
+		<option>Manali</option>
+		<option>Mandaveli</option>
+		<option>Meenambakkam</option>
+		<option>Mogappair</option>
+		<option>Mylapore</option>
+		<option>Nungambakkam</option>
+		<option>OMR</option>
+		<option>Pammal</option>
+		<option>Pallavaram</option>
+		<option>Park Town</option>
+		<option>Perambur</option>
+		<option>Perungulathur</option>
+		<option>Poonamallee</option>
+		<option>Porur</option>
+		<option>Purasawalkam</option>
+		<option>Ramapuram</option>
+		<option>R.A.Puram</option>
+		<option>Royapettah</option>
+		<option>Saidapet</option>
+		<option>Saligramam</option>
+		<option>Santhome</option>
+		<option>Sholinganallur</option>
+		<option>Sriperumbudur</option>
+		<option>St. Thomas Mount</option>
+		<option>T.Nagar</option>
+		<option>Tambaram</option>
+		<option>Taramani</option>
+		<option>Teynampet</option>
+		<option>Thiruvallur</option>
+		<option>Thiruvanmiyur</option>
+		<option>Thiruvottiyur</option>
+		<option>Triplicane</option>
+		<option>Vadapalani</option>
+		<option>Valasaravakam</option>
+		<option>Vandalur</option>
+		<option>Velachery</option>
+		<option>Vepery</option>
+		<option>Villivakkam</option>
+		<option>Virugambakam</option>
+		<option>Washermanpet</option>
+		<option>West Mambalam</option>
 	</Area>
 	<Budget>
 		<option>Upto 5000</option>
@@ -31,7 +93,7 @@
 		<option>25-50</option>
 		<option>50-100</option>
 		<option>100-300</option>
-	    <option>300-1000</option>
+		<option>300-1000</option>
 	</Capacity>
 	<Amenities>
 		<option>Restaurant</option><column>has_buffet</column>
@@ -44,10 +106,10 @@
 	</Amenities>
 	<Rating>
 		<option>1</option>
-    	<option>2</option>
-	 	<option>3</option>
-	  	<option>4</option>
-	  	<option>5</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
 	</Rating>
 	<EventType>
 		<option>Wedding</option>

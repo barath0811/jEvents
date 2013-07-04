@@ -5,11 +5,15 @@ Jevents::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
   resources :profiles, :only => [:dashboard]
+  resources :feedbacks, :only => [:new, :create]
+  resources :venue_requests, :only => [:new, :create]
 
   namespace :admin do
     match '/' => 'admin#index'
     resources :users
     resources :venues, :only => [:index]
+    resources :venue_requests, :only => [:index, :edit, :update, :destroy]
+    resources :feedbacks, :only => [:index, :edit, :update, :destroy]
   end
   
   resources :venues do
@@ -28,9 +32,6 @@ Jevents::Application.routes.draw do
       post 'search'
     end
   end
-
-  resources :feedbacks, :only => [:new, :index, :create]
-  resources :venue_requests, :only => [:new, :index, :create]
 
   get "home/index"
   get "home/about"
