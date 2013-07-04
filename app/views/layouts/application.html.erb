@@ -16,17 +16,16 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-
-    <%= render "layouts/header" %>
- 	
-    <div class="container" id="bodyAndFooter">
-
-    	<%= yield %>
-
-    </div>
-	<%= render "layouts/footer" %>
-	
-    <%= javascript_include_tag 	'application' %>
-    
+	<div class="mainWrapper">
+		<%= render "layouts/header" %>
+		<div class="container" id="bodyAndFooter">
+			<%= yield %>
+		</div>
+		<div class="push"></div>
+	</div>
+	<div class="footerDiv">
+		<%= render "layouts/footer" %>
+	</div>
+	<%= javascript_include_tag 'application' %>
 </body>
 </html>

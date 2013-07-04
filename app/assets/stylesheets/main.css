@@ -1,23 +1,33 @@
+/****** For flushing the footer to the bottom ******/
+
+* {
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+.mainWrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -13em;
+}
+.footerDiv, .push {
+	height: 13em;
+}
+/***************************************/
 body {
 	font-family: 'Open Sans', "Book Antiqua", Arial, sans-serif;
 	background-image: url(Background1.jpg);
-	padding-top: 60px;
 }
-
 #bodyAndFooter {
-	padding-top: 60px;
+	padding-top: 120px;
 }
-
 @media (max-width: 979px) {
-	body {
-		padding-top: 0;
-	}
-
 	#bodyAndFooter {
 		padding-top: 0;
 	}
 }
-
 @media (min-width: 400px) {
 	#contactInHeader span{
 		position: absolute;
@@ -25,7 +35,6 @@ body {
 		bottom: 0;
 	}
 }
-
 @media (min-width: 768px) and (max-width: 979px) {
 	.row-fluid > [class*=span]:nth-child(2n+1) {
 		clear: both;
@@ -35,40 +44,11 @@ body {
 		width: 48.61878453038674%;
 	}
 }
-
 .nav a:hover, a:active, a:focus {
 	outline: 0
 }
-
 .fr{ float: right; }
 .fl{ float: left; }
-
-
-.notice, .success, .error {
-	padding:0.8em;
-	margin:0.77em 0.77em 0 0.77em;
-	border-width:2px;
-	border-style:solid;
-}
-.notice {
-	background-color:#FFF6BF;
-	color:#514721;
-	border-color:#FFD324;
-}
-.success {
-	background-color:#E6EFC2;
-	color:#264409;
-	border-color:#C6D880;
-}
-.error {
-	background-color:#FBE3E4;
-	color:#8a1f11;
-	border-color:#FBC2C4;
-}
-
-.error a {color:#8a1f11;}
-.notice a {color:#514721;}
-.success a {color:#264409;}
 
 /************** Header **************/
 
@@ -76,57 +56,48 @@ body {
 	background: #FFF;
 	border-bottom: 1px solid #f88534;
 }
-
 #customNav {
 	-webkit-box-shadow: 0 0px 2px 0 #f88534;
 	-moz-box-shadow:    0 0px 2px 0 #f88534;
 	box-shadow: 		0 0px 3px 0 #f88534;
 }
-
 .collapse.in li {
 	background-color: white;
 	list-style-position: inside;
 	border-bottom: 1px solid lightgrey;
 	overflow: visible;
 }
-
 #navLinkText{
 	font-size: 1.2em;
 }
-
 #headerBottom{
 	position:relative;
 	padding-top: 1em;
 	padding-bottom: 1em;
 	margin-bottom: 0.5em;
 }
-
 #contactInHeader div{
 	display:inline;
 	position: absolute;
 	left:0;
 	bottom: 0;
 }
-
 .fb-wrap {
 	position: absolute;
 	left: 250px;
 	bottom:0;
 }
-
 .tw-wrap {
 	position: absolute;
 	left: 150px;
 	
 	bottom:0;
 }
-
 .gp-wrap {
 	position: absolute;
 	left: 214px;
 	bottom:0;
 }
-
 #socialLinks {
 	position: absolute;
 	right: 0;
@@ -134,13 +105,12 @@ body {
 }
 
 /************** Notification **************/
-
 #notification-bar {
 	opacity: 0.8;
 	display: none;
 	background: rgba(255, 255, 255, 0.94);
 	font-size: 20px;
-	background-color: lightgrey;
+	background-color: #e6e6fa;
 	font-weight: bold;
 	text-align: center;
 	left: 0px;
@@ -154,7 +124,6 @@ body {
 	z-index: 10000;
 	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 }
-
 .notify{
 	display: inline;
 }
@@ -170,25 +139,20 @@ body {
 	margin: 0 0 0 0;
 	text-align: center;
 }
-
 #searchArea {
 	background-color:transparent;
 	padding:0 0 2% 0;
 }
-
 #searchButton {
 	margin-bottom: 10px;
 }
-
 #listVenueMsg h3{
 	color:green;
 	text-align: center;
 }
-
 #listVenueMsg a{
 	color:#f88534;
 }
-
 #featuredVenues h4{
 	text-align: center;
 	font-style: italic;
@@ -200,15 +164,12 @@ body {
 	font-size: 1em;
 	font-family: "Book Antiqua", Arial, sans-serif;
 }
-
 #footerLists ul{
 	list-style-type: none;
 }
-
 #footerLists h4 {
 	color: #f88534;
 }
-
 #footer hr {
 	margin-top: 0;
 	margin-bottom: 0;
@@ -221,7 +182,6 @@ body {
 	padding-left: 5px;
 	font-size: 12px;
 }
-
 .form-horizontal .control-group {
 	margin-bottom: 10px;
 }
@@ -230,7 +190,6 @@ body {
 	text-decoration: underline;
 	cursor: pointer;
 }
-
 .best_in_place:hover {
 	background-color: yellow;
 }
@@ -239,25 +198,21 @@ body {
 #sign_in_left {
 	border-right: 1px solid grey;
 }
-
 #emailLogin {
 	float:left;
 	font-size: 1em;
 	padding:60px 0 0 0;
 }
-
 #socialLogin {
 	float:right;
 	padding:60px 0 0 0;
 }
-
 .wrapper {
 	position: relative;
 	height: 300px;
 	margin: 10px;
 	border-top:1px solid lightgrey;
 }
-
 .line {
 	position: absolute;
 	left: 50%;
@@ -267,7 +222,6 @@ body {
 	background: #ccc;
 	z-index: 1;
 }
-
 .wordwrapper {
 	text-align: center;
 	height: 12px;
@@ -278,7 +232,6 @@ body {
 	margin-top: -12px;
 	z-index: 2;
 }
-
 .word {
 	position: absolute;
 	color: #ccc;
