@@ -51,7 +51,7 @@ class Venue < ActiveRecord::Base
 		venue_results = joins(:address).includes(:address, :facility, :suitable_events)
 
 		unless query.areas.count == 0
-			@areas = Area.where(:area1 => query.areas).where("distance <= 5").select('area2')
+			@areas = Area.where(:area1 => query.areas).where("distance <= 5").pluck(:area2)
 			areas_search = Array.new
 			areas_search << query.areas
 			@areas.each do |a|
