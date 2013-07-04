@@ -10,7 +10,6 @@
 	<meta name="description" content="Book venues Chennai, find venue Chennai, Wedding venue Chennai, Birthday event Chennai, book conferece room">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- <%= stylesheet_link_tag		"http://fonts.googleapis.com/css?family=Open+Sans", :media => "all" %> -->
 	<%= stylesheet_link_tag    	"application", :media => "all" %>
 
 	<%= csrf_meta_tags %>
@@ -18,7 +17,7 @@
 <body>
 	<div class="mainWrapper">
 		<%= render "layouts/header" %>
-		<div class="container" id="bodyAndFooter">
+		<div class="container" id="bodyAndFooter" role="main">
 			<%= yield %>
 		</div>
 		<div class="push"></div>

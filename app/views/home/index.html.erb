@@ -3,7 +3,7 @@
 </div>
 
 <%= form_tag({controller: "venues", action: "search"}, method: "get") do %>
-<div id="searchArea">
+<div id="searchArea" role="search">
 	<div class="pull-right">
 		<% @searchOptions = populateSearchCriteria %>
 		<%= select_tag(:eventType, options_for_select(@searchOptions.eventType), {class: "selectpicker"}) %>

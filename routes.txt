@@ -48,8 +48,15 @@ edit_admin_venue_request GET      /admin/venue_requests/:id/edit(.:format)   adm
               venue_hall GET      /venues/:venue_id/halls/:id(.:format)      halls#show
                          PUT      /venues/:venue_id/halls/:id(.:format)      halls#update
                          DELETE   /venues/:venue_id/halls/:id(.:format)      halls#destroy
+            venue_images POST     /venues/:venue_id/images(.:format)         images#create
+        new_venue_images GET      /venues/:venue_id/images/new(.:format)     images#new
+       edit_venue_images GET      /venues/:venue_id/images/edit(.:format)    images#edit
+                         GET      /venues/:venue_id/images(.:format)         images#show
+                         PUT      /venues/:venue_id/images(.:format)         images#update
+                         DELETE   /venues/:venue_id/images(.:format)         images#destroy
              rates_venue GET      /venues/:id/rates(.:format)                venues#rates
         facilities_venue GET      /venues/:id/facilities(.:format)           venues#facilities
+        highlights_venue GET      /venues/:id/highlights(.:format)           venues#highlights
        show_image_venues GET      /venues/show_image(.:format)               venues#show_image
              view_venues GET      /venues/view(.:format)                     venues#view
            search_venues GET      /venues/search(.:format)                   venues#search
