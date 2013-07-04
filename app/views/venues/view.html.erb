@@ -13,7 +13,7 @@ end%>
         
       <%else%>
         <div class="row-fluid">
-          <ul class="span11 bxslider">
+          <ul class="span3 bxslider">
             <%@venue.images.each do |i| %>
                 <li>
                   <%= image_tag(url_for(:controller => "venues", :action => "show_image", :image_id => i.id), :class => "venue-img")%>
