@@ -1,18 +1,26 @@
 class VenuesController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :view, :show, :search, :show_image]
+	#before_filter :authenticate_user!, :except => [:index, :view, :show, :search, :show_image]
 	load_and_authorize_resource #, :except => [:show, :search, :show_image]
 
 	# GET /venues
+	# Index will list only those venues associated to the current user (Be it admin or venue owner)
 	def index
 		user = current_user.presence || User.new
+		@venues = user.venues.all   # Overriding default that CanCan does for the ability. Admins also see only the venues
+									# associated to them from this page. Use Admin dashboard for managing all venues
 		respond_to do |format|
-			format.html { redirect_to new_venue_request_path }
+			format.html { redirect_to new_venue_request_path and return}
 		end unless user.role?(:venue_owner) || user.role?(:admin)
 	end
 
 	# GET /venues/new
 	def new
-		@venue = current_user.venues.new
+		user = current_user.presence || User.new
+
+		respond_to do |format|
+			format.html { redirect_to new_venue_request_path and return } 
+		end unless user.role?(:venue_owner) || user.role?(:admin)
+
 		@venue.build_address
 		@venue.build_contact
 		@venue.suitable_events.build
@@ -25,7 +33,7 @@ class VenuesController < ApplicationController
 	end
 
 	def images
-		@venue = current_user.venues.find(params[:id])
+		# @venue = current_user.venues.find(params[:id])
 		if @venue.images.blank?
 			@venue.images.build
 		end
@@ -48,6 +56,7 @@ class VenuesController < ApplicationController
 
 	# POST /venues
 	def create
+		# Current_user association is required because all venues have to be associated to a user.
 		@venue = current_user.venues.new(params[:venue])
 		params[:event_types].each { |e| @venue.suitable_events.build(:name => e)} unless params[:event_types].nil?
 
@@ -84,7 +93,7 @@ class VenuesController < ApplicationController
 	end
 
 	def highlights
-		@venue = current_user.venues.find(params[:id])
+		# @venue = current_user.venues.find(params[:id])
 
 		if @venue.highlights.blank?
 			@venue.highlights.build
@@ -107,7 +116,7 @@ class VenuesController < ApplicationController
 
 	# PUT /venues/1
 	def update
-		@venue = current_user.venues.find(params[:id])
+		# Cannot make current_user check, as admins need to edit venues.
 
 		unless params[:highlights].nil?
 			@venue.highlights.destroy_all
@@ -154,7 +163,7 @@ class VenuesController < ApplicationController
 
 	# GET /venues/1
 	def show
-		@venue = Venue.find(params[:id])
+		# @venue = Venue.find(params[:id])
 
 		respond_to do |format|
 			format.html { render :layout => false }
@@ -162,7 +171,7 @@ class VenuesController < ApplicationController
 	end
 
 	def view
-		@venue = Venue.find(params[:venue])
+		# @venue = Venue.find(params[:venue])
 
 		respond_to do |format|
 			format.html 
@@ -223,4 +232,5 @@ class VenuesController < ApplicationController
 		else
 		end 
 	end
+
 end

@@ -14,10 +14,10 @@
 	<tr>
 		<td><%= request.name %></td>
 		<td><%= request.area %></td>
-		<td><%= request.contact_name %></td>
+		<td><%= request.contact_name.presence || '-' %></td>
 		<td><%= request.email %></td>
 		<td><%= request.contact_mobile %></td>
-		<td><%= request.contact_landline %></td>
+		<td><%= request.contact_landline.presence || '-' %></td>
 		<td><%= if request.user.nil? then "Not a user" else request.user.email end %></td>
 	</tr>
 	<% end %>
