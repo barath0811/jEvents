@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704192956) do
+ActiveRecord::Schema.define(:version => 20130705155921) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -125,11 +125,21 @@ ActiveRecord::Schema.define(:version => 20130704192956) do
 
   add_index "rates", ["venue_id"], :name => "index_rates_on_venue_id"
 
+  create_table "ratings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "venue_id"
+    t.integer  "rating"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ratings", ["user_id"], :name => "index_ratings_on_user_id"
+  add_index "ratings", ["venue_id"], :name => "index_ratings_on_venue_id"
+
   create_table "reviews", :force => true do |t|
     t.integer  "user_id"
     t.integer  "venue_id"
     t.string   "review"
-    t.integer  "rating"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
