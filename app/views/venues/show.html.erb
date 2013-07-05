@@ -1,3 +1,5 @@
+<% content_for :title, "View Venue" %>
+
 <% @suitable = '' 
 @venue.suitable_events.each do |a| 
     @suitable = @suitable+a.name+', ' 

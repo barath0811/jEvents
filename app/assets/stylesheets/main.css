@@ -185,7 +185,9 @@ body {
 .form-horizontal .control-group {
 	margin-bottom: 10px;
 }
-
+.form-horizontal input[type=text] {
+	height: 30px;
+}
 .best_in_place {
 	text-decoration: underline;
 	cursor: pointer;

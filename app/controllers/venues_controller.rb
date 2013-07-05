@@ -16,7 +16,7 @@ class VenuesController < ApplicationController
 	# GET /venues/new
 	def new
 		user = current_user.presence || User.new
-		# @venue = Venue.new
+		@venue = Venue.new
 
 		respond_to do |format|
 			format.html { redirect_to new_venue_request_path and return } 
