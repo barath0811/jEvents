@@ -1,7 +1,7 @@
 <% content_for :title, "Edit User" %>
 <h2>Edit User</h2>
 <div class="row-fluid">
-	<%= form_for [:admin, @user], :url => admin_user_path(@user), :html => { :class => "form-horizontal", :id => "edit_user" } do |f| %>
+	<%= form_for [:admin, @user], :html => { :class => "form-horizontal", :id => "edit_user" } do |f| %>
 	<input name="_method" type="hidden" value="put" />
 	<%= render :partial => "form", :locals => {:f => f} %>
 	<% end %>

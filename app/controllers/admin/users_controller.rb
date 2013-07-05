@@ -1,10 +1,11 @@
 class Admin::UsersController < Admin::AdminController
-	
-	#load_and_authorize_resource
+	before_filter :authenticate_user!
+	load_and_authorize_resource
+
 	# GET /users
 	# GET /users.json
 	def index
-		@users = User.paginate(:page => params[:page], :per_page => 1).order(:id)
+		@users = User.paginate(:page => params[:page], :per_page => 10).order(:id)
 		@num_users = User.all.count
 
 		respond_to do |format|

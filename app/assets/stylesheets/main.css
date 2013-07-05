@@ -185,8 +185,8 @@ body {
 .form-horizontal .control-group {
 	margin-bottom: 10px;
 }
-.form-horizontal input[type=text] {
-	height: 30px;
+.form-horizontal input[type=text], input[type=password] {
+	height: 1.5em;
 }
 .best_in_place {
 	text-decoration: underline;
