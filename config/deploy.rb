@@ -8,10 +8,10 @@ set :branch, "master"
 set :deploy_via, :remote_cache
 
 server "jollyeventz.com", :web, :app, :db, primary: true
-set :port, 25000
+#set :port, 25000
 
 set :user, "narayana"
-set :use_sudo, false
+set :use_sudo, true
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
@@ -30,7 +30,7 @@ namespace :deploy do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
-    put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
+    put File.read("config/database.yml.template"), "#{shared_path}/config/database.yml"
     puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
