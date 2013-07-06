@@ -243,8 +243,9 @@ body {
 	margin-bottom: 5px;
 	margin-top: 15px;
 }
-#loginH2{
-	width: 3em;
+#loginBtnInRegister{
+	margin-bottom: 5px;
+	margin-top: 15px;
 }
 /************** will_paginate style ****************/
 .flickr_pagination {

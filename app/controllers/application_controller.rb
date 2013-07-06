@@ -2,10 +2,19 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery
 	include ApplicationHelper
 
-	after_filter :flash_to_headers
+	after_filter :flash_to_headers, :store_location
+
+	def store_location
+	  # store last url as long as it isn't a /users path
+	  session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
+	end
 
 	def after_sign_in_path_for(resource)
-		request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+		request.env['omniauth.origin'] || session[:previous_url] || root_path
+	end
+
+	rescue_from CanCan::AccessDenied do |exception|
+		redirect_to root_url, :alert => exception.message
 	end
 
 	private
@@ -38,7 +47,4 @@ class ApplicationController < ActionController::Base
 		return !current_user.nil? && !!current_user.roles.find_by_name(role.to_s.camelize)
 	end
 
-	rescue_from CanCan::AccessDenied do |exception|
-    	redirect_to root_url, :alert => exception.message
-  	end
 end
