@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require "rvm/capistrano"
 set :application, "JollyEventz"
 set :repository,  "git@github.com:rnarayana/jEvents.git"
 
@@ -11,10 +12,10 @@ server "jollyeventz.com", :web, :app, :db, primary: true
 #set :port, 25000
 
 set :user, "narayana"
-set :use_sudo, true
+set :use_sudo, false
 
 default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
+# ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup"
 
