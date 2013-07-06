@@ -57,10 +57,10 @@ gem 'remotipart', '~> 1.0'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To Paginate
 gem 'will_paginate', '~> 3.0.4'
