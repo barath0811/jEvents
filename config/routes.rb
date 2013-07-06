@@ -11,12 +11,12 @@ Jevents::Application.routes.draw do
   namespace :admin do
     match '/' => 'admin#index'
     resources :users
-    resources :venues, :only => [:index]
-    resources :venue_requests, :only => [:index, :edit, :update, :destroy]
-    resources :feedbacks, :only => [:index, :edit, :update, :destroy]
+    resources :venues, :only => [:index, :destroy]
+    resources :venue_requests, :only => [:index, :destroy]
+    resources :feedbacks, :only => [:index, :destroy]
   end
   
-  resources :venues do
+  resources :venues, :except => [:destroy] do
     resources :halls
     resource :images
     

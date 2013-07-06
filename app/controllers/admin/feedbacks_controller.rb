@@ -12,4 +12,12 @@ class Admin::FeedbacksController < ApplicationController
 		end
 	end
 
+	def destroy
+		@feedback = Feedback.find(params[:id])
+		@feedback.destroy
+
+		respond_to do |format|
+			format.html { redirect_to admin_path }
+		end
+	end
 end

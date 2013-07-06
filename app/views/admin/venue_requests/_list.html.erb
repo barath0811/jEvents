@@ -20,6 +20,7 @@
 		<td><%= request.contact_mobile %></td>
 		<td><%= request.contact_landline.presence || '-' %></td>
 		<td><%= if request.user.nil? then "Not a user" else request.user.email end %></td>
+		<td><%= link_to raw('<i class="icon-trash"></i>'), admin_venue_request_path(request), method: :delete, data: { confirm: 'Are you sure you want to delete this venue request?' } %></td>
 	</tr>
 	<% end %>
 </table>

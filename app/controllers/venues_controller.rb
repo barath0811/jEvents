@@ -8,10 +8,10 @@ class VenuesController < ApplicationController
 		user = current_user.presence || User.new
 		@venues = user.venues.all   # Overriding default that CanCan does for the ability. Admins also see only the venues
 									# associated to them from this page. Use Admin dashboard for managing all venues
-		respond_to do |format|
-			format.html { redirect_to new_venue_request_path and return}
-		end unless user.role?(:venue_owner) || user.role?(:admin)
-	end
+									respond_to do |format|
+										format.html { redirect_to new_venue_request_path and return}
+									end unless user.role?(:venue_owner) || user.role?(:admin)
+								end
 
 	# GET /venues/new
 	def new
@@ -34,7 +34,7 @@ class VenuesController < ApplicationController
 	end
 
 	def images
-		# @venue = current_user.venues.find(params[:id])
+		@venue = Venue.find(params[:id])
 		if @venue.images.blank?
 			@venue.images.build
 		end
@@ -165,19 +165,9 @@ class VenuesController < ApplicationController
 		end
 	end
 
-	# DELETE /venues/1
-	# def destroy
-	# 	@venue = current_user.venues.find(params[:id])
-	# 	@venue.destroy
-
-	# 	respond_to do |format|
-	# 		format.html { redirect_to venues_url }
-	# 	end
-	# end
-
 	# GET /venues/1
 	def show
-		# @venue = Venue.find(params[:id])
+		@venue = Venue.find(params[:id])
 
 		respond_to do |format|
 			format.html { render :layout => false }
@@ -185,7 +175,7 @@ class VenuesController < ApplicationController
 	end
 
 	def view
-		# @venue = Venue.find(params[:venue])
+		@venue = Venue.find(params[:venue])
 
 		respond_to do |format|
 			format.html 

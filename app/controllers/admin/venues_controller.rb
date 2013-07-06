@@ -14,4 +14,14 @@ class Admin::VenuesController < Admin::AdminController
 			format.js
 		end
 	end
+
+	# DELETE /venues/1
+	def destroy
+		@venue = Venue.find(params[:id])
+		@venue.destroy
+
+		respond_to do |format|
+			format.html { redirect_to admin_path }
+		end
+	end
 end

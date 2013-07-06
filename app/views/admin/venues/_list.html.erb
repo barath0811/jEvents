@@ -16,13 +16,14 @@
 		<th></th>
 	</tr>
 	<% @venues.each do |venue| %>
+	<% user = venue.user || User.new %>
 	<tr>
 		<td><%= venue.name %></td>
 		<td><%= venue.address.area %></td>
 		<td><%= venue.contact.firstname %> <%= venue.contact.lastname %></td>
 		<td><%= venue.contact.email %></td>
 		<td><%= venue.contact.mobile_number %></td>
-		<td><%= venue.user.name %>[<%= venue.user.email %>]</td>
+		<td><%= user.name %>[<%= user.email %>]</td>
 		<td><%= best_in_place venue, :is_approved, :type => :checkbox %></td>
 		<td><%= best_in_place venue, :view_available, :type => :checkbox %></td>
 		<td><%= best_in_place venue, :booking_available, :type => :checkbox %></td>
@@ -31,7 +32,7 @@
 		<td>
 			<%= link_to raw('<i class="icon-eye-open"></i>'), venue, :rel => "modal:open" %>&nbsp;&nbsp;
 			<%= link_to raw('<i class="icon-pencil"></i>'), edit_venue_path(venue) %>&nbsp;&nbsp;
-			<%= link_to raw('<i class="icon-trash"></i>'), venue, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<%= link_to raw('<i class="icon-trash"></i>'), admin_venue_path(venue), method: :delete, data: { confirm: 'Are you sure you want to delete this venue?' } %>
 		</td>
 	</tr>
 	<% end %>

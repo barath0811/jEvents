@@ -11,4 +11,14 @@ class Admin::VenueRequestsController < ApplicationController
 			format.js
 		end
 	end
+
+	# DELETE /venue_requests/1
+	def destroy
+		@request = VenueRequest.find(params[:id])
+		@request.destroy
+
+		respond_to do |format|
+			format.html { redirect_to admin_path }
+		end
+	end
 end
