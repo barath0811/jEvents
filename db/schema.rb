@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630142852) do
+ActiveRecord::Schema.define(:version => 20130705155921) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -125,6 +125,28 @@ ActiveRecord::Schema.define(:version => 20130630142852) do
 
   add_index "rates", ["venue_id"], :name => "index_rates_on_venue_id"
 
+  create_table "ratings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "venue_id"
+    t.integer  "rating"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ratings", ["user_id"], :name => "index_ratings_on_user_id"
+  add_index "ratings", ["venue_id"], :name => "index_ratings_on_venue_id"
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "venue_id"
+    t.string   "review"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "reviews", ["user_id"], :name => "index_reviews_on_user_id"
+  add_index "reviews", ["venue_id"], :name => "index_reviews_on_venue_id"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -220,6 +242,8 @@ ActiveRecord::Schema.define(:version => 20130630142852) do
     t.boolean  "enquiry_available",                                :default => false
     t.boolean  "is_approved",                                      :default => false
     t.string   "description"
+    t.decimal  "rating",            :precision => 10, :scale => 0
+    t.integer  "review_count"
   end
 
 end

@@ -176,6 +176,7 @@ class VenuesController < ApplicationController
 
 	def view
 		@venue = Venue.find(params[:venue])
+		@review = Review.new
 
 		respond_to do |format|
 			format.html 

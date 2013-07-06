@@ -1,0 +1,2 @@
+$('#new-review').html('<%= escape_javascript render partial: 'reviews/form', locals: { :venues => @venue} %>');
+$('#reviews').html('<%= escape_javascript render partial: 'reviews/list', locals: { :venues => @venue} %>');

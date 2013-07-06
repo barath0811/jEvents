@@ -18,7 +18,8 @@ Jevents::Application.routes.draw do
   
   resources :venues, :except => [:destroy] do
     resources :halls
-    resource :images
+    resources :images
+    resources :reviews
     
     member do   #member - requires an ID
       get 'rates'

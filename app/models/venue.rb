@@ -3,6 +3,7 @@ class Venue < ActiveRecord::Base
 					
 					:num_halls, :min_capacity, :max_capacity,
 					:is_approved, :view_available, :booking_available, :enquiry_available,
+					:rating, :review_count,
 
 					:user_id,
 					:address_attributes,
@@ -11,7 +12,8 @@ class Venue < ActiveRecord::Base
 					:facility_attributes,
 					:images_attributes,
 					:suitable_events_attributes,
-					:highlights_attributes
+					:highlights_attributes,
+					:reviews_attributes
 
 	#associations
 	belongs_to :user
@@ -20,6 +22,7 @@ class Venue < ActiveRecord::Base
 	has_many :halls, :dependent => :destroy
 	has_many :suitable_events, :dependent => :destroy
 	has_many :highlights, :dependent => :destroy
+	has_many :reviews, :dependent => :destroy
 	has_one :facility, :dependent => :destroy
 	has_one :address, :dependent => :destroy
 	has_one :contact, :dependent => :destroy
@@ -33,6 +36,8 @@ class Venue < ActiveRecord::Base
 	accepts_nested_attributes_for :suitable_events, :allow_destroy => true
 	accepts_nested_attributes_for :highlights, :allow_destroy => true
 	accepts_nested_attributes_for :halls, :allow_destroy => true
+	accepts_nested_attributes_for :reviews, :allow_destroy => true
+
 
 	#validations
 	validates :user_id, :presence => true
@@ -51,19 +56,12 @@ class Venue < ActiveRecord::Base
 		venue_results = joins(:address).includes(:address, :facility, :suitable_events)
 
 		unless query.areas.count == 0
-			@areas = Area.where(:area1 => query.areas).where("distance <= 5").select('area2')
-			areas_search = Array.new
-			areas_search << query.areas
-			@areas.each do |a|
-				areas_search << a
-			end
+			venue_results = venue_results.joins(:address).includes(:address)
+            venue_results = venue_results.joins("join areas on areas.area2 = addresses.area").where('areas.area1' => query.areas).where('areas.distance <= 5').order("distance")
+        end
 
-			venue_results = venue_results.joins(:address).where('addresses.area' => areas_search).includes(:address)
-			#venue_results = venue_results.joins("left outer join areas on addresses.area = areas.area1").where("areas.area1 is null or areas.distance <= 5")
-		end
-		
-		query.amenities_val.each do |a| 
-			venue_results = venue_results.joins(:facility).where('facilities.' + a => 1)
+		query.amenities_val.each do |a|      
+			venue_results =	venue_results.joins(:facility).where('facilities.' + a => 1) 
 		end
 
 		query.eventType.each do |a| 
