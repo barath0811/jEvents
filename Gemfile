@@ -38,6 +38,7 @@ gem 'bootstrap-select-rails'
 gem 'client_side_validations', '~> 3.2.5'
 gem 'best_in_place'
 
+
 # Authentication & OAuth
 gem 'devise', '~> 2.2.4'
 gem 'omniauth', '~> 1.1.4'

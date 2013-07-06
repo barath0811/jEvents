@@ -3,8 +3,15 @@
     @suitable = @suitable+a.name+', ' 
 end%>
 
-<h4><%= @venue.name %>, <%= @venue.venue_type %></h4>
-<h6><%= @venue.address.address %>, <%= @venue.address.area %></h6>
+<div class="row-fluid">
+  <div>
+    <h4><%= @venue.name %>, <%= @venue.venue_type %></h4>
+    <h6><%= @venue.address.address %>, <%= @venue.address.area %></h6>
+  </div>
+  <div>
+
+  </div>
+</div>
 <div id="show_venue">
   <div class="row-fluid">
     <div class="span3 venue-img-div">
@@ -155,6 +162,16 @@ end%>
           <% @venue.highlights.each do |h| %>
             <label><%= h.highlight %></label>
           <%end%>
+        </div>
+      </div></br>
+
+      
+      <div id="reviews_div">
+        <div id="new-review">
+          <%= render partial: 'reviews/form', locals: { :review => @review } %>
+        </div>
+        <div id="reviews">
+          <%= render partial: 'reviews/list', locals: { :venues => @venue }%>
         </div>
       </div>
 </div>
