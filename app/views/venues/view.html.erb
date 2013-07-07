@@ -167,9 +167,11 @@ end%>
 
       
       <div id="reviews_div">
-        <div id="new-review">
-          <%= render partial: 'reviews/form', locals: { :review => @review } %>
-        </div>
+        <%unless current_user.nil? %>
+          <div id="new-review">
+            <%= render partial: 'reviews/form', locals: { :review => @review } %>
+          </div>
+        <%end%>
         <div id="reviews">
           <%= render partial: 'reviews/list', locals: { :venues => @venue }%>
         </div>
