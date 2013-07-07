@@ -5,23 +5,21 @@
 <div class="actions">
 	<%= f.submit "Save Changes", :class => "btn btn-success fr" %>
 </div>
-
-
+<% @highlights.each_with_index do |h, i| %>
 <div class="row-fluid">
-	<div class="span12">
-		<% @highlights.each_with_index do |h, i| %>
-			<div class="control-groups">
-				<label class="control-label"><%='Highlight '+ (i+1).to_s + ':' %></label>
-				<div class="controls"><%= text_field_tag 'highlights[]', h.highlight %></div>
-			</div>
-		<%end%>
-		<% (@highlights.size..5).each do |i| %>
-  			<div class="control-groups">
-				<label class="control-label"><%='Highlight '+ (i+1).to_s + ':' %></label>
-				<div class="controls"><%= text_field_tag 'highlights[]' %></div>
-			</div>	
-		<%end%>
-	</div>
+		<div class="control-groups">
+			<label class="control-label"><%='Highlight '+ (i+1).to_s + ':' %></label>
+			<div class="controls"><%= text_field_tag 'highlights[]', h.highlight %></div>
+		</div>
 </div>
+<%end%>
+<% (@highlights.size..5).each do |i| %>
+<div class="row-fluid">
+		<div class="control-groups">
+			<label class="control-label"><%='Highlight '+ (i+1).to_s + ':' %></label>
+			<div class="controls"><%= text_field_tag 'highlights[]' %></div>
+		</div>
+</div>
+<%end%>
 
 <%end%>

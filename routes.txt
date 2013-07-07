@@ -33,14 +33,11 @@ cancel_user_registration GET      /users/cancel(.:format)                    dev
                          PUT      /admin/users/:id(.:format)                 admin/users#update
                          DELETE   /admin/users/:id(.:format)                 admin/users#destroy
             admin_venues GET      /admin/venues(.:format)                    admin/venues#index
+             admin_venue DELETE   /admin/venues/:id(.:format)                admin/venues#destroy
     admin_venue_requests GET      /admin/venue_requests(.:format)            admin/venue_requests#index
-edit_admin_venue_request GET      /admin/venue_requests/:id/edit(.:format)   admin/venue_requests#edit
-     admin_venue_request PUT      /admin/venue_requests/:id(.:format)        admin/venue_requests#update
-                         DELETE   /admin/venue_requests/:id(.:format)        admin/venue_requests#destroy
+     admin_venue_request DELETE   /admin/venue_requests/:id(.:format)        admin/venue_requests#destroy
          admin_feedbacks GET      /admin/feedbacks(.:format)                 admin/feedbacks#index
-     edit_admin_feedback GET      /admin/feedbacks/:id/edit(.:format)        admin/feedbacks#edit
-          admin_feedback PUT      /admin/feedbacks/:id(.:format)             admin/feedbacks#update
-                         DELETE   /admin/feedbacks/:id(.:format)             admin/feedbacks#destroy
+          admin_feedback DELETE   /admin/feedbacks/:id(.:format)             admin/feedbacks#destroy
              venue_halls GET      /venues/:venue_id/halls(.:format)          halls#index
                          POST     /venues/:venue_id/halls(.:format)          halls#create
           new_venue_hall GET      /venues/:venue_id/halls/new(.:format)      halls#new
@@ -48,8 +45,15 @@ edit_admin_venue_request GET      /admin/venue_requests/:id/edit(.:format)   adm
               venue_hall GET      /venues/:venue_id/halls/:id(.:format)      halls#show
                          PUT      /venues/:venue_id/halls/:id(.:format)      halls#update
                          DELETE   /venues/:venue_id/halls/:id(.:format)      halls#destroy
+            venue_images POST     /venues/:venue_id/images(.:format)         images#create
+        new_venue_images GET      /venues/:venue_id/images/new(.:format)     images#new
+       edit_venue_images GET      /venues/:venue_id/images/edit(.:format)    images#edit
+                         GET      /venues/:venue_id/images(.:format)         images#show
+                         PUT      /venues/:venue_id/images(.:format)         images#update
+                         DELETE   /venues/:venue_id/images(.:format)         images#destroy
              rates_venue GET      /venues/:id/rates(.:format)                venues#rates
         facilities_venue GET      /venues/:id/facilities(.:format)           venues#facilities
+        highlights_venue GET      /venues/:id/highlights(.:format)           venues#highlights
        show_image_venues GET      /venues/show_image(.:format)               venues#show_image
              view_venues GET      /venues/view(.:format)                     venues#view
            search_venues GET      /venues/search(.:format)                   venues#search
@@ -60,7 +64,6 @@ edit_admin_venue_request GET      /admin/venue_requests/:id/edit(.:format)   adm
               edit_venue GET      /venues/:id/edit(.:format)                 venues#edit
                    venue GET      /venues/:id(.:format)                      venues#show
                          PUT      /venues/:id(.:format)                      venues#update
-                         DELETE   /venues/:id(.:format)                      venues#destroy
               home_index GET      /home/index(.:format)                      home#index
               home_about GET      /home/about(.:format)                      home#about
                 home_faq GET      /home/faq(.:format)                        home#faq

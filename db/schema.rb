@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20130705155921) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "role"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

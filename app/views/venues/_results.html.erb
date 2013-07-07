@@ -1,58 +1,52 @@
+<% content_for :title, "Search" %>
+
 <%= hidden_field_tag 'page_number', @query.page_number %>
 <%= hidden_field_tag 'total_count', @count %>
 
 <div class="navigation">
 	<% if @count > 10%>
 	<% if @query.page_number.to_i == 1 %>
-		<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;">&lt; Prev</a>
+	<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;">&lt; Prev</a>
 	<% else %>
-		<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
+	<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
 	<% end %>
 	<% if (@query.page_number.to_i*10)>=@count %>
-		<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;" >Next &gt;</a>
+	<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;" >Next &gt;</a>
 	<% else %>
-		<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
+	<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
 	<% end %>
 	<% end%>
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
-		<%= unless @query.areas.count == 0 
-			'Areas: '
-		end %>
+		<%= 'Areas: ' unless @query.areas.count == 0 %>
 	</span>
 	<% @query.areas.each do |a| %>
-		<span class="query_param"><%= a %> </span>
+	<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
-		<%= unless @query.capacity.count == 0 
-			'Capacity: '
-		end %>
+		<%= 'Capacity: ' unless @query.capacity.count == 0 %>
 	</span>
 	<% @query.capacity.each do |a| %>
-		<span class="query_param"><%= a %> </span>
+	<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
-		<%= unless @query.budget.count == 0 
-			'Budget: '
-		end %>
+		<%= 'Budget: ' unless @query.budget.count == 0 %>
 	</span>
 	<% @query.budget.each do |a| %>
-		<span class="query_param"><%= a %> </span>
+	<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
 <div id="query" class="query_param_div">
 	<span id="query_title" style="font-weight:bold;">
-		<%= unless @query.amenities_name.count == 0 
-			'Amenities: '
-		end %>
+		<%= 'Amenities: ' unless @query.amenities_name.count == 0 %>
 	</span>
 	<% @query.amenities_name.each do |a| %>
-		<span class="query_param"><%= a %> </span>
+	<span class="query_param"><%= a %> </span>
 	<% end %>
 </div>
 <br></br>
@@ -60,43 +54,43 @@
 
 <%= if @venue.count == 0
 	'No results found matching your search criteria...'
-end %>
-
-<div id="results">
-<% @venue.each do |c| %>
-<div class="SearchResults">
-	<%= unless c.base_image.nil? 
-		image_tag url_for(:controller => "venues", :action => "show_image", :id => c.id), :class => "venue-img"
-	else 
-		 image_tag('venue.jpg', :class => "venue-img") 
 	end %>
-	<div style="margin-left:190px">
-		<h3><%= link_to(c.name + c.venue_type, venue_path(c), :rel => "modal:open")%></h3>
-		<div>
-			<%= if c.facility != nil && c.facility.has_parking?
-				image_tag('parking.png', :class => "venue-icons")
-			end %>
-			<%= if c.facility != nil && c.facility.is_nonveg_allowed?
-				image_tag('nv.png', :class => "venue-icons")
-			end %>
-			<%= if c.facility != nil && c.facility.is_alcohol_allowed?
-				image_tag('alcohol.png', :class => "venue-icons")
-			end %>
-			<%= if c.facility != nil && c.facility.has_buffet?
-				image_tag('restaurant.png', :class => "venue-icons")
-			end %>
-		</div>
-		<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
 
-		<p class="capacity">Capacity &nbsp;&nbsp;<%= c.min_capacity %>&nbsp;-&nbsp;<%= c.max_capacity %></p>
-		<p class="address">Landmark : <%= c.address.landmark %></p>
+	<div id="results">
+		<% @venue.each do |c| %>
+		<div class="SearchResults">
+			<%= unless c.base_image.nil? 
+				image_tag url_for(:controller => "venues", :action => "show_image", :id => c.id), :class => "venue-img"
+			else 
+				image_tag('venue.jpg', :class => "venue-img") 
+				end %>
+				<div style="margin-left:190px">
+					<h3><%= link_to(c.name + c.venue_type, venue_path(c), :rel => "modal:open")%></h3>
+					<div>
+						<%= if c.facility != nil && c.facility.has_parking?
+							image_tag('parking.png', :class => "venue-icons")
+							end %>
+							<%= if c.facility != nil && c.facility.is_nonveg_allowed?
+								image_tag('nv.png', :class => "venue-icons")
+								end %>
+								<%= if c.facility != nil && c.facility.is_alcohol_allowed?
+									image_tag('alcohol.png', :class => "venue-icons")
+									end %>
+									<%= if c.facility != nil && c.facility.has_buffet?
+										image_tag('restaurant.png', :class => "venue-icons")
+										end %>
+									</div>
+									<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
 
-		<div style="margin-top:15px;position:relative;">
-			<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
-		</div>
-		<p class="numRooms"><%= c.num_halls %> halls</p><br />
-	</div>
-</div>
-<% end %>
+									<p class="capacity">Capacity &nbsp;&nbsp;<%= c.min_capacity %>&nbsp;-&nbsp;<%= c.max_capacity %></p>
+									<p class="address">Landmark : <%= c.address.landmark %></p>
 
-</div>
+									<div style="margin-top:15px;position:relative;">
+										<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
+									</div>
+									<p class="numRooms"><%= c.num_halls %> halls</p><br />
+								</div>
+							</div>
+							<% end %>
+
+						</div>

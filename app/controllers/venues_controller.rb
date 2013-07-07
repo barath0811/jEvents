@@ -1,18 +1,27 @@
 class VenuesController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :view, :show, :search, :show_image]
-	load_and_authorize_resource #, :except => [:show, :search, :show_image]
+	before_filter :authenticate_user!, :except => [:index, :new, :view, :show, :search, :show_image]
+	load_and_authorize_resource :except => [:index, :new, :view, :show, :search, :show_image]
 
 	# GET /venues
+	# Index will list only those venues associated to the current user (Be it admin or venue owner)
 	def index
 		user = current_user.presence || User.new
-		respond_to do |format|
-			format.html { redirect_to new_venue_request_path }
-		end unless user.role?(:venue_owner) || user.role?(:admin)
-	end
+		@venues = user.venues.all   # Overriding default that CanCan does for the ability. Admins also see only the venues
+									# associated to them from this page. Use Admin dashboard for managing all venues
+									respond_to do |format|
+										format.html { redirect_to new_venue_request_path and return}
+									end unless user.role?(:venue_owner) || user.role?(:admin)
+								end
 
 	# GET /venues/new
 	def new
-		@venue = current_user.venues.new
+		user = current_user.presence || User.new
+		@venue = Venue.new
+
+		respond_to do |format|
+			format.html { redirect_to new_venue_request_path and return } 
+		end unless user.role?(:venue_owner) || user.role?(:admin)
+
 		@venue.build_address
 		@venue.build_contact
 		@venue.suitable_events.build
@@ -25,7 +34,7 @@ class VenuesController < ApplicationController
 	end
 
 	def images
-		@venue = current_user.venues.find(params[:id])
+		@venue = Venue.find(params[:id])
 		if @venue.images.blank?
 			@venue.images.build
 		end
@@ -48,6 +57,8 @@ class VenuesController < ApplicationController
 
 	# POST /venues
 	def create
+		# authorize! :create, @venue, :message => 'Not authorized to create a venue.'
+		# Current_user association is required because all venues have to be associated to a user.
 		@venue = current_user.venues.new(params[:venue])
 		params[:event_types].each { |e| @venue.suitable_events.build(:name => e)} unless params[:event_types].nil?
 
@@ -65,6 +76,8 @@ class VenuesController < ApplicationController
 
 	# GET /venues/1/edit
 	def edit
+		# authorize! :edit, @venue, :message => 'Not authorized to edit a venue.'
+		# @venue = Venue.find(params[:id])
 		@selected_event_types = @venue.suitable_events.pluck(:name)
 
 		respond_to do |format|
@@ -74,6 +87,9 @@ class VenuesController < ApplicationController
 	end
 
 	def rates
+		# authorize! :rates, @venue, :message => 'Not authorized to edit a venue.'
+		# @venue = Venue.find(params[:id])
+		
 		if @venue.rate.blank?
 			@venue.build_rate
 		end
@@ -84,7 +100,8 @@ class VenuesController < ApplicationController
 	end
 
 	def highlights
-		@venue = current_user.venues.find(params[:id])
+		# authorize! :highlights, @venue, :message => 'Not authorized to edit a venue.'
+		# @venue = Venue.find(params[:id])
 
 		if @venue.highlights.blank?
 			@venue.highlights.build
@@ -96,6 +113,9 @@ class VenuesController < ApplicationController
 	end
 
 	def facilities
+		# authorize! :highlights, @venue, :message => 'Not authorized to edit a venue.'
+		# @venue = Venue.find(params[:id])
+
 		if @venue.facility.blank?
 			@venue.build_facility
 		end
@@ -107,7 +127,10 @@ class VenuesController < ApplicationController
 
 	# PUT /venues/1
 	def update
-		@venue = current_user.venues.find(params[:id])
+		# authorize! :update, @venue, :message => 'Not authorized to update a venue.'
+		# Cannot make current_user check, as admins need to edit venues.
+
+		# @venue = Venue.find(params[:id])
 
 		unless params[:highlights].nil?
 			@venue.highlights.destroy_all
@@ -141,16 +164,6 @@ class VenuesController < ApplicationController
 			end
 		end
 	end
-
-	# DELETE /venues/1
-	# def destroy
-	# 	@venue = current_user.venues.find(params[:id])
-	# 	@venue.destroy
-
-	# 	respond_to do |format|
-	# 		format.html { redirect_to venues_url }
-	# 	end
-	# end
 
 	# GET /venues/1
 	def show
@@ -224,4 +237,5 @@ class VenuesController < ApplicationController
 		else
 		end 
 	end
+
 end

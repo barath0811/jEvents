@@ -26,45 +26,51 @@
 	<div class="roundedBorder">
 		<%= f.fields_for :seating_arrangement do |s| %>
 		<div class="seating">
-			<div class="span12">
-				<div class="span4 offset1">
-					<div class="controls span6"><%= image_tag 'theatre.png' %></div>
-					<div class="controls span6">
-						<%= s.text_field(:capacity_theatre, :class => "seatingCap") %>
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="span4 offset1">
+						<div class="controls span6"><%= image_tag 'theatre.png' %></div>
+						<div class="controls span6">
+							<%= s.text_field(:capacity_theatre, :class => "seatingCap") %>
+						</div>
 					</div>
-				</div>
-				<div class="span4 offset2">
-					<div class="controls span6"><%= image_tag 'ushape.png' %></div>
-					<div class="controls span6">
-						<%= s.text_field(:capacity_ushape, :class => "seatingCap") %>
-					</div>
-				</div>
-			</div>
-			<div class="span12">
-				<div class="span4 offset1">
-					<div class="controls span6"><%= image_tag 'doubleu.png' %></div>
-					<div class="controls span6">
-						<%= s.text_field(:capacity_doubleu, :class => "seatingCap") %>
-					</div>
-				</div>
-				<div class="span4 offset2">
-					<div class="controls span6"><%= image_tag 'classroom.png' %></div>
-					<div class="controls span6">
-						<%= s.text_field(:capacity_classroom, :class => "seatingCap") %>
+					<div class="span4 offset2">
+						<div class="controls span6"><%= image_tag 'ushape.png' %></div>
+						<div class="controls span6">
+							<%= s.text_field(:capacity_ushape, :class => "seatingCap") %>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="span12">
-				<div class="span4 offset1">
-					<div class="controls span6"><%= image_tag 'board.png' %></div>
-					<div class="controls span6">
-						<%= s.text_field(:capacity_board, :class => "seatingCap") %>
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="span4 offset1">
+						<div class="controls span6"><%= image_tag 'doubleu.png' %></div>
+						<div class="controls span6">
+							<%= s.text_field(:capacity_doubleu, :class => "seatingCap") %>
+						</div>
+					</div>
+					<div class="span4 offset2">
+						<div class="controls span6"><%= image_tag 'classroom.png' %></div>
+						<div class="controls span6">
+							<%= s.text_field(:capacity_classroom, :class => "seatingCap") %>
+						</div>
 					</div>
 				</div>
-				<div class="span4 offset2">
-					<div class="controls span6"><%= image_tag 'roundtable.png' %></div>
-					<div class="controls span6">
-						<%= s.text_field(:capacity_roundtable, :class => "seatingCap") %>
+			</div>
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="span4 offset1">
+						<div class="controls span6"><%= image_tag 'board.png' %></div>
+						<div class="controls span6">
+							<%= s.text_field(:capacity_board, :class => "seatingCap") %>
+						</div>
+					</div>
+					<div class="span4 offset2">
+						<div class="controls span6"><%= image_tag 'roundtable.png' %></div>
+						<div class="controls span6">
+							<%= s.text_field(:capacity_roundtable, :class => "seatingCap") %>
+						</div>
 					</div>
 				</div>
 			</div>

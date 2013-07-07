@@ -28,7 +28,7 @@
 		<label class="control-label">Suitable for:</label>
 		<div class="controls">
 			<% @eventTypes.each do |evnt| %>
-			<%= check_box_tag 'event_types[]', evnt, @selected_event_types.include?(evnt) %>
+			<%= check_box_tag 'event_types[]', evnt, @selected_event_types.include?(evnt), :class => "checkbox inline" %>
 			<%= evnt.humanize %>
 			<% end %>
 		</div>
@@ -36,7 +36,7 @@
 
 	<div class="control-group">
 		<%= f.label(:base_image, "Venue Image:", class:"control-label") %>
-		<div class="controls"><%= f.file_field :base_image%></div>
+		<div class="controls"><%= f.file_field :base_image %></div>
 	</div>
 
 	<%= f.fields_for :address do |a| %>
@@ -67,21 +67,22 @@
 	<div class="roundedBorder">
 		<div class="control-group">
 			<%= c.label(:firstname, "Contact Person:", class:"control-label") %>
-			<div class="controls"><%= c.text_field :firstname, :class => "contactname" %>
-				<div class="controls"><%= c.text_field :lastname, :class => "contactname" %></div>
+			<div class="controls">
+				<%= c.text_field :firstname, :class => "contactname" %>
+				<%= c.text_field :lastname, :class => "contactname" %>
 			</div>
-			<div class="control-group">
-				<%= c.label(:email, "Email:", class:"control-label") %>
-				<div class="controls"><%= c.text_field :email %></div>
-			</div>
-			<div class="control-group">
-				<%= c.label(:landline_number, "Landline #:", class:"control-label") %>
-				<div class="controls"><%= c.text_field :landline_number %></div>
-			</div>
-			<div class="control-group">
-				<%= c.label(:mobile_number, "Mobile #:", class:"control-label") %>
-				<div class="controls"><%= c.text_field :mobile_number %></div>
-			</div>
+		</div>
+		<div class="control-group">
+			<%= c.label(:email, "Email:", class:"control-label") %>
+			<div class="controls"><%= c.text_field :email %></div>
+		</div>
+		<div class="control-group">
+			<%= c.label(:landline_number, "Landline #:", class:"control-label") %>
+			<div class="controls"><%= c.text_field :landline_number %></div>
+		</div>
+		<div class="control-group">
+			<%= c.label(:mobile_number, "Mobile #:", class:"control-label") %>
+			<div class="controls"><%= c.text_field :mobile_number %></div>
 		</div>
 	</div>
 	<% end %>
