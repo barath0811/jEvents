@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705155921) do
+ActiveRecord::Schema.define(:version => 20130707041958) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -171,6 +171,11 @@ ActiveRecord::Schema.define(:version => 20130705155921) do
   end
 
   add_index "seating_arrangements", ["hall_id"], :name => "index_seating_arrangements_on_hall_id"
+
+  create_table "showcases", :id => false, :force => true do |t|
+    t.integer "ord"
+    t.integer "venue_id"
+  end
 
   create_table "suitable_events", :force => true do |t|
     t.string   "name"
