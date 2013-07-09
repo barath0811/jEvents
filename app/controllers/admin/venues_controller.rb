@@ -3,7 +3,7 @@ class Admin::VenuesController < Admin::AdminController
 	load_and_authorize_resource
 	
 	def index
-		@venues = Venue.paginate(:page => params[:page], :per_page =>10).order(:name)
+		@venues = Venue.paginate(:page => params[:page], :per_page =>10).order(:name).includes(:contact, :address, :user)
 		
 		@all_users = Array.new
 		User.select([:id, :email]).each do |user|

@@ -3,12 +3,10 @@ class Admin::ShowcasesController < ApplicationController
 	def index
 		@showcases = Showcase.all
 		current = @showcases.collect(&:ord)
-		# JeventzLogger.debug "#{current.inspect}"
 
 		i = 1;
-		until i > 5 do
+		until i > Showcase.maxcount do
 			@showcases << Showcase.new(ord: i, venue_id: -1) unless current.include? i
-			# JeventzLogger.debug "#{@showcases.inspect}"
 			i = i+1
 		end
 
