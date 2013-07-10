@@ -6,12 +6,15 @@ class ImagesController < ApplicationController
 		@venue = Venue.find(params[:venue_id])
 	end
 
+	def index
+		@image = Image.new
+	end
+
 	def show
 		@image = Image.new
 
 		respond_to do |format|
 			format.js
-			format.json { render json: [@venue, @image] }
 		end
 	end
 	
@@ -35,7 +38,6 @@ class ImagesController < ApplicationController
 
 		respond_to do |format|
 			format.html { redirect_to halls_url }
-			format.json { head :no_content }
 		end
 	end
 end

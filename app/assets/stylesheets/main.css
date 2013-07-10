@@ -27,13 +27,6 @@ body {
 		padding-top: 0;
 	}
 }
-@media (min-width: 400px) {
-	#contactInHeader span{
-		position: absolute;
-		left:0;
-		bottom: 0;
-	}
-}
 @media (min-width: 768px) and (max-width: 979px) {
 	.row-fluid > [class*=span]:nth-child(2n+1) {
 		clear: both;
@@ -74,25 +67,33 @@ body {
 	padding-bottom: 1em;
 	margin-bottom: 0.5em;
 }
-#contactInHeader div{
-	/*display:inline;*/
+#contactInHeader span{
 	position: absolute;
-	left:0;
+	left:200px;
 	bottom: 0;
+	font-size: 1.1em;
 }
-.fb-wrap {
-	position: absolute;
-	left: 250px;
-	bottom:0;
+@media (max-width: 400px) {
+	#contactInHeader span{
+		position:absolute;
+		right:0;
+		bottom:0;
+		font-size: 1em;
+	}
 }
 .tw-wrap {
 	position: absolute;
-	left: 150px;
+	left: 0;
 	bottom:0;
 }
 .gp-wrap {
 	position: absolute;
-	left: 214px;
+	left: 64px;
+	bottom:0;
+}
+.fb-wrap {
+	position: absolute;
+	left: 100px;
 	bottom:0;
 }
 #socialLinks {
