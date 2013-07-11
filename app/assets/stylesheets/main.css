@@ -9,10 +9,10 @@ html, body {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -13em;
+	margin: 0 auto -15em;
 }
 .footerDiv, .push {
-	height: 13em;
+	height: 15em;
 }
 /***************************************/
 body {
@@ -164,14 +164,22 @@ body {
 #footerLists ul{
 	list-style-type: none;
 }
-#footerLists h4 {
+#footerLists h5 {
 	color: #f88534;
+	margin-bottom: 0;
 }
 #footer hr {
 	margin-top: 0;
 	margin-bottom: 0;
 }
-
+#footerDesc{
+	font-size: 1.2em;
+	font-style: italic;
+	padding: 0 2em;
+	-moz-border-radius: 10px;
+	-webkit-border-radius:10px;
+	border-radius: 10px;
+}
 /************** Customization of 3rd party css ***************/
 .field_with_errors .message {
 	display: inline;
@@ -247,6 +255,9 @@ body {
 #loginBtnInRegister{
 	margin-bottom: 5px;
 	margin-top: 15px;
+}
+#changePassDiv{
+	display: none;
 }
 /************** will_paginate style ****************/
 .flickr_pagination {
