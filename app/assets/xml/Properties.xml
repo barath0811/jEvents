@@ -90,10 +90,14 @@
 	</Meal>
 	<Capacity>
 		<option>10-25</option>
-		<option>25-50</option>
-		<option>50-100</option>
-		<option>100-300</option>
-		<option>300-1000</option>
+		<option>26-50</option>
+		<option>51-100</option>
+		<option>101-300</option>
+		<option>301-500</option>
+		<option>501-750</option>
+		<option>751-1000</option>
+		<option>1000-2000</option>
+		<option>Above 2000</option>
 	</Capacity>
 	<Amenities>
 		<option>Restaurant</option><column>has_buffet</column>
@@ -112,9 +116,25 @@
 		<option>5</option>
 	</Rating>
 	<EventType>
+		<option>All events</option>
 		<option>Wedding</option>
 		<option>Birthday Party</option>
-		<option>Corporate Meeting</option>
+		<option>Engagement</option>
+		<option>Reception</option>
+		<option>Corporate Function</option>
+		<option>Conference</option>
+		<option>Meeting</option>
+		<option>Product Launch</option>
+		<option>Festive Celebration</option>
+		<option>Charity Event</option>
+		<option>Baby Shower</option>
+		<option>Graduation Party</option>
+		<option>Cocktail Party</option>
+		<option>Anniversary</option>
+		<option>Sweet 16</option>
+		<option>Team Outing</option>
+		<option>Get Together</option>
+		<option>Other</option>
 	</EventType>
 	<VenueType>
 		<option>Luxury Hotel</option>
