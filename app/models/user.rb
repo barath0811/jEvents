@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   :confirmable, :lockable, :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :twitter]
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :provider, :uid, :name, :role_ids
+  attr_accessible :provider, :uid, :name, :role_ids, :mobile
 
   has_many :venues
   has_many :reviews

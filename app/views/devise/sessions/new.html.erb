@@ -3,7 +3,7 @@
 	<div class="row-fluid">
 		<h2 class="fl">Login</h2>
 		<div id="registerBtnInLogin" class="fr">
-			<%= link_to "Register", new_user_registration_path, :class => 'btn btn-inverse' %>
+			<%= link_to "Register", new_user_registration_path, :class => 'btn btn-inverse', :rel => "modal:open", :onclick => "$.modal.close()"  %>
 		</div>
 	</div>
 	<div class="wrapper">

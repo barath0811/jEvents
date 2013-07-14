@@ -6,12 +6,14 @@ class VenuesController < ApplicationController
 	# Index will list only those venues associated to the current user (Be it admin or venue owner)
 	def index
 		user = current_user.presence || User.new
-		@venues = user.venues.all   # Overriding default that CanCan does for the ability. Admins also see only the venues
-									# associated to them from this page. Use Admin dashboard for managing all venues
-									respond_to do |format|
-										format.html { redirect_to new_venue_request_path and return}
-									end unless user.role?(:venue_owner) || user.role?(:admin)
-								end
+		# Overriding default that CanCan does for the ability. Admins also see only the venues
+		# associated to them from this page. Use Admin dashboard for managing all venues
+		@venues = user.venues.includes(:contact, :address).all
+		
+		respond_to do |format|
+			format.html { redirect_to new_venue_request_path and return}
+		end unless user.role?(:venue_owner) || user.role?(:admin)
+	end
 
 	# GET /venues/new
 	def new

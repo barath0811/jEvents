@@ -14,6 +14,7 @@ Jevents::Application.routes.draw do
     resources :venues, :only => [:index, :destroy]
     resources :venue_requests, :only => [:index, :destroy]
     resources :feedbacks, :only => [:index, :destroy]
+    resources :showcases, :only => [:index, :update]
   end
   
   resources :venues, :except => [:destroy] do

@@ -9,10 +9,10 @@ html, body {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -13em;
+	margin: 0 auto -15em;
 }
 .footerDiv, .push {
-	height: 13em;
+	height: 15em;
 }
 /***************************************/
 body {
@@ -25,13 +25,6 @@ body {
 @media (max-width: 979px) {
 	#bodyAndFooter {
 		padding-top: 0;
-	}
-}
-@media (min-width: 400px) {
-	#contactInHeader span{
-		position: absolute;
-		left:0;
-		bottom: 0;
 	}
 }
 @media (min-width: 768px) and (max-width: 979px) {
@@ -74,25 +67,33 @@ body {
 	padding-bottom: 1em;
 	margin-bottom: 0.5em;
 }
-#contactInHeader div{
-	/*display:inline;*/
+#contactInHeader span{
 	position: absolute;
-	left:0;
+	left:200px;
 	bottom: 0;
+	font-size: 1.1em;
 }
-.fb-wrap {
-	position: absolute;
-	left: 250px;
-	bottom:0;
+@media (max-width: 400px) {
+	#contactInHeader span{
+		position:absolute;
+		right:0;
+		bottom:0;
+		font-size: 1em;
+	}
 }
 .tw-wrap {
 	position: absolute;
-	left: 150px;
+	left: 0;
 	bottom:0;
 }
 .gp-wrap {
 	position: absolute;
-	left: 214px;
+	left: 64px;
+	bottom:0;
+}
+.fb-wrap {
+	position: absolute;
+	left: 100px;
 	bottom:0;
 }
 #socialLinks {
@@ -163,14 +164,22 @@ body {
 #footerLists ul{
 	list-style-type: none;
 }
-#footerLists h4 {
+#footerLists h5 {
 	color: #f88534;
+	margin-bottom: 0;
 }
 #footer hr {
 	margin-top: 0;
 	margin-bottom: 0;
 }
-
+#footerDesc{
+	font-size: 1.2em;
+	font-style: italic;
+	padding: 0 2em;
+	-moz-border-radius: 10px;
+	-webkit-border-radius:10px;
+	border-radius: 10px;
+}
 /************** Customization of 3rd party css ***************/
 .field_with_errors .message {
 	display: inline;
@@ -243,8 +252,12 @@ body {
 	margin-bottom: 5px;
 	margin-top: 15px;
 }
-#loginH2{
-	width: 3em;
+#loginBtnInRegister{
+	margin-bottom: 5px;
+	margin-top: 15px;
+}
+#changePassDiv{
+	display: none;
 }
 /************** will_paginate style ****************/
 .flickr_pagination {

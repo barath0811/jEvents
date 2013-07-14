@@ -1,0 +1,15 @@
+<h3>Showcase Venues</h3>
+<div class="span5">
+<table class="table table-striped table-bordered table-condensed">
+	<tr>
+		<th>#</th>
+		<th>Venue Name</th>
+	</tr>
+	<% @showcases.sort_by{|k| k.ord}.each do |showcase| %>
+	<tr>
+		<td><%= showcase.ord %></td>
+		<td><%= best_in_place showcase, :venue_id, :path => admin_showcase_path(showcase.ord), :type => :select, :collection => @venues %></td>
+	</tr>
+	<% end %>
+</table>
+</div>

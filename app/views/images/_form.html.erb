@@ -3,17 +3,14 @@
 <%= form_for [@venue, @image], :remote => true,  :html => {:multipart => true, :class => "ajax_form"} do |v| %>
 
 <div class="actions">
-  <%= v.submit "Upload Image", :class => "btn btn-success fr" %>
+	<%= v.submit "Upload Image", :class => "btn btn-success fr" %>
 </div>
-
 
 <div class="row-fluid">
 	<div class="span12">
+		<%= v.label(:image, "Venue Image:", class:"control-label") %>
 		
-			<%= v.label(:image, "Venue Image:", class:"control-label") %>
-			<div class="controls"><%= v.file_field :image%></div>
-		
-
+		<div class="controls"><%= v.file_field :image%></div>		
 		<% @images.each_with_index do |h, i| %>
 			<%= image_tag url_for(:controller => "venues", :action => "show_image", :image_id => h.id), :class => "venue-img"  %>
 		<%end%>
