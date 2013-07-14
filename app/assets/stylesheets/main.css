@@ -299,3 +299,19 @@ body {
 .flickr_pagination .next_page {
 	margin-left: 1em; 
 }
+
+/********* Static pages *************/
+#privacy {
+	font-size: 1.1em;
+}
+#privacy p {
+	text-indent: 3em;
+}
+#privacy ol > li {
+	font-weight: bold;
+}
+#aboutus p {
+	text-indent: 3em;
+	font-size: 1.2em;
+	font-family: "Book Antiqua", "Times New Roman";
+}
