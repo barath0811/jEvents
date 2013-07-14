@@ -77,11 +77,11 @@
 		<option>West Mambalam</option>
 	</Area>
 	<Budget>
-		<option>Upto 5000</option>
-		<option>5000-10000</option>
-		<option>10000-20000</option>
-		<option>20000-50000</option>
-		<option>50000 and above</option>
+		<option displayText="Upto 5000" max="5000"></option>
+		<option displayText="5000-10000" min="5000" max="10000"></option>
+		<option displayText="10000-20000" min="10000" max="20000"></option>
+		<option displayText="20000-50000" min="20000" max="50000"></option>
+		<option displayText="50000 and above" min="50000"></option>
 	</Budget>
 	<Meal>
 		<option>Veg</option>
@@ -89,11 +89,11 @@
 		<option>Both</option>
 	</Meal>
 	<Capacity>
-		<option>10-25</option>
-		<option>25-50</option>
-		<option>50-100</option>
-		<option>100-300</option>
-		<option>300-1000</option>
+		<option displayText="Upto 25" max="25"></option>
+		<option displayText="25-50" min="25" max="50"></option>
+		<option displayText="50-100" min="50" max="100"></option>
+		<option displayText="100-300" min="100" max="300"></option>
+		<option displayText="300 and above" min="300"></option>
 	</Capacity>
 	<Amenities>
 		<option>Restaurant</option><column>has_buffet</column>

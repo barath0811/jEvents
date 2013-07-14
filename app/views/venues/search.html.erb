@@ -1,6 +1,8 @@
 <% content_for :title, "Search" %>
 
 <% @options = populateSearchCriteria %>
+<% @budget = getBudgetOrCapacity('Budget') %>
+<% @capacity = getBudgetOrCapacity('Capacity') %>
 <% @selectedArea = @query.areas.first %>
 
 <div class="row">
@@ -23,12 +25,12 @@
 
 		<h5>Capacity</h5>
 		<ul id='cap'>
-			<%  @options.capacity.each do |c| %>
-			<li id="<%= c.to_s.gsub(/\s+/, "") %>"> 
-				<label for=<%='chk_cap_' + c.to_s.gsub(/\s+/, "")%>> 
+			<%  @capacity.each do |c| %>
+			<li id="<%= c.text.gsub(/\s+/, "") %>"> 
+				<label for=<%='chk_cap_' + c.text.gsub(/\s+/, "")%>> 
 					<a>
-						<%= check_box_tag 'chk_cap_' + c.to_s.gsub(/\s+/, ""), c.to_s, false, :onclick => 'searchFired();' %> 
-						<span><%= c %> </span>
+						<%= check_box_tag 'chk_cap_' + c.text.gsub(/\s+/, ""), c.text, false, :onclick => 'searchFired();' %> 
+						<span><%= c.text %> </span>
 					</a>
 				</label>
 			</li>
@@ -37,13 +39,13 @@
 
 		<h5>Budget</h5>
 		<ul id='bud'>
-			<%  @options.budget.each do |b| %>
+			<%  @budget.each do |b| %>
 
-			<li id="<%= b.to_s.gsub(/\s+/, "") %>"> 
-				<label for=<%='chk_bud_' + b.to_s.gsub(/\s+/, "")%>>
-					<%= check_box_tag 'chk_bud_' + b.to_s.gsub(/\s+/, ""), b.to_s, false, :onclick => 'searchFired();' %> 
+			<li id="<%= b.text.gsub(/\s+/, "") %>"> 
+				<label for=<%='chk_bud_' + b.text.gsub(/\s+/, "")%>>
+					<%= check_box_tag 'chk_bud_' + b.text.gsub(/\s+/, ""), b.text, false, :onclick => 'searchFired();' %> 
 					<a>
-						<span><%= b %> </span>
+						<span><%= b.text %> </span>
 					</a>
 				</label>
 			</li>

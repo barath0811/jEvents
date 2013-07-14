@@ -1,3 +1,4 @@
+include ApplicationHelper
 class Venue < ActiveRecord::Base
 	attr_accessible :name, :description,:venue_type, :terms_conditions, :website, :base_image,					
 					
@@ -14,6 +15,8 @@ class Venue < ActiveRecord::Base
 					:suitable_events_attributes,
 					:highlights_attributes,
 					:reviews_attributes
+
+
 
 	#associations
 	belongs_to :user
@@ -69,8 +72,13 @@ class Venue < ActiveRecord::Base
 		end
 
 		query.capacity.each do |a| 
-			range = a.split('-')
-			venue_results = venue_results.where("min_capacity <= ? or max_capacity >= ?", range[0], range[1])
+			min, max = getBudgetRange(a, 'Capacity')
+			venue_results = venue_results.where("min_capacity <= ? or max_capacity >= ?", min, max)
+		end
+
+		query.budget.each do |a| 
+			min, max = getBudgetRange(a, 'Budget')
+			venue_results = venue_results.joins(:rate).where("min_total_budget <= ? or max_total_budget >= ?", min, max)
 		end
 			
 		return venue_results.paginate(:page => query.page_number, :per_page => 10), venue_results.count
