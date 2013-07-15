@@ -13,11 +13,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="/home/index">
+			<!-- <a class="brand" href="/home/index">
 				<h1><span style="color:#f88534;">Jolly</span>Eventz</h1>
-			</a>
-			<br />
-			<span class="brand hidden-phone">&nbsp;|&nbsp;Chennai</span>
+			</a> -->
+			<div id="header-logo">
+				<%= link_to image_tag('header.png', :size => "451x65"), root_path, :class=>"fl" %>
+			
 			<div id="navLinkText" class="nav-collapse collapse">
 				<ul class="nav nav-pills pull-right">
 					<li class="<%= 'active' if current_page?(search_venues_path) %>"><%= link_to "Venue Search", search_venues_path %></li>
@@ -32,6 +33,7 @@
 					<% end %>
 				</ul>
 			</div>
+			</div>
 		</div>
 		<div id="headerBottom" class="container">
 			<div id="socialIcons">
@@ -45,6 +47,7 @@
 					<div class="fb-like" data-href="https://www.facebook.com/JollyEventz" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false"></div>
 				</div>
 			</div>
+			<span id="placeInHeader" class="brand hidden-phone">&nbsp;|&nbsp;Chennai</span>
 			<div id="contactInHeader">
 				<div class="hidden-phone">Need a venue for your event? Call <%= link_to "82200 43507", 'tel:8220043507' %></div>
 				<div class="hidden-tablet hidden-desktop">Phone: <%= link_to "82200 43507", 'tel:8220043507' %></div>

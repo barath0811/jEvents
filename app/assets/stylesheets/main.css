@@ -32,7 +32,7 @@ body {
 		clear: both;
 		margin-left: 0;
 	}
-	.row-fluid .span3 {
+	.row-fluid .span2 {
 		width: 48.61878453038674%;
 	}
 }
@@ -61,9 +61,13 @@ body {
 #navLinkText{
 	font-size: 1.2em;
 }
+
+.navbar .nav>li>a {
+	padding-top: 20px;
+}
 #headerBottom{
 	position:relative;
-	padding-top: 1em;
+	padding-top: 1.5em;
 	padding-bottom: 1em;
 	margin-bottom: 0.5em;
 }
@@ -71,20 +75,20 @@ body {
 	-moz-border-radius: 0.5em;
 	-webkit-border-radius: 0.5em;
 	border-radius: 0.5em;
-	background-color: #9C6DC0;
-	padding: 0.4em 1em;
+	border: 2px solid #9C6DC0;
+	padding: 0 1em 0.4em 1em;
 
 	position: absolute;
-	right:30%;
+	right:175px;
 	bottom: 0;
 	font-size: 1.1em;
-	color: white;
+	color: black;
 }
 #contactInHeader a {
-	color: white;
+	color: black;
 	text-decoration: underline;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
 	#contactInHeader {
 		position:absolute;
 		right:0;
@@ -106,6 +110,12 @@ body {
 	position: absolute;
 	left: 100px;
 	bottom:0;
+}
+#placeInHeader {
+	position: absolute;
+	left: 200px;
+	bottom:0;
+	padding: 0;
 }
 #socialLinks {
 	position: absolute;
@@ -352,4 +362,39 @@ body {
 #benefits ul{
 	font-size: 1.2em;
 	text-align: justify;
+}
+.benefit-container {
+    margin: 20px 20px 0 0;
+    overflow: auto;
+}
+.benefit-img-left {
+    float: left;
+}
+.benefit-img-right {
+    float: right;
+}
+.benefit-img img {
+    display: block;
+}
+.benefit-text {
+	font-size: 1.2em;
+	background-color: rgba(243, 242, 242, 0.63);
+	text-align: justify;
+    padding: 0 10px 5px 10px;
+    -webkit-box-shadow: 7px 7px 5px #888;
+    -moz-box-shadow:    7px 7px 5px #888;
+    box-shadow: 		7px 7px 5px #888;
+    min-height: 120px;
+}
+.text-right {
+	margin-left: 140px;
+    margin-right: 0.75em;
+}
+.text-left {
+   margin-right: 140px;
+}
+.benefit-title {
+	margin-top: 0;
+    font-weight: bold;
+    font-size: 1.5em;
 }
