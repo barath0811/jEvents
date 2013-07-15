@@ -46,7 +46,8 @@
 				</div>
 			</div>
 			<div id="contactInHeader">
-				<span>Phone: <%= link_to "82200 43507", 'tel:8220043507' %></span>
+				<div class="hidden-phone">Need a venue for your event? Call <%= link_to "82200 43507", 'tel:8220043507' %></div>
+				<div class="hidden-tablet hidden-desktop">Phone: <%= link_to "82200 43507", 'tel:8220043507' %></div>
 			</div>
 			<div id="socialLinks" class="hidden-phone visible-tablet visible-desktop">
 				<%= link_to image_tag('twitter.png', :size => "34x35"), 		"https://twitter.com/JollyEventz",  :target => "_blank" %>

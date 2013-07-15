@@ -79,5 +79,8 @@ cancel_user_registration GET      /users/cancel(.:format)                      d
                 home_faq GET      /home/faq(.:format)                          home#faq
               home_terms GET      /home/terms(.:format)                        home#terms
             home_privacy GET      /home/privacy(.:format)                      home#privacy
+                home_how GET      /home/how(.:format)                          home#how
+    home_benefits_owners GET      /home/benefits/owners(.:format)              home#benefits_owners
+  home_benefits_planners GET      /home/benefits/planners(.:format)            home#benefits_planners
              placeholder GET      /placeholder(.:format)                       pages#placeholder
                     root          /                                            home#index

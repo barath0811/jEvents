@@ -2,7 +2,8 @@
 	<hr />
 	<div class="row-fluid">
 		<div id="footerDesc" >
-			JollyEventz is your companion for event planning. You can search, find and compare venues (based on capacity, location, price, type of space and event type) and also make a booking - at the comfort of your home or office with just a few clicks.
+			<p>JollyEventz is your companion for event planning.</p>
+			<p>You can search, find and compare venues (based on capacity, location, price, type of space and event type) and also make a booking - at the comfort of your home or office with just a few clicks.</p>
 		</div>
 	</div>
 	<div class="row-fluid" id="footerLists">
@@ -10,7 +11,7 @@
 			<h5>About JollyEvents</h5>
 			<ul>
 				<li><%= link_to "About Us", home_about_path %></li>
-				<li><%= link_to "How it works", placeholder_path %></li>
+				<li><%= link_to "How it works", home_how_path %></li>
 				<li><%= link_to "Contact Us", new_feedback_path, :rel => "modal:open", :remote => true %></li>
 				<li><%= link_to "FAQ", home_faq_path %></li>
 			</ul>
@@ -19,9 +20,9 @@
 			<h5>For Event Planners</h5>
 			<ul>
 				<li><%= link_to "Search Venue", search_venues_path %></li>
-				<li><%= link_to "My Events", placeholder_path %></li>
 				<li><%= link_to "Rate & Review", placeholder_path %></li>
 				<li><%= link_to "Book Venue", placeholder_path %></li>
+				<li><%= link_to "Benefits", home_benefits_planners_path %></li>
 			</ul>
 		</div>
 		<div class="span2">
@@ -29,8 +30,8 @@
 			<ul>
 				<li><%= link_to "Add Venue", new_venue_path %></li>
 				<li><%= link_to "My Venues", venues_path %></li>
-				<li><%= link_to "Dashboard", user_root_path %></li>
 				<li><%= link_to "Account Details", user_root_path %></li>
+				<li><%= link_to "Benefits", home_benefits_owners_path %></li>
 			</ul>
 		</div>
 		<div class="span2">
