@@ -334,5 +334,5 @@ label span input {
   width: 70%;
 }
 */
-#results.modal { width: 600px; }
-#show_venue.modal{ width: 600px; }
+#show_modal.modal { width: 70%; }
+#show_venue.modal{ width: 70%; }

@@ -1,5 +1,9 @@
 <% content_for :title, "View Venue" %>
-
+<style type="text/css">
+  .modal {
+    width: 70%;
+    }
+  </style>
 <% @suitable = '' 
 @venue.suitable_events.each do |a| 
     @suitable = @suitable+a.name+', ' 

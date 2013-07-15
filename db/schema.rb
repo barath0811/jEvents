@@ -207,7 +207,6 @@ ActiveRecord::Schema.define(:version => 20130711181721) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "role"
     t.string   "mobile"
   end
 
