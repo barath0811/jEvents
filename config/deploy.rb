@@ -17,6 +17,8 @@ set :use_sudo, false
 default_run_options[:pty] = true
 # ssh_options[:forward_agent] = true
 
+set :bundle_flags,    ""
+
 set :keep_releases, 5
 after "deploy:restart", "deploy:cleanup" 
 
@@ -38,7 +40,7 @@ namespace :deploy do
 	after "deploy:setup", "deploy:setup_config"
 
 	task :symlink_config, roles: :app do
-		run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+		run "ln -nfs #{deploy_to}/config/database.yml #{release_path}/config/database.yml"
 	end
 	after "deploy:finalize_update", "deploy:symlink_config"
 end
