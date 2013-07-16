@@ -36,7 +36,7 @@
 			</li>
 			<% end %>
 		</ul>
-
+		<%if 1 ==2 %>
 		<h5>Budget</h5>
 		<ul id='bud'>
 			<%  @budget.each do |b| %>
@@ -51,7 +51,7 @@
 			</li>
 			<% end %>
 		</ul>
-
+		<% end %>
 
 		<h5>Amenities</h5>
 		<ul id='am'>
@@ -69,7 +69,7 @@
 
 
 	</div>
-	<%= select_tag(:eventType, options_for_select(@options.eventType, @query.eventType), {:style => "float:right", :onchange => 'searchFired();', :prompt => "Just any hall.."}) %>
+	<%= select_tag(:eventType, options_for_select(@options.eventType, @query.eventType), {:style => "float:right", :onchange => 'searchFired();'}) %>
 
 	<div class="span9" style="margin-top:10px;margin-left:80px;">
 		<div id="results_div">

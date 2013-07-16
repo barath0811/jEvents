@@ -10,9 +10,11 @@
 	<div class="span12">
 		<%= v.label(:image, "Venue Image:", class:"control-label") %>
 		
-		<div class="controls"><%= v.file_field :image%></div>		
+		<div class="controls"><%= v.file_field :image%></div>
 		<% @images.each_with_index do |h, i| %>
-			<%= image_tag url_for(:controller => "venues", :action => "show_image", :image_id => h.id), :class => "venue-img"  %>
+			
+				<%= image_tag url_for(:controller => "venues", :action => "show_image", :image_id => h.id), :class => "venue-img margin10"  %>
+			
 		<%end%>
 	</div>
 </div>

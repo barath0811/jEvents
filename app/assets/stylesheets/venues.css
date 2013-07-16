@@ -40,5 +40,8 @@ div.roundedBorder{
 	border-radius: 6px;
 	width: 60%;
 	margin-bottom: 3px;
+}
 
+.margin10{
+	margin: 10px;
 }
