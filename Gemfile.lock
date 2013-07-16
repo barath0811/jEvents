@@ -184,7 +184,6 @@ DEPENDENCIES
   certified (~> 0.1.1)
   client_side_validations (~> 3.2.5)
   devise (~> 2.2.4)
-  execjs
   gmaps4rails
   jquery-modal-rails
   jquery-rails (~> 3.0.1)
@@ -198,7 +197,6 @@ DEPENDENCIES
   rails (~> 3.2.13)
   remotipart (~> 1.0)
   sqlite3
-  therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   webrick
