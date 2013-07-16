@@ -22,18 +22,6 @@ after "deploy:restart", "deploy:cleanup"
 
 after 'deploy:update_code', 'deploy:migrate'
 
-task :setup_config, roles: :app do
-	run "mkdir -p #{shared_path}/config"
-	put File.read("config/database.yml.template"), "#{shared_path}/config/database.yml"
-	puts "Now edit the config files in #{shared_path}."
-end
-after "deploy:setup", "deploy:setup_config"
-
-task :symlink_config, roles: :app do
-	run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-end
-after "deploy:finalize_update", "deploy:symlink_config"
-
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
 	task :start do ; end
@@ -41,4 +29,16 @@ namespace :deploy do
 	task :restart, :roles => :app, :except => { :no_release => true } do
 		run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 	end
+
+	task :setup_config, roles: :app do
+		run "mkdir -p #{shared_path}/config"
+		put File.read("config/database.yml.template"), "#{shared_path}/config/database.yml"
+		puts "Now edit the config files in #{shared_path}."
+	end
+	after "deploy:setup", "deploy:setup_config"
+
+	task :symlink_config, roles: :app do
+		run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+	end
+	after "deploy:finalize_update", "deploy:symlink_config"
 end
