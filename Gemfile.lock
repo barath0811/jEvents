@@ -184,6 +184,7 @@ DEPENDENCIES
   certified (~> 0.1.1)
   client_side_validations (~> 3.2.5)
   devise (~> 2.2.4)
+  execjs
   gmaps4rails
   jquery-modal-rails
   jquery-rails (~> 3.0.1)
