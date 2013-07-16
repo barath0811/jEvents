@@ -197,6 +197,7 @@ DEPENDENCIES
   rails (~> 3.2.13)
   remotipart (~> 1.0)
   sqlite3
+  therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   webrick
