@@ -11,7 +11,7 @@ set :deploy_via, :remote_cache
 server "174.34.174.2", :web, :app, :db, primary: true
 #set :port, 25000
 
-set :user, "secondjo"
+set :user, "root"
 set :use_sudo, false
 
 default_run_options[:pty] = true
