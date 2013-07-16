@@ -19,10 +19,9 @@ default_run_options[:pty] = true
 
 set :bundle_flags,    ""
 
-set :keep_releases, 5
-after "deploy:restart", "deploy:cleanup" 
+after "deploy", "deploy:cleanup" 
 
-after 'deploy:update_code', 'deploy:migrate'
+# after 'deploy:update_code', 'deploy:migrate'
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
@@ -40,7 +39,17 @@ namespace :deploy do
 	after "deploy:setup", "deploy:setup_config"
 
 	task :symlink_config, roles: :app do
-		run "ln -nfs #{deploy_to}/config/database.yml #{shared_path}/config/database.yml"
+		run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 	end
 	after "deploy:finalize_update", "deploy:symlink_config"
+
+	desc "Make sure local git is in sync with remote."
+	task :check_revision, roles: :web do
+		unless `git rev-parse HEAD` == `git rev-parse origin/master`
+			puts "WARNING: HEAD is not the same as origin/master"
+			puts "Run `git push` to sync changes."
+			exit
+		end
+	end
+	before "deploy", "deploy:check_revision"
 end
