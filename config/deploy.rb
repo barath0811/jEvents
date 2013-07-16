@@ -21,7 +21,7 @@ set :bundle_flags,    ""
 
 after "deploy", "deploy:cleanup" 
 
-# after 'deploy:update_code', 'deploy:migrate'
+after 'deploy:update_code', 'deploy:migrate'
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
