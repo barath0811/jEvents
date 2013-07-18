@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
 
 		respond_to do |format|
 			if @image.save
-				format.js { redirect_to venue_images_path(@venue), :notice => "Image uploaded successfully" }
+				format.js #{ redirect_to venue_images_path(@venue), :notice => "Image uploaded successfully" }
 			else
 				format.json { render json: @image.errors, status: :unprocessable_entity }
 			end
