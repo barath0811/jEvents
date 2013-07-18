@@ -40,6 +40,9 @@ Jevents::Application.routes.draw do
   get "home/faq"
   get "home/terms"
   get "home/privacy"
+  get "home/how"
+  get "home/benefits/owners" => 'home#benefits_owners'
+  get "home/benefits/planners" => 'home#benefits_planners'
   
   get 'placeholder' => 'pages#placeholder'
 

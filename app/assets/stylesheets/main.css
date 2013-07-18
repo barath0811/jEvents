@@ -9,10 +9,10 @@ html, body {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -15em;
+	margin: 0 auto -18.5em;
 }
 .footerDiv, .push {
-	height: 15em;
+	height: 18.5em;
 }
 /***************************************/
 body {
@@ -32,7 +32,7 @@ body {
 		clear: both;
 		margin-left: 0;
 	}
-	.row-fluid .span3 {
+	.row-fluid .span2 {
 		width: 48.61878453038674%;
 	}
 }
@@ -61,20 +61,35 @@ body {
 #navLinkText{
 	font-size: 1.2em;
 }
+
+.navbar .nav>li>a {
+	padding-top: 20px;
+}
 #headerBottom{
 	position:relative;
-	padding-top: 1em;
+	padding-top: 1.5em;
 	padding-bottom: 1em;
 	margin-bottom: 0.5em;
 }
-#contactInHeader span{
+#contactInHeader {
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+	border: 2px solid #9C6DC0;
+	padding: 0 1em 0.4em 1em;
+
 	position: absolute;
-	left:200px;
+	right:175px;
 	bottom: 0;
 	font-size: 1.1em;
+	color: black;
 }
-@media (max-width: 400px) {
-	#contactInHeader span{
+#contactInHeader a {
+	color: black;
+	text-decoration: underline;
+}
+@media (max-width: 600px) {
+	#contactInHeader {
 		position:absolute;
 		right:0;
 		bottom:0;
@@ -95,6 +110,12 @@ body {
 	position: absolute;
 	left: 100px;
 	bottom:0;
+}
+#placeInHeader {
+	position: absolute;
+	left: 200px;
+	bottom:0;
+	padding: 0;
 }
 #socialLinks {
 	position: absolute;
@@ -176,9 +197,16 @@ body {
 	font-size: 1.2em;
 	font-style: italic;
 	padding: 0 2em;
-	-moz-border-radius: 10px;
-	-webkit-border-radius:10px;
-	border-radius: 10px;
+	margin-top: 0.2em;
+	-moz-border-radius: 1em;
+	-webkit-border-radius:1em;
+	border-radius: 1em;
+	background-color: #9C6DC0;
+	color: white;
+}
+#footerDesc p{
+	text-align: center;
+	padding-bottom: 0.3em;
 }
 /************** Customization of 3rd party css ***************/
 .field_with_errors .message {
@@ -298,4 +326,75 @@ body {
 }
 .flickr_pagination .next_page {
 	margin-left: 1em; 
+}
+
+/********* Static pages *************/
+#privacy {
+	font-size: 1.1em;
+}
+#privacy p {
+	text-indent: 3em;
+}
+#privacy ol > li {
+	font-weight: bold;
+}
+#aboutus p {
+	text-indent: 3em;
+	text-align: justify;
+	font-size: 1.2em;
+	font-family: "Book Antiqua", "Times New Roman";
+}
+#howitworks p{
+	text-indent: 3em;
+	text-align: justify;
+	font-size: 1.2em;
+	font-family: "Book Antiqua", "Times New Roman";
+}
+#howitworks h3 {
+	text-align: center;
+	color: red;
+}
+#howitworks img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#benefits ul{
+	font-size: 1.2em;
+	text-align: justify;
+}
+.benefit-container {
+    margin: 20px 20px 0 0;
+    overflow: auto;
+}
+.benefit-img-left {
+    float: left;
+}
+.benefit-img-right {
+    float: right;
+}
+.benefit-img img {
+    display: block;
+}
+.benefit-text {
+	font-size: 1.2em;
+	background-color: rgba(243, 242, 242, 0.63);
+	text-align: justify;
+    padding: 0 10px 5px 10px;
+    -webkit-box-shadow: 7px 7px 5px #888;
+    -moz-box-shadow:    7px 7px 5px #888;
+    box-shadow: 		7px 7px 5px #888;
+    min-height: 120px;
+}
+.text-right {
+	margin-left: 140px;
+    margin-right: 0.75em;
+}
+.text-left {
+   margin-right: 140px;
+}
+.benefit-title {
+	margin-top: 0;
+    font-weight: bold;
+    font-size: 1.5em;
 }

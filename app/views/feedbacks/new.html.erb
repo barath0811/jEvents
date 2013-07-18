@@ -15,8 +15,20 @@
 </div>
 <div class="field">
 	<%= f.label(:feedback, class:"control-label") %>
-	<div class="controls"><%= f.text_area(:feedback, :rows => 5, :cols => 15) %>
-	<div class="actions"><%= f.submit "Submit", :class => "btn btn-success fr" %></div>
+	<div class="controls"><%= f.text_area(:feedback, :rows => 5, :class => "field span3") %>
+		<div class="actions"><%= f.submit "Submit", :class => "btn btn-success fr" %></div>
 	</div>
 </div>
 <% end %>
+
+<div class="row-fluid">
+	<p>
+		<h5>Our Office:</h5>
+		<u>GeoVerge Technologies Private Limited, Chennai</u><br />
+		Old No. 26, New No. 20, Hindu Colony,<br />
+		First Main Road, Swamy Nagar, Ullagaram,<br />
+		Chennai - 600091, Tamil Nadu, India.<br />
+		Phone: <a href="tel:8220043502">+91-8220043502</a><br />
+		Mail: <a href="mailto:contact@jollyeventz.com">contact@jollyeventz.com</a>
+	</p>
+</div>
