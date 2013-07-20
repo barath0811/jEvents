@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
 
 		respond_to do |format|
 			if @image.save
-				format.js #{ redirect_to venue_images_path(@venue), :notice => "Image uploaded successfully" }
+				format.js 
 			else
 				format.json { render json: @image.errors, status: :unprocessable_entity }
 			end
@@ -37,7 +37,7 @@ class ImagesController < ApplicationController
 		flash[:notice] = "Image deleted successfully"
 
 		respond_to do |format|
-			format.html { redirect_to halls_url }
+			format.js
 		end
 	end
 end
