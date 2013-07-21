@@ -1,19 +1,36 @@
-<%= form_for [@venue, @review], :remote =>true do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+<% @review = Review.new %>
 
-      <ul>
-      <% @review.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<%unless current_user.nil? %>
+    <%= form_for [@venue, @review], :remote =>true do |f| %>      
+      <% if @review.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+          <ul>
+          <% @review.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+      <div class="row-fluid">
+          <%=image_tag "human.jpg"%>
+          <%=f.text_area :review, :rows=>2, :class=>"span6"%>  
+          <%= f.submit "Post", :class => "btn btn-success" %>
+      </div>
+    <% end %>
+<%else%>
+    <%= link_to "Login to review this venue", new_user_session_path, :rel => "modal:open", :id => "login-form" %></br></br>
+<%end%>
+
+
+<% @venue.reviews.order("updated_at desc").each do |r| %>
+    <div id=<%='review'+r.id.to_s%> class="row-fluid review">
+      <%if current_user != nil && current_user.id == r.user_id %>
+        <%= link_to('x', venue_review_path(@venue,r), method: :delete, :remote=>true, :class=>"fr")%>
+      <%end%>
+        <%=image_tag "human.jpg"%>
+        <%=content_tag(:span, r.user.name)%>
+        <%=content_tag(:span, r.review)%>
     </div>
-  <% end %>
-  <div class="row-fluid">
-      <%=image_tag "human.jpg"%>
-      <%=f.text_area :review, :rows=>2, :class=>"span6"%>
-        
-      <%= f.submit "Post", :class => "btn btn-success" %>
-  </div>
-<% end %>
+<%end%>

@@ -168,15 +168,8 @@ end%>
 
       
       <div id="reviews_div">
-        <%unless current_user.nil? %>
           <div id="new-review">
-            <%= render partial: 'reviews/form', locals: { :review => @review } %>
+            <%= render partial: 'reviews/form', locals: { :venues => @venue, :review => @review } %>
           </div>
-        <%else%>
-          <%= link_to "Login to review this venue", new_user_session_path, :rel => "modal:open", :id => "login-form" %></br></br>
-        <%end%>
-        <div id="reviews">
-          <%= render partial: 'reviews/list', locals: { :venues => @venue }%>
-        </div>
       </div>
 </div>
