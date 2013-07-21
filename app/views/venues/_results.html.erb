@@ -60,9 +60,9 @@
 		<% @venue.each do |c| %>
 		<div class="SearchResults">
 			<%= unless c.base_image.nil? 
-				image_tag url_for(:controller => "venues", :action => "show_image", :id => c.id), :class => "venue-img"
+				image_tag url_for(:controller => "venues", :action => "show_image", :id => c.id), :class => "venue-img top10"
 			else 
-				image_tag('venue.jpg', :class => "venue-img") 
+				image_tag('venue.jpg', :class => "venue-img top10") 
 				end %>
 				<div style="margin-left:190px">
 					<h3><%= link_to(c.name + c.venue_type, venue_path(c), :rel => "modal:open", :id=>"show_modal")%></h3>

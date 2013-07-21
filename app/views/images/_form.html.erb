@@ -8,23 +8,22 @@
 </div>
 
 <div>
-	
-		
-		<div class="control-group">
-			<%= v.label(:image, "Venue Image:", class:"control-label") %>
-			<div class="controls"><%= v.file_field :image%></div>
-		</div>
-		<div class="control-group">
-			<%= v.label(:caption, "Caption:", class:"control-label") %>
-			<div class="controls"><%= v.text_field :caption %></div>
-		</div>
-		<% @images.each_with_index do |h, i| %>
-			<div>
-				<%= image_tag url_for(:controller => "venues", :action => "show_image", :image_id => h.id), :class => "venue-img"  %>
-				<%= h.caption %>
-				<%= link_to('x', venue_image_path(@venue,h), method: :delete,:remote=>true, :id=>"show_modal")%>
-			</div>
-		<%end%>
+	<div class="control-group">
+		<%= v.label(:image, "Venue Image:", class:"control-label") %>
+		<div class="controls"><%= v.file_field :image%></div>
+	</div>
+	<div class="control-group">
+		<%= v.label(:caption, "Caption:", class:"control-label") %>
+		<div class="controls"><%= v.text_field :caption %></div>
+	</div>
+	<% @images.each_with_index do |h, i| %>
+	<div class="span3">
+			<%= link_to('x', venue_image_path(@venue,h), method: :delete, :remote=>true, :class=>"fr", :style=>"position:relative;")%>
+		<%= image_tag url_for(:controller => "venues", :action => "show_image", :image_id => h.id), :class => "venue-img bottom10 right5"  %>
+		</br>
+		<%= label_tag(h.caption,h.caption, :class=>"center-text") %>	
+	</div>
+	<%end%>
 	
 </div>
 

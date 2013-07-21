@@ -45,3 +45,7 @@ div.roundedBorder{
 .margin10{
 	margin: 10px;
 }
+
+.center-text{
+	text-align: center;
+}

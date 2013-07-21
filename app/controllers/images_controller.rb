@@ -1,5 +1,4 @@
 class ImagesController < ApplicationController
-	
 	before_filter :get_venue
 
 	def get_venue
@@ -8,6 +7,10 @@ class ImagesController < ApplicationController
 
 	def index
 		@image = Image.new
+
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def show
