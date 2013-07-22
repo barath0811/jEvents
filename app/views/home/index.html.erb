@@ -27,7 +27,7 @@
 	<ul class="span11 bxslider">
 		<% for image in @images do %>
 		<li>
-			<%= link_to image_tag(url_for(:controller => "venues", :action => "show_image", :image_id => image.id), :title => image.caption, :size => "350x200"), {:controller => "pages", :action => "placeholder", :target => "_blank"} %>
+			<%= link_to image_tag(url_for(:controller => "venues", :action => "show_image", :image_id => image.id), :title => image.get_caption, :size => "350x200"), venue_path(image.venue_id), :rel => "modal:open" %>
 		</li>
 		<% end %>
 	</ul>

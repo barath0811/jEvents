@@ -11,6 +11,15 @@
 	<meta name="keywords" content="Book venues Chennai, find venue Chennai, Wedding venue Chennai, Birthday event Chennai, book conferece room">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<!-- Facebook OpenGraph stuff -->
+	<meta property="og:title" content="JollyEventz" />
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:image" content="http://www.jollyeventz.com/header.png" /> -->
+    <meta property="og:url" content="http://www.jollyeventz.com/" />
+    <meta property="og:site_name" content="JollyEventz" />
+    <meta property="og:description" content="Spending too much time searching for a venue? Relax, we'll find the right place for any event!" />
+	<meta property="fb:app_id" content="<%= ENV["FACEBOOK_ID"] %>" />
+
 	<%= stylesheet_link_tag    	"application", :media => "all" %>
 
 	<%= csrf_meta_tags %>
