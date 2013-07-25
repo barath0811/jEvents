@@ -2,12 +2,13 @@
 @venue.suitable_events.each do |a| 
     @suitable = @suitable+a.name+', ' 
 end%>
-
+<%= hidden_field_tag 'venue_id', @venue.id %>
 <div class="row-fluid">
   <div>
     <h4><%= @venue.name %>, <%= @venue.venue_type %></h4>
     <h6><%= @venue.address.address %>, <%= @venue.address.area %></h6>
   </div>
+  <div id="star"></div>
   <div>
 
   </div>
@@ -17,7 +18,6 @@ end%>
     <div class="span3 venue-img-div">
       <% if @venue.images.count==0 %> 
         <%= image_tag('venue.jpg', :class => "venue-img") %>
-        
       <%else%>
         
           <ul class="span3 bxslider">

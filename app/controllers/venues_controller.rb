@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
 	before_filter :authenticate_user!, :except => [:index, :new, :view, :show, :search, :show_image]
-	load_and_authorize_resource :except => [:index, :new, :view, :show, :search, :show_image]
+	load_and_authorize_resource :except => [:index, :new, :view, :show, :search, :show_image, :rate]
 
 	# GET /venues
 	# Index will list only those venues associated to the current user (Be it admin or venue owner)
