@@ -24,9 +24,11 @@ $(document).ready(function(){
 	// });
 	
 	$('#star').raty({
+		score: function() {
+		    return $('#rating:hidden').attr('value');
+		  },
 	  click: function(score, evt) {
 	  	rate(score, evt);
-	    //alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt);
 	  }
 	});
 });
