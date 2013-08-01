@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  load_and_authorize_resource #, :except => [:show]
+  
 
   before_filter :get_venue
 
@@ -16,8 +16,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @reviews }
+      format.js # index.js.erb
     end
   end
 
@@ -27,8 +26,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @review }
+      format.js # show.js.erb
     end
   end
 
@@ -38,8 +36,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @review }
+      format.js # new.js.erb
     end
   end
 
@@ -58,8 +55,6 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         format.js 
-        format.html {render action: "new"}
-        format.json { render json: @review, status: :created, location: @review }
       else
         format.html { render action: "new" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
@@ -90,8 +85,7 @@ class ReviewsController < ApplicationController
     @review.destroy
 
     respond_to do |format|
-      format.html { redirect_to reviews_url }
-      format.json { head :no_content }
+      format.js
     end
   end
 end

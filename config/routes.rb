@@ -26,12 +26,14 @@ Jevents::Application.routes.draw do
       get 'rates'
       get 'facilities'
       get 'highlights'
+
     end
     collection do   #works on a collection, does not require an ID
       get 'show_image'
       get 'view' 
       get 'search'
       post 'search'
+      post 'rate'
     end
   end
 
@@ -44,8 +46,12 @@ Jevents::Application.routes.draw do
   get "home/benefits/owners" => 'home#benefits_owners'
   get "home/benefits/planners" => 'home#benefits_planners'
   
+
+
   get 'placeholder' => 'pages#placeholder'
 
+  get 'ratings/rate'
+  post 'ratings/rate'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
