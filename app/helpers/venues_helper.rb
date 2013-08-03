@@ -27,7 +27,6 @@ module VenuesHelper
 		doc.elements.each('//Capacity/option') do |ele|
 			query.capacity << ele.text
 		end
-
 		doc.elements.each('//Amenities/option') do |ele|
 			query.amenities_name << ele.text
 		end

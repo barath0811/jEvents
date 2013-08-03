@@ -36,6 +36,7 @@ gem 'bxslider-rails'
 gem 'bootstrap-select-rails'
 gem 'client_side_validations', '~> 3.2.5'
 gem 'best_in_place'
+gem 'jquery-raty-rails' 
 
 
 # Authentication & OAuth

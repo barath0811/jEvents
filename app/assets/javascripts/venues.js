@@ -22,9 +22,30 @@ $(document).ready(function(){
 	//     });
 	//     return false; // prevents normal behaviour
 	// });
-
+	
+	$('#star').raty({
+		score: function() {
+		    return $('#rating:hidden').attr('value');
+		  },
+	  click: function(score, evt) {
+	  	rate(score, evt);
+	  }
+	});
 });
 
+function rate(score, evt){
+	var venue_id = $('#venue_id:hidden').attr('value');
+	$.ajax({
+			url: "/ratings/rate",
+			type: "POST",
+			data: {id:$(this).attr('id'), rating:score, venue_id:venue_id  },
+			success: function(data) {
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown){
+				alert(textStatus + errorThrown);
+			}
+		});
+}
 
 function createSearchParams(entity, value){
 	var val = '';
@@ -42,10 +63,6 @@ function createSearchParams(entity, value){
 	return val;
 }
 
-function imageupload_click(file_field){
-	$('#'+file_field).click();
-}
-
 function prev_click(){
 	var page = $('#page_number:hidden').attr('value');
 	searchFired(parseInt(page) -1);
@@ -54,24 +71,6 @@ function prev_click(){
 function next_click(){
 	var page = $('#page_number:hidden').attr('value');
 	searchFired(parseInt(page) +1);
-}
-
-function uploadFile(){
-    var fileToSubmit = $("#file_upload_1").serialize();
-
-    $.ajax({
-        url: "/venues/save_image",
-        type: "POST",
-        data: "",
-        file: fileToSubmit,
-        dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
-    }).success(function(json){
-        showMessage('Saved successfully...', 'success');
-        debugger;
-    }).error(function(XMLHttpRequest, textStatus, errorThrown){
-    		alert(textStatus + errorThrown);
-    });
-    return false;
 }
 
 function searchFired(page_num){

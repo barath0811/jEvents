@@ -1,7 +1,7 @@
 <% @venue.reviews.order("updated_at desc").each do |r| %>
     <div class="row-fluid review">
         <%=image_tag "human.jpg"%>
-        <%=content_tag(:span, r.user.email)%>
+        <%=content_tag(:span, r.user.name)%>
         <%=content_tag(:span, r.review)%>
     </div>
 <%end%>

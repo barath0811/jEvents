@@ -92,11 +92,22 @@ label span input {
 }
 
 .venue-img{
-	float: left;
-	top: 10px;
+	float: left; 
 	width:170px;
 	height:130px;
 	position: relative;
+}
+
+.bottom10{
+  bottom: 10px;
+}
+
+.top10{
+  top:10px;
+}
+
+.right5{
+  right: 5px;
 }
 
 .amenities-div{

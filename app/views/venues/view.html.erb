@@ -2,14 +2,16 @@
 @venue.suitable_events.each do |a| 
     @suitable = @suitable+a.name+', ' 
 end%>
-
+<%= hidden_field_tag 'venue_id', @venue.id %>
+<%= hidden_field_tag 'rating', @venue.rating %>
 <div class="row-fluid">
   <div>
     <h4><%= @venue.name %>, <%= @venue.venue_type %></h4>
     <h6><%= @venue.address.address %>, <%= @venue.address.area %></h6>
   </div>
-  <div>
-
+  <div id="rating-div">
+    <div id="star"></div>
+    <%= render partial: 'ratings/rating', locals: { :venues => @venue } %>
   </div>
 </div>
 <div id="show_venue">
@@ -17,7 +19,6 @@ end%>
     <div class="span3 venue-img-div">
       <% if @venue.images.count==0 %> 
         <%= image_tag('venue.jpg', :class => "venue-img") %>
-        
       <%else%>
         
           <ul class="span3 bxslider">
@@ -73,12 +74,12 @@ end%>
             </li>
             <li>
               <%= if @venue.rate != nil && @venue.rate.veg_plate_cost?
-                image_tag('veg.gif') + ' Cost/Plate Rs:' + @venue.rate.veg_plate_cost?
+                image_tag('veg.gif') + ' Cost/Plate Rs:' + @venue.rate.veg_plate_cost.to_s
               end %>
             </li>
             <li>
               <%= if @venue.rate != nil && @venue.rate.nonveg_plate_cost?
-                image_tag('nv.png') + ' Cost/Plate Rs:' + @venue.rate.nonveg_plate_cost?
+                image_tag('nv.png') + ' Cost/Plate Rs:' + @venue.rate.nonveg_plate_cost.to_s
               end %>
             </li>    
                 
@@ -156,26 +157,20 @@ end%>
             <% end %>
           </table>
         </div>
-
-        <div class="span2 highlights-div">
-          <p style="font-size:18px; text-align:centre;">Highlights</p>
-          <% @venue.highlights.each do |h| %>
-            <label><%= h.highlight %></label>
-          <%end%>
-        </div>
+        <% unless @venue.highlights.count == 0 %>
+          <div class="span2 highlights-div">
+            <p style="font-size:18px; text-align:centre;">Highlights</p>
+            <% @venue.highlights.each do |h| %>
+              <label><%= h.highlight %></label>
+            <%end%>
+          </div>
+        <%end%>
       </div></br>
 
       
       <div id="reviews_div">
-        <%unless current_user.nil? %>
           <div id="new-review">
-            <%= render partial: 'reviews/form', locals: { :review => @review } %>
+            <%= render partial: 'reviews/form', locals: { :venues => @venue, :review => @review } %>
           </div>
-        <%else%>
-          <%= link_to "Login to review this venue", new_user_session_path, :rel => "modal:open", :id => "login-form" %></br></br>
-        <%end%>
-        <div id="reviews">
-          <%= render partial: 'reviews/list', locals: { :venues => @venue }%>
-        </div>
       </div>
 </div>

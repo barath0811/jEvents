@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require jquery.modal
+//= require jquery.raty
+//= require jquery.raty.min
 //= require rails.validations
 //= require bootstrap-select
 //= require bxslider
