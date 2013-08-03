@@ -69,29 +69,32 @@
 					<div>
 						<%= if c.facility != nil && c.facility.has_parking?
 							image_tag('parking.png', :class => "venue-icons")
-							end %>
-							<%= if c.facility != nil && c.facility.is_nonveg_allowed?
-								image_tag('nv.png', :class => "venue-icons")
-								end %>
-								<%= if c.facility != nil && c.facility.is_alcohol_allowed?
-									image_tag('alcohol.png', :class => "venue-icons")
-									end %>
-									<%= if c.facility != nil && c.facility.has_buffet?
-										image_tag('restaurant.png', :class => "venue-icons")
-										end %>
-									</div>
-									<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
+						end %>
+						<%= if c.facility != nil && c.facility.is_nonveg_allowed?
+							image_tag('nv.png', :class => "venue-icons")
+						end %>
+						<%= if c.facility != nil && c.facility.is_alcohol_allowed?
+							image_tag('alcohol.png', :class => "venue-icons")
+						end %>
+						<%= if c.facility != nil && c.facility.has_buffet?
+							image_tag('restaurant.png', :class => "venue-icons")
+						end %>
+					</div>
+					<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
 
-									<p class="capacity">Capacity &nbsp;&nbsp;<%= c.min_capacity %>&nbsp;-&nbsp;<%= c.max_capacity %></p>
-									<p class="address">Landmark : <%= c.address.landmark %></p>
-									<%if c.view_available %>
-										<div style="margin-top:15px;position:relative;">
-											<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
-										</div>
-									<%end%>
-									<p class="numRooms"><%= c.num_halls %> halls</p><br />
-								</div>
-							</div>
-							<% end %>
-
+					<% unless c.min_capacity.nil?%>
+						<p class="capacity">Capacity &nbsp;&nbsp;<%= c.min_capacity %>&nbsp;-&nbsp;<%= c.max_capacity %></p>
+					<%end%>
+					<p class="address">Landmark : <%= c.address.landmark %></p>
+					<%if c.view_available %>
+						<div style="margin-top:15px;position:relative;">
+							<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
 						</div>
+					<%end%>
+					<% unless c.num_halls.nil? %>
+						<p class="numRooms"><%= c.num_halls %> halls</p><br />
+					<%end%>
+				</div>
+			</div>
+	<% end %>
+</div>
