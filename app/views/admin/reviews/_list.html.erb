@@ -5,8 +5,8 @@
 		<th>Venue</th>
 		<th>User</th>
 		<th>Review</th>
-		<th>Approve?</th>
-		<th>Approved by</th>
+		<th>Verify?</th>
+		<th>Verified by</th>
 		<th>Delete?</th>
 	</tr>
 	<% @reviews.each do |r| %>
@@ -14,8 +14,8 @@
 		<td><%= r.venue.name unless r.venue.nil? %></td>
 		<td><%= r.user.name unless r.user.nil? %></td>
 		<td><%= r.review %></td>
-		<td><%= best_in_place r, :is_approved, :path => approve_admin_review_path(r), :type => :checkbox %></td>
-		<td><%= User.find(r.approved_by).name %></td>
+		<td><%= best_in_place r, :is_verified, :path => verify_admin_review_path(r), :type => :checkbox %></td>
+		<td><%= User.find(r.verified_by).name %></td>
 		<td><%= link_to raw('<i class="icon-trash"></i>'), admin_review_path(r), method: :delete, data: { confirm: 'Are you sure you want to delete this venue review?' }, :title => "Delete Review" %></td>
 	</tr>
 	<% end %>

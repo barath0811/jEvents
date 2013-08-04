@@ -10,10 +10,10 @@ class Admin::ReviewsController < ApplicationController
 		end
 	end
 
-	def approve
+	def verify
 		@review = Review.find(params[:id])
 
-		@review.approved_by = current_user.id
+		@review.verified_by = current_user.id
 
 		respond_to do |format|
 			if @review.update_attributes(params[:review])
