@@ -1,5 +1,5 @@
 <% content_for :title, "Admin Dashboard" %>
-<section id = "adminNav" class="adminDashboard">
+<div id = "adminNav" class="adminDashboard">
 	<div class="navbar">
 		<div class="navbar-inner">
 			<%= link_to "Admin Dashboard", admin_path, :class => "brand" %>
@@ -8,6 +8,8 @@
 				<li><%= link_to "Users", admin_users_path, :remote => true %></li>
 				<li class="divider-vertical"></li>
 				<li><%= link_to "Venues", admin_venues_path, :remote => true %></li>
+				<li class="divider-vertical"></li>
+				<li><%= link_to "Reviews", admin_reviews_path, :remote => true %></li>
 				<li class="divider-vertical"></li>
 				<li><%= link_to "Requests", admin_venue_requests_path, :remote => true %></li>
 				<li class="divider-vertical"></li>
@@ -22,4 +24,4 @@
 	<div id="adminContent">
 		Click on one of the tabs above.
 	</div>
-</section>
+</div>

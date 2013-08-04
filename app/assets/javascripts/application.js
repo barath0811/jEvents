@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.autocomplete
 //= require twitter/bootstrap
 //= require jquery.modal
 //= require jquery.raty
@@ -21,4 +22,5 @@
 //= require bxslider
 //= require jquery.purr
 //= require best_in_place
+//= require autocomplete-rails
 //= require_tree .

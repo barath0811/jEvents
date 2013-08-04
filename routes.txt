@@ -1,86 +1,93 @@
-               user_root          /profiles/dashboard(.:format)                profiles#dashboard
-        new_user_session GET      /users/sign_in(.:format)                     devise/sessions#new
-            user_session POST     /users/sign_in(.:format)                     devise/sessions#create
-    destroy_user_session GET      /users/sign_out(.:format)                    devise/sessions#destroy
- user_omniauth_authorize GET|POST /users/auth/:provider(.:format)              users/omniauth_callbacks#passthru {:provider=>/facebook|google_oauth2|twitter/}
-  user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)       users/omniauth_callbacks#(?-mix:facebook|google_oauth2|twitter)
-           user_password POST     /users/password(.:format)                    devise/passwords#create
-       new_user_password GET      /users/password/new(.:format)                devise/passwords#new
-      edit_user_password GET      /users/password/edit(.:format)               devise/passwords#edit
-                         PUT      /users/password(.:format)                    devise/passwords#update
-cancel_user_registration GET      /users/cancel(.:format)                      devise/registrations#cancel
-       user_registration POST     /users(.:format)                             devise/registrations#create
-   new_user_registration GET      /users/sign_up(.:format)                     devise/registrations#new
-  edit_user_registration GET      /users/edit(.:format)                        devise/registrations#edit
-                         PUT      /users(.:format)                             devise/registrations#update
-                         DELETE   /users(.:format)                             devise/registrations#destroy
-       user_confirmation POST     /users/confirmation(.:format)                devise/confirmations#create
-   new_user_confirmation GET      /users/confirmation/new(.:format)            devise/confirmations#new
-                         GET      /users/confirmation(.:format)                devise/confirmations#show
-             user_unlock POST     /users/unlock(.:format)                      devise/unlocks#create
-         new_user_unlock GET      /users/unlock/new(.:format)                  devise/unlocks#new
-                         GET      /users/unlock(.:format)                      devise/unlocks#show
-               feedbacks POST     /feedbacks(.:format)                         feedbacks#create
-            new_feedback GET      /feedbacks/new(.:format)                     feedbacks#new
-          venue_requests POST     /venue_requests(.:format)                    venue_requests#create
-       new_venue_request GET      /venue_requests/new(.:format)                venue_requests#new
-                   admin          /admin(.:format)                             admin/admin#index
-             admin_users GET      /admin/users(.:format)                       admin/users#index
-                         POST     /admin/users(.:format)                       admin/users#create
-          new_admin_user GET      /admin/users/new(.:format)                   admin/users#new
-         edit_admin_user GET      /admin/users/:id/edit(.:format)              admin/users#edit
-              admin_user GET      /admin/users/:id(.:format)                   admin/users#show
-                         PUT      /admin/users/:id(.:format)                   admin/users#update
-                         DELETE   /admin/users/:id(.:format)                   admin/users#destroy
-            admin_venues GET      /admin/venues(.:format)                      admin/venues#index
-             admin_venue DELETE   /admin/venues/:id(.:format)                  admin/venues#destroy
-    admin_venue_requests GET      /admin/venue_requests(.:format)              admin/venue_requests#index
-     admin_venue_request DELETE   /admin/venue_requests/:id(.:format)          admin/venue_requests#destroy
-         admin_feedbacks GET      /admin/feedbacks(.:format)                   admin/feedbacks#index
-          admin_feedback DELETE   /admin/feedbacks/:id(.:format)               admin/feedbacks#destroy
-         admin_showcases GET      /admin/showcases(.:format)                   admin/showcases#index
-          admin_showcase PUT      /admin/showcases/:id(.:format)               admin/showcases#update
-             venue_halls GET      /venues/:venue_id/halls(.:format)            halls#index
-                         POST     /venues/:venue_id/halls(.:format)            halls#create
-          new_venue_hall GET      /venues/:venue_id/halls/new(.:format)        halls#new
-         edit_venue_hall GET      /venues/:venue_id/halls/:id/edit(.:format)   halls#edit
-              venue_hall GET      /venues/:venue_id/halls/:id(.:format)        halls#show
-                         PUT      /venues/:venue_id/halls/:id(.:format)        halls#update
-                         DELETE   /venues/:venue_id/halls/:id(.:format)        halls#destroy
-            venue_images GET      /venues/:venue_id/images(.:format)           images#index
-                         POST     /venues/:venue_id/images(.:format)           images#create
-         new_venue_image GET      /venues/:venue_id/images/new(.:format)       images#new
-        edit_venue_image GET      /venues/:venue_id/images/:id/edit(.:format)  images#edit
-             venue_image GET      /venues/:venue_id/images/:id(.:format)       images#show
-                         PUT      /venues/:venue_id/images/:id(.:format)       images#update
-                         DELETE   /venues/:venue_id/images/:id(.:format)       images#destroy
-           venue_reviews GET      /venues/:venue_id/reviews(.:format)          reviews#index
-                         POST     /venues/:venue_id/reviews(.:format)          reviews#create
-        new_venue_review GET      /venues/:venue_id/reviews/new(.:format)      reviews#new
-       edit_venue_review GET      /venues/:venue_id/reviews/:id/edit(.:format) reviews#edit
-            venue_review GET      /venues/:venue_id/reviews/:id(.:format)      reviews#show
-                         PUT      /venues/:venue_id/reviews/:id(.:format)      reviews#update
-                         DELETE   /venues/:venue_id/reviews/:id(.:format)      reviews#destroy
-             rates_venue GET      /venues/:id/rates(.:format)                  venues#rates
-        facilities_venue GET      /venues/:id/facilities(.:format)             venues#facilities
-        highlights_venue GET      /venues/:id/highlights(.:format)             venues#highlights
-       show_image_venues GET      /venues/show_image(.:format)                 venues#show_image
-             view_venues GET      /venues/view(.:format)                       venues#view
-           search_venues GET      /venues/search(.:format)                     venues#search
-                         POST     /venues/search(.:format)                     venues#search
-                  venues GET      /venues(.:format)                            venues#index
-                         POST     /venues(.:format)                            venues#create
-               new_venue GET      /venues/new(.:format)                        venues#new
-              edit_venue GET      /venues/:id/edit(.:format)                   venues#edit
-                   venue GET      /venues/:id(.:format)                        venues#show
-                         PUT      /venues/:id(.:format)                        venues#update
-              home_index GET      /home/index(.:format)                        home#index
-              home_about GET      /home/about(.:format)                        home#about
-                home_faq GET      /home/faq(.:format)                          home#faq
-              home_terms GET      /home/terms(.:format)                        home#terms
-            home_privacy GET      /home/privacy(.:format)                      home#privacy
-                home_how GET      /home/how(.:format)                          home#how
-    home_benefits_owners GET      /home/benefits/owners(.:format)              home#benefits_owners
-  home_benefits_planners GET      /home/benefits/planners(.:format)            home#benefits_planners
-             placeholder GET      /placeholder(.:format)                       pages#placeholder
-                    root          /                                            home#index
+                           user_root          /profiles/dashboard(.:format)                   profiles#dashboard
+                    new_user_session GET      /users/sign_in(.:format)                        devise/sessions#new
+                        user_session POST     /users/sign_in(.:format)                        devise/sessions#create
+                destroy_user_session GET      /users/sign_out(.:format)                       devise/sessions#destroy
+             user_omniauth_authorize GET|POST /users/auth/:provider(.:format)                 users/omniauth_callbacks#passthru {:provider=>/facebook|google_oauth2|twitter/}
+              user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)          users/omniauth_callbacks#(?-mix:facebook|google_oauth2|twitter)
+                       user_password POST     /users/password(.:format)                       devise/passwords#create
+                   new_user_password GET      /users/password/new(.:format)                   devise/passwords#new
+                  edit_user_password GET      /users/password/edit(.:format)                  devise/passwords#edit
+                                     PUT      /users/password(.:format)                       devise/passwords#update
+            cancel_user_registration GET      /users/cancel(.:format)                         devise/registrations#cancel
+                   user_registration POST     /users(.:format)                                devise/registrations#create
+               new_user_registration GET      /users/sign_up(.:format)                        devise/registrations#new
+              edit_user_registration GET      /users/edit(.:format)                           devise/registrations#edit
+                                     PUT      /users(.:format)                                devise/registrations#update
+                                     DELETE   /users(.:format)                                devise/registrations#destroy
+                   user_confirmation POST     /users/confirmation(.:format)                   devise/confirmations#create
+               new_user_confirmation GET      /users/confirmation/new(.:format)               devise/confirmations#new
+                                     GET      /users/confirmation(.:format)                   devise/confirmations#show
+                         user_unlock POST     /users/unlock(.:format)                         devise/unlocks#create
+                     new_user_unlock GET      /users/unlock/new(.:format)                     devise/unlocks#new
+                                     GET      /users/unlock(.:format)                         devise/unlocks#show
+                           feedbacks POST     /feedbacks(.:format)                            feedbacks#create
+                        new_feedback GET      /feedbacks/new(.:format)                        feedbacks#new
+                      venue_requests POST     /venue_requests(.:format)                       venue_requests#create
+                   new_venue_request GET      /venue_requests/new(.:format)                   venue_requests#new
+                               admin          /admin(.:format)                                admin/admin#index
+                         admin_users GET      /admin/users(.:format)                          admin/users#index
+                                     POST     /admin/users(.:format)                          admin/users#create
+                      new_admin_user GET      /admin/users/new(.:format)                      admin/users#new
+                     edit_admin_user GET      /admin/users/:id/edit(.:format)                 admin/users#edit
+                          admin_user GET      /admin/users/:id(.:format)                      admin/users#show
+                                     PUT      /admin/users/:id(.:format)                      admin/users#update
+                                     DELETE   /admin/users/:id(.:format)                      admin/users#destroy
+autocomplete_venue_name_admin_venues GET      /admin/venues/autocomplete_venue_name(.:format) admin/venues#autocomplete_venue_name
+                        admin_venues GET      /admin/venues(.:format)                         admin/venues#index
+                         admin_venue DELETE   /admin/venues/:id(.:format)                     admin/venues#destroy
+                approve_admin_review POST     /admin/reviews/:id/approve(.:format)            admin/reviews#approve
+                       admin_reviews GET      /admin/reviews(.:format)                        admin/reviews#index
+                        admin_review DELETE   /admin/reviews/:id(.:format)                    admin/reviews#destroy
+                admin_venue_requests GET      /admin/venue_requests(.:format)                 admin/venue_requests#index
+                 admin_venue_request DELETE   /admin/venue_requests/:id(.:format)             admin/venue_requests#destroy
+                     admin_feedbacks GET      /admin/feedbacks(.:format)                      admin/feedbacks#index
+                      admin_feedback DELETE   /admin/feedbacks/:id(.:format)                  admin/feedbacks#destroy
+                     admin_showcases GET      /admin/showcases(.:format)                      admin/showcases#index
+                      admin_showcase PUT      /admin/showcases/:id(.:format)                  admin/showcases#update
+                         venue_halls GET      /venues/:venue_id/halls(.:format)               halls#index
+                                     POST     /venues/:venue_id/halls(.:format)               halls#create
+                      new_venue_hall GET      /venues/:venue_id/halls/new(.:format)           halls#new
+                     edit_venue_hall GET      /venues/:venue_id/halls/:id/edit(.:format)      halls#edit
+                          venue_hall GET      /venues/:venue_id/halls/:id(.:format)           halls#show
+                                     PUT      /venues/:venue_id/halls/:id(.:format)           halls#update
+                                     DELETE   /venues/:venue_id/halls/:id(.:format)           halls#destroy
+                        venue_images GET      /venues/:venue_id/images(.:format)              images#index
+                                     POST     /venues/:venue_id/images(.:format)              images#create
+                     new_venue_image GET      /venues/:venue_id/images/new(.:format)          images#new
+                    edit_venue_image GET      /venues/:venue_id/images/:id/edit(.:format)     images#edit
+                         venue_image GET      /venues/:venue_id/images/:id(.:format)          images#show
+                                     PUT      /venues/:venue_id/images/:id(.:format)          images#update
+                                     DELETE   /venues/:venue_id/images/:id(.:format)          images#destroy
+                       venue_reviews GET      /venues/:venue_id/reviews(.:format)             reviews#index
+                                     POST     /venues/:venue_id/reviews(.:format)             reviews#create
+                    new_venue_review GET      /venues/:venue_id/reviews/new(.:format)         reviews#new
+                   edit_venue_review GET      /venues/:venue_id/reviews/:id/edit(.:format)    reviews#edit
+                        venue_review GET      /venues/:venue_id/reviews/:id(.:format)         reviews#show
+                                     PUT      /venues/:venue_id/reviews/:id(.:format)         reviews#update
+                                     DELETE   /venues/:venue_id/reviews/:id(.:format)         reviews#destroy
+                         rates_venue GET      /venues/:id/rates(.:format)                     venues#rates
+                    facilities_venue GET      /venues/:id/facilities(.:format)                venues#facilities
+                    highlights_venue GET      /venues/:id/highlights(.:format)                venues#highlights
+                   show_image_venues GET      /venues/show_image(.:format)                    venues#show_image
+                         view_venues GET      /venues/view(.:format)                          venues#view
+                       search_venues GET      /venues/search(.:format)                        venues#search
+                                     POST     /venues/search(.:format)                        venues#search
+                         rate_venues POST     /venues/rate(.:format)                          venues#rate
+                              venues GET      /venues(.:format)                               venues#index
+                                     POST     /venues(.:format)                               venues#create
+                           new_venue GET      /venues/new(.:format)                           venues#new
+                          edit_venue GET      /venues/:id/edit(.:format)                      venues#edit
+                               venue GET      /venues/:id(.:format)                           venues#show
+                                     PUT      /venues/:id(.:format)                           venues#update
+                          home_index GET      /home/index(.:format)                           home#index
+                          home_about GET      /home/about(.:format)                           home#about
+                            home_faq GET      /home/faq(.:format)                             home#faq
+                          home_terms GET      /home/terms(.:format)                           home#terms
+                        home_privacy GET      /home/privacy(.:format)                         home#privacy
+                            home_how GET      /home/how(.:format)                             home#how
+                home_benefits_owners GET      /home/benefits/owners(.:format)                 home#benefits_owners
+              home_benefits_planners GET      /home/benefits/planners(.:format)               home#benefits_planners
+                         placeholder GET      /placeholder(.:format)                          pages#placeholder
+                        ratings_rate GET      /ratings/rate(.:format)                         ratings#rate
+                                     POST     /ratings/rate(.:format)                         ratings#rate
+                                root          /                                               home#index

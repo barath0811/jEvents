@@ -1,42 +1,46 @@
 <% content_for :title, "All Venues" %>
 <h3>Venues</h3>
-<table class="table table-striped table-bordered table-condensed">
-	<tr>
-		<th>Name</th>
-		<th>Area</th>
-		<th>Contact Person</th>
-		<th>Email</th>
-		<th>Mobile</th>
-		<th>User</th>
-		<th>Approved?</th>
-		<th>View?</th>
-		<th>Booking?</th>
-		<th>Enquiry?</th>
-		<th>Owner</th>
-		<th></th>
-	</tr>
-	<% @venues.each do |venue| %>
-	<% user = venue.user || User.new %>
-	<tr>
-		<td><%= venue.name %></td>
-		<td><%= venue.address.area %></td>
-		<td><%= venue.contact.firstname %> <%= venue.contact.lastname %></td>
-		<td><%= venue.contact.email %></td>
-		<td><%= venue.contact.mobile_number %></td>
-		<td><%= user.name %>[<%= user.email %>]</td>
-		<td><%= best_in_place venue, :is_approved, :type => :checkbox %></td>
-		<td><%= best_in_place venue, :view_available, :type => :checkbox %></td>
-		<td><%= best_in_place venue, :booking_available, :type => :checkbox %></td>
-		<td><%= best_in_place venue, :enquiry_available, :type => :checkbox %></td>
-		<td><%= best_in_place venue, :user_id, :type => :select, :collection => @all_users %></td>
-		<td>
-			<%= link_to raw('<i class="icon-eye-open"></i>'), venue, :rel => "modal:open" %>&nbsp;&nbsp;
-			<%= link_to raw('<i class="icon-pencil"></i>'), edit_venue_path(venue) %>&nbsp;&nbsp;
-			<%= link_to raw('<i class="icon-trash"></i>'), admin_venue_path(venue), method: :delete, data: { confirm: 'Are you sure you want to delete this venue?' } %>
-		</td>
-	</tr>
-	<% end %>
-</table>
-<div class="flickr_pagination">
-	<%= paginate @venues, :container => false %>
+
+<%= autocomplete_field_tag 'venues', '', autocomplete_venue_name_admin_venues_path, :size => 75 %>
+<div class="row-fluid">
+	<table class="table table-striped table-bordered table-condensed">
+		<tr>
+			<th>Name</th>
+			<th>Area</th>
+			<th>Contact Person</th>
+			<th>Email</th>
+			<th>Mobile</th>
+			<th>User</th>
+			<th>Approved?</th>
+			<th>View?</th>
+			<th>Booking?</th>
+			<th>Enquiry?</th>
+			<th>Owner</th>
+			<th></th>
+		</tr>
+		<% @venues.each do |venue| %>
+		<% user = venue.user || User.new %>
+		<tr>
+			<td><%= venue.name %></td>
+			<td><%= venue.address.area %></td>
+			<td><%= venue.contact.firstname %> <%= venue.contact.lastname %></td>
+			<td><%= venue.contact.email %></td>
+			<td><%= venue.contact.mobile_number %></td>
+			<td><%= user.name %>[<%= user.email %>]</td>
+			<td><%= best_in_place venue, :is_approved, :type => :checkbox %></td>
+			<td><%= best_in_place venue, :view_available, :type => :checkbox %></td>
+			<td><%= best_in_place venue, :booking_available, :type => :checkbox %></td>
+			<td><%= best_in_place venue, :enquiry_available, :type => :checkbox %></td>
+			<td><%= best_in_place venue, :user_id, :type => :select, :collection => @all_users %></td>
+			<td>
+				<%= link_to raw('<i class="icon-eye-open"></i>'), venue, :rel => "modal:open", :title => "View Venue" %>&nbsp;&nbsp;
+				<%= link_to raw('<i class="icon-pencil"></i>'), edit_venue_path(venue), :title => "Edit Venue" %>&nbsp;&nbsp;
+				<%= link_to raw('<i class="icon-trash"></i>'), admin_venue_path(venue), method: :delete, data: { confirm: 'Are you sure you want to delete this venue?' }, :title => "Delete Venue" %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+	<div class="flickr_pagination">
+		<%= paginate @venues, :container => false %>
+	</div>
 </div>
