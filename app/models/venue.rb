@@ -67,7 +67,7 @@ class Venue < ActiveRecord::Base
         end
 
 		query.amenities_val.each do |a|      
-			venue_results =	venue_results.joins(:facility).where('facilities.' + a => 1) 
+			venue_results =	venue_results.joins(:facility).where('facilities.' + a => true) 
 		end
 
 		query.eventType.each do |a| 
