@@ -5,6 +5,13 @@ class Admin::VenuesController < Admin::AdminController
 	def index
 		@venues = Venue.paginate(:page => params[:page], :per_page =>10).order(:name).includes(:contact, :address, :user)
 		
+
+		@plans = getPlans('Plan')
+		@all_plans = Array.new
+		@plans.each do |p|
+			@all_plans << [p.value.to_i, p.text]
+		end
+
 		@all_users = Array.new
 		User.select([:id, :email]).each do |user|
 			@all_users << [user.id, user.email]
