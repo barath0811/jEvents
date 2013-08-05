@@ -25,7 +25,7 @@ group :development do
 end
 
 group :production do
-	# gem 'pg'
+	gem 'pg' #uncomment this out for heroku
 end
 
 gem 'jquery-rails', '~> 3.0.1'
