@@ -9,9 +9,8 @@ class Admin::VenuesController < Admin::AdminController
 		query = query.where(:id => params[:venue_id]) unless params[:venue_id].nil?
 		@venues = query.paginate(:page => params[:page], :per_page =>10)
 
-		@plans = getPlans('Plan')
 		@all_plans = Array.new
-		@plans.each do |p|
+		getPlans('Plan').each do |p|
 			@all_plans << [p.value.to_i, p.text]
 		end
 

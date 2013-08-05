@@ -4,7 +4,7 @@ class Venue < ActiveRecord::Base
 					
 					:num_halls, :min_capacity, :max_capacity,
 					:is_approved, :view_available, :booking_available, :enquiry_available,
-					:rating, :review_count,:rating_count,:Plan,
+					:rating, :review_count, :rating_count, :plan,
 
 					:user_id,
 					:address_attributes,
@@ -16,9 +16,6 @@ class Venue < ActiveRecord::Base
 					:highlights_attributes,
 					:reviews_attributes,
 					:ratings_attributes
-
-
-
 
 	#associations
 	belongs_to :user
