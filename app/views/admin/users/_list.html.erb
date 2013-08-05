@@ -1,6 +1,7 @@
 <% content_for :title, "All Users" %>
 <h3>Users</h3>
-<%= link_to "Create new user", new_admin_user_path, :class => 'btn btn-success fr' %>
+<%= link_to raw('<i class="icon-white icon-plus"></i> Create new user'), new_admin_user_path, :class => 'btn btn-success fl' %>
+<br /><br />
 <table class="table table-striped table-bordered table-condensed">
 	<thead>
 		<tr>

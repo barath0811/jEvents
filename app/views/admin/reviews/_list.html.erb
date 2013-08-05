@@ -15,7 +15,7 @@
 		<td><%= r.user.name unless r.user.nil? %></td>
 		<td><%= r.review %></td>
 		<td><%= best_in_place r, :is_verified, :path => verify_admin_review_path(r), :type => :checkbox %></td>
-		<td><%= User.find(r.verified_by).name %></td>
+		<td><%= User.find(r.verified_by).email unless r.verified_by.nil? %></td>
 		<td><%= link_to raw('<i class="icon-trash"></i>'), admin_review_path(r), method: :delete, data: { confirm: 'Are you sure you want to delete this venue review?' }, :title => "Delete Review" %></td>
 	</tr>
 	<% end %>

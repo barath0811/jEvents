@@ -15,7 +15,7 @@ Jevents::Application.routes.draw do
       get :autocomplete_venue_name, :on => :collection
     end
     resources :reviews,         :only => [:index, :destroy] do
-      match :approve, :on => :member
+      match :verify, :on => :member
     end
     resources :venue_requests,  :only => [:index, :destroy]
     resources :feedbacks,       :only => [:index, :destroy]

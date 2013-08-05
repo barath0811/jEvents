@@ -35,7 +35,7 @@
 autocomplete_venue_name_admin_venues GET      /admin/venues/autocomplete_venue_name(.:format) admin/venues#autocomplete_venue_name
                         admin_venues GET      /admin/venues(.:format)                         admin/venues#index
                          admin_venue DELETE   /admin/venues/:id(.:format)                     admin/venues#destroy
-                approve_admin_review POST     /admin/reviews/:id/approve(.:format)            admin/reviews#approve
+                 verify_admin_review          /admin/reviews/:id/verify(.:format)             admin/reviews#verify
                        admin_reviews GET      /admin/reviews(.:format)                        admin/reviews#index
                         admin_review DELETE   /admin/reviews/:id(.:format)                    admin/reviews#destroy
                 admin_venue_requests GET      /admin/venue_requests(.:format)                 admin/venue_requests#index

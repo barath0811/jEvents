@@ -1,4 +1,4 @@
-class Admin::ReviewsController < ApplicationController
+class Admin::ReviewsController < Admin::AdminController
 	before_filter :authenticate_user!
 	load_and_authorize_resource
 	
@@ -13,10 +13,10 @@ class Admin::ReviewsController < ApplicationController
 	def verify
 		@review = Review.find(params[:id])
 
-		@review.verified_by = current_user.id
-
+		verifiedby = current_user.id unless params[:review][:is_verified] == 'false'
+		
 		respond_to do |format|
-			if @review.update_attributes(params[:review])
+			if @review.update_attributes(:is_verified => params[:review][:is_verified], :verified_by => verifiedby)
 				format.json { respond_with_bip(@review) }
 			end
 		end
