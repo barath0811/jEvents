@@ -59,7 +59,7 @@ class Venue < ActiveRecord::Base
   	end
 
 	def self.search(query)
-		venue_results = joins(:address).includes(:address, :facility, :suitable_events).where('is_approved=1')
+		venue_results = joins(:address).includes(:address, :facility, :suitable_events).where(:is_approved => 1)
 
 		unless query.areas.count == 0
 			venue_results = venue_results.joins(:address).includes(:address)
