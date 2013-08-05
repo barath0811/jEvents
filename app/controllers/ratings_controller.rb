@@ -9,13 +9,16 @@ class RatingsController < ApplicationController
       @rating = Rating.new
       @rating.rating = params[:rating].to_i
       @rating.venue_id = @venue.id
-      @rating.user_id = current_user.id
-      @rating_count = Rating.getCount(@venue.id)
-      @rating_average = Rating.getAverage(@venue.id, @rating_count)
+      unless current_user.nil?
+        @rating.user_id = current_user.id
+      end
+      
       
 
       respond_to do |format|
         if @rating.save
+          @rating_count = Rating.getCount(@venue.id)
+          @rating_average = Rating.getAverage(@venue.id, @rating_count)
           @venue.update_attributes(:rating =>  @rating_average, :rating_count =>  @rating_count)
           format.js
         end

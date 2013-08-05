@@ -1,3 +1,5 @@
+
+
 <% content_for :title, "All Venues" %>
 <h3>Venues</h3>
 <%= link_to raw('<i class="icon-white icon-plus"></i> Add new venue'), new_venue_path, :class => "btn btn-success fl" %>
@@ -19,6 +21,7 @@
 			<th>View?</th>
 			<th>Booking?</th>
 			<th>Enquiry?</th>
+			<th>Plan</th>
 			<th>Owner</th>
 			<th></th>
 		</tr>
@@ -35,6 +38,7 @@
 			<td><%= best_in_place venue, :view_available, :type => :checkbox %></td>
 			<td><%= best_in_place venue, :booking_available, :type => :checkbox %></td>
 			<td><%= best_in_place venue, :enquiry_available, :type => :checkbox %></td>
+			<td><%= best_in_place venue, :Plan, :type => :select, :collection => @all_plans %></td>
 			<td><%= best_in_place venue, :user_id, :type => :select, :collection => @all_users %></td>
 			<td>
 				<%= link_to raw('<i class="icon-eye-open"></i>'), venue, :rel => "modal:open", :title => "View Venue" %>&nbsp;| 

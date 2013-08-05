@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130804172336) do
+ActiveRecord::Schema.define(:version => 20130805211401) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -252,6 +252,7 @@ ActiveRecord::Schema.define(:version => 20130804172336) do
     t.decimal  "rating",            :precision => 10, :scale => 2
     t.integer  "review_count"
     t.integer  "rating_count"
+    t.integer  "Plan"
   end
 
 end

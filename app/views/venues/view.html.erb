@@ -53,7 +53,7 @@ end%>
                 end %>
             </li>
             <li>
-                <%= if @venue.facility != nil && @venue.facility.has_bar?
+                <%= if @venue.facility != nil && @venue.facility.has_stage?
                   image_tag('stage.jpg') + ' Stage available'
                 end %>
             </li>
@@ -95,65 +95,67 @@ end%>
     </div>          
         </br>
         <div class="row-fluid">
-        <div id="halls-div" class="span6">
-          <table id="halls" class="table table-bordered halls-table">
-            <tr>
-              <td>Hall name</td>
-              <td>Theatre</td>
-              <td>U-Shape</td>
-              <td>Double-U</td>
-              <td>Classroom</td>
-              <td>Board</td>
-              <td>Roundtable</td>
-            </tr>
-            <% @venue.halls.each do |h| %>
-            <% unless h.seating_arrangement.nil? %>
-            <tr>
-              <td><%= h.name %></td>
-              <td>
-                <%= if h.seating_arrangement.capacity_theatre.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_theatre
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_ushape.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_ushape
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_doubleu.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_doubleu
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_classroom.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_classroom
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_board.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_board
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_roundtable.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_roundtable
-                end %>
-              </td>
-            </tr>
-            <% end %>
+        <%unless @venue.num_halls.nil?%>
+          <div id="halls-div" class="span6">
+            <table id="halls" class="table table-bordered halls-table">
+              <tr>
+                <td>Hall name</td>
+                <td>Theatre</td>
+                <td>U-Shape</td>
+                <td>Double-U</td>
+                <td>Classroom</td>
+                <td>Board</td>
+                <td>Roundtable</td>
+              </tr>
+              <% @venue.halls.each do |h| %>
+                  <% unless h.seating_arrangement.nil? %>
+                      <tr>
+                        <td><%= h.name %></td>
+                        <td>
+                          <%= if h.seating_arrangement.capacity_theatre.nil? 
+                            '-'
+                          else
+                            h.seating_arrangement.capacity_theatre
+                          end %>
+                        </td>
+                        <td>
+                          <%= if h.seating_arrangement.capacity_ushape.nil? 
+                            '-'
+                          else
+                            h.seating_arrangement.capacity_ushape
+                          end %>
+                        </td>
+                        <td>
+                          <%= if h.seating_arrangement.capacity_doubleu.nil? 
+                            '-'
+                          else
+                            h.seating_arrangement.capacity_doubleu
+                          end %>
+                        </td>
+                        <td>
+                          <%= if h.seating_arrangement.capacity_classroom.nil? 
+                            '-'
+                          else
+                            h.seating_arrangement.capacity_classroom
+                          end %>
+                        </td>
+                        <td>
+                          <%= if h.seating_arrangement.capacity_board.nil? 
+                            '-'
+                          else
+                            h.seating_arrangement.capacity_board
+                          end %>
+                        </td>
+                        <td>
+                          <%= if h.seating_arrangement.capacity_roundtable.nil? 
+                            '-'
+                          else
+                            h.seating_arrangement.capacity_roundtable
+                          end %>
+                        </td>
+                      </tr>
+                  <% end %>
+                <%end%>
             <% end %>
           </table>
         </div>
