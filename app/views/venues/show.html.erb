@@ -1,158 +1,125 @@
 <% content_for :title, "View Venue" %>
 <style type="text/css">
-  .modal {
-    width: 70%;
-    }
-  </style>
-<% @suitable = '' 
-@venue.suitable_events.each do |a| 
-    @suitable = @suitable+a.name+', ' 
-end%>
+	.modal{ width: 70%; }
+</style>
 
+<% 
+@suitable = ''
+@venue.suitable_events.each do |a|
+	@suitable = @suitable+a.name+', '
+end 
+%>
 
 <h4><%= @venue.name %>, <%= @venue.venue_type %></h4>
 <h6><%= @venue.address.address %>, <%= @venue.address.area %></h6>
 <div id="show_venue">
-  <div class="row-fluid">
-    <div class="span3 venue-img-div">
-      <%= unless @venue.base_image.nil? 
-        image_tag url_for(:controller => "venues", :action => "show_image", :id => @venue.id), :class => "view-venue-img"
-      else 
-       image_tag('venue.jpg', :class => "venue-img") 
-       end %>
-     </div>
-     <div class="span8 venue-amenities">
-      <p style="font-size:20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @venue.description %></p>
+	<div class="row-fluid">
+		<div class="span3 venue-img-div">
+			<%= unless @venue.base_image.nil?
+				image_tag url_for(:controller => "venues", :action => "show_image", :id => @venue.id), :class => "view-venue-img"
+			else
+				image_tag('venue.jpg', :class => "venue-img")
+			end
+			%>
+		</div>
+		<div class="span8 venue-amenities">
+			<p style="font-size:20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @venue.description %></p>
 
+			<div class="span4 amenities-div">
+				<ul>
+					<li>
+						<%= image_tag('capacity.jpg') + ' ' + @venue.min_capacity.to_s + '-' + @venue.max_capacity.to_s unless @venue.min_capacity.nil? %>
+					</li>
+					<li>
+						<%= if @venue.facility != nil && @venue.facility.has_parking?
+							image_tag('parking.png') + ' Valet Parking'
+						end 
+						%>
+					</li>
+					<li>
+						<%= if @venue.facility != nil && @venue.facility.is_alcohol_allowed?
+							image_tag('alcohol.png') + ' Alcohol allowed'
+						end 
+						%>
+					</li>
+					<li>
+						<%= if @venue.facility != nil && @venue.facility.has_bar?
+							image_tag('stage.jpg') + ' Stage available'
+						end 
+						%>
+					</li>
+				</ul>
+			</div>
 
-        <div class="span4 amenities-div">
-          <ul>
-            <li>
-              <%= unless @venue.min_capacity.nil? 
-                image_tag('capacity.jpg') + ' ' + @venue.min_capacity.to_s + '-' + @venue.max_capacity.to_s
-                end %>
-            </li>
-            <li>
-                <%= if @venue.facility != nil && @venue.facility.has_parking?
-                  image_tag('parking.png') + ' Valet Parking'
-                  end %>
-            </li>
-            <li>
-                <%= if @venue.facility != nil && @venue.facility.is_alcohol_allowed?
-                  image_tag('alcohol.png') + ' Alcohol allowed'
-                end %>
-            </li>
-            <li>
-                <%= if @venue.facility != nil && @venue.facility.has_bar?
-                  image_tag('stage.jpg') + ' Stage available'
-                end %>
-            </li>
-          </ul>
-        </div>
+			<div class="span4 amenities-div">
+				<ul>
+					<li>
+						<%= if @venue.facility != nil && @venue.facility.airconditioning?
+							image_tag('ac.jpg') + ' Air Conditioning'
+						end
+						%>
+					</li>
+					<li>
+						<%= if @venue.facility != nil && @venue.facility.has_dance_floor?
+							image_tag('dj.jpg') + ' Dance floor'
+						end
+						%>
+					</li>
+					<li>
+						<%= if @venue.rate != nil && @venue.rate.veg_plate_cost?
+							image_tag('veg.gif') + ' Cost/Plate Rs:' + @venue.rate.veg_plate_cost?
+						end 
+						%>
+					</li>
+					<li>
+						<%= if @venue.rate != nil && @venue.rate.nonveg_plate_cost?
+							image_tag('nv.png') + ' Cost/Plate Rs:' + @venue.rate.nonveg_plate_cost?
+						end 
+						%>
+					</li>    
+				</ul>
+			</div>
+		</div>
 
-        <div class="span4 amenities-div">
-          <ul>
-            <li>
-              <%= if @venue.facility != nil && @venue.facility.airconditioning?
-                image_tag('ac.jpg') + ' Air Conditioning'
-              end %>
-            </li>
-            <li>
-              <%= if @venue.facility != nil && @venue.facility.has_dance_floor?
-                image_tag('dj.jpg') + ' Dance floor'
-              end %>
-            </li>
-            <li>
-              <%= if @venue.rate != nil && @venue.rate.veg_plate_cost?
-                image_tag('veg.gif') + ' Cost/Plate Rs:' + @venue.rate.veg_plate_cost?
-              end %>
-            </li>
-            <li>
-              <%= if @venue.rate != nil && @venue.rate.nonveg_plate_cost?
-                image_tag('nv.png') + ' Cost/Plate Rs:' + @venue.rate.nonveg_plate_cost?
-              end %>
-            </li>    
-                
-        </div>
-      </div>
+	</div>
 
-    </div>
-    
-    <div class="row-fluid view-suit">
-      <%= unless @suitable == ''
-        content_tag(:span, 'Suitable for ' + @suitable[0..(@suitable.length-3)])  
-      end%>
-    </div>          
-        </br>
-<div class="row-fluid">
-        <div id="halls-div" class="span6">
-          <table id="halls" class="table table-bordered halls-table">
-            <tr>
-              <td>Hall name</td>
-              <td>Theatre</td>
-              <td>U-Shape</td>
-              <td>Double-U</td>
-              <td>Classroom</td>
-              <td>Board</td>
-              <td>Roundtable</td>
-            </tr>
-            <% @venue.halls.each do |h| %>
-            <% unless h.seating_arrangement.nil? %>
-            <tr>
-              <td><%= h.name %></td>
-              <td>
-                <%= if h.seating_arrangement.capacity_theatre.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_theatre
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_ushape.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_ushape
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_doubleu.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_doubleu
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_classroom.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_classroom
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_board.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_board
-                end %>
-              </td>
-              <td>
-                <%= if h.seating_arrangement.capacity_roundtable.nil? 
-                  '-'
-                else
-                  h.seating_arrangement.capacity_roundtable
-                end %>
-              </td>
-            </tr>
-            <% end %>
-            <% end %>
-          </table>
-        </div>
+	<div class="row-fluid view-suit">
+		<%= content_tag(:span, 'Suitable for ' + @suitable[0..(@suitable.length-3)]) unless @suitable == '' %>
+	</div>
+	<br />
+	<div class="row-fluid">
+		<div id="halls-div" class="span6">
+			<table id="halls" class="table table-bordered halls-table">
+				<tr>
+					<th>Hall name</th>
+					<th>Theatre</th>
+					<th>U-Shape</th>
+					<th>Double-U</th>
+					<th>Classroom</th>
+					<th>Board</th>
+					<th>Roundtable</th>
+				</tr>
+				<% @venue.halls.each do |h| %>
+				<% unless h.seating_arrangement.nil? %>
+				<tr>
+					<td><%= h.name %></td>
+					<td><%= h.seating_arrangement.capacity_theatre || '-' %></td>
+					<td><%= h.seating_arrangement.capacity_ushape || '-' %></td>
+					<td><%= h.seating_arrangement.capacity_doubleu || '-' %></td>
+					<td><%= h.seating_arrangement.capacity_classroom || '-' %></td>
+					<td><%= h.seating_arrangement.capacity_board || '-' %></td>
+					<td><%= h.seating_arrangement.capacity_roundtable || '-' %></td>
+				</tr>
+				<% end %>
+				<% end %>
+			</table>
+		</div>
 
-        <div class="span2 highlights-div">
-          <p style="font-size:18px; text-align:centre;">Highlights</p>
-          <% @venue.highlights.each do |h| %>
-            <label><%= h.highlight %></label>
-          <%end%>
-        </div>
-      </div>
+		<div class="span2 highlights-div">
+			<p style="font-size:18px; text-align:centre;">Highlights</p>
+			<% @venue.highlights.each do |h| %>
+			<label><%= h.highlight %></label>
+			<%end%>
+		</div>
+	</div>
 </div>

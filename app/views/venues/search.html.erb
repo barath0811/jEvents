@@ -14,10 +14,11 @@
 		<ul id="area">
 			<% @options.areas.each do |c| %>
 			<% text = c.first.to_s  # c.first or c[0] gives the text. %>
-			<li id="<%= text.gsub(/\s+/, "") %>" style="cursor:pointer;"> 
-				<label for=<%='chk_area_' + text.gsub(/\s+/, "")%>>
+			<% gen_id = text.gsub(/[\s\.]+/, "") %>
+			<li id="<%= gen_id %>" style="cursor:pointer;"> 
+				<label for=<%='chk_area_' + gen_id %> >
 					<a>
-						<%= check_box_tag 'chk_area_' + text.gsub(/\s+/, ""), text, (@selectedArea == text), :onchange => 'searchFired();' %>
+						<%= check_box_tag 'chk_area_' + gen_id, text, (@selectedArea == text), :onchange => 'searchFired();' %>
 						<span><%= text %> </span>
 					</a>
 				</label>
