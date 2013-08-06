@@ -25,7 +25,7 @@ group :development do
 end
 
 group :production do
-	# gem 'pg'
+	#gem 'pg' #uncomment this out for heroku
 end
 
 gem 'jquery-rails', '~> 3.0.1'
@@ -37,7 +37,7 @@ gem 'bootstrap-select-rails'
 gem 'client_side_validations', '~> 3.2.5'
 gem 'best_in_place'
 gem 'jquery-raty-rails' 
-
+gem 'rails3-jquery-autocomplete'
 
 # Authentication & OAuth
 gem 'devise', '~> 2.2.4'

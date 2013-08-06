@@ -1,16 +1,22 @@
 class Admin::VenuesController < Admin::AdminController
 	before_filter :authenticate_user!
 	load_and_authorize_resource
+
+	autocomplete :venue, :name, :display_value => :name
 	
 	def index
-		@venues = Venue.paginate(:page => params[:page], :per_page =>10).order(:name).includes(:contact, :address, :user)
-		
+		query = Venue.order(:name).includes(:contact, :address, :user)
+		query = query.where(:id => params[:venue_id]) unless params[:venue_id].nil?
+		@venues = query.paginate(:page => params[:page], :per_page =>10)
 
 		@plans = getPlans('Plan')
 		@all_plans = Array.new
 		@plans.each do |p|
 			@all_plans << [p.value.to_i, p.text]
 		end
+
+		@search_box_text = params[:search_box_text] || ''
+
 
 		@all_users = Array.new
 		User.select([:id, :email]).each do |user|

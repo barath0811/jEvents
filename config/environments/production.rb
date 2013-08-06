@@ -53,7 +53,7 @@ Jevents::Application.configure do
 
   # Send emails via Gmail
 
-  config.action_mailer.default_url_options = { :host => 'jollyeventz.com' }
+  config.action_mailer.default_url_options = { :host => 'www.jollyeventz.com' }
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.delivery_method = :smtp
@@ -64,7 +64,8 @@ Jevents::Application.configure do
     :user_name            => ENV['ADMIN_EMAIL_USER'],
     :password             => ENV['ADMIN_EMAIL_PASSWORD'],
     :authentication       => :login,
-    :enable_starttls_auto => true  }
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => 'none'  }
 
   # Enable threaded mode
   # config.threadsafe!

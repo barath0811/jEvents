@@ -59,7 +59,7 @@ class Venue < ActiveRecord::Base
   	end
 
 	def self.search(query)
-		venue_results = joins(:address).includes(:address, :facility, :suitable_events).where('is_approved=1')
+		venue_results = joins(:address).includes(:address, :facility, :suitable_events).where(:is_approved => true)
 
 		unless query.areas.count == 0
 			venue_results = venue_results.joins(:address).includes(:address)
@@ -67,7 +67,7 @@ class Venue < ActiveRecord::Base
         end
 
 		query.amenities_val.each do |a|      
-			venue_results =	venue_results.joins(:facility).where('facilities.' + a => 1) 
+			venue_results =	venue_results.joins(:facility).where('facilities.' + a => true) 
 		end
 
 		query.eventType.each do |a| 
