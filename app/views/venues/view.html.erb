@@ -53,7 +53,7 @@ end%>
                 end %>
             </li>
             <li>
-                <%= if @venue.facility != nil && @venue.facility.has_bar?
+                <%= if @venue.facility != nil && @venue.facility.has_stage?
                   image_tag('stage.jpg') + ' Stage available'
                 end %>
             </li>
