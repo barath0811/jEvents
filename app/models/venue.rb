@@ -4,7 +4,7 @@ class Venue < ActiveRecord::Base
 					
 					:num_halls, :min_capacity, :max_capacity,
 					:is_approved, :view_available, :booking_available, :enquiry_available,
-					:rating, :review_count,:rating_count,
+					:rating, :review_count, :rating_count, :plan,
 
 					:user_id,
 					:address_attributes,
@@ -16,9 +16,6 @@ class Venue < ActiveRecord::Base
 					:highlights_attributes,
 					:reviews_attributes,
 					:ratings_attributes
-
-
-
 
 	#associations
 	belongs_to :user
@@ -59,7 +56,7 @@ class Venue < ActiveRecord::Base
   	end
 
 	def self.search(query)
-		venue_results = joins(:address).includes(:address, :facility, :suitable_events).where('is_approved=1')
+		venue_results = joins(:address).includes(:address, :facility, :suitable_events).where(:is_approved => true).order("plan desc")
 
 		unless query.areas.count == 0
 			venue_results = venue_results.joins(:address).includes(:address)
@@ -67,7 +64,7 @@ class Venue < ActiveRecord::Base
         end
 
 		query.amenities_val.each do |a|      
-			venue_results =	venue_results.joins(:facility).where('facilities.' + a => 1) 
+			venue_results =	venue_results.joins(:facility).where('facilities.' + a => true) 
 		end
 
 		query.eventType.each do |a| 

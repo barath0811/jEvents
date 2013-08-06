@@ -1,6 +1,7 @@
 <% content_for :title, "Search" %>
 
 <% @options = populateSearchCriteria %>
+<% @options.areas.shift #Removes first element from array, which is "All areas" %>
 <% @budget = getBudgetOrCapacity('Budget') %>
 <% @capacity = getBudgetOrCapacity('Capacity') %>
 <% @selectedArea = @query.areas.first %>
@@ -12,11 +13,12 @@
 
 		<ul id="area">
 			<% @options.areas.each do |c| %>
-			<li id="<%= c.to_s.gsub(/\s+/, "") %>" style="cursor:pointer;"> 
-				<label for=<%='chk_area_' + c.to_s.gsub(/\s+/, "")%>>
+			<% text = c.first.to_s  # c.first or c[0] gives the text. %>
+			<li id="<%= text.gsub(/\s+/, "") %>" style="cursor:pointer;"> 
+				<label for=<%='chk_area_' + text.gsub(/\s+/, "")%>>
 					<a>
-						<%= check_box_tag 'chk_area_' + c.to_s.gsub(/\s+/, ""), c.to_s, (@selectedArea == c), :onchange => 'searchFired();' %>
-						<span><%= c %> </span>
+						<%= check_box_tag 'chk_area_' + text.gsub(/\s+/, ""), text, (@selectedArea == text), :onchange => 'searchFired();' %>
+						<span><%= text %> </span>
 					</a>
 				</label>
 			</li>

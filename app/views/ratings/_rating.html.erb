@@ -1,3 +1,5 @@
-<span id='rating-summary'>
-	<%=number_with_precision(@venue.rating, :precision => 2) %> From <%=@venue.rating_count%> users.
-</span>
+<% unless @venue.rating_count.nil? %>
+	<span id='rating-summary'>
+		<%=number_with_precision(@venue.rating, :precision => 2) %> From <%=@venue.rating_count%> users.
+	</span>
+<%end%>

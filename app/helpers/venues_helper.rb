@@ -10,10 +10,9 @@ module VenuesHelper
 		file = File.new("app/assets/xml/Properties.xml")
 		doc = REXML::Document.new file
 		
+		query.areas << ['All areas', '']
 		doc.elements.each('//Area/option') do |ele|
-			# JeventzLogger.debug "#{query.inspect}"
-			# JeventzLogger.debug ele.text
-			query.areas << ele.text
+			query.areas << [ele.text, ele.text]  #Now the options are text-value pairs.
 		end
 
 		doc.elements.each('//Meal/option') do |ele|
@@ -27,6 +26,7 @@ module VenuesHelper
 		doc.elements.each('//Capacity/option') do |ele|
 			query.capacity << ele.text
 		end
+
 		doc.elements.each('//Amenities/option') do |ele|
 			query.amenities_name << ele.text
 		end
@@ -43,7 +43,6 @@ module VenuesHelper
 			query.eventType << ele.text
 		end
 
-		#JeventzLogger.debug "query == #{query.inspect}"
 		return query
 
 	end

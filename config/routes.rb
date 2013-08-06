@@ -1,7 +1,7 @@
 Jevents::Application.routes.draw do
 
   match '/profiles/dashboard' => 'profiles#dashboard', :as => :user_root
-
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
   resources :profiles, :only => [:dashboard]
@@ -11,10 +11,15 @@ Jevents::Application.routes.draw do
   namespace :admin do
     match '/' => 'admin#index'
     resources :users
-    resources :venues, :only => [:index, :destroy]
-    resources :venue_requests, :only => [:index, :destroy]
-    resources :feedbacks, :only => [:index, :destroy]
-    resources :showcases, :only => [:index, :update]
+    resources :venues,          :only => [:index, :destroy] do
+      get :autocomplete_venue_name, :on => :collection
+    end
+    resources :reviews,         :only => [:index, :destroy] do
+      match :verify, :on => :member
+    end
+    resources :venue_requests,  :only => [:index, :destroy]
+    resources :feedbacks,       :only => [:index, :destroy]
+    resources :showcases,       :only => [:index, :update]
   end
   
   resources :venues, :except => [:destroy] do
