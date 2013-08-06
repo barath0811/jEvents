@@ -65,3 +65,5 @@ gem 'capistrano'
 
 # To Paginate
 gem 'will_paginate', '~> 3.0.4'
+
+gem 'sitemap_generator', '~> 4.1.1'
