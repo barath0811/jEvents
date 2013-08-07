@@ -32,6 +32,13 @@
 	</div>
 </div>
 <br />
+<div id="venuePaymentPolicy" class="roundedBorder">
+	<div class="field">
+		<%= f.label(:payment_policy, "Mention the payment, cancellation and refund policies of your venue:") %>
+		<%= f.text_area(:payment_policy, :rows => 10, :class => "field span12") %>
+	</div>
+</div>
+<br />
 <div class="actions">
 	<%= f.submit "Save Changes", :class => "btn btn-success fr" %>
 </div>
