@@ -67,7 +67,7 @@ end
 		end 
 		%>
 		<div style="margin-left:190px">
-			<h3><%= link_to(c.name + c.venue_type, venue_path(c), :rel => "modal:open", :id=>"show_modal")%></h3>
+			<h3><%= link_to(c.name + ' | ' + c.venue_type, venue_path(c), :rel => "modal:open", :id=>"show_modal")%></h3>
 			<div>
 				<%= if c.facility != nil && c.facility.has_parking?
 					image_tag('parking.png', :class => "venue-icons")
@@ -98,7 +98,7 @@ end
 			</div>
 			<% end %>
 			<% unless c.num_halls.nil? %>
-			<p class="numRooms"><%= c.num_halls %> halls</p><br />
+			<p class="numRooms"><%= pluralize(c.num_halls, "hall") %></p><br />
 			<% end %>
 		</div>
 	</div>
