@@ -348,3 +348,7 @@ label span input {
 */
 #show_modal.modal { width: 70%; }
 #show_venue.modal{ width: 70%; }
+
+.query_title{
+  font-weight: bold;
+}

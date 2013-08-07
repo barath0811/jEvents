@@ -4,3 +4,5 @@ Disallow: /users/
 Disallow: /profiles/
 Disallow: /venue_requests/
 Disallow: /feedbacks/
+
+Sitemap: http://www.jollyeventz.com/sitemap.xml.gz
