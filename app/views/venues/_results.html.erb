@@ -4,17 +4,18 @@
 <%= hidden_field_tag 'total_count', @count %>
 
 <div class="navigation">
+	<%= (((@query.page_number.to_i-1)*10)+1).to_s + ' to ' +  [@query.page_number.to_i*10, @count].min.to_s + ' of ' + @count.to_s  unless @count == 0 %>
 	<% if @count > 10%>
-	<% if @query.page_number.to_i == 1 %>
-	<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;">&lt; Prev</a>
-	<% else %>
-	<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
-	<% end %>
-	<% if (@query.page_number.to_i*10)>=@count %>
-	<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;" >Next &gt;</a>
-	<% else %>
-	<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
-	<% end %>
+		<% if @query.page_number.to_i == 1 %>
+			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;">&lt; Prev</a>
+		<% else %>
+			<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
+		<% end %>
+		<% if (@query.page_number.to_i*10)>=@count %>
+			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;" >Next &gt;</a>
+		<% else %>
+			<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
+		<% end %>
 	<% end%>
 </div>
 <div class="query_param_div">
