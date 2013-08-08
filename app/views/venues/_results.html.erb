@@ -71,19 +71,19 @@ end
 			<h3><%= link_to(c.name + c.venue_type, venue_path(c), :rel => "modal:open", :id=>"show_modal")%></h3>
 			<div>
 				<%= if c.facility != nil && c.facility.has_parking?
-					image_tag('parking.png', :class => "venue-icons")
+					image_tag('parking.png', :class => "venue-icons", :title=>'Parking', :alt=>'Parking')
 				end 
 				%>
 				<%= if c.facility != nil && c.facility.is_nonveg_allowed?
-					image_tag('nv.png', :class => "venue-icons")
+					image_tag('nv.png', :class => "venue-icons", :title=>'Non-veg', :alt=>'Non-veg')
 				end 
 				%>
 				<%= if c.facility != nil && c.facility.is_alcohol_allowed?
-					image_tag('alcohol.png', :class => "venue-icons")
+					image_tag('alcohol.png', :class => "venue-icons", :title=>'Alcohol', :alt=>'Alcohol')
 				end 
 				%>
 				<%= if c.facility != nil && c.facility.has_buffet?
-					image_tag('restaurant.png', :class => "venue-icons")
+					image_tag('restaurant.png', :class => "venue-icons", :title=>'Restaurant', :alt=>'Restaurant')
 				end 
 				%>
 			</div>
