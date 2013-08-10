@@ -84,9 +84,12 @@ class HallsController < ApplicationController
 		@hall.destroy
 		flash[:notice] = "Function space deleted successfully"
 
+    @halls = @venue.halls.all
+		@hall = Hall.new
+    
 		respond_to do |format|
-			format.html { redirect_to halls_url }
-			format.json { head :no_content }
+			format.js
+			#format.json { head :no_content }
 		end
 	end
 

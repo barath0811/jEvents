@@ -17,6 +17,7 @@
 		<td><%= hall.pricing_mode %></td>
 		<td><%= hall.hall_rent %></td>
 		<td><%= link_to 'Edit Hall', edit_venue_hall_path(@venue, hall), :remote => true, :class => 'hallFormLnk' %></td>
+                <td><%= link_to 'Delete Hall', venue_hall_path(@venue, hall), method: :delete, :remote => true%></td>
 	</tr>
 	<% end %>
 	<% end %>

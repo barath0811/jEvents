@@ -28,8 +28,10 @@
 		<label class="control-label">Suitable for:</label>
 		<div class="controls">
 			<% @eventTypes.each do |evnt| %>
-			<%= check_box_tag 'event_types[]', evnt, @selected_event_types.include?(evnt), :class => "checkbox inline" %>
-			<%= evnt.humanize %>
+                          <div class="span5">
+                            <%= check_box_tag 'event_types[]', evnt, @selected_event_types.include?(evnt), :class => "checkbox inline" %>
+                            <%= evnt.humanize %>
+                          </div>
 			<% end %>
 		</div>
 	</div>
