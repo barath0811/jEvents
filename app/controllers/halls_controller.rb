@@ -50,7 +50,7 @@ class HallsController < ApplicationController
 
 		respond_to do |format|
 			if @hall.save
-				capacity = findMinMaxCap(@hall.seating_arrangement)
+				capacity = findMinMaxCap(@venue.halls)
 				num_halls = @venue.halls.size
 				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1], :num_halls => num_halls)
 				
@@ -67,7 +67,7 @@ class HallsController < ApplicationController
 
 		respond_to do |format|
 			if @hall.update_attributes(params[:hall])
-				capacity = findMinMaxCap(@hall.seating_arrangement)
+				capacity = findMinMaxCap(@venue.halls)
 				num_halls = @venue.halls.size
 				@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1], :num_halls => num_halls)
 				
@@ -82,6 +82,11 @@ class HallsController < ApplicationController
 	def destroy
 		@hall = Hall.find(params[:id])
 		@hall.destroy
+    
+    capacity = @venue.halls.size == 0 ? [nil, nil] : findMinMaxCap(@venue.halls)
+    num_halls = @venue.halls.size == 0 ? nil : @venue.halls.size
+		@venue.update_attributes(:min_capacity =>  capacity[0], :max_capacity =>  capacity[1], :num_halls => num_halls)
+    
 		flash[:notice] = "Function space deleted successfully"
 
     @halls = @venue.halls.all
@@ -94,19 +99,17 @@ class HallsController < ApplicationController
 	end
 
 	private
-	def findMinMaxCap(seating)
-		if seating.nil?
-			return [0, 0]
-		end
-
-		seats = Array.new
-		seats << 0
-		seats << seating.capacity_theatre unless seating.capacity_theatre.nil?
-		seats << seating.capacity_ushape unless seating.capacity_ushape.nil?
-		seats << seating.capacity_doubleu unless seating.capacity_doubleu.nil?
-		seats << seating.capacity_classroom unless seating.capacity_classroom.nil?
-		seats << seating.capacity_board unless seating.capacity_board.nil?
-		seats << seating.capacity_roundtable unless seating.capacity_roundtable.nil?
+	def findMinMaxCap(halls)
+    seats = Array.new
+    
+    halls.each do |h|
+      seats << h.seating_arrangement.capacity_theatre unless h.seating_arrangement.capacity_theatre.nil?
+      seats << h.seating_arrangement.capacity_ushape unless h.seating_arrangement.capacity_ushape.nil?
+      seats << h.seating_arrangement.capacity_doubleu unless h.seating_arrangement.capacity_doubleu.nil?
+      seats << h.seating_arrangement.capacity_classroom unless h.seating_arrangement.capacity_classroom.nil?
+      seats << h.seating_arrangement.capacity_board unless h.seating_arrangement.capacity_board.nil?
+      seats << h.seating_arrangement.capacity_roundtable unless h.seating_arrangement.capacity_roundtable.nil?
+    end
 
 		return seats.minmax
 	end

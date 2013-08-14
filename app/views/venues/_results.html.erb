@@ -89,7 +89,7 @@ end
 			<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
 
 			<% unless c.min_capacity.nil? %>
-			<p class="capacity">Capacity &nbsp;&nbsp;<%= c.min_capacity %>&nbsp;-&nbsp;<%= c.max_capacity %></p>
+			<p class="capacity">Capacity :&nbsp;&nbsp;Upto&nbsp;<%= c.max_capacity %></p>
 			<% end %>
 			<p class="address">Landmark : <%= c.address.landmark %></p>
 			<% if c.view_available %>

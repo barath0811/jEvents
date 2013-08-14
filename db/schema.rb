@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806132058) do
+ActiveRecord::Schema.define(:version => 20130810112029) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -115,12 +115,14 @@ ActiveRecord::Schema.define(:version => 20130806132058) do
 
   create_table "rates", :force => true do |t|
     t.integer  "venue_id"
-    t.decimal  "veg_plate_cost",    :precision => 10, :scale => 0
-    t.decimal  "nonveg_plate_cost", :precision => 10, :scale => 0
-    t.decimal  "min_total_budget",  :precision => 10, :scale => 0
-    t.decimal  "max_total_budget",  :precision => 10, :scale => 0
+    t.decimal  "veg_plate_cost",    :precision => 6,  :scale => 2
+    t.decimal  "nonveg_plate_cost", :precision => 6,  :scale => 2
+    t.decimal  "min_total_budget",  :precision => 10, :scale => 2
+    t.decimal  "max_total_budget",  :precision => 10, :scale => 2
     t.datetime "created_at",                                       :null => false
     t.datetime "updated_at",                                       :null => false
+    t.decimal  "snack_plate_cost",  :precision => 6,  :scale => 2
+    t.decimal  "drinks_cost",       :precision => 6,  :scale => 2
   end
 
   add_index "rates", ["venue_id"], :name => "index_rates_on_venue_id"

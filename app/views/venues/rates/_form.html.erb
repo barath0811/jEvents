@@ -12,18 +12,32 @@
 		<%= r.label(:nonveg_plate_cost, "Cost/non-veg plate:", class:"control-label") %>
 		<div class="controls"><%= r.text_field :nonveg_plate_cost %></div>
 	</div>
-
+  
 	<div class="control-group">
-		<%= r.label(:min_total_budget, "Min budget:", class:"control-label") %>
-		<div class="controls"><%= r.text_field :min_total_budget %></div>
+		<%= r.label(:snack_plate_cost, "Cost/snack plate:", class:"control-label") %>
+		<div class="controls"><%= r.text_field :snack_plate_cost %></div>
+	</div>
+  
+	<div class="control-group">
+		<%= r.label(:drinks_cost, "Cost/drink:", class:"control-label") %>
+		<div class="controls"><%= r.text_field :drinks_cost %></div>
 	</div>
 
-	<div class="control-group">
-		<%= r.label(:max_total_budget, "Max budget:", class:"control-label") %>
-		<div class="controls"><%= r.text_field :max_total_budget %></div>
-	</div>
-	<% end %>
+	<%#*<div class="control-group">%>
+		<%#= r.label(:min_total_budget, "Min budget:", class:"control-label") %>
+		<%#*<div class="controls">%>
+                  <%#= r.text_field :min_total_budget %>
+                <%#*</div>%>
+	<%#*</div>%>
+
+	<%#*<div class="control-group">%>
+		<%#= r.label(:max_total_budget, "Max budget:", class:"control-label") %>
+		<%#*<div class="controls">%>
+                  <%#= r.text_field :max_total_budget %>
+                <%#*</div>%>
+	<%#*</div>%>	
 </div>
+<% end %>
 <br />
 <div id="venueTermsContent" class="roundedBorder">
 	<div class="field">
