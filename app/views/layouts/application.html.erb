@@ -1,4 +1,4 @@
-<!DOCTYPE html xmlns:fb="https://www.facebook.com/2008/fbml">
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -10,14 +10,8 @@
 	<meta name="description" content="Search and book venues and halls for birthdays, weddings, conferences and meetings in Chennai" />
 	<meta name="keywords" content="Book venues Chennai, find venue Chennai, Wedding venue Chennai, Birthday event Chennai, book conferece room" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-	<!-- Facebook OpenGraph stuff -->
-	<meta property="og:title" content="JollyEventz" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.jollyeventz.com/" />
-    <meta property="og:site_name" content="JollyEventz" />
-    <meta property="og:description" content="Spending too much time searching for a venue? Relax, we'll find the right place for any event!" />
-	<meta property="fb:app_id" content="<%= ENV["FACEBOOK_ID"] %>" />
+	
+	<%= content_for?(:head) ? yield(:head) : '' %>
 
 	<%= stylesheet_link_tag    	"application", :media => "all" %>
 
