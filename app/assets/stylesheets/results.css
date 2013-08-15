@@ -356,3 +356,7 @@ label span input {
 .query_title{
   font-weight: bold;
 }
+
+.cp{
+  cursor:pointer;
+}
