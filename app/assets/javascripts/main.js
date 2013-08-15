@@ -1,6 +1,7 @@
 window.fbAsyncInit = function() {
 	FB.init({
-		appId: '337836476319124', 
+		appId: '498115793608570',
+		channelUrl : '//www.jollyeventz.com/channel.html',
 		status: true, 
 		cookie: true,
 		xfbml: true

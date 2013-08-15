@@ -1,0 +1,6 @@
+<% if current_user.nil? %>
+    <%= link_to "Login to recommend this venue", new_user_session_path, :rel => "modal:open", :id => "login-form" %></br></br>
+<%else%>
+    <button id="reco_venue" class="btn fr">Recommend this venue!</button>
+    <div id="reco_venue_result" class="fr"></div>
+<%end%>
