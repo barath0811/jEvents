@@ -1,3 +1,19 @@
+<% content_for :head do %>
+    <!-- Facebook OpenGraph stuff -->
+    <meta property="fb:app_id" content="<%= ENV["FACEBOOK_ID"] %>" />
+    <meta property="og:title" content="<%= @venue.name %>" />
+    <meta property="og:site_name" content="JollyEventz" />
+    <meta property="og:description" content="<%= @venue.description %>" />
+    <meta property="og:type" content="<%= ENV['FACEBOOK_APP_DOMAIN'] %>:venue" />
+    <%  if @venue.images.count==0 
+          imageurl = '/venue.jpg'
+        else
+          imageurl = url_for(:controller => 'venues', :action => 'show_image', :image_id => @venue.images[0].id)
+        end 
+    %>
+    <meta property="og:image" content="<%= 'http://3kwd.localtunnel.com'+ imageurl %>" />
+<% end %>
+
 <% @suitable = '' 
 @venue.suitable_events.each do |a| 
     @suitable = @suitable+a.name+', ' 
@@ -9,11 +25,12 @@ end%>
     <h4><%= @venue.name %>, <%= @venue.venue_type %></h4>
     <h6><%= @venue.address.address %>, <%= @venue.address.area %></h6>
   </div>
+
+  <div class="fb-like fr" data-width="250" data-action="recommend" data-show-faces="true"></div>
   <div id="rating-div">
     <div id="star"></div>
     <%= render partial: 'ratings/rating', locals: { :venues => @venue } %>
   </div>
-  <button id="reco_venue" class="btn fr">Recommend this venue!</button>
 </div>
 <div id="show_venue">
   <div class="row-fluid">
@@ -170,7 +187,6 @@ end%>
         <%end%>
       </div></br>
 
-      
       <div id="reviews_div">
           <div id="new-review">
             <%= render partial: 'reviews/form', locals: { :venues => @venue, :review => @review } %>

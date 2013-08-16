@@ -3,48 +3,53 @@ $(document).ready(function(){
 		return false;
 	});
 
-	// $('.ajax_form').submit(function() {
-	// 	alert('submitting...');
-	//     var valuesToSubmit = $(this).serialize();
-	//     var fileToSubmit = $(":base_image", this).serialize();
-
-	//     $.ajax({
-	//         url: $(this).attr('action'),
-	//         type: "POST",
-	//         data: valuesToSubmit,
-	//         file: fileToSubmit,
-	//         dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
-	//     }).success(function(json){
-	//     	alert('saved successfully');
-	//         showMessage('Saved successfully...', 'success');
-	//     }).error(function(json){
-
-	//     });
-	//     return false; // prevents normal behaviour
-	// });
-	
 	$('#star').raty({
 		score: function() {
-		    return $('#rating:hidden').attr('value');
-		  },
-	  click: function(score, evt) {
-	  	rate(score, evt);
-	  }
+			return $('#rating:hidden').attr('value');
+		},
+		click: function(score, evt) {
+			rate(score, evt);
+		}
 	});
+
+	/*
+	$('#reco_venue').on('click', function(evt){
+		FB.api(
+			'https://graph.facebook.com/me/jollyeventz_dev:recommend',
+			'post',
+			{
+				venue:'http://48sn.localtunnel.com/venues/view?venue=1',
+				title: 'Sample Venue 1',
+				'fb:explicitly_shared': true,
+				privacy: {'value': 'SELF'}
+			},
+			function(response){
+				if (!response) {
+					$('#reco_venue_result').html('Error occurred.');
+				} else if (response.error) {
+					$('#reco_venue_result').html('Error: ' + response.error.message);
+				} else {
+					$('#reco_venue_result').html('<a href=\"https://www.facebook.com/me/activity/' + response.id + '\">' +
+					'Story created.  ID is ' + response.id + '</a>');
+				}
+			}
+		);
+	});
+	*/
 });
 
 function rate(score, evt){
 	var venue_id = $('#venue_id:hidden').attr('value');
 	$.ajax({
-			url: "/ratings/rate",
-			type: "POST",
-			data: {id:$(this).attr('id'), rating:score, venue_id:venue_id  },
-			success: function(data) {
-			},
-			error: function(XMLHttpRequest, textStatus, errorThrown){
-				alert(textStatus + errorThrown);
-			}
-		});
+		url: "/ratings/rate",
+		type: "POST",
+		data: {id:$(this).attr('id'), rating:score, venue_id:venue_id  },
+		success: function(data) {
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown){
+			alert(textStatus + errorThrown);
+		}
+	});
 }
 
 function createSearchParams(entity, value){
