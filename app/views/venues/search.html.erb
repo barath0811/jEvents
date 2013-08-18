@@ -5,71 +5,102 @@
 <% @budget = getBudgetOrCapacity('Budget') %>
 <% @capacity = getBudgetOrCapacity('Capacity') %>
 <% @selectedArea = @query.areas.first %>
-
+<% @featuredVenues = Venue.featured_venues() %>
 <div class="row">
 	<div class="filters span2" style="margin-top:5em;">
-		<h5>Areas</h5>
-		<input class="span2" type="text" id="areaSearchKey" onkeyup='textChanged(<%= raw @options.areas %>)' />
+		<div id="areas_header_div" class="cp"><h5>Areas</h5></div>
+		<div id="areas_div">
+			<input class="span2" type="text" id="areaSearchKey" onkeyup='textChanged("area")' />
 
-		<ul id="area">
-			<% @options.areas.each do |c| %>
-			<% text = c.first.to_s  # c.first or c[0] gives the text. %>
-			<% gen_id = text.gsub(/[\s\.]+/, "") %>
-			<li id="<%= gen_id %>" style="cursor:pointer;"> 
-				<label for=<%='chk_area_' + gen_id %> >
-					<a>
-						<%= check_box_tag 'chk_area_' + gen_id, text, (@selectedArea == text), :onchange => 'searchFired();' %>
-						<span><%= text %> </span>
-					</a>
-				</label>
-			</li>
-			<% end %>
-		</ul>
+			<ul id="area">
+				<% @options.areas.each do |c| %>
+					<% text = c.first.to_s  # c.first or c[0] gives the text. %>
+					<% gen_id = text.gsub(/[\s\.]+/, "") %>
+					<li id="<%= gen_id %>" style="cursor:pointer;"> 
+						<label for=<%='chk_area_' + gen_id %> >
+							<a>
+								<%= check_box_tag 'chk_area_' + gen_id, text, (@selectedArea == text), :onchange => 'searchFired();' %>
+								<span id="<%= 'span_area_' + gen_id %>"><%= text %> </span>
+							</a>
+						</label>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+		<hr />
 
-		<h5>Capacity</h5>
-		<ul id='cap'>
-			<%  @capacity.each do |c| %>
-			<li id="<%= c.text.gsub(/\s+/, "") %>"> 
-				<label for=<%='chk_cap_' + c.text.gsub(/\s+/, "")%>> 
-					<a>
-						<%= check_box_tag 'chk_cap_' + c.text.gsub(/\s+/, ""), c.text, false, :onclick => 'searchFired();' %> 
-						<span><%= c.text %> </span>
-					</a>
-				</label>
-			</li>
-			<% end %>
-		</ul>
+		<div id="venues_header_div" class="cp"><h5>Featured Venues</h5></div>
+		<div id="venues_div">
+			<input class="span2" type="text" id="venuesSearchKey" onkeyup='textChanged("venues")' />
+
+			<ul id="venues">
+				<% @featuredVenues.each do |f| %>
+					<% text = f.name.to_s  # c.first or c[0] gives the text. %>
+					<% gen_id = text.gsub(/[\s\.]+/, "") %>
+					<li id="<%= gen_id %>" style="cursor:pointer;"> 
+						<label for=<%='chk_venues_' + gen_id %> >
+							<a>
+								<%= check_box_tag 'chk_venues_' + gen_id, f.id, false, :onchange => 'searchFired();' %>
+								<span id="<%= 'span_venues_' + gen_id %>"><%= text %> </span>
+							</a>
+						</label>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+		<hr />
+
+		<div id="capacity_header_div" class="cp"><h5>Capacity</h5></div>
+		<div id="capacity_div">
+			<ul id='cap'>
+				<%  @capacity.each do |c| %>
+				<li id="<%= c.text.gsub(/\s+/, "") %>"> 
+					<label for=<%='chk_cap_' + c.text.gsub(/\s+/, "")%>> 
+						<a>
+							<%= check_box_tag 'chk_cap_' + c.text.gsub(/\s+/, ""), c.text, false, :onclick => 'searchFired();' %> 
+							<span><%= c.text %> </span>
+						</a>
+					</label>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<hr />
 		<%if 1 ==2 %>
-		<h5>Budget</h5>
-		<ul id='bud'>
-			<%  @budget.each do |b| %>
+		<div id="budget_header_div" class="cp"><h5>Budget</h5></div>
+		<div id="budget_div">
+			<ul id='bud'>
+				<%  @budget.each do |b| %>
 
-			<li id="<%= b.text.gsub(/\s+/, "") %>"> 
-				<label for=<%='chk_bud_' + b.text.gsub(/\s+/, "")%>>
-					<%= check_box_tag 'chk_bud_' + b.text.gsub(/\s+/, ""), b.text, false, :onclick => 'searchFired();' %> 
-					<a>
-						<span><%= b.text %> </span>
-					</a>
-				</label>
-			</li>
-			<% end %>
-		</ul>
+				<li id="<%= b.text.gsub(/\s+/, "") %>"> 
+					<label for=<%='chk_bud_' + b.text.gsub(/\s+/, "")%>>
+						<%= check_box_tag 'chk_bud_' + b.text.gsub(/\s+/, ""), b.text, false, :onclick => 'searchFired();' %> 
+						<a>
+							<span><%= b.text %> </span>
+						</a>
+					</label>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<hr />
 		<% end %>
 
-		<h5>Amenities</h5>
-		<ul id='am'>
-			<%  @options.amenities_name.each_with_index do |a, index| %>
-			<li id="<%= a.to_s.gsub(/\s+/, "") %>"> 
-				<label for=<%='chk_am_' + a.to_s.gsub(/\s+/, "")%>>
-					<%= check_box_tag 'chk_am_' + a.to_s.gsub(/\s+/, ""), @options.amenities_val[index], false, :onclick => 'searchFired();' %> 
-					<a>
-						<span><%= a %> </span>
-					</a>
-				</label>
-			</li>
-			<% end %>
-		</ul>
-
+		<div id="amenities_header_div" class="cp"><h5>Amenities</h5></div>
+		<div id="amenities_div">
+			<ul id='am'>
+				<%  @options.amenities_name.each_with_index do |a, index| %>
+				<li id="<%= a.to_s.gsub(/\s+/, "") %>"> 
+					<label for=<%='chk_am_' + a.to_s.gsub(/\s+/, "")%>>
+						<%= check_box_tag 'chk_am_' + a.to_s.gsub(/\s+/, ""), @options.amenities_val[index], false, :onclick => 'searchFired();' %> 
+						<a>
+							<span><%= a %> </span>
+						</a>
+					</label>
+				</li>
+				<% end %>
+			</ul>
+		</div>
 
 	</div>
 	<%= select_tag(:eventType, options_for_select(@options.eventType, @query.eventType), {:style => "float:right", :onchange => 'searchFired();'}) %>

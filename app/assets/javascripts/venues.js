@@ -3,6 +3,26 @@ $(document).ready(function(){
 		return false;
 	});
 
+	$('#areas_header_div').click(function(){
+		$('#areas_div').slideToggle('slow', function(){
+		});
+	});
+
+	$('#capacity_header_div').click(function(){
+		$('#capacity_div').slideToggle('slow', function(){
+		});
+	});
+
+	$('#amenities_header_div').click(function(){
+		$('#amenities_div').slideToggle('slow', function(){
+		});
+	});
+
+	$('#venues_header_div').click(function(){
+		$('#venues_div').slideToggle('slow', function(){
+		});
+	});
+
 	$('#star').raty({
 		score: function() {
 			return $('#rating:hidden').attr('value');
@@ -85,6 +105,7 @@ function searchFired(page_num){
 	var amn = createSearchParams('am', 2);
 	var cap = createSearchParams('cap', 1);
 	var mo = createSearchParams('meal', 1);
+	var ven = createSearchParams('venues', 1);
 	var et = $("#eventType option:selected").val();
 	var page = page_num ? page_num : 1;
 
@@ -94,7 +115,7 @@ function searchFired(page_num){
 	$.ajax({
 		url: "/venues/search",
 		type: "POST",
-		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, po:true, page:page },
+		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, venues:ven, po:true, page:page },
 		success: function(data) {
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 
@@ -105,12 +126,13 @@ function searchFired(page_num){
 }
 
 //TODO: use JOLLY.venues.textChanged = function(){...} format
-function textChanged(areas){
-	var searchKey = document.getElementById("areaSearchKey").value.toLowerCase();
+function textChanged(option){
+	var element = option + "SearchKey";
+	var searchKey = document.getElementById(element).value.toLowerCase();
 
-	$('ul#area li').each(function(i){
-		var id = '#chk_area_' + $(this).attr('id');
-		var element = $(id).attr('value').toLowerCase();
+	$('ul#'+option+' li').each(function(i){
+		var id = '#span_'+option+'_' + $(this).attr('id');
+		var element = $(id).text().toLowerCase();
 		
 		if (element.indexOf(searchKey) !=-1)
 			$(this).show();

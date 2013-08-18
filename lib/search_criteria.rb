@@ -1,5 +1,6 @@
 class SearchCriteria
-	attr_accessor :areas, :mealOptions, :capacity, :budget, :amenities_name, :amenities_val, :rating, :eventType, :page_number
+	attr_accessor :areas, :mealOptions, :capacity, 
+	:budget, :amenities_name, :amenities_val, :rating, :eventType, :page_number, :venues
 	
 	def initialize
 		@areas = []
@@ -10,6 +11,7 @@ class SearchCriteria
 		@amenities_val = []
 		@rating = []
 		@eventType = []
+		@venues = []
 	end
 end
 
