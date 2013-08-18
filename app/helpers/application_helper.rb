@@ -39,6 +39,10 @@ module ApplicationHelper
 		return options
 	end
 
+	def get_featured_venues
+		Venue.featured_venues
+	end
+
 	def getPlans(optionName)
 		file = File.new("app/assets/xml/Properties.xml")
 		doc = REXML::Document.new file

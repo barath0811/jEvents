@@ -55,12 +55,20 @@ class Venue < ActiveRecord::Base
     	write_attribute(:base_image, value.read)
   	end
 
+  	def self.featured_venues
+  		where("plan > 10").select("name, id").order(:name)
+  	end
+
 	def self.search(query)
 		venue_results = joins(:address).includes(:address, :facility, :suitable_events).where(:is_approved => true).order("plan desc")
 
 		unless query.areas.count == 0
 			venue_results = venue_results.joins(:address).includes(:address)
             venue_results = venue_results.joins("join areas on areas.area2 = addresses.area").where('areas.area1' => query.areas).where('areas.distance <= 5').order("distance")
+        end
+
+        unless query.venues.count == 0
+        	venue_results = venue_results.where(:id => query.venues)
         end
 
 		query.amenities_val.each do |a|      

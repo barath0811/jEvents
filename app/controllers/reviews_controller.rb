@@ -43,6 +43,10 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @review = Review.find(params[:id])
+
+    respond_to do |format|
+      format.js # new.js.erb
+    end
   end
 
   # POST /reviews
@@ -54,6 +58,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
+        @review = Review.new
         format.js 
       else
         format.html { render action: "new" }
@@ -69,8 +74,8 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.update_attributes(params[:review])
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-        format.json { head :no_content }
+        @review = Review.new
+        format.js 
       else
         format.html { render action: "edit" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
@@ -85,6 +90,7 @@ class ReviewsController < ApplicationController
     @review.destroy
 
     respond_to do |format|
+      @review = Review.new
       format.js
     end
   end

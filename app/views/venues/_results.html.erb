@@ -3,20 +3,10 @@
 <%= hidden_field_tag 'page_number', @query.page_number %>
 <%= hidden_field_tag 'total_count', @count %>
 
-<div class="navigation">
-	<% if @count > 10%>
-	<% if @query.page_number.to_i == 1 %>
-	<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;">&lt; Prev</a>
-	<% else %>
-	<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
-	<% end %>
-	<% if (@query.page_number.to_i*10)>=@count %>
-	<a href="#" class="btn btn-primary btn-small nav-button" style="pointer-events: none;cursor: default;" >Next &gt;</a>
-	<% else %>
-	<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
-	<% end %>
-	<% end%>
+<div class="flickr_pagination">
+	<%= paginate @venue, :container => false %>
 </div>
+	
 <div class="query_param_div">
 	<span class="query_title" >
 		<%= 'Areas: ' unless @query.areas.count == 0 %>
@@ -67,22 +57,26 @@ end
 		end 
 		%>
 		<div style="margin-left:190px">
-			<h3><%= link_to(c.name + c.venue_type, venue_path(c), :rel => "modal:open", :id=>"show_modal")%></h3>
+			<h3>
+				<span class="fr"><%= c.address.area %></span>
+				<span><%= link_to(c.name, venue_path(c), :rel => "modal:open", :id=>"show_modal")%></span>
+			</h3>
+		
 			<div>
 				<%= if c.facility != nil && c.facility.has_parking?
-					image_tag('parking.png', :class => "venue-icons")
+					image_tag('parking.png', :class => "venue-icons", :title=>'Parking', :alt=>'Parking')
 				end 
 				%>
 				<%= if c.facility != nil && c.facility.is_nonveg_allowed?
-					image_tag('nv.png', :class => "venue-icons")
+					image_tag('nv.png', :class => "venue-icons", :title=>'Non-veg', :alt=>'Non-veg')
 				end 
 				%>
 				<%= if c.facility != nil && c.facility.is_alcohol_allowed?
-					image_tag('alcohol.png', :class => "venue-icons")
+					image_tag('alcohol.png', :class => "venue-icons", :title=>'Alcohol', :alt=>'Alcohol')
 				end 
 				%>
 				<%= if c.facility != nil && c.facility.has_buffet?
-					image_tag('restaurant.png', :class => "venue-icons")
+					image_tag('restaurant.png', :class => "venue-icons", :title=>'Restaurant', :alt=>'Restaurant')
 				end 
 				%>
 			</div>
@@ -103,4 +97,8 @@ end
 		</div>
 	</div>
 	<% end %>
+	<div class="flickr_pagination">
+		<%= paginate @venue, :container => false %>
+	</div>
+	
 </div>

@@ -223,6 +223,10 @@ class VenuesController < ApplicationController
 			@query.mealOptions = params[:meal].split(',')
 		end
 
+		unless params[:venues].nil?
+			@query.venues = params[:venues].split(',')
+		end
+
 		unless params[:page].nil?
 			@query.page_number = params[:page]
 		else

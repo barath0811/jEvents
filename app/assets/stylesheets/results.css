@@ -20,6 +20,10 @@
   border-radius: 6px;
 }
 
+#results{
+  margin-top: 20px;
+}
+
 .head-venue{
   background-color: rgba(207, 243, 250, 0.5);
 }
@@ -351,4 +355,8 @@ label span input {
 
 .query_title{
   font-weight: bold;
+}
+
+.cp{
+  cursor:pointer;
 }
