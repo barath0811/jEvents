@@ -1,6 +1,6 @@
 include ApplicationHelper
 class Venue < ActiveRecord::Base
-	attr_accessible :name, :description,:venue_type, :terms_conditions, :website, :base_image,					
+	attr_accessible :name, :description,:venue_type, :terms_conditions, :payment_policy, :website, :base_image,					
 					
 					:num_halls, :min_capacity, :max_capacity,
 					:is_approved, :view_available, :booking_available, :enquiry_available,
@@ -47,6 +47,7 @@ class Venue < ActiveRecord::Base
 	validates :name, :presence => true, :length => { :minimum => 3 }
 	validates :description, :presence => true, :length => { :maximum => 500 }
 	validates :terms_conditions, :length => { :maximum => 1000 }
+  validates :payment_policy, :length => { :maximum => 1000 }
 	validates :venue_type, :presence =>true
 	validates_associated :address, :contact
 

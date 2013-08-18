@@ -82,3 +82,17 @@ var showNotification = function(text)
 	.delay(2000)
 	.fadeOut(1500);
 }
+
+function toggleDisplay(idDisplay, eleControl)
+{
+    if (eleControl.innerHTML == 'See More...')
+    {
+        $("#" + idDisplay).css('display', 'block');
+        eleControl.innerHTML = 'See Less';
+    }
+    else if (eleControl.innerHTML == 'See Less')
+    {
+        $("#" + idDisplay).css('display', 'none');
+        eleControl.innerHTML = 'See More...';
+    }
+}

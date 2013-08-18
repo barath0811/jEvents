@@ -228,6 +228,11 @@ body {
 .best_in_place:hover {
 	background-color: yellow;
 }
+.link {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #0088cc;
+}
 
 /***************** Authentication ******************/
 #sign_in_left {

@@ -262,7 +262,7 @@ label span input {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  color: inherit;
+  color: #0088cc;
 }
 
 .SearchResults li {

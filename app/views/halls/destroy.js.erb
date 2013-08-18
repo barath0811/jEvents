@@ -1,0 +1,9 @@
+$("#venueEditContent").html('<%=j render partial: 'index', locals: { :venue => @venue } %>')
+
+$(document).ready(function() {
+	$('.hallFormLnk').click(function(){
+		$('#openHallSlide').slideDown('slow', function(){
+		});
+	});
+
+});

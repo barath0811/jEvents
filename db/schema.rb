@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805211402) do
+ActiveRecord::Schema.define(:version => 20130818051950) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -84,10 +84,8 @@ ActiveRecord::Schema.define(:version => 20130805211402) do
     t.integer  "venue_id"
     t.string   "name"
     t.string   "hall_type"
-    t.string   "pricing_mode"
-    t.decimal  "hall_rent",    :precision => 10, :scale => 0
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "halls", ["venue_id"], :name => "index_halls_on_venue_id"
@@ -113,14 +111,32 @@ ActiveRecord::Schema.define(:version => 20130805211402) do
   add_index "images", ["hall_id"], :name => "index_images_on_hall_id"
   add_index "images", ["venue_id"], :name => "index_images_on_venue_id"
 
+  create_table "pricing_halls", :force => true do |t|
+    t.integer  "hall_id"
+    t.boolean  "per_pax"
+    t.decimal  "rent_per_pax",                  :precision => 10, :scale => 2
+    t.decimal  "rent_per_pax_duration",         :precision => 5,  :scale => 2
+    t.string   "rent_per_pax_duration_unit"
+    t.boolean  "hall_space"
+    t.decimal  "rent_hall_space",               :precision => 10, :scale => 2
+    t.decimal  "rent_hall_space_duration",      :precision => 5,  :scale => 2
+    t.string   "rent_hall_space_duration_unit"
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
+  end
+
+  add_index "pricing_halls", ["hall_id"], :name => "index_pricing_halls_on_hall_id"
+
   create_table "rates", :force => true do |t|
     t.integer  "venue_id"
-    t.decimal  "veg_plate_cost",    :precision => 10, :scale => 0
-    t.decimal  "nonveg_plate_cost", :precision => 10, :scale => 0
-    t.decimal  "min_total_budget",  :precision => 10, :scale => 0
-    t.decimal  "max_total_budget",  :precision => 10, :scale => 0
+    t.decimal  "veg_plate_cost",    :precision => 6,  :scale => 2
+    t.decimal  "nonveg_plate_cost", :precision => 6,  :scale => 2
+    t.decimal  "min_total_budget",  :precision => 10, :scale => 2
+    t.decimal  "max_total_budget",  :precision => 10, :scale => 2
     t.datetime "created_at",                                       :null => false
     t.datetime "updated_at",                                       :null => false
+    t.decimal  "snack_plate_cost",  :precision => 6,  :scale => 2
+    t.decimal  "drinks_cost",       :precision => 6,  :scale => 2
   end
 
   add_index "rates", ["venue_id"], :name => "index_rates_on_venue_id"
@@ -162,14 +178,25 @@ ActiveRecord::Schema.define(:version => 20130805211402) do
 
   create_table "seating_arrangements", :force => true do |t|
     t.integer  "hall_id"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.integer  "capacity_theatre",    :default => 0
-    t.integer  "capacity_ushape",     :default => 0
-    t.integer  "capacity_doubleu",    :default => 0
-    t.integer  "capacity_classroom",  :default => 0
-    t.integer  "capacity_board",      :default => 0
-    t.integer  "capacity_roundtable", :default => 0
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "capacity_theatre"
+    t.integer  "capacity_ushape"
+    t.integer  "capacity_doubleu"
+    t.integer  "capacity_classroom"
+    t.integer  "capacity_board"
+    t.integer  "capacity_roundtable"
+    t.integer  "capacity_cluster"
+    t.integer  "capacity_informal"
+    t.integer  "capacity_seating"
+    t.integer  "capacity_dining"
+    t.integer  "capacity_reception"
+    t.integer  "capacity_workshop"
+    t.integer  "capacity_interview"
+    t.integer  "capacity_cocktail"
+    t.integer  "capacity_rectangle"
+    t.integer  "capacity_hollow"
+    t.integer  "capacity_oval"
   end
 
   add_index "seating_arrangements", ["hall_id"], :name => "index_seating_arrangements_on_hall_id"
@@ -253,6 +280,7 @@ ActiveRecord::Schema.define(:version => 20130805211402) do
     t.integer  "review_count"
     t.integer  "rating_count"
     t.integer  "plan",                                             :default => 10,    :null => false
+    t.text     "payment_policy"
   end
 
 end
