@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hall: 
+  per_pax: false
+  rent_per_pax: 9.99
+  rent_per_pax_duration: 9.99
+  rent_per_pax_duration_unit: MyString
+  hall_space: false
+  rent_hall_space: 9.99
+  rent_hall_space_duration: 9.99
+  rent_hall_space_duration_unit: MyString
+
+two:
+  hall: 
+  per_pax: false
+  rent_per_pax: 9.99
+  rent_per_pax_duration: 9.99
+  rent_per_pax_duration_unit: MyString
+  hall_space: false
+  rent_hall_space: 9.99
+  rent_hall_space_duration: 9.99
+  rent_hall_space_duration_unit: MyString

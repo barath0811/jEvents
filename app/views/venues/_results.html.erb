@@ -67,7 +67,10 @@ end
 		end 
 		%>
 		<div style="margin-left:190px">
-			<h3><%= link_to(c.name + ' | ' + c.venue_type, venue_path(c), :rel => "modal:open", :id=>"show_modal")%></h3>
+			<h3>
+                          <%= c.name %>
+                          <%#= link_to(c.name + ' | ' + c.venue_type, venue_path(c), :rel => "modal:open", :id=>"show_modal")%>
+                        </h3>
 			<div>
 				<%= if c.facility != nil && c.facility.has_parking?
 					image_tag('parking.png', :class => "venue-icons")
@@ -88,7 +91,7 @@ end
 			</div>
 			<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
 
-			<% unless c.min_capacity.nil? %>
+			<% unless c.max_capacity.nil? %>
 			<p class="capacity">Capacity :&nbsp;&nbsp;Upto&nbsp;<%= c.max_capacity %></p>
 			<% end %>
 			<p class="address">Landmark : <%= c.address.landmark %></p>

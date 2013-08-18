@@ -3,7 +3,7 @@
 
 <% 
 @hallTypes = getOptions('HallType')
-@pricingmodes = getOptions('HallPricingMode')
+@durationunits = getOptions('HallRentDuration')
 %>
 <div class="roundedBorder">
 	<div class="control-group">
@@ -14,66 +14,166 @@
 		<%= f.label(:hall_type, "Hall Type:", class:"control-label") %>
 		<div class="controls"><%= f.select(:hall_type, @hallTypes) %></div>
 	</div>
-	<div class="control-group">
-		<%= f.label(:pricing_mode, "Pricing Mode:", class:"control-label") %>
-		<div class="controls"><%= f.select(:pricing_mode, @pricingmodes) %></div>
-	</div>
-	<div class="control-group">
-		<%= f.label(:hall_rent, "Hall Rent:", class:"control-label") %>
-		<div class="controls"><%= f.text_field :hall_rent %></div>
-	</div>
-
+        
+        <div class="roundedBorder">
+          <p>Pricing details:</p>
+            <%= f.fields_for :pricing_hall do |p| %>
+              <div class="roundedBorder">
+                <%= p.label :per_pax, class: "checkbox" do %>
+                  Per Pax <%= p.check_box :per_pax %>
+                <%end%>
+                Enter hall rent (if applicable) :<br/>
+                Rs. <%= p.text_field :rent_per_pax %> for <%= p.text_field(:rent_per_pax_duration, :class => "seatingCap") %>&nbsp;&nbsp;<%= p.select(:rent_per_pax_duration_unit, @durationunits) %>
+              </div>
+              <br/>
+              <div class="roundedBorder">
+                <%= p.label :hall_space, class: "checkbox" do %>
+                  Hall Space only <%= p.check_box :hall_space %>
+                <%end%>
+                Enter hall rent :<br/>
+                Rs. <%= p.text_field :rent_hall_space %> for <%= p.text_field(:rent_hall_space_duration, :class => "seatingCap") %>&nbsp;&nbsp;<%= p.select(:rent_hall_space_duration_unit, @durationunits) %>
+              </div>
+            <%end%>
+        </div>
+        <br/>
 	<div class="roundedBorder">
+          <p>Seating arrangement and Capacity:</p>
 		<%= f.fields_for :seating_arrangement do |s| %>
 		<div class="seating">
 			<div class="row-fluid">
 				<div class="span12">
-					<div class="span4 offset1">
+					<div class="span4">
 						<div class="controls span6"><%= image_tag 'theatre.png' %></div>
 						<div class="controls span6">
 							<%= s.text_field(:capacity_theatre, :class => "seatingCap") %>
 						</div>
 					</div>
-					<div class="span4 offset2">
+					<div class="span4">
 						<div class="controls span6"><%= image_tag 'ushape.png' %></div>
 						<div class="controls span6">
 							<%= s.text_field(:capacity_ushape, :class => "seatingCap") %>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="span4 offset1">
-						<div class="controls span6"><%= image_tag 'doubleu.png' %></div>
+					<div class="span4">
+						<div class="controls span6">Cluster / Semi-circle</div>
 						<div class="controls span6">
-							<%= s.text_field(:capacity_doubleu, :class => "seatingCap") %>
+							<%= s.text_field(:capacity_cluster, :class => "seatingCap") %>
 						</div>
 					</div>
-					<div class="span4 offset2">
+				</div>
+			</div>
+                        <br/>
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="span4">
 						<div class="controls span6"><%= image_tag 'classroom.png' %></div>
 						<div class="controls span6">
 							<%= s.text_field(:capacity_classroom, :class => "seatingCap") %>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="span4 offset1">
+					<div class="span4">
 						<div class="controls span6"><%= image_tag 'board.png' %></div>
 						<div class="controls span6">
 							<%= s.text_field(:capacity_board, :class => "seatingCap") %>
 						</div>
 					</div>
-					<div class="span4 offset2">
+					<div class="span4">
+						<div class="controls span6">Informal / Casual</div>
+						<div class="controls span6">
+							<%= s.text_field(:capacity_informal, :class => "seatingCap") %>
+						</div>
+					</div>
+				</div>
+			</div>
+                        <br/>
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="span4">
 						<div class="controls span6"><%= image_tag 'roundtable.png' %></div>
 						<div class="controls span6">
 							<%= s.text_field(:capacity_roundtable, :class => "seatingCap") %>
 						</div>
 					</div>
+					<div class="span4">
+						<div class="controls span6">Seating</div>
+						<div class="controls span6">
+							<%= s.text_field(:capacity_seating, :class => "seatingCap") %>
+						</div>
+					</div>
+					<div class="span4">
+						<div class="controls span6">Dining</div>
+						<div class="controls span6">
+							<%= s.text_field(:capacity_dining, :class => "seatingCap") %>
+						</div>
+					</div>
 				</div>
 			</div>
+                        <span id="seeMore" class="link" onclick="showDiv('seatingMore', 'seeMore');">See More...</span>
+                        <br/>
+                        <div id="seatingMore" style="display: none;">
+                          <div class="row-fluid">
+                                  <div class="span12">
+                                          <div class="span4">
+                                                  <div class="controls span6">Reception</div>
+                                                  <div class="controls span6">
+                                                          <%= s.text_field(:capacity_reception, :class => "seatingCap") %>
+                                                  </div>
+                                          </div>
+                                          <div class="span4">
+                                                  <div class="controls span6"><%= image_tag 'doubleu.png' %></div>
+                                                  <div class="controls span6">
+                                                          <%= s.text_field(:capacity_doubleu, :class => "seatingCap") %>
+                                                  </div>
+                                          </div>
+                                          <div class="span4">
+                                                  <div class="controls span6">Workshop</div>
+                                                  <div class="controls span6">
+                                                          <%= s.text_field(:capacity_workshop, :class => "seatingCap") %>
+                                                  </div>
+                                          </div>
+                                  </div>
+                          </div>
+                          <br/>
+                          <div class="row-fluid">
+                                  <div class="span12">
+                                          <div class="span4">
+                                                  <div class="controls span6">Interview</div>
+                                                  <div class="controls span6">
+                                                          <%= s.text_field(:capacity_interview, :class => "seatingCap") %>
+                                                  </div>
+                                          </div>
+                                          <div class="span4">
+                                                  <div class="controls span6">Cocktail</div>
+                                                  <div class="controls span6">
+                                                          <%= s.text_field(:capacity_cocktail, :class => "seatingCap") %>
+                                                  </div>
+                                          </div>
+                                          <div class="span4">
+                                                  <div class="controls span6">Rectangle</div>
+                                                  <div class="controls span6">
+                                                          <%= s.text_field(:capacity_rectangle, :class => "seatingCap") %>
+                                                  </div>
+                                          </div>
+                                  </div>
+                          </div>
+                          <br/>
+                          <div class="row-fluid">
+                                  <div class="span12">
+                                          <div class="span4">
+                                                  <div class="controls span6">Hollow</div>
+                                                  <div class="controls span6">
+                                                          <%= s.text_field(:capacity_hollow, :class => "seatingCap") %>
+                                                  </div>
+                                          </div>
+                                          <div class="span4">
+                                                  <div class="controls span6">Oval</div>
+                                                  <div class="controls span6">
+                                                          <%= s.text_field(:capacity_oval, :class => "seatingCap") %>
+                                                  </div>
+                                          </div>
+                                  </div>
+                          </div>
+                        </div>
 			<% end %>
 		</div>
 	</div>

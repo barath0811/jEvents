@@ -143,23 +143,43 @@
 		<option>Other</option>
 	</EventType>
 	<VenueType>
-		<option>Luxury Hotel</option>
+		<option>Hotels</option>
 		<option>Business Hotel</option>
-		<option>Business-Luxury Hotel</option>
+		<option>Boutique hotel</option>
+                <option>Resort</option>
+                <option>Marriage Hall</option>
+                <option>Lawn</option>
+                <option>Restaurant</option>
+                <option>Party Hall</option>
+                <option>Mini Hall</option>
+                <option>Club House</option>
+                <option>Banquet Hall</option>
+                <option>Conference Hall</option>
+                <option>Convention Centre</option>
+                <option>Meeting Room</option>
+                <option>Beach Shore</option>
+                <option>Rooftop</option>
+                <option>Night Club, Pub &amp; Bar</option>
+                <option>Bar</option>
 	</VenueType>
 	<HallType>
-		<option>Banquet Hall</option>
-		<option>Conference Room</option>
-		<option>Convention Centre</option>
-		<option>Hotel</option>
-		<option>Wedding Hall</option>
-		<option>Resort</option>
-		<option>Garden Lawn</option>		
+                <option>Banquet Hall</option>
+                <option>Marriage Hall</option>
+                <option>Party Hall</option>
+                <option>Mini Hall</option>
+                <option>Conference Hall</option>
+                <option>Meeting Room</option>
+                <option>Lawn</option>
+                <option>Convention Centre</option>
+                <option>Beach Shore</option>
+                <option>Rooftop</option>
+                <option>Night Club / Pub</option>
+                <option>Bar</option>
 	</HallType>
-	<HallPricingMode>
-		<option>Hourly</option>
-		<option>Per Plate</option>
-	</HallPricingMode>
+	<HallRentDuration>
+		<option>day(s)</option>
+		<option>hour(s)</option>
+	</HallRentDuration>
 	<Seating>
 		<option>Theatre</option>
 		<option>U-Shape</option>

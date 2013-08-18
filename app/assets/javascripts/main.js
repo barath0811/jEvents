@@ -82,3 +82,9 @@ var showNotification = function(text)
 	.delay(2000)
 	.fadeOut(1500);
 }
+
+function showDiv(idDisplay, idHide)
+{
+    $("#" + idDisplay).css('display', 'block');
+    $("#" + idHide).css('display', 'none');
+}
