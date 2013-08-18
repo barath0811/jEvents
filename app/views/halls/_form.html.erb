@@ -23,7 +23,7 @@
                   Per Pax <%= p.check_box :per_pax %>
                 <%end%>
                 Enter hall rent (if applicable) :<br/>
-                Rs. <%= p.text_field :rent_per_pax %> for <%= p.text_field(:rent_per_pax_duration, :class => "seatingCap") %>&nbsp;&nbsp;<%= p.select(:rent_per_pax_duration_unit, @durationunits) %>
+                Rs. <%= p.text_field :rent_per_pax %> for <%= p.text_field(:rent_per_pax_duration, :class => "seatingCap") %>&nbsp;&nbsp;<%= p.select(:rent_per_pax_duration_unit, @durationunits, :include_blank => "-- Select duration --") %>
               </div>
               <br/>
               <div class="roundedBorder">
@@ -31,7 +31,7 @@
                   Hall Space only <%= p.check_box :hall_space %>
                 <%end%>
                 Enter hall rent :<br/>
-                Rs. <%= p.text_field :rent_hall_space %> for <%= p.text_field(:rent_hall_space_duration, :class => "seatingCap") %>&nbsp;&nbsp;<%= p.select(:rent_hall_space_duration_unit, @durationunits) %>
+                Rs. <%= p.text_field :rent_hall_space %> for <%= p.text_field(:rent_hall_space_duration, :class => "seatingCap") %>&nbsp;&nbsp;<%= p.select(:rent_hall_space_duration_unit, @durationunits, :include_blank => "-- Select duration --") %>
               </div>
             <%end%>
         </div>
@@ -108,7 +108,6 @@
 					</div>
 				</div>
 			</div>
-                        <span id="seeMore" class="link" onclick="showDiv('seatingMore', 'seeMore');">See More...</span>
                         <br/>
                         <div id="seatingMore" style="display: none;">
                           <div class="row-fluid">
@@ -174,6 +173,7 @@
                                   </div>
                           </div>
                         </div>
+                        <span class="link offset10" onclick="toggleDisplay('seatingMore', this);">See More...</span>
 			<% end %>
 		</div>
 	</div>

@@ -83,8 +83,16 @@ var showNotification = function(text)
 	.fadeOut(1500);
 }
 
-function showDiv(idDisplay, idHide)
+function toggleDisplay(idDisplay, eleControl)
 {
-    $("#" + idDisplay).css('display', 'block');
-    $("#" + idHide).css('display', 'none');
+    if (eleControl.innerHTML == 'See More...')
+    {
+        $("#" + idDisplay).css('display', 'block');
+        eleControl.innerHTML = 'See Less';
+    }
+    else if (eleControl.innerHTML == 'See Less')
+    {
+        $("#" + idDisplay).css('display', 'none');
+        eleControl.innerHTML = 'See More...';
+    }
 }
