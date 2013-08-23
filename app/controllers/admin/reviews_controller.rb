@@ -22,6 +22,16 @@ class Admin::ReviewsController < Admin::AdminController
 		end
 	end
 
+	def review
+		@review = Review.find(params[:id])
+
+		respond_to do |format|
+			if @review.update_attributes(:review => params[:review][:review])
+				format.json { respond_with_bip(@review) }
+			end
+		end
+	end
+
 	def destroy
 		@review = Review.find(params[:id])
 		@review.destroy
