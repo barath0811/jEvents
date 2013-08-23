@@ -205,8 +205,15 @@ label span input {
   border-color: #666666;
 }
 
+.venue-icons-div{
+  float: right;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  line-height: 0px;
+}
+
 .venue-icons{
-	float: right;
+	
 	padding-right: 4px;
 	position: relative;
 	width: 20px;
@@ -270,9 +277,10 @@ label span input {
 }
 
 .numRooms {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-bottom: 0px;
+  margin-right: 4px;
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: -1px;
@@ -299,7 +307,7 @@ label span input {
 .capacity {
   padding-left: 5px;
   padding-right: 5px;
-  margin-top:10px;
+  margin-top:15px;
   margin: 0px;
   font-size: 14px;
   line-height: 1.5;

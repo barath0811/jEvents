@@ -47,7 +47,7 @@ class Venue < ActiveRecord::Base
 	validates :name, :presence => true, :length => { :minimum => 3 }
 	validates :description, :presence => true, :length => { :maximum => 500 }
 	validates :terms_conditions, :length => { :maximum => 1000 }
-  validates :payment_policy, :length => { :maximum => 1000 }
+  	validates :payment_policy, :length => { :maximum => 1000 }
 	validates :venue_type, :presence =>true
 	validates_associated :address, :contact
 
@@ -57,11 +57,11 @@ class Venue < ActiveRecord::Base
   	end
 
   	def self.featured_venues
-  		where("plan > 10").select("name, id").order(:name)
+  		select("name, id").order(:name)
   	end
 
 	def self.search(query)
-		venue_results = joins(:address).includes(:address, :facility, :suitable_events).where(:is_approved => true).order("plan desc")
+		venue_results = joins(:address).includes(:address, :facility, :suitable_events, :halls).where(:is_approved => true).order("plan desc")
 
 		unless query.areas.count == 0
 			venue_results = venue_results.joins(:address).includes(:address)
