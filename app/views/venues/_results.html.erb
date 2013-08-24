@@ -1,10 +1,21 @@
 <% content_for :title, "Search" %>
-
+<% @hallTypes = getOptions('HallType') %>
 <%= hidden_field_tag 'page_number', @query.page_number %>
 <%= hidden_field_tag 'total_count', @count %>
-
-<div class="flickr_pagination">
-	<%= paginate @venue, :container => false %>
+<div class="navigation">
+	<%= (((@query.page_number.to_i-1)*10)+1).to_s + ' to ' +  [@query.page_number.to_i*10, @count].min.to_s + ' of ' + @count.to_s  unless @count == 0 %>
+	<% if @count > 10%>
+		<% if @query.page_number.to_i == 1 %>
+			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;">&lt; Prev</a>
+		<% else %>
+			<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
+		<% end %>
+		<% if (@query.page_number.to_i*10)>=@count %>
+			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;" >Next &gt;</a>
+		<% else %>
+			<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
+		<% end %>
+	<% end%>
 </div>
 	
 <div class="query_param_div">
@@ -59,29 +70,40 @@ end
 		<div style="margin-left:190px">
 			<h3>
 				<span class="fr"><%= c.address.area %></span>
-				<span>
-                                  <%#= link_to(c.name, venue_path(c), :rel => "modal:open", :id=>"show_modal")%>
-                                  <%= c.name %>
-                                </span>
+				<span><%= link_to(c.name, venue_path(c), :rel => "modal:open", :id=>"show_modal")%></span>
 			</h3>
 		
-			<div>
-				<%= if c.facility != nil && c.facility.has_parking?
-					image_tag('parking.png', :class => "venue-icons", :title=>'Parking', :alt=>'Parking')
-				end 
-				%>
-				<%= if c.facility != nil && c.facility.is_nonveg_allowed?
-					image_tag('nv.png', :class => "venue-icons", :title=>'Non-veg', :alt=>'Non-veg')
-				end 
-				%>
-				<%= if c.facility != nil && c.facility.is_alcohol_allowed?
-					image_tag('alcohol.png', :class => "venue-icons", :title=>'Alcohol', :alt=>'Alcohol')
-				end 
-				%>
-				<%= if c.facility != nil && c.facility.has_buffet?
-					image_tag('restaurant.png', :class => "venue-icons", :title=>'Restaurant', :alt=>'Restaurant')
-				end 
-				%>
+			<div class="venue-icons-div">
+				<% @amenities_count = 0 %>
+				<% if c.facility != nil && c.facility.has_buffet? %>
+					<%= image_tag('restaurant.png', :class => "venue-icons", :title=>'Restaurant', :alt=>'Restaurant') %>
+					<% @amenities_count = @amenities_count + 1 %>
+				<% end %>
+				<% if c.facility != nil && c.facility.is_alcohol_allowed? %>
+					<%= image_tag('alcohol.png', :class => "venue-icons", :title=>'Alcohol', :alt=>'Alcohol') %>
+					<% @amenities_count = @amenities_count + 1 %>
+				<% end %>
+				<% if c.facility != nil && c.facility.has_parking? %>
+					<%= image_tag('parking.png', :class => "venue-icons", :title=>'Parking', :alt=>'Parking') %>
+					<% @amenities_count = @amenities_count + 1 %>
+				<% end %>
+				<% if c.facility != nil && c.facility.is_nonveg_allowed? %>
+					<%= image_tag('nv.png', :class => "venue-icons", :title=>'Non-veg', :alt=>'Non-veg') %>
+					<% @amenities_count = @amenities_count + 1 %>
+				<% end  %>
+				<% if c.facility != nil && c.facility.has_wifi_or_internet? %>
+					<%= image_tag('wifi.png', :class => "venue-icons", :title=>'WiFi', :alt=>'WiFi') %>
+					<% @amenities_count = @amenities_count + 1 %>
+				<% end  %>
+				<% if c.facility != nil && c.facility.has_stage? && @amenities_count < 5 %>
+					<%= image_tag('stage.jpg', :class => "venue-icons", :title=>'Stage', :alt=>'Stage') %>
+					<% @amenities_count = @amenities_count + 1 %>
+				<% end  %>
+				<% if c.facility != nil && c.facility.has_dance_floor? && @amenities_count < 5 %>
+					<%= image_tag('dj.jpg', :class => "venue-icons", :title=>'Dance Floor', :alt=>'Dance Floor') %>
+					<% @amenities_count = @amenities_count + 1 %>
+				<% end  %>
+				
 			</div>
 			<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
 
@@ -94,14 +116,37 @@ end
 				<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
 			</div>
 			<% end %>
-			<% unless c.num_halls.nil? %>
-			<p class="numRooms"><%= pluralize(c.num_halls, "hall") %></p><br />
+
+			<% @hallTypes.each do |ht| %>
+				<% @hall_count = 0 %>
+				<% c.halls.each do |h| %>
+					<% if ht == h.hall_type %>
+						<% @hall_count = @hall_count + 1 %>
+					<% end %>
+				<% end %>
+				<% if @hall_count > 0 %>
+					<% ht = ht + 's' if @hall_count > 1 %>
+					<span class="numRooms"><%= ht + ' (' + @hall_count.to_s + ')'  %></span>&nbsp;
+				<% end %>
 			<% end %>
 		</div>
 	</div>
 	<% end %>
-	<div class="flickr_pagination">
-		<%= paginate @venue, :container => false %>
-	</div>
+	<div class="navigation">
+	<%= (((@query.page_number.to_i-1)*10)+1).to_s + ' to ' +  [@query.page_number.to_i*10, @count].min.to_s + ' of ' + @count.to_s  unless @count == 0 %>
+	<% if @count > 10%>
+		<% if @query.page_number.to_i == 1 %>
+			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;">&lt; Prev</a>
+		<% else %>
+			<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
+		<% end %>
+		<% if (@query.page_number.to_i*10)>=@count %>
+			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;" >Next &gt;</a>
+		<% else %>
+			<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
+		<% end %>
+	<% end%>
+</div>
+
 	
 </div>

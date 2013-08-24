@@ -16,6 +16,7 @@ Jevents::Application.routes.draw do
     end
     resources :reviews,         :only => [:index, :destroy] do
       match :verify, :on => :member
+      match :review, :on => :member
     end
     resources :venue_requests,  :only => [:index, :destroy]
     resources :feedbacks,       :only => [:index, :destroy]
