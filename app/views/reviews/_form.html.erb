@@ -36,7 +36,7 @@
             </div>
           <%end%>
             <%=image_tag "human.jpg"%>
-            <b><%=content_tag(:span,  r.user.name+": ")%></b>
+            <b><%=content_tag(:span,  r.user.name) +": "%></b>
             <%=content_tag(:span, r.review)%>
         </div>
   <% end %>
