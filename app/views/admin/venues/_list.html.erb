@@ -11,33 +11,37 @@
 <div class="row-fluid">
 	<table class="table table-striped table-bordered table-condensed">
 		<tr>
+			<th>Id</th>
 			<th>Name</th>
 			<th>Area</th>
 			<th>Contact Person</th>
 			<th>Email</th>
-			<!-- <th>Mobile</th>
-			<th>User</th> -->
+			<th>Mobile</th>
+			<!-- <th>User</th> -->
+			<th>Date</th>
 			<th>Approved?</th>
 			<th>View?</th>
 			<th>Booking?</th>
-			<th>Enquiry?</th>
 			<th>Plan</th>
 			<th>Owner</th>
 			<th></th>
 		</tr>
+		<% @id = 1 %>
 		<% @venues.each do |venue| %>
 		<% user = venue.user || User.new %>
 		<tr>
+			<td><%= @id %></td> <% @id = @id + 1 %>
 			<td><%= venue.name %></td>
 			<td><%= venue.address.area %></td>
 			<td><%= venue.contact.firstname %> <%= venue.contact.lastname %></td>
 			<td><%= venue.contact.email %></td>
-			<!-- <td><%= venue.contact.mobile_number %></td>
-			<td><%= user.name %>[<%= user.email %>]</td> -->
+			<td><%= venue.contact.mobile_number %></td>
+
+			<td><%= venue.updated_at.to_date %> </td>
+			<!-- <td><%= user.name %>[<%= user.email %>]</td> -->
 			<td><%= best_in_place venue, :is_approved, :type => :checkbox %></td>
 			<td><%= best_in_place venue, :view_available, :type => :checkbox %></td>
 			<td><%= best_in_place venue, :booking_available, :type => :checkbox %></td>
-			<td><%= best_in_place venue, :enquiry_available, :type => :checkbox %></td>
 			<td><%= best_in_place venue, :plan, :type => :select, :collection => @all_plans %></td>
 			<td><%= best_in_place venue, :user_id, :type => :select, :collection => @all_users %></td>
 			<td>
