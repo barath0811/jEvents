@@ -59,7 +59,10 @@ end
 		<div style="margin-left:190px">
 			<h3>
 				<span class="fr"><%= c.address.area %></span>
-				<span><%= link_to(c.name, venue_path(c), :rel => "modal:open", :id=>"show_modal")%></span>
+				<span>
+                                  <%#= link_to(c.name, venue_path(c), :rel => "modal:open", :id=>"show_modal")%>
+                                  <%= c.name %>
+                                </span>
 			</h3>
 		
 			<div>

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :venues
   has_many :reviews
   has_and_belongs_to_many :roles
+  
+  validates :name, :presence => true
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
   	user = User.where(:email => access_token.info.email).first
