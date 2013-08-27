@@ -1,5 +1,16 @@
-<p>Welcome <%= @email %>!</p>
+<font face="Book Antiqua" color="black"><p>Hello <%= @resource.name %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<font size = 2 color = "9400d3"><p style="margin-left:3em;"><i>JollyEventz is a one stop platform for event planning. Find and book a venue at the comfort of your home /office.</i></p></font>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<font color="black"><p>Thank you for signing up on JollyEventz. Click the link below to confirm your account & avail offers.</p></font>
+
+<p style="margin-left:10em;"><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p>Need suggestions for your event? We are always there to help. Treat us as a friend and enquire about venues, event managers, cake shops or anything for your event. Call <font color="red">8220043507 </font> or Mail to feedback@jollyeventz.com</p>
+
+<p><b>P.S.</b> We really want you to host an amazing event</p>
+
+<p>Cheers,</p>
+<p><b>Archana P Stalin,</b></p>
+<p>Founder, JollyEventz</p>
+</font>
