@@ -2,12 +2,13 @@
 
 <% content_for :head do %>
 	<!-- Facebook OpenGraph stuff -->
-	<meta property="fb:app_id" content="<%= ENV["FACEBOOK_ID"] %>" />
+	<meta property="fb:app_id" content="<%= ENV['FACEBOOK_ID'] %>" />
 	<meta property="og:title" content="JollyEventz" />
     <meta property="og:site_name" content="JollyEventz" />
     <meta property="og:description" content="Spending too much time searching for a venue? Relax, we'll find the right place for any event!" />
-	<meta property="og:url" content="<%= ENV["HOSTNAME"] %>" />
+	<meta property="og:url" content="<%= ENV['HOSTNAME'] %>" />
 	<meta property="og:type" content="website" />
+	<meta property="og:image" content="<%= ENV['HOSTNAME'] %>/je.jpg" />
 <% end %>
 
 <div class="hero-unit" id="homeHeading">
