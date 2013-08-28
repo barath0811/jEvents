@@ -4,7 +4,7 @@ class Venue < ActiveRecord::Base
 					
 					:num_halls, :min_capacity, :max_capacity,
 					:is_approved, :view_available, :booking_available, :enquiry_available,
-					:rating, :review_count, :rating_count, :plan,
+					:rating, :review_count, :rating_count, :plan, :is_verified,
 
 					:user_id,
 					:address_attributes,

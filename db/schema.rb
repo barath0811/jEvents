@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818051950) do
+ActiveRecord::Schema.define(:version => 20130828133316) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "venue_id"
@@ -281,6 +281,7 @@ ActiveRecord::Schema.define(:version => 20130818051950) do
     t.integer  "rating_count"
     t.integer  "plan",                                             :default => 10,    :null => false
     t.text     "payment_policy"
+    t.boolean  "is_verified",                                      :default => false
   end
 
 end

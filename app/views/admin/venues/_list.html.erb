@@ -20,6 +20,7 @@
 			<!-- <th>User</th> -->
 			<th>Date</th>
 			<th>Approved?</th>
+			<th>Verified?</th>
 			<th>View?</th>
 			<th>Booking?</th>
 			<th>Plan</th>
@@ -40,6 +41,7 @@
 			<td><%= venue.updated_at.to_date %> </td>
 			<!-- <td><%= user.name %>[<%= user.email %>]</td> -->
 			<td><%= best_in_place venue, :is_approved, :type => :checkbox %></td>
+			<td><%= best_in_place venue, :is_verified, :type => :checkbox %></td>
 			<td><%= best_in_place venue, :view_available, :type => :checkbox %></td>
 			<td><%= best_in_place venue, :booking_available, :type => :checkbox %></td>
 			<td><%= best_in_place venue, :plan, :type => :select, :collection => @all_plans %></td>
