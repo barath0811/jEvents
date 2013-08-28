@@ -23,6 +23,12 @@ $(document).ready(function(){
 		});
 	});
 
+	$('#halltype_header_div').click(function(){
+		$('#halltype_div').slideToggle('slow', function(){
+		});
+	});
+	
+
 	$('#star').raty({
 		score: function() {
 			return $('#rating:hidden').attr('value');
@@ -105,6 +111,7 @@ function searchFired(page_num){
 	var amn = createSearchParams('am', 2);
 	var cap = createSearchParams('cap', 1);
 	var mo = createSearchParams('meal', 1);
+	var ht = createSearchParams('ht', 1);
 	var ven = createSearchParams('venues', 1);
 	var et = $("#eventType option:selected").val();
 	var page = page_num ? page_num : 1;
@@ -115,7 +122,7 @@ function searchFired(page_num){
 	$.ajax({
 		url: "/venues/search",
 		type: "POST",
-		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, venues:ven, po:true, page:page },
+		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, venues:ven, halltype:ht, po:true, page:page },
 		success: function(data) {
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 

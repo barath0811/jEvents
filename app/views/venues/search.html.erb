@@ -4,6 +4,7 @@
 <% @options.areas.shift #Removes first element from array, which is "All areas" %>
 <% @budget = getBudgetOrCapacity('Budget') %>
 <% @capacity = getBudgetOrCapacity('Capacity') %>
+<% @hallTypes = getOptions('HallType') %>
 <% @selectedArea = @query.areas.first %>
 <% @featuredVenues = Venue.featured_venues() %>
 <div class="row">
@@ -24,6 +25,23 @@
 							</a>
 						</label>
 					</li>
+				<% end %>
+			</ul>
+		</div>
+		<hr />
+
+		<div id="halltype_header_div" class="cp"><h5>Hall Types</h5></div>
+		<div id="halltype_div">
+			<ul id='ht'>
+				<%  @hallTypes.each do |h| %>
+				<li id="<%= h.gsub(/[\s\.\/]+/, "") %>"> 
+					<label for=<%='chk_ht_' + h.gsub(/[\s\.\/]+/, "")%>> 
+						<a>
+							<%= check_box_tag 'chk_ht_' + h.gsub(/[\s\.\/]+/, ""), h, false, :onclick => 'searchFired();' %> 
+							<span><%= h %> </span>
+						</a>
+					</label>
+				</li>
 				<% end %>
 			</ul>
 		</div>

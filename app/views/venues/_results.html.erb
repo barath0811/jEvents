@@ -27,6 +27,14 @@
 	<% end %>
 </div>
 <div class="query_param_div">
+	<span class="query_title" >
+		<%= 'Halls: ' unless @query.halltype.count == 0 %>
+	</span>
+	<% @query.halltype.each do |a| %>
+	<span class="query_param"><%= a %> </span>
+	<% end %>
+</div>
+<div class="query_param_div">
 	<span class="query_title">
 		<%= 'Capacity: ' unless @query.capacity.count == 0 %>
 	</span>

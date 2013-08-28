@@ -68,6 +68,10 @@ class Venue < ActiveRecord::Base
             venue_results = venue_results.joins("join areas on areas.area2 = addresses.area").where('areas.area1' => query.areas).where('areas.distance <= 5').order("distance")
         end
 
+        unless query.halltype.count == 0
+        	venue_results = venue_results.where(:id => Hall.find_by_type(query.halltype))
+        end
+
         unless query.venues.count == 0
         	venue_results = venue_results.where(:id => query.venues)
         end
