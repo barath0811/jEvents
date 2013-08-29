@@ -85,6 +85,11 @@ $(document).ready(function(){
 	*/
 });
 
+function remove_filter(id){
+	$(id)[0].checked = false;
+	searchFired('1');
+}
+
 function rate(score, evt){
 	var venue_id = $('#venue_id:hidden').attr('value');
 	$.ajax({

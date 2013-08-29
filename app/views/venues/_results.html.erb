@@ -23,7 +23,11 @@
 		<%= 'Areas: ' unless @query.areas.count == 0 %>
 	</span>
 	<% @query.areas.each do |a| %>
-	<span class="query_param"><%= a %> </span>
+	<span class="query_param"><%= a %> 
+		<div class='circle'>
+		  <a href="#" onclick=<%= "remove_filter('#chk_area_" + a + "');" %>>x</a>
+		</div>
+	</span>
 	<% end %>
 </div>
 <div class="query_param_div">
@@ -31,7 +35,11 @@
 		<%= 'Halls: ' unless @query.halltype.count == 0 %>
 	</span>
 	<% @query.halltype.each do |a| %>
-	<span class="query_param"><%= a %> </span>
+	<span class="query_param"><%= a %> 
+		<div class='circle'>
+		  <a href="#" onclick=<%= "remove_filter('#chk_ht_" + a + "');" %>>x</a>
+		</div>
+	</span>
 	<% end %>
 </div>
 <div class="query_param_div">
@@ -39,7 +47,11 @@
 		<%= 'Capacity: ' unless @query.capacity.count == 0 %>
 	</span>
 	<% @query.capacity.each do |a| %>
-	<span class="query_param"><%= a %> </span>
+	<span class="query_param"><%= a %> 
+		<div class='circle'>
+		  <a href="#" onclick=<%= "remove_filter('#chk_cap_" + a + "');" %>>x</a>
+		</div>
+	</span>
 	<% end %>
 </div>
 <div class="query_param_div">
@@ -47,7 +59,11 @@
 		<%= 'Budget: ' unless @query.budget.count == 0 %>
 	</span>
 	<% @query.budget.each do |a| %>
-	<span class="query_param"><%= a %> </span>
+	<span class="query_param"><%= a %> 
+		<div class='circle'>
+		  <a href="#" onclick=<%= "remove_filter('#chk_bud_" + a + "');" %>>x</a>
+		</div>
+	</span>
 	<% end %>
 </div>
 <div class="query_param_div">
@@ -55,7 +71,11 @@
 		<%= 'Amenities: ' unless @query.amenities_name.count == 0 %>
 	</span>
 	<% @query.amenities_name.each do |a| %>
-	<span class="query_param"><%= a %> </span>
+	<span class="query_param"><%= a %>
+		<div class='circle'>
+		  <a href="#" onclick=<%= "remove_filter('#chk_am_" + a + "');" %>>x</a>
+		</div>
+	 </span>
 	<% end %>
 </div>
 <br />

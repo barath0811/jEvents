@@ -384,3 +384,20 @@ label span input {
   border-right: 5px solid transparent;
   border-top: 5px solid black;
 }
+
+.circle {
+  display:inline;
+  padding-left:4px;
+  padding-right:4px;
+  background:rgb(0,0,0);
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+}
+
+.circle a {
+  font-size:10px;
+  text-decoration:none;
+  color:#fff;
+
+  position:relative; top:-2px;
+}
