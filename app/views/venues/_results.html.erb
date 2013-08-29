@@ -25,7 +25,7 @@
 	<% @query.areas.each do |a| %>
 	<span class="query_param"><%= a %> 
 		<div class='circle'>
-		  <a href="#" onclick=<%= "remove_filter('#chk_area_" + a + "');" %>>x</a>
+		  <a href="#" onclick=<%= "remove_filter('#chk_area_" + a.gsub(/[\s\.\/]+/, "") + "');" %>>x</a>
 		</div>
 	</span>
 	<% end %>
@@ -37,7 +37,7 @@
 	<% @query.halltype.each do |a| %>
 	<span class="query_param"><%= a %> 
 		<div class='circle'>
-		  <a href="#" onclick=<%= "remove_filter('#chk_ht_" + a + "');" %>>x</a>
+		  <a href="#" onclick=<%= "remove_filter('#chk_ht_" + a.gsub(/[\s\.\/]+/, "") + "');" %>>x</a>
 		</div>
 	</span>
 	<% end %>
@@ -49,7 +49,7 @@
 	<% @query.capacity.each do |a| %>
 	<span class="query_param"><%= a %> 
 		<div class='circle'>
-		  <a href="#" onclick=<%= "remove_filter('#chk_cap_" + a + "');" %>>x</a>
+		  <a href="#" onclick=<%= "remove_filter('#chk_cap_" + a.gsub(/[\s\.\/]+/, "") + "');" %>>x</a>
 		</div>
 	</span>
 	<% end %>
@@ -61,7 +61,7 @@
 	<% @query.budget.each do |a| %>
 	<span class="query_param"><%= a %> 
 		<div class='circle'>
-		  <a href="#" onclick=<%= "remove_filter('#chk_bud_" + a + "');" %>>x</a>
+		  <a href="#" onclick=<%= "remove_filter('#chk_bud_" + a.gsub(/[\s\.\/]+/, "") + "');" %>>x</a>
 		</div>
 	</span>
 	<% end %>
@@ -73,7 +73,7 @@
 	<% @query.amenities_name.each do |a| %>
 	<span class="query_param"><%= a %>
 		<div class='circle'>
-		  <a href="#" onclick=<%= "remove_filter('#chk_am_" + a + "');" %>>x</a>
+		  <a href="#" onclick=<%= "remove_filter('#chk_am_" + a.gsub(/[\s\.\/]+/, "") + "');" %>>x</a>
 		</div>
 	 </span>
 	<% end %>
