@@ -119,6 +119,14 @@ end
 				<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
 			</div>
 			<% end %>
+                        
+                        <%= link_to(view_venues_path(:venue => c.id, anchor: 'reviews_div'), :class => "fr") do %>
+                          <% if c.reviews.size > 0 %>
+                            <%= pluralize(c.reviews.size, 'Review') %>
+                          <% else %>
+                            Write a review
+                          <% end %>                        
+                        <% end %>
 
 			<% @hallTypes.each do |ht| %>
 				<% @hall_count = 0 %>
