@@ -4,11 +4,19 @@
 <% @options.areas.shift #Removes first element from array, which is "All areas" %>
 <% @budget = getBudgetOrCapacity('Budget') %>
 <% @capacity = getBudgetOrCapacity('Capacity') %>
+<% @hallTypes = getOptions('HallType') %>
 <% @selectedArea = @query.areas.first %>
 <% @featuredVenues = Venue.featured_venues() %>
 <div class="row">
-	<div class="filters span2" style="margin-top:5em;">
-		<div id="areas_header_div" class="cp"><h5>Areas</h5></div>
+	<div class="filters span2" style="margin-top:5em;margin-right:80px;">
+		<div id="areas_header_div" class="cp">
+		<table>
+			<tr>
+				<td><div id="areas_header_arrow" class="arrow-down"></div></td>
+				<td><h5>&nbsp;Areas</h5></td>
+			</tr>
+		</table>
+		</div>
 		<div id="areas_div">
 			<input class="span2" type="text" id="areaSearchKey" onkeyup='textChanged("area")' />
 
@@ -29,7 +37,38 @@
 		</div>
 		<hr />
 
-		<div id="venues_header_div" class="cp"><h5>Venues</h5></div>
+		<div id="halltype_header_div" class="cp">
+			<table>
+			<tr>
+				<td><div id="halltype_header_arrow" class="arrow-down"></div></td>
+				<td><h5>&nbsp;Hall Types</h5></td>
+			</tr>
+		</table>
+		</div>
+		<div id="halltype_div">
+			<ul id='ht'>
+				<%  @hallTypes.each do |h| %>
+				<li id="<%= h.gsub(/[\s\.\/]+/, "") %>"> 
+					<label for=<%='chk_ht_' + h.gsub(/[\s\.\/]+/, "")%>> 
+						<a>
+							<%= check_box_tag 'chk_ht_' + h.gsub(/[\s\.\/]+/, ""), h, false, :onchange => 'searchFired();' %> 
+							<span><%= h %> </span>
+						</a>
+					</label>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<hr />
+
+		<div id="venues_header_div" class="cp">
+			<table>
+			<tr>
+				<td><div id="venues_header_arrow" class="arrow-down"></div></td>
+				<td><h5>&nbsp;Venues</h5></td>
+			</tr>
+		</table>
+		</div>
 		<div id="venues_div">
 			<input class="span2" type="text" id="venuesSearchKey" onkeyup='textChanged("venues")' />
 
@@ -50,14 +89,22 @@
 		</div>
 		<hr />
 
-		<div id="capacity_header_div" class="cp"><h5>Capacity</h5></div>
+		<div id="capacity_header_div" class="cp">
+
+		<table>
+			<tr>
+				<td><div id="capacity_header_arrow" class="arrow-down"></div></td>
+				<td><h5>&nbsp;Capacity</h5></td>
+			</tr>
+		</table>
+		</div>
 		<div id="capacity_div">
 			<ul id='cap'>
 				<%  @capacity.each do |c| %>
 				<li id="<%= c.text.gsub(/\s+/, "") %>"> 
 					<label for=<%='chk_cap_' + c.text.gsub(/\s+/, "")%>> 
 						<a>
-							<%= check_box_tag 'chk_cap_' + c.text.gsub(/\s+/, ""), c.text, false, :onclick => 'searchFired();' %> 
+							<%= check_box_tag 'chk_cap_' + c.text.gsub(/\s+/, ""), c.text, false, :onchange => 'searchFired();' %> 
 							<span><%= c.text %> </span>
 						</a>
 					</label>
@@ -74,7 +121,7 @@
 
 				<li id="<%= b.text.gsub(/\s+/, "") %>"> 
 					<label for=<%='chk_bud_' + b.text.gsub(/\s+/, "")%>>
-						<%= check_box_tag 'chk_bud_' + b.text.gsub(/\s+/, ""), b.text, false, :onclick => 'searchFired();' %> 
+						<%= check_box_tag 'chk_bud_' + b.text.gsub(/\s+/, ""), b.text, false, :onchange => 'searchFired();' %> 
 						<a>
 							<span><%= b.text %> </span>
 						</a>
@@ -86,13 +133,20 @@
 		<hr />
 		<% end %>
 
-		<div id="amenities_header_div" class="cp"><h5>Amenities</h5></div>
+		<div id="amenities_header_div" class="cp">
+			<table>
+				<tr>
+					<td><div id="amenities_header_arrow" class="arrow-down"></div></td>
+					<td><h5>&nbsp;Amenities</h5></td>
+			</tr>
+		</table>
+		</div>
 		<div id="amenities_div">
 			<ul id='am'>
 				<%  @options.amenities_name.each_with_index do |a, index| %>
 				<li id="<%= a.to_s.gsub(/\s+/, "") %>"> 
 					<label for=<%='chk_am_' + a.to_s.gsub(/\s+/, "")%>>
-						<%= check_box_tag 'chk_am_' + a.to_s.gsub(/\s+/, ""), @options.amenities_val[index], false, :onclick => 'searchFired();' %> 
+						<%= check_box_tag 'chk_am_' + a.to_s.gsub(/\s+/, ""), @options.amenities_val[index], false, :onchange => 'searchFired();' %> 
 						<a>
 							<span><%= a %> </span>
 						</a>
@@ -105,7 +159,7 @@
 	</div>
 	<%= select_tag(:eventType, options_for_select(@options.eventType, @query.eventType), {:style => "float:right", :onchange => 'searchFired();'}) %>
 
-	<div class="span9" style="margin-top:10px;margin-left:80px;">
+	<div class="span9" style="margin-top:10px;">
 		<div id="results_div">
 			<%= render partial: 'venues/results' %>
 		</div>

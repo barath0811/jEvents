@@ -368,3 +368,36 @@ label span input {
 .cp{
   cursor:pointer;
 }
+
+.arrow-right{
+  width: 0; 
+  height: 0; 
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid black;
+}
+
+.arrow-down{
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+}
+
+.circle {
+  display:inline;
+  padding-left:4px;
+  padding-right:4px;
+  background:rgb(0,0,0);
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+}
+
+.circle a {
+  font-size:10px;
+  text-decoration:none;
+  color:#fff;
+
+  position:relative; top:-2px;
+}

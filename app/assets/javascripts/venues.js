@@ -4,24 +4,51 @@ $(document).ready(function(){
 	});
 
 	$('#areas_header_div').click(function(){
+		if ($("#areas_div").is(":hidden"))
+			$('#areas_header_arrow').attr("class", "arrow-down");
+		else
+			$('#areas_header_arrow').attr("class", "arrow-right");
+
 		$('#areas_div').slideToggle('slow', function(){
 		});
 	});
 
 	$('#capacity_header_div').click(function(){
+		if ($("#capacity_div").is(":hidden"))
+			$('#capacity_header_arrow').attr("class", "arrow-down");
+		else
+			$('#capacity_header_arrow').attr("class", "arrow-right");
 		$('#capacity_div').slideToggle('slow', function(){
 		});
 	});
 
 	$('#amenities_header_div').click(function(){
+		if ($("#amenities_div").is(":hidden"))
+			$('#amenities_header_arrow').attr("class", "arrow-down");
+		else
+			$('#amenities_header_arrow').attr("class", "arrow-right");
 		$('#amenities_div').slideToggle('slow', function(){
 		});
 	});
 
 	$('#venues_header_div').click(function(){
+		if ($("#venues_div").is(":hidden"))
+			$('#venues_header_arrow').attr("class", "arrow-down");
+		else
+			$('#venues_header_arrow').attr("class", "arrow-right");
 		$('#venues_div').slideToggle('slow', function(){
 		});
 	});
+
+	$('#halltype_header_div').click(function(){
+		if ($("#halltype_div").is(":hidden"))
+			$('#halltype_header_arrow').attr("class", "arrow-down");
+		else
+			$('#halltype_header_arrow').attr("class", "arrow-right");
+		$('#halltype_div').slideToggle('slow', function(){
+		});
+	});
+	
 
 	$('#star').raty({
 		score: function() {
@@ -57,6 +84,11 @@ $(document).ready(function(){
 	});
 	*/
 });
+
+function remove_filter(id){
+	$(id)[0].checked = false;
+	searchFired('1');
+}
 
 function rate(score, evt){
 	var venue_id = $('#venue_id:hidden').attr('value');
@@ -105,6 +137,7 @@ function searchFired(page_num){
 	var amn = createSearchParams('am', 2);
 	var cap = createSearchParams('cap', 1);
 	var mo = createSearchParams('meal', 1);
+	var ht = createSearchParams('ht', 1);
 	var ven = createSearchParams('venues', 1);
 	var et = $("#eventType option:selected").val();
 	var page = page_num ? page_num : 1;
@@ -115,7 +148,7 @@ function searchFired(page_num){
 	$.ajax({
 		url: "/venues/search",
 		type: "POST",
-		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, venues:ven, po:true, page:page },
+		data: {eventType:et, areas:areas, budget:bud, amenities_val:am,amenities_name:amn, capacities:cap, meal:mo, venues:ven, halltype:ht, po:true, page:page },
 		success: function(data) {
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) { 

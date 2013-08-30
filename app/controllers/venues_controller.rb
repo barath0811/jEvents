@@ -203,6 +203,10 @@ class VenuesController < ApplicationController
 			@query.areas = params[:areas].split(',')
 		end
 
+		unless params[:halltype].nil?
+			@query.halltype = params[:halltype].split(',')
+		end
+
 		unless params[:budget].nil?
 			@query.budget = params[:budget].split(',')
 		end

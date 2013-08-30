@@ -11,4 +11,8 @@ class Hall < ActiveRecord::Base
   	#Validations
   	validates :name, :presence =>true
   	validates :hall_type, :presence =>true
+
+  	def self.find_by_type(halltype)
+  		where(:hall_type => halltype).select(:venue_id)
+  	end
 end

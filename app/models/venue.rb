@@ -4,7 +4,7 @@ class Venue < ActiveRecord::Base
 					
 					:num_halls, :min_capacity, :max_capacity,
 					:is_approved, :view_available, :booking_available, :enquiry_available,
-					:rating, :review_count, :rating_count, :plan,
+					:rating, :review_count, :rating_count, :plan, :is_verified,
 
 					:user_id,
 					:address_attributes,
@@ -66,6 +66,10 @@ class Venue < ActiveRecord::Base
 		unless query.areas.count == 0
 			venue_results = venue_results.joins(:address).includes(:address)
             venue_results = venue_results.joins("join areas on areas.area2 = addresses.area").where('areas.area1' => query.areas).where('areas.distance <= 5').order("distance")
+        end
+
+        unless query.halltype.count == 0
+        	venue_results = venue_results.where(:id => Hall.find_by_type(query.halltype))
         end
 
         unless query.venues.count == 0
