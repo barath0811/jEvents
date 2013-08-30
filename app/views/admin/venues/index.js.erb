@@ -1,4 +1,5 @@
 $('#adminContent').html('<%=j render partial: 'list' %>');
+window.scrollTo(0,0);
 
 $('#venue_search').bind('railsAutocomplete.select', function(event, data){
 	$.get('/admin/venues/', { venue_id: data.item.id, search_box_text: data.item.value });
