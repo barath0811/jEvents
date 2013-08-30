@@ -8,7 +8,7 @@
 <% @selectedArea = @query.areas.first %>
 <% @featuredVenues = Venue.featured_venues() %>
 <div class="row">
-	<div class="filters span2" style="margin-top:5em;">
+	<div class="filters span2" style="margin-top:5em;margin-right:80px;">
 		<div id="areas_header_div" class="cp">
 		<table>
 			<tr>
@@ -159,7 +159,7 @@
 	</div>
 	<%= select_tag(:eventType, options_for_select(@options.eventType, @query.eventType), {:style => "float:right", :onchange => 'searchFired();'}) %>
 
-	<div class="span9" style="margin-top:10px;margin-left:80px;">
+	<div class="span9" style="margin-top:10px;">
 		<div id="results_div">
 			<%= render partial: 'venues/results' %>
 		</div>
