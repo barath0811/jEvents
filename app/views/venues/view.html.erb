@@ -11,7 +11,7 @@
           imageurl = url_for(:controller => 'venues', :action => 'show_image', :image_id => @venue.images[0].id)
         end 
     %>
-    <meta property="og:image" content="<%= 'http://3kwd.localtunnel.com'+ imageurl %>" />
+    <meta property="og:image" content="<%=  ENV['HOSTNAME']+imageurl %>" />
 <% end %>
 
 <% @suitable = '' 
