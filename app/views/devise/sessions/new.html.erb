@@ -38,6 +38,9 @@
 					</div>
 				</div>
 				<% end %>
+                                <div class="field_with_errors">
+                                  <%= content_tag(:div, flash[:alert], class: "message") if flash[:alert] %>
+                                </div>
 			</div>
 			<div class="line hidden-phone"></div>
 			<div class="wordwrapper hidden-phone">
