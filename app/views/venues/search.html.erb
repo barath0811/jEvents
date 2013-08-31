@@ -158,7 +158,7 @@
 
 	</div>
 	<%= select_tag(:eventType, options_for_select(@options.eventType, @query.eventType), {:style => "float:right", :onchange => 'searchFired();'}) %>
-
+	<br />
 	<div class="span9" style="margin-top:10px;">
 		<div id="results_div">
 			<%= render partial: 'venues/results' %>

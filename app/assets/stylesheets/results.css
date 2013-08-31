@@ -45,6 +45,11 @@
   margin-top: 0px;
 }
 
+.filters hr{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
 .filters a{
   cursor:pointer;
   color:rgb(66, 87, 97);
