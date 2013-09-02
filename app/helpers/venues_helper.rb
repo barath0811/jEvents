@@ -10,7 +10,7 @@ module VenuesHelper
 		file = File.new("app/assets/xml/Properties.xml")
 		doc = REXML::Document.new file
 		
-		query.areas << ['All areas', '']
+		query.areas << ['All Areas', '']
 		doc.elements.each('//Area/option') do |ele|
 			query.areas << [ele.text, ele.text]  #Now the options are text-value pairs.
 		end
