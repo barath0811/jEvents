@@ -19,6 +19,15 @@ body {
 	font-family: 'Open Sans', "Book Antiqua", Arial, sans-serif;
 	background-image: url(Background1.jpg);
 }
+
+.fntBA{
+   font-family: 'Open Sans', "Book Antiqua", Arial, sans-serif;
+} 
+
+.fntwt800{
+	font-weight:800;
+}
+
 #bodyAndFooter {
 	padding-top: 120px;
 }
@@ -41,6 +50,14 @@ body {
 }
 .fr{ float: right; }
 .fl{ float: left; }
+
+.error_message {
+color: #D00;
+font-size: 16px;
+padding-bottom: 10px;
+font-weight: bold;
+}
+
 
 /************** Header **************/
 .navbar-inner {
@@ -119,7 +136,7 @@ body {
 }
 #socialLinks {
 	position: absolute;
-	right: 0;
+	right: 19px;
 	bottom:0;
 }
 
@@ -174,7 +191,7 @@ body {
 #featuredVenues h4{
 	text-align: center;
 	font-style: italic;
-	color: Red;
+	color: red;
 }
 
 /************** Footer **************/

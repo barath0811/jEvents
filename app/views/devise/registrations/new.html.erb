@@ -19,6 +19,7 @@
 					<div class="controls"><%= f.password_field :password, :placeholder => "Password" %></div>
 					<div class="controls"><%= f.password_field :password_confirmation, :placeholder => "Confirm your password" %></div>
 				</div>
+				<%= content_tag(:div, flash[:alert], class: "error_message") if flash[:alert] %>
 				<div class="control-group">
 					<div class="controls">
 						<div class="controls fl">
@@ -37,9 +38,7 @@
 					
 				</div>
 				<% end %>
-                                <div class="field_with_errors">
-                                  <%= content_tag(:div, flash[:alert], class: "message") if flash[:alert] %>
-                                </div>
+                               
 			</div>
 			<div class="line hidden-phone"></div>
 			<div class="wordwrapper hidden-phone">

@@ -2,22 +2,8 @@
 <% @hallTypes = getOptions('HallType') %>
 <%= hidden_field_tag 'page_number', @query.page_number %>
 <%= hidden_field_tag 'total_count', @count %>
-<div class="navigation">
-	<%= (((@query.page_number.to_i-1)*10)+1).to_s + ' to ' +  [@query.page_number.to_i*10, @count].min.to_s + ' of ' + @count.to_s  unless @count == 0 %>
-	<% if @count > 10%>
-		<% if @query.page_number.to_i == 1 %>
-			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;">&lt; Prev</a>
-		<% else %>
-			<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
-		<% end %>
-		<% if (@query.page_number.to_i*10)>=@count %>
-			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;" >Next &gt;</a>
-		<% else %>
-			<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
-		<% end %>
-	<% end%>
-</div>
-	
+
+<div style="margin-top:7px;">	
 <div class="query_param_div">
 	<span class="query_title" >
 		<%= 'Areas: ' unless @query.areas.count == 0 %>
@@ -78,25 +64,72 @@
 	 </span>
 	<% end %>
 </div>
-<br />
 
-
-<%= if @venue.count == 0
+<!-- <%= if @venue.count == 0
 	'No results found matching your search criteria...'
 end 
-%>
+%> -->
 
-<div id="results">
+<div>
+<div class="navigation">
+<!--	<%= (((@query.page_number.to_i-1)*10)+1).to_s + ' to ' +  [@query.page_number.to_i*10, @count].min.to_s + ' of ' + @count.to_s  unless @count == 0 %> -->
+	
+
+<!--	<% if @count > 10%>
+		<% if @query.page_number.to_i == 1 %>
+			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;">&lt; Prev</a>
+		<% else %>
+			<a href="#" class="btn btn-primary btn-small nav-button" onclick="prev_click();" >&lt; Prev</a>
+		<% end %>
+		<% if (@query.page_number.to_i*10)>=@count %>
+			<a href="#" class="btn btn-primary btn-small nav-button disabled" style="pointer-events: none;cursor: default;" >Next &gt;</a>
+		<% else %>
+			<a href="#" class="btn btn-primary btn-small nav-button" onclick="next_click();" >Next &gt;</a>
+		<% end %>
+	<% end%> -->
+
+	<% if @count > 10%>
+		<% if @query.page_number.to_i == 1 %>
+			<span style="pointer-events: none; cursor: default;">&lt;Prev&nbsp;</span>
+		<% else %>
+			<span style="cursor: pointer;" onclick="prev_click();" >&lt;Prev&nbsp;</span>
+		<% end %>
+
+		<strong><span style="color:orange;"><%= (((@query.page_number.to_i-1)*10)+1).to_s + ' to ' +  [@query.page_number.to_i*10, @count].min.to_s unless @count == 0 %></span></strong>
+
+		<% if (@query.page_number.to_i*10)>=@count %>
+			<span style="pointer-events: none; cursor: default;">&nbsp;Next&gt;</span>
+		<% else %>
+			<span style="cursor: pointer;"  onclick="next_click();" >&nbsp;Next&gt;</span>
+		<% end %>
+	<% end%>
+
+</div>
+	<% if @venue.count > 0 %> 
+	 	<% if @venue.count == 1 %>                            
+		   <h6> <span style="color:orange;font-weight:bold"><%= @count.to_s %> </span> Search result found</h6> 		
+        <% else %> 
+            <h6> <span style="color:orange;font-weight:bold"><%= @count.to_s %> </span> Search results found</h6>                
+        <% end %>   
+
+	<% else  %>
+	        <h6>'No results found matching your search criteria...' </h6>
+    <% end %>
+</div>
+</div>
+
+
+<div id="results" style="margin-top:0">
 	<% @venue.each do |c| %>
-	<div class="SearchResults">
+	<div class="SearchResults" id="resultdiv" style="position:relative;" >
 		<%= unless c.base_image.nil? 
 			image_tag url_for(:controller => "venues", :action => "show_image", :id => c.id), :class => "venue-img top10"
 		else 
 			image_tag('venue.jpg', :class => "venue-img top10") 
 		end 
 		%>
-		<div style="margin-left:190px">
-			<h3>
+		<div style="margin-left:183px" id="result_content_div">
+			<h3 id="resultheading">
 				<span class="fr"><%= c.address.area %></span>
 				<span>
                                   <%#= link_to(c.name, venue_path(c), :rel => "modal:open", :id=>"show_modal")%>
@@ -137,27 +170,19 @@ end
 				<% end  %>
 				
 			</div>
-			<p class="address"><%= c.address.address %>, <%= c.address.area %></p>
+			<p class="address" ><%= c.address.address %>, <%= c.address.area %> <br/>
+			<span class="Landmark">Landmark: </span> <%= c.address.landmark %></p>
 
 			<% unless c.max_capacity.nil? %>
-			<p class="capacity">Capacity :&nbsp;&nbsp;Upto&nbsp;<%= c.max_capacity %></p>
-			<% end %>
-			<p class="address">Landmark : <%= c.address.landmark %></p>
-			<% if c.view_available %>
-			<div style="margin-top:15px;position:relative;">
-				<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn btn-primary btn-small search-button" %>
-			</div>
-			<% end %>
-                        
-                        <%= link_to(view_venues_path(:venue => c.id, anchor: 'reviews_div'), :class => "fr") do %>
-                          <% if c.reviews.size > 0 %>
-                            <%= pluralize(c.reviews.size, 'Review') %>
-                          <% else %>
-                            Write a review
-                          <% end %>                        
-                        <% end %>
+			<p class="capacity">Upto&nbsp;<%= c.max_capacity %></p> 
+			<%= image_tag('Capacity_ppl.jpg', :class => "venue-icons fr top4", :title=>'Capacity', :alt=>'Capacity') %>
 
-			<% @hallTypes.each do |ht| %>
+			<% end %>
+			
+			                   
+           
+            <div class="hallandcapacity ">
+				<% @hallTypes.each do |ht| %>
 				<% @hall_count = 0 %>
 				<% c.halls.each do |h| %>
 					<% if ht == h.hall_type %>
@@ -166,12 +191,35 @@ end
 				<% end %>
 				<% if @hall_count > 0 %>
 					<% ht = ht + 's' if @hall_count > 1 %>
-					<span class="numRooms"><%= ht + ' (' + @hall_count.to_s + ')'  %></span>&nbsp;
+					<span class="numRooms" ><%= @hall_count.to_s + '-' + ht + ' | ' %></span>&nbsp;
 				<% end %>
-			<% end %>
+				<% end %>
+			</div>
+
+			<div >
+				<% if c.view_available %>
+					<div class="view_btn_alignment">
+				
+						<%= link_to 'View venue', view_venues_path(:venue => c.id), :class => "btn-view fr" %>
+					</div>
+				<% end %>
+			
+			<div class="Write_review_alignment">
+				 <%= link_to(view_venues_path(:venue => c.id, anchor: 'reviews_div'), :class => "links") do %>
+                          <% if c.reviews.size > 0 %>
+                            <%= pluralize(c.reviews.size, 'Review') %>
+                          <% else %>
+                            Write a review
+                          <% end %>                        
+                        <% end %>			
+			</div>
+
+			</div>
+
 		</div>
 	</div>
 	<% end %>
+
 	<div class="navigation">
 	<%= (((@query.page_number.to_i-1)*10)+1).to_s + ' to ' +  [@query.page_number.to_i*10, @count].min.to_s + ' of ' + @count.to_s  unless @count == 0 %>
 	<% if @count > 10%>

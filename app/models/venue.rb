@@ -45,7 +45,7 @@ class Venue < ActiveRecord::Base
 	#validations
 	validates :user_id, :presence => true
 	validates :name, :presence => true, :length => { :minimum => 3 }
-	validates :description, :presence => true, :length => { :maximum => 500 }
+	validates :description, :presence => true, :length => { :maximum => 250 }
 	validates :terms_conditions, :length => { :maximum => 1000 }
   	validates :payment_policy, :length => { :maximum => 1000 }
 	validates :venue_type, :presence =>true
@@ -81,7 +81,7 @@ class Venue < ActiveRecord::Base
 		end
 
 		query.eventType.each do |a| 
-			if a != "All events"
+			if a != "All Events"
 				venue_results = venue_results.joins(:suitable_events).where('suitable_events.name' => a)
 			end
 		end
