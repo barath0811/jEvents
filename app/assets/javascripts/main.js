@@ -35,7 +35,11 @@ $(document).ready(function(){
 	ga('send', 'pageview');
 
 	$('.selectpicker').selectpicker({
-		style: 'btn-inverse btn-large'
+		style: 'btn-inverse btn-large fntBA'
+	});
+
+	$('.srchpageselectpicker').selectpicker({
+		style: 'btn-inverse btn-medium fntBA fntwt800'
 	});
 
 	$('.bxslider').bxSlider({

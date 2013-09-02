@@ -1,19 +1,20 @@
 <% content_for :title, "Search" %>
 
 <% @options = populateSearchCriteria %>
-<% @options.areas.shift #Removes first element from array, which is "All areas" %>
+<% @options.areas.shift #Removes first element from array, which is "All Areas" %>
 <% @budget = getBudgetOrCapacity('Budget') %>
 <% @capacity = getBudgetOrCapacity('Capacity') %>
 <% @hallTypes = getOptions('HallType') %>
 <% @selectedArea = @query.areas.first %>
 <% @featuredVenues = Venue.featured_venues() %>
-<div class="row">
-	<div class="filters span2" style="margin-top:5em;margin-right:80px;">
+<div style="margin-right:20px">
+<div class="row width100">
+	<div class="filters span2" style="margin-top:42px;">
 		<div id="areas_header_div" class="cp">
 		<table>
 			<tr>
 				<td><div id="areas_header_arrow" class="arrow-down"></div></td>
-				<td><h5>&nbsp;Areas</h5></td>
+				<td><h6>&nbsp;Areas</h6></td>
 			</tr>
 		</table>
 		</div>
@@ -33,7 +34,7 @@
 						</label>
 					</li>
 				<% end %>
-			</ul>
+			</ul>			
 		</div>
 		<hr />
 
@@ -41,7 +42,7 @@
 			<table>
 			<tr>
 				<td><div id="halltype_header_arrow" class="arrow-down"></div></td>
-				<td><h5>&nbsp;Hall Types</h5></td>
+				<td><h6>&nbsp;Hall Types</h6></td>
 			</tr>
 		</table>
 		</div>
@@ -65,7 +66,7 @@
 			<table>
 			<tr>
 				<td><div id="venues_header_arrow" class="arrow-down"></div></td>
-				<td><h5>&nbsp;Venues</h5></td>
+				<td><h6>&nbsp;Venues</h6></td>
 			</tr>
 		</table>
 		</div>
@@ -94,7 +95,7 @@
 		<table>
 			<tr>
 				<td><div id="capacity_header_arrow" class="arrow-down"></div></td>
-				<td><h5>&nbsp;Capacity</h5></td>
+				<td><h6>&nbsp;Capacity</h6></td>
 			</tr>
 		</table>
 		</div>
@@ -155,13 +156,21 @@
 				<% end %>
 			</ul>
 		</div>
+		<hr/>
 
-	</div>
-	<%= select_tag(:eventType, options_for_select(@options.eventType, @query.eventType), {:style => "float:right", :onchange => 'searchFired();'}) %>
-	<br />
-	<div class="span9" style="margin-top:10px;">
+	</div >
+
+	<div class="fr">
+	<!-- <%= select_tag(:eventType, options_for_select(@options.eventType, @query.eventType), {:style => "float:right", :onchange => 'searchFired();'}) %> -->
+
+	<% @searchOptions = populateSearchCriteria %>
+	<%= select_tag(:eventType, options_for_select(@searchOptions.eventType), {:class =>"srchpageselectpicker",:onchange => 'searchFired();'}) %>
+</div>
+
+	<div class="span9" style="margin:0; float:right; width:82%;">
 		<div id="results_div">
 			<%= render partial: 'venues/results' %>
 		</div>
 	</div> 
+</div>
 </div>
