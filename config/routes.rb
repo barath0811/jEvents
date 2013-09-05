@@ -52,6 +52,7 @@ Jevents::Application.routes.draw do
   get "home/benefits/owners" => 'home#benefits_owners'
   get "home/benefits/planners" => 'home#benefits_planners'
   
+  get "compare/index"
 
 
   get 'placeholder' => 'pages#placeholder'

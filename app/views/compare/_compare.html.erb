@@ -1,0 +1,116 @@
+<% @hallTypes = getOptions('HallType') %>
+
+<table class="table table-striped table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th></th>
+			<th><%= @venue1.name %>&nbsp;<%= image_tag('verify.png', :alt=>'Verified', :title => 'Verified') if @venue1.is_verified %></th>
+			<th><%= @venue2.name %>&nbsp;<%= image_tag('verify.png', :alt=>'Verified', :title => 'Verified') if @venue2.is_verified %></th>
+		</tr>
+		<tr>
+			<th>Area</th>
+			<td><%= @venue1.address.area %></td>
+			<td><%= @venue2.address.area %></td>
+		</tr>
+		<tr>
+			<th>Address</th>
+			<td><%= @venue1.address.address %></td>
+			<td><%= @venue2.address.address %></td>
+		</tr>
+		<tr>
+			<th>Landmark</th>
+			<td><%= @venue1.address.landmark %></td>
+			<td><%= @venue2.address.landmark %></td>
+		</tr>
+		<tr>
+			<th>Rating</th>
+			<td><%= @venue1.rating %></td>
+			<td><%= @venue2.rating %></td>
+		</tr>
+		<tr>
+			<th>Halls</th>
+			<td>
+				<div class="hallandcapacity ">
+				<% @hallTypes.each do |ht| %>
+				<% @hall_count = 0 %>
+				<% @venue1.halls.each do |h| %>
+					<% if ht == h.hall_type %>
+						<% @hall_count = @hall_count + 1 %>
+					<% end %>
+				<% end %>
+				<% if @hall_count > 0 %>
+					<% ht = ht + 's' if @hall_count > 1 %>
+					<span class="numRooms" ><%= @hall_count.to_s + '-' + ht + ' | ' %></span>&nbsp;
+				<% end %>
+				<% end %>
+			</div>
+			</td>
+			<td>
+				<div class="hallandcapacity ">
+				<% @hallTypes.each do |ht| %>
+				<% @hall_count = 0 %>
+				<% @venue2.halls.each do |h| %>
+					<% if ht == h.hall_type %>
+						<% @hall_count = @hall_count + 1 %>
+					<% end %>
+				<% end %>
+				<% if @hall_count > 0 %>
+					<% ht = ht + 's' if @hall_count > 1 %>
+					<span class="numRooms" ><%= @hall_count.to_s + '-' + ht + ' | ' %></span>&nbsp;
+				<% end %>
+				<% end %>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<th>Capacity</th>
+			<td>Upto&nbsp;<%= @venue1.max_capacity %></td>
+			<td><%= 'Upto ' + @venue2.max_capacity unless @venue2.max_capacity.nil? %></td>
+		</tr>
+		
+		<% if @venue1.facility != nil || @venue2.facility != nil %>
+			<tr>
+				<th>Restaurant</th>
+				<td>
+					<% if @venue1.facility != nil && @venue1.facility.has_buffet? %>	Yes <%else%> No <%end%>
+				</td>
+				<td><% if @venue2.facility != nil && @venue2.facility.has_buffet? %>	Yes <%else%> No <%end%></td>
+			</tr>
+			<tr>
+				<th>Parking</th>
+				<td>
+					<% if @venue1.facility != nil && @venue1.facility.has_parking? %>	Yes <%else%> No <%end%>
+				</td>
+				<td><% if @venue2.facility != nil && @venue2.facility.has_parking? %>	Yes <%else%> No <%end%></td>
+			</tr>
+			<tr>
+				<th>Air-Conditioning</th>
+				<td>
+					<% if @venue1.facility != nil && @venue1.facility.airconditioning? %>	Yes <%else%> No <%end%>
+				</td>
+				<td><% if @venue2.facility != nil && @venue2.facility.airconditioning? %>	Yes <%else%> No <%end%></td>
+			</tr>
+			<tr>
+				<th>Non-veg</th>
+				<td>
+					<% if @venue1.facility != nil && @venue1.facility.is_nonveg_allowed? %>	Yes <%else%> No <%end%>
+				</td>
+				<td><% if @venue2.facility != nil && @venue2.facility.is_nonveg_allowed? %>	Yes <%else%> No <%end%></td>
+			</tr>
+			<tr>
+				<th>Alcohol</th>
+				<td>
+					<% if @venue1.facility != nil && @venue1.facility.is_alcohol_allowed? %>	Yes <%else%> No <%end%>
+				</td>
+				<td><% if @venue2.facility != nil && @venue2.facility.is_alcohol_allowed? %>	Yes <%else%> No <%end%></td>
+			</tr>
+			<tr>
+				<th>Stage</th>
+				<td>
+					<% if @venue1.facility != nil && @venue1.facility.has_stage? %>	Yes <%else%> No <%end%>
+				</td>
+				<td><% if @venue2.facility != nil && @venue2.facility.has_stage? %>	Yes <%else%> No <%end%></td>
+			</tr>
+		<%end%>
+	</thead>
+</table>
